@@ -1,8 +1,17 @@
 from markitdown import MarkItDown
 
-# Zero-config — auto-selects analyzer per file type
-md = MarkItDown(cu_endpoint="<content_understanding_endpoint>")
-result = md.convert("report.pdf")   # documents → prebuilt-documentSearch
-result = md.convert("meeting.mp4")  # video → prebuilt-videoSearch
-result = md.convert("call.wav")     # audio → prebuilt-audioSearch
+md = MarkItDown(
+    cu_endpoint="<content_understanding_endpoint>",
+    cu_analyzer_id="my-invoice-analyzer",
+)
+result = md.convert("invoice.pdf")
 print(result.markdown)
+# Output includes YAML front matter with extracted fields:
+# ---
+# contentType: document
+# fields:
+#   VendorName: CONTOSO LTD.
+#   InvoiceDate: '2019-11-15'
+# ---
+# <!-- page 1 -->
+# ...
