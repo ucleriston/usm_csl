@@ -1,1117 +1,1946 @@
-RESUMO
+UNIVERSIDADE FEDERAL DE PERNAMBUCO
+CENTRO DE CIÊNCIAS JURÍDICAS
+PROGRAMA DE PÓS-GRADUAÇÃO EM DIREITO
+
+SELEÇÃO AO CURSO DE DOUTORADO
+
+Linha de Pesquisa 1 — Crítica do Direito, Sociedade e Instituições
+PCP 1.4 — Instituições e Desenvolvimento: Tributação, Regulação e Defesa da Concorrência
+
+A CAPACIDADE COMO PRESSUPOSTO MATERIAL DA RECEITA DE
+REFERÊNCIA
 
-Este estudo versa sobre...
+Desigualdades municipais e desenho institucional
+na transição ao IBS
 
-Esta pesquisa trata de...
+Recife
+2026
 
-O presente trabalho aborda...
+1
 
-Este estudo investiga...
+A CAPACIDADE COMO PRESSUPOSTO MATERIAL DA RECEITA DE
+REFERÊNCIA
 
-Esta pesquisa tem como objetivo principal...
+Desigualdades municipais e desenho institucional
+na transição ao IBS
 
-O objetivo deste trabalho é...
+Projeto  de  pesquisa  apresentado  ao  Programa  de  Pós-
+Graduação  em  Direito  da  Universidade  Federal  de
+Pernambuco  como  requisito  do  processo  seletivo  para
+ingresso  no  Curso  de  Doutorado,  Linha  de  Pesquisa  1
+—  Crítica  do  Direito,  Sociedade  e  Instituições,  Projeto
+Coletivo  de  Pesquisa  1.4  —
+e
+Desenvolvimento:  Tributação,  Regulação  e  Defesa  da
+Concorrência.
 
-A pesquisa propõe-se a...
+Instituições
 
-Neste estudo, examina-se...
+Recife
+2026
 
-Metodologicamente, esta pesquisa...
+2
 
-Do ponto de vista metodológico, ...
+SUMÁRIO
 
-O caminho metodológico percorrido...
+1 Introdução
 
-A pesquisa se classifica como...
+1.1 Tema do projeto
+1.2 Problema a ser abordado
+1.3 Hipóteses
+2 Objetivos e Metas
 
-A coleta de dados se deu mediante...
+2.1 Objetivo geral
+2.2 Objetivos específicos
+2.3 Metas
+3 Justificativa
+4 Estado da arte
 
-A análise de dados é realizada a partir...
+4.1 Federalismo fiscal e autonomia municipal
+4.2 Capacidades estatais e desigualdade municipal
+4.3 Receita de referência e teoria do fato jurídico
+4.4 Desenho regulatório e governança interfederativa
+4.5 Síntese da lacuna e posição da pesquisa
 
-O estudo será analisado à luz da teoria...
+5 Metodologia
 
-O embasamento teórico concentra-se na/no...
+5.1 Método
+5.2 Corpus, fontes e técnicas de pesquisa
+5.3 Análise de dados
 
-Apoiando-se nos teóricos X e Y, esta pesquisa...
+6 Vínculo da pesquisa com o projeto coletivo de pesquisa
+7 Prévia de sumário
+8 Cronograma
+Referências
 
-Os principais achados revelaram que...
+4
+4
+6
+7
+8
+8
+9
+9
+9
+12
+12
+13
+14
+15
+16
+17
+17
+18
+20
+22
+23
+24
+25
 
-Os dados coletados demonstraram que...
+3
 
-Os resultados sugerem que...
+1 Introdução
 
-Por meio da análise, constatou-se que...
+1.1 Tema do projeto
 
-Observou-se uma relação significativa entre...
+A  reforma  da  tributação  sobre  o  consumo  inaugurou  uma  mudança  que  ultrapassa  a
 
-Concluiu-se, com este estudo, que...
+substituição de tributos. A Emenda Constitucional nº 132/2023 instituiu o Imposto sobre Bens
 
-Por fim, foi possível constatar que...
+e Serviços (IBS), de competência compartilhada entre Estados, Distrito Federal e Municípios,
 
-Por meio deste estudo, verificou-se que...
+e  reorganizou  tanto  a  administração  do  imposto  quanto  a  distribuição  de  sua  receita.  A
 
-INTRODUÇÃO
+transição foi desenhada para se estender por várias décadas. Nesse período, a posição relativa
 
-Nesta pesquisa, é explorada/abordada a temática...
+de  cada  ente  não  dependerá  apenas  do  consumo  ocorrido  em  seu  território,  mas  também  de
 
-O presente trabalho tem como tema central...
+parâmetros construídos a partir da arrecadação anterior à plena vigência do novo sistema.
 
-Esta investigação tem como foco...
+Para  os  Municípios,  a  questão  aparece  com  especial  nitidez  no  art.  131  do  Ato  das
 
-O tema central deste estudo é...
+Disposições Constitucionais Transitórias e nos arts. 109 e 114 a 117 da Lei Complementar nº
 
-O enfoque principal do presente trabalho é...
+227/2026. A legislação determina que parte da receita do IBS seja retida e distribuída, entre
 
-Esta investigação concentra-se em...
+2029  e  2077,  segundo  coeficientes  calculados  com  base  na  receita  média  de  referência.  No
 
-A temática em destaque neste estudo envolve...
+caso  municipal,  essa  referência  corresponde  à  média,  corrigida,  da  arrecadação  do  Imposto
 
-O objeto de estudo deste trabalho é centrado em...
+sobre Serviços de Qualquer Natureza (ISS) e da parcela do ICMS creditada na forma do art.
 
-A abordagem desta pesquisa diz respeito a/à/ao...
+158,  IV,  “a”,  da  Constituição,  no  período  de  2019  a  2026  (Brasil,  2023,  2026a).  O  passado
 
-A discussão proposta neste estudo recai sobre...
+fiscal  do  ente  passa,  assim,  a  integrar  uma  regra  jurídica  de  repartição  com  efeitos
 
-Esta investigação envolve a exploração de...
+prolongados.
 
-A ênfase deste trabalho está na análise de...
+A  Lei  Complementar  nº  227/2026  não  ignora  inteiramente  os  problemas  de
 
-O escopo desta pesquisa centra-se na análise de...
+informação que podem afetar o cálculo. O art. 116 autoriza o Comitê Gestor do IBS (CGIBS)
 
-Este trabalho se justifica por sua importância no/na...
+a utilizar dados do Siconfi, balanços oficiais e outras fontes legais; admite, em determinadas
 
-Justifica-se esta pesquisa a partir de/do/da...
+condições,  a  estimativa  da  arrecadação  quando  as  contas  estiverem  ausentes  ou  forem
 
-São aspectos que justificam esta pesquisa: a)...; b)...; c)...
+inconsistentes; e assegura aos entes prazo para contestar o coeficiente publicado. O art. 117,
 
-No tocante ao aspecto social, o estudo encontra respaldo em...
+por sua vez, cria distribuição complementar para os entes que apresentem maior perda relativa
 
-No que se refere às contribuições da pesquisa para o meio acadêmico,...
+de participação na receita. Esses mecanismos afastam a leitura de que a simples ausência de
 
-Para a ciência, o presente trabalho possibilita...
+um registro produziria, de forma automática e sem possibilidade de correção, a exclusão do
 
-A justificativa desta pesquisa se pauta em...
+Município. Eles não resolvem, porém, uma questão anterior: a receita observada entre 2019 e
 
-Como problema de pesquisa, definiu-se...
+2026 foi produzida por administrações municipais dotadas de capacidades muito desiguais.
 
-A pergunta que norteia este estudo é...
+Essa  distinção  orienta  a  pesquisa.  A  receita  de  referência  é  o  elemento  diretamente
 
-A problemática que enseja esta pesquisa é...
+acolhido pela norma. A capacidade estatal, por sua vez, constitui uma das condições materiais
 
-Em relação ao problema de pesquisa, propõe-se:...
+sob  as  quais  essa  receita  foi  gerada,  fiscalizada,  contabilizada  e  informada.  Municípios
 
-Traçou-se como pergunta norteadora deste estudo:...
+submetidos  às  mesmas  competências  constitucionais  não  dispõem,  necessariamente,  de
 
-Diante disso, o objetivo deste estudo é...
+4
 
-Nesse cenário, propõe-se como objetivo...
+quadros  técnicos  equivalentes,  cadastros  atualizados,  sistemas  interoperáveis,  procuradorias
 
-A presente pesquisa tem como objetivo principal...
+estruturadas,  recursos  financeiros  ou  canais  estáveis  de  coordenação  interfederativa.  A
 
-Delineou-se como objetivo central deste estudo...
+igualdade  formal  entre  os  entes  convive,  portanto,  com  diferenças  que  podem  interferir  no
 
-O propósito deste estudo é compreender...
+exercício concreto da autonomia tributária e na qualidade das informações levadas ao sistema
 
-Para responder à questão colocada, definiu-se como objetivo...
+nacional.
 
-Em relação aos objetivos específicos, delineou-se:...
+Dois conjuntos de dados dimensionam o que está em causa. No exercício de 2024, no
 
-Definiu-se como objetivos específicos desta pesquisa:...
+agregado  de  5.517  Municípios  que  enviaram  demonstrativos,  a  arrecadação  nacional  de  ISS
 
-Pensando, então, especificamente, nos objetivos, tem-se:...
+somou R$ 138,95 bilhões, contra R$ 212,56 bilhões transferidos pelo Fundo de Participação
 
-Metodologicamente, esta pesquisa se classifica como...
+dos  Municípios;  FPM  e  cota-parte  do  ICMS  respondem,  somados,  por  30,90%  da  receita
 
-A classificação desta pesquisa se dá da seguinte forma:...
+corrente  municipal  (Brasil,  2026c).  A  arrecadação  do  ISS,  cuja  competência  será
 
-O caminho metodológico seguido leva em conta a seguinte classificação:...
+progressivamente substituída pelo IBS durante a transição, é inferior à do FPM no agregado
 
-No que se refere ao percurso metodológico, esta pesquisa se classifica como...
+nacional  e,  ao  lado  da  cota-parte  do  ICMS,  compõe  a  receita  de  referência.  O  segundo
 
-Em termos de classificação, esta pesquisa se enquadra como...
+conjunto diz respeito à distância entre adesão formal e capacidade de operação. Em 2026, o
 
-O enquadramento metodológico da pesquisa se dá mediante...
+monitoramento oficial da NFS-e registrava a adesão dos 5.571 entes federados, com cobertura
 
-Como instrumento de coleta de dados, utilizou-se...
+de toda a população e da arrecadação nacional de serviços (Brasil, 2026d). A universalização
 
-A coleta de dados foi realizada a partir de...
+da  adesão,  porém,  retira  desse  indicador  qualquer  poder  discriminante:  se  todos  aderiram,  o
 
-A entrevista foi o instrumento de coleta de dados utilizado para...
+dado  deixa  de  distinguir  os  entes  entre  si.  Aderir  é  ato  de  vontade  do  chefe  do  Executivo;
 
-Para a análise dos dados, tomou-se como base a Teoria X...
+operar exige estrutura instalada — quadro para emitir, integrar, conferir e fiscalizar. E é sobre
 
-Os pressupostos teóricos que nortearam a análise dos dados foram...
+a operação que a informação pública é escassa: divulgada de forma agregada e por cobertura
 
-A Análise de Conteúdo é o método utilizado para a análise dos dados...
+demográfica,  ela  é  dominada  pelos  Municípios  de  maior  população,  o  que  torna
 
-Analiticamente, os dados serão analisados à luz da Análise de Discurso, que...
+estatisticamente  pouco  visível  exatamente  o  conjunto  de  entes  que  esta  pesquisa  investiga.
 
-O estudo encontra-se estruturado da seguinte forma:...
+Reconstituir  o  uso  efetivo  por  faixa  populacional,  distinguindo  adesão,  disponibilidade
 
-A pesquisa contém X capítulos, organizados assim:...
+tecnológica e operação, com data de corte declarada, é uma das tarefas empíricas do projeto.
 
-A partir dessas inquietações, o trabalho tomou a seguinte configuração:...
+Neste  projeto,  capacidade  estatal  municipal  designa  o  conjunto  de  recursos
 
-REVISÃO DA LITERATURA
+institucionais  que  permite  ao  Município  exercer,  de  modo  continuado,  suas  atribuições
 
-Na pesquisa intitulada X, Devis et al (2010) buscaram identificar...
+tributárias  e  participar  da  governança  interfederativa.  O  conceito  será  observado  em  cinco
 
-No estudo sobre X, produzido por Mendes (2009), o autor buscou analisar...
+dimensões relacionadas: capacidade administrativa, associada à existência e à estabilidade de
 
-Nessa mesma perspectiva, Brown (2011) compreende que...
+pessoal  qualificado;  capacidade  fiscal,  referente  à  organização  da  administração  tributária  e
 
-Silva (2010), Diniz (2015) e Mendes (2018) se aproximam em suas reflexões...
+aos instrumentos de fiscalização; capacidade tecnológica e informacional, ligada a cadastros,
 
-Em trabalho semelhante, Pereira (2000) enfatiza que...
+sistemas, produção e consistência de dados; capacidade jurídica, relativa ao suporte normativo
 
-Evans (2012), em pesquisa sobre X, propõe o desenvolvimento de...
+e à defesa dos interesses do ente; e capacidade de coordenação, entendida como aptidão para
 
-Na contramão do que diz Lopes (2017), Rosa (2020) aponta que...
+interagir com o Estado, a União, o CGIBS e entidades representativas. Essas dimensões não
 
-Diferentemente de Taylor (2016), Bruntz (2018) verificou que...
+serão  presumidas  a  partir  do  volume  arrecadado,  pois  arrecadação  é  resultado  influenciado
 
-O estudo desenvolvido por Nunes (2015), intitulado X, objetivou...
+também pela base econômica local e por escolhas políticas.
 
-A pesquisa de Cardoso (2004) indica que...
+5
 
-Ao discorrerem sobre X, Brum e Britz (2005) discutem que...
+A  relação  entre  capacidade  estatal  e  receita  será  examinada  por  canais  distintos.  No
 
-Nessa mesma direção, Pontes (2012) afirma que...
+ISS,  a  capacidade  municipal  atua  diretamente  sobre  cadastro,  fiscalização,  constituição  do
 
-As pesquisas empreendidas por Kim (2014) e Vieira (2015) dialogam em...
+crédito, cobrança, registro e transmissão das informações. Na cota-parte do ICMS, o vínculo é
 
-Bright (2004) encontrou resultados semelhantes aos de Gavin et al. (2002)...
+indireto  e  mediado  pela  estrutura  econômica  local,  pelo  acompanhamento  das  informações
 
-Em estudo sobre X, Evan (2018) verificou que...
+relativas ao valor adicionado, pela coordenação com a administração estadual e pelos critérios
 
-Os autores também encontraram uma relação positiva entre...
+de distribuição aplicáveis. A análise não presumirá que o mesmo mecanismo explique ambas
 
-Em estudo anterior, Gavin e Moris (2005) investigaram o/a...
+as receitas.
 
-Os resultados encontrados por Wilson (2014) apontam que...
+A  literatura  sobre  capacidades  municipais  mostra  que  a  descentralização  brasileira
 
-A discussão empreendida por Bentz (2019) indica que...
+distribuiu  responsabilidades  sem  assegurar  condições  homogêneas  de  implementação.  A
 
-A análise desenvolvida por Fisher (2022) corrobora os resultados de...
+profissionalização  burocrática,  a  estabilidade  das  equipes  e  a  capacidade  de  coordenação
 
-O estudo de Taylor (2023) vai ao/de encontro ao que aponta...
+ajudam  a  explicar  por  que  normas  nacionais  produzem  resultados  distintos  no  território
 
-Em estudo realizado por Lexi (2008), foram selecionadas X participantes...
+(Arretche,  2003;  Marenco,  2017;  Grin;  Abrucio,  2021).  Na  esfera  tributária,  estudos
 
-Posteriormente, em continuação ao estudo realizado em 2004, Butler (2007)...
+identificam  associação  entre  burocracias  profissionais  e  melhor  desempenho  fiscal,  mas
 
-O autor atribui esses resultados a um/uma...
+também  advertem  que  tecnologia  formalmente  disponível  não  equivale  a  capacidade
 
-Waves et al. (2006) realizaram um estudo com X pessoas...
+efetivamente instalada (Marenco; Strohschoen; Joner, 2017; Grin et al., 2018). A reforma do
 
-FUNDAMENTAÇÃO
+consumo encontra, portanto, uma federação marcada por assimetrias que o desenho jurídico
 
-De acordo com as evidências apresentadas por...
+precisa reconhecer, administrar ou compensar.
 
-Dentre os autores consultados, destaca-se...
+O objeto da pesquisa é a relação entre essas capacidades estatais e a receita média de
 
-Um dos principais teóricos que trata do assunto é...
+referência  utilizada  na  transição  ao  IBS.  O  estudo  não  parte  da  premissa  de  que  todo
 
-Conforme discutido por diversos estudiosos,...
+Município de pequeno porte seja institucionalmente frágil, nem de que o porte populacional
 
-Em consonância com as teorias de...
+explique,  sozinho,  a  arrecadação.  Pretende-se  investigar  se  determinadas  insuficiências  de
 
-Como apontado por vários pesquisadores,...
+capacidade  aparecem  de  modo  sistemático  entre  os  Municípios  de  até  cinquenta  mil
 
-Em conformidade com a discussão empreendida por...
+habitantes e se os mecanismos previstos na LC nº 227/2026 são aptos a evitar que diferenças
 
-Alguns teóricos sugerem que...
+pretéritas  sejam  reproduzidas  na  repartição  futura.  O  recorte  empírico  compreenderá  os
 
-Um ponto de vista amplamente aceito é...
+Municípios  baianos  enquadrados  nesse  limite  populacional,  com  aprofundamento  em  doze
 
-Uma abordagem comumente adotada é...
+casos selecionados por máxima variação.
 
-Outro autor que defende essa perspectiva é...
+A expressão “capacidade como pressuposto material da receita de referência” resume
 
-Em relação a essa teoria, pode-se dizer que...
+a  posição  inicial  do  projeto  sem  antecipar  sua  conclusão.  Ela  indica  que  a  capacidade  pode
 
-Uma teoria relevante para este estudo é a de...
+influenciar a formação do resultado fiscal posteriormente incorporado pela norma, mas não se
 
-Entre os conceitos fundamentais, sobressai-se...
+confunde com o suporte jurídico diretamente previsto nos arts. 114 e 115 da LC nº 227/2026.
 
-Em apoio a essa argumentação,...
+A  pesquisa  examinará,  inclusive,  a  possibilidade  de  essa  relação  ser  fraca,  variar  entre
 
-Uma ideia central presente na literatura é...
+dimensões  ou  ser  superada  pelos  mecanismos  de  correção  e  distribuição  complementar.  É
 
-Em termos conceituais, observa-se que...
+nesse  espaço,  entre  a  regra  de  repartição  e  as  condições  concretas  de  sua  formação,  que  se
 
-É importante salientar que...
+localiza o problema.
 
-Por meio dessas teorias, é possível pensar que...
+6
 
-Essa perspectiva teórica contribui para entender o/a...
+1.2 Problema a ser abordado
 
-Uma contribuição relevante na área é o trabalho de...
+O problema central é formulado nos seguintes termos:
 
-Alguns estudiosos argumentam/propõem que...
+Em que medida a utilização da receita média de ISS e da cota-parte do ICMS,
 
-Um conceito-chave para essa discussão é o de...
+apurada entre 2019 e 2026, como base do coeficiente de participação municipal
 
-Do ponto de vista conceitual, pode-se depreender que...
+na transição ao IBS incorpora desigualdades pretéritas de capacidade estatal, e
 
-De acordo com a teoria de X, o/a...
+os  mecanismos  de
 
-Em termos práticos, pode-se argumentar que...
+informação,  estimativa,  contestação  e  distribuição
 
-Em relação a essa abordagem, vê-se que...
+complementar  previstos  na  LC  nº  227/2026  são  suficientes  para  impedir  sua
 
-De acordo com o referencial teórico adotado, constata-se que...
+reprodução na repartição da receita?
 
-Em relação aos modelos propostos por...
+A pergunta central desdobra-se em quatro questões subsidiárias:
 
-Essa teoria fornece um arcabouço para compreender...
+a) Quais dimensões de capacidade administrativa, fiscal, tecnológica, informacional, jurídica
 
-Diversos estudos têm investigado...
+e  de  coordenação  são  pressupostas  pelo  desenho  institucional  do  IBS  e  pelo  processo  de
 
-Uma linha de pensamento semelhante é a defendida por...
+apuração da receita de referência?
 
-Essa teoria tem sido amplamente discutida no campo do/da...
+b)  Como  a  legislação  disciplina  a  formação,  a  publicidade,  a  correção  e  a  contestação  dos
 
-Uma visão predominante nas pesquisas é a de que...
+coeficientes, e que tipos de assimetria cada mecanismo consegue enfrentar?
 
-Em consonância com a literatura especializada,...
+c) Há associação entre os indicadores de capacidade estatal e o comportamento da receita de
 
-Dentre as teorias existentes, destaca-se a proposta de...
+referência  nos  Municípios  baianos  de  até  cinquenta  mil  habitantes,  controladas,  na  medida
 
-Alguns estudos desenvolvidos entre 2010 e 2020 têm explorado...
+permitida pelos dados, diferenças econômicas e populacionais relevantes?
 
-Essa perspectiva teórica lança luz sobre...
+d)  Se  forem  identificadas  insuficiências,  que  mecanismos  institucionais  de  cooperação,
 
-Em relação a essas questões, pode-se aludir que...
+transição  ou  capacitação  poderiam  reduzi-las  sem  desfigurar  os  critérios  constitucionais  de
 
-De acordo com os achados de pesquisadores na área,...
+repartição?
 
-Essa abordagem teórica oferece insights sobre...
+1.3 Hipóteses
 
-Em síntese, a revisão da literatura revela que...
+Hipótese central. A receita média de referência incorpora resultados fiscais formados
 
-Ganham notoriedade as pesquisas realizadas por...
+sob condições desiguais de capacidade estatal. Os mecanismos dos arts. 116 e 117 da LC nº
 
-Teoricamente, há uma série de definições para o conceito de...
+227/2026  podem  corrigir  ausências,  inconsistências  de  informação  e  perdas  relativas  mais
 
-Um conceito recorrente e imprescindível a essa temática é o de...
+acentuadas,  mas  não  foram  estruturados  para  compensar  diferenças  pretéritas  na  capacidade
 
-A literatura da área aponta que...
+de  administrar,  fiscalizar  e  arrecadar  o  ISS,  nem  de  produzir,  acompanhar  e  contestar
 
-Permear as considerações trazidas até o momento é necessário para...
+informações relevantes à cota-parte do ICMS. Por essa razão, o desenho da transição tende a
 
-Propagam-se, no Brasil, estudos que colocam em pauta...
+reproduzir  parte  das  assimetrias  institucionais  existentes,  embora  a  intensidade  e  a
 
-Apesar de a maioria dos autores considerar que a/o..., entende-se que...
+distribuição desse efeito dependam de verificação empírica.
 
-O cerne da discussão aqui empreendida é...
+H1  —  Relação  condicionada  entre  capacidade  e  receita.  Municípios  com  maior
 
-Com base no que dispõem Silva e Costa (2020),...
+profissionalização  administrativa,  melhor  estrutura  fazendária  e  sistemas  informacionais
 
-Como explicam Pereira e Diniz (2022), a diferença entre...
+efetivamente  utilizados  tendem  a  apresentar  receitas  de  ISS  mais  estáveis  e  registros  fiscais
 
-A compreensão de que... também é advogada por Silveira (2015)...
+7
 
-Conforme já apontado por Prates (2010), a/o...
+mais  consistentes.  Na  cota-parte  do  ICMS,  a  relação  com  a  capacidade  será  tratada  como
 
-A partir do que prevê a Lei X, considera-se que...
+indireta,  mediada  pela  base  econômica,  pelo  acompanhamento  das  informações  do  valor
 
-No entanto, de modo diverso, Perez (2016) pontua que...
+adicionado,  pela  coordenação  com  o  Estado  e  pelos  critérios  estaduais  de  distribuição.  Em
 
-Em função do que precede a literatura, o/a...
+ambos  os  casos,  a  relação  não  é  automática:  composição  setorial,  política  de  benefícios  e
 
-Para percorrer essa noção teórica, faz-se necessário mobilizar...
+decisões locais podem explicar parte relevante das diferenças.
 
-Feitas essas observações, esse/essa é...
+H2  —  Alcance  limitado  das  salvaguardas  informacionais.  As  fontes  alternativas,  a
 
-Continuando esse contraponto, vê-se que...
+estimativa  e  a  contestação  previstas  no  art.  116  são  adequadas  para  enfrentar  falhas  de
 
-É interessante observar que...
+informação  identificáveis,  mas  têm  alcance  mais  restrito  diante  de  déficits  históricos  que
 
-Em leitura a Pontes (2013) e Tessmann (2014), percebe-se que...
+reduziram  a  própria  capacidade  de  constituir  créditos,  fiscalizar  ou  arrecadar  durante  o
 
-Paralelamente a essa discussão está a ideia mobilizada por...
+período de referência.
 
-Nesse ponto, pode-se destacar o olhar de Ferreira (2000),...
+H3  —  Heterogeneidade  entre  Municípios  de  pequeno  porte.  O  porte  populacional
 
-Apesar de haver um consenso na literatura sobre X, reporta-se que...
+funciona  como  critério  de  delimitação,  não  como  explicação  suficiente.  Espera-se  encontrar
 
-Outra questão de extrema relevância na literatura é...
+trajetórias  distintas  dentro  do  próprio  grupo  de  Municípios  de  até  cinquenta  mil  habitantes,
 
-Desse modo, se a teoria sustenta X, pode-se declarar que...
+associadas à profissionalização do quadro, à continuidade administrativa, à organização fiscal,
 
-É sumamente significativo frisar que...
+à infraestrutura tecnológica e à inserção em redes de cooperação.
 
-Seguindo essa direção, Barbosa (2018) explica que...
+H4  —  Insuficiência  compensatória  do  desenho.  A  distribuição  complementar  do  art.  117
 
-Nessa perspectiva, acatando a lição de Rosa (2023), vale dizer que...
+atua sobre perdas relativas de receita, mas não constitui, por si só, política de equalização de
 
-Salienta-se, a partir do que dispõe Britz (1999), que...
+capacidades.  Se  os  dados  confirmarem  associação  relevante  entre  déficits  institucionais  e
 
-Ainda, é preciso lembrar que esse conceito pode ser pensado...
+receita de referência, haverá fundamento para sustentar que a transição carece de instrumentos
 
-Dentro do escopo do/da..., Lagazzi (2006) interpreta que...
+cooperativos específicos de capacitação e acompanhamento.
 
-Continuando esse percurso teórico, Godói (2017) menciona que...
+As  hipóteses  admitem  confirmação  parcial  ou  rejeição.  Se  os  indicadores  de
 
-Nesse contexto de reflexões sobre X, o autor analisa...
+capacidade  não  apresentarem  associação  consistente  com  a  receita  de  referência,  ou  se  as
 
-Também, em se tratando do assunto, Rocha (2014) assevera que...
+salvaguardas legais neutralizarem os efeitos previstos, a explicação central deverá ser revista.
 
-Pelo viés da Teoria X, Brettas (2000) esclarece que...
+Também será possível concluir que apenas algumas dimensões de capacidade são relevantes
 
-A partir da visão de Fernandes (2009) sobre X, reitera-se que...
+ou que os efeitos se concentram em grupos específicos.
 
-Discussões teóricas sobre X, que foram reavivadas na década X, indicam...
+2 Objetivos e Metas
 
-A partir de pesquisas que tratam sobre X, houve a necessidade de...
+2.1 Objetivo geral
 
-Moreira (2007) entende que a relação entre esses aspectos se dá...
+Analisar  de  que  modo  as  capacidades  estatais  dos  Municípios  de  pequeno  porte  se
 
-As duas perspectivas supracitadas pressupõem que...
+relacionam  com  a  formação  da  receita  média  de  referência  utilizada  na  transição  ao  IBS,
 
-Devido às implicações negativas sobre X, é necessário dispor...
+avaliar  a  suficiência  dos  mecanismos  legais  de  correção  e  compensação  e  propor  diretrizes
 
-À esteira do que propõe Lima (2021), presume-se que...
+institucionais compatíveis com o federalismo cooperativo e a autonomia municipal.
 
-Para dialogar com essas questões, entende-se ser necessário...
+8
 
-Salienta-se a concepção de X para sustentar a discussão...
+2.2 Objetivos específicos
 
-Parte-se do pressuposto de que essas reflexões são necessárias para...
+OE1.  Reconstruir  o  regime  constitucional  e  legal  de  formação,  cálculo,  publicidade,
 
-Tal constatação sugere incluir na análise aspectos quantitativos relativos a...
+contestação e distribuição da receita de referência na transição ao IBS.
 
-Para Ribeiro (2017), por meio de um/uma X..., é possível...
+OE2.  Delimitar  o  conceito  de  capacidade  estatal  municipal  e  construir  uma  matriz  de
 
-Corroborando o descrito na Lei X, Gonçalves (2015) ressalta a/o...
+dimensões e indicadores compatível com as atribuições tributárias e de coordenação exigidas
 
-Contudo, contraditoriamente, pode-se dizer que esse movimento...
+pelo novo sistema.
 
-De modo semelhante a Borges (2021), Payer (2022) ressalta que...
+OE3.  Mapear,  no  universo  dos  Municípios  baianos  de  até  cinquenta  mil  habitantes,
 
-Com base nas pesquisas de Rosa (2023), os/as...
+indicadores  de  capacidade  administrativa,  fiscal,  tecnológica,  informacional,  jurídica  e  de
 
-O entendimento de Martin (2020) é de que o/a...
+coordenação, bem como as séries disponíveis de ISS e cota-parte do ICMS.
 
-Enfatizando a necessidade de X, Limbertz (2016) assevera que...
+OE4. Comparar doze casos municipais selecionados por máxima variação, examinando como
 
-Apoiando-se nos estudos de Blenk (2000), Ruber (2005) revela que...
+diferentes  combinações  de  capacidade,  contexto  econômico  e  escolhas  administrativas
 
-Na análise de Ferreira (2004) em torno de X, a autora comprovou que...
+influíram na formação e na qualidade da informação fiscal.
 
-Em discussão acerca de X, Morgan e Green (2017) avaliam que...
+OE5.  Avaliar  se  as  salvaguardas  dos  arts.  116  e  117  da  LC  nº  227/2026  enfrentam
 
-Cooper e Thompson (2023), ao analisar X, descobriram que...
+adequadamente  as  assimetrias
 
-Clark e Martín (2020), pesquisando sobre X, constataram que...
+identificadas  e  formular  alternativas  de  cooperação,
 
-Na década de 1940, os assuntos relacionados à/a/ao...
+capacitação ou transição institucional.
 
-Os projetos sobre X , na década de 1990, permitiram observar que...
+2.3 Metas
 
-Nos anos de 1980, as discussões teóricas que permeavam a/o Y apontavam...
+M1. Elaborar, até o final do primeiro ano, matriz normativa das capacidades e procedimentos
 
-Na égide da década de 1970, postulava-se que o/a X era...
+exigidos pela transição ao IBS.
 
-A partir do final da década de 1980, segundo Constantini (2014), o/a...
+M2. Consolidar, até o final do segundo ano, base de dados documentada sobre os Municípios
 
-Na década de 1920, houve um avanço significativo na área de X...
+baianos de até cinquenta mil habitantes, com dicionário de variáveis e registro das limitações.
 
-No ano de 2020, um estudo pioneiro revelou novas perspectivas sobre...
+M3.  Concluir,  no  segundo  ano,  o  protocolo  de  seleção  dos  doze  casos,  o  roteiro  de  coleta
 
-Ao longo do século XX, ocorreram várias mudanças no/na...
+documental e a matriz de codificação das evidências.
 
-No início da década de 1990, uma nova abordagem revolucionou a/o...
+M4.  Produzir,  até  o  final  do  terceiro  ano,  tipologia  de  capacidades  municipais  e  análise
 
-No ano de 2015, uma descoberta importante na área X ganhou notoriedade...
+comparativa dos casos, com memória metodológica replicável.
 
-Ao longo do século XIX, a/o X teve um impacto transformador na/no...
+M5. Submeter pelo menos dois artigos e apresentar resultados parciais em evento acadêmico
 
-Na década de 1940, houve um aumento substancial no uso de...
+durante o curso.
 
-No ano de 2008, uma crise gerada por... afetou profundamente o/a...
+M6. Qualificar a pesquisa até o trigésimo mês e depositar a tese até o quadragésimo oitavo
 
-No século XVIII, o movimento X desempenhou um papel crucial no/na...
+mês.
 
-Na década de 1960, ocorreu um/uma... que mudou a forma de...
+3 Justificativa
 
-Em meados de 2005, o Brasil enfrentou um/uma...
+9
 
-No final da década de 1970, o país passou por situações X...
+A  pesquisa  é  necessária  porque  a  transição  ao  IBS  relaciona  uma  regra  nacional  de
 
-Na segunda metade do século XVI, o Brasil viveu um período X...
+longa  duração  a  resultados  fiscais  produzidos  em  contextos  municipais  muito  diferentes.  A
 
-Entre 2019 e 2022, os países presenciaram um/uma...
+legislação  define  procedimentos  para  calcular  e  contestar  a  receita  de  referência,  mas  a
 
-Os casos de X, entre as décadas de 1980 e 1990, chamaram a atenção...
+discussão jurídica ainda se concentra, em grande medida, na competência compartilhada, na
 
-A evolução de X, ao longo da década de 1980, permitiu que...
+representação  no  CGIBS  e  nas  características  gerais  do  novo  imposto.  A  relação  entre
 
-As pesquisas desenvolvidas ao final do século XIX contribuíram para...
+capacidade  estatal  pretérita  e  posição  distributiva  futura  permanece  menos  explorada.  A
 
-Em 1988, a Constituição Federal trouxe...
+lacuna  não  está  na  ausência  de  estudos  sobre  federalismo,  capacidade  ou  reforma  tributária
 
-No entendimento de Northes (2017), a década de 1990 foi crucial para...
+tomados separadamente; está na conexão entre esses campos.
 
-A visão de Peters (2020) é de que o século XX foi importante na área de...
+Do ponto de vista acadêmico, o projeto aproxima a dogmática da repartição tributária
 
-PARA INÍCIO E FIM DE CAPÍTULOS
+da  literatura  empírica  sobre  capacidades  estatais.  A  teoria  do  fato  jurídico  oferece
 
-Fazendo, agora, uma costura, na próxima seção será tratado sobre...
+instrumentos para distinguir o elemento diretamente previsto pela norma — a receita média de
 
-Pensando no modo como esse processo ocorre, na seção seguinte será...
+referência  —  das  circunstâncias  materiais  que  participam  de  sua  formação  (Miranda,  2012;
 
-Neste capítulo, a proposta é discutir X...
+Mello,  2017).  Já  os  estudos  de  administração  pública  e  ciência  política  mostram  que  a
 
-O propósito central desta seção é compreender X...
+existência  formal  de  competência,  sistema  ou  cadastro  não  assegura  capacidade  efetiva  de
 
-Ao iniciar este capítulo, tem-se o propósito de mobilizar X, para...
+implementação  (Cingolani,  2013;  Marenco,  2017;  Grin;  Abrucio,  2021).  O  diálogo  permite
 
-Buscou-se defender, aqui, X; no próximo capítulo, fomentar-se-á o/a...
+formular  uma  pergunta  que  nenhum  dos  campos,  isoladamente,  resolve:  como  avaliar
 
-Visou-se, aqui, provocar uma reflexão em torno de..., a qual será ampliada...
+juridicamente  uma  regra  de  repartição  baseada  em  resultados  produzidos  sob  capacidades
 
-Inspirados no que Dortz (1998) chama de X, o próximo capítulo versará...
+institucionais assimétricas?
 
-Passar-se-á, na próxima seção, a olhar para X, em contraste com Y...
+A relevância jurídico-institucional decorre da duração e da complexidade do regime. O
 
-Para avançar com a seguinte reflexão, tomar-se-á como foco X...
+coeficiente  será  publicado  pelo  CGIBS  em  2027  e  orientará  a  distribuição  da  parcela  retida
 
-Assim sendo, na sequência, serão mobilizadas algumas noções referentes a...
+entre  2029  e  2077.  A  contestação  administrativa  permite  discutir  valores,  fontes  e  cálculos,
 
-Compreendendo, então, o modo como..., o foco da pesquisa se volta para...
+mas  não  foi  concebida  para  reconstituir  as  condições  administrativas  existentes  em  cada
 
-E, por fim, considerando o exposto até então, será abordado X...
+Município  ao  longo  de  2019  a  2026.  A  distribuição  complementar  prevista  até  2096  reduz
 
-Com base nisso, neste momento será percorrido um caminho em busca de...
+perdas  relativas  mais  intensas,  porém  adota  uma  lógica  de  equalização  de  receita,  não  de
 
-O olhar, nesse momento, se direciona a X, que permitirá trilhar...
+fortalecimento  institucional.  Compreender  os  limites  de  cada  instrumento  é  necessário  para
 
-Para discutir com mais profundidade X, elaborou-se o tópico a seguir, que...
+evitar  duas  simplificações:  afirmar  que  a  lei  não  contém  salvaguardas  ou  supor  que  as
 
-De modo a compreender como se dá X, recorre-se à seção Y...
+salvaguardas existentes resolvem qualquer assimetria.
 
-No próximo capítulo, o enfoque será a discussão em torno de X...
+Há  também  uma  dimensão  federativa.  A  autonomia  municipal  não  se  esgota  na
 
-Buscando uma articulação entre X e Y, o próximo capítulo versará sobre...
+titularidade  formal  de  competências;  depende  de  recursos  administrativos,  financeiros  e
 
-Como fecho deste capítulo, ressalta-se a discussão de Dias (1995), para quem...
+informacionais  para  que  o  ente  formule  escolhas  e  participe  das  instâncias  comuns  em
 
-Neste capítulo, propôs-se X..., no próximo, discorrer-se-á sobre Y...
+condições minimamente efetivas. Quando uma regra nacional usa desempenho fiscal pretérito
 
-Passa-se, agora, a examinar como X é visto no contexto Y...
+como parâmetro duradouro, o debate sobre autonomia desloca-se do texto das competências
 
-Essa reflexão leva a pensar sobre X, discussão que embasará a seção Y...
+para  as  condições  sob  as  quais  elas  puderam  ser  exercidas.  Isso  não  torna  toda  diferença
 
-Tendo em vista o exposto, no próximo tópico será mobilizado X...
+inconstitucional,  nem  autoriza  deduzir  um  dever  ilimitado  de  equalização.  Exige,  contudo,
 
-Finaliza-se este capítulo mencionando Gomes e Garcia (2008), que tratam...
+10
 
-Nas seções anteriores, foram apresentadas duas estratégias para...
+investigar  se  o  federalismo  cooperativo  oferece  respostas  adequadas  quando  a  uniformidade
 
-Assim, o que resta das considerações até agora empreendidas é que...
+normativa encontra desigualdades persistentes de implementação.
 
-Feitas essas considerações, passa-se, no próximo capítulo, a discorrer sobre...
+O  recorte  nos  Municípios  de  pequeno  porte  se  justifica  por  razões  substantivas  e
 
-Retomando o que foi apresentado no item anterior, tem-se a/o...
+metodológicas.  Esses  entes  formam  grupo  internamente  heterogêneo,  mas  enfrentam  com
 
-Antes de seguir, é necessário situar, nesse ponto, o/a...
+maior frequência restrições de escala para manter equipes especializadas, sistemas próprios e
 
-Em suma, a discussão empreendida reflete um/uma...
+estruturas permanentes. O limite de cinquenta mil habitantes será usado porque é compatível
 
-Após essas considerações sobre X..., com especial atenção a Z, passa-se a...
+com classes populacionais empregadas em bases oficiais e permite comparação com políticas
 
-O próximo capítulo busca trabalhar a ideia de X, ao mobilizar a/o...
+de  modernização  fiscal  que  distinguiram  Municípios  abaixo  desse  patamar.  O  estudo  não
 
-Para melhor elucidar o que se expôs até aqui, na sequência discorre-se sobre...
+pretende  converter  porte  em  sinônimo  de  incapacidade.  Ao  selecionar  casos  contrastantes,
 
-Feitas essas teorizações, chega-se a um fecho provisório, pois...
+busca  justamente  compreender  por  que  Municípios  submetidos  a  restrições  semelhantes
 
-Tecidas as considerações sobre os capítulos, passa-se a apresentar o/a...
+constroem capacidades distintas.
 
-Portanto, retoma-se as palavras de...
+Essa  distinção  não  é  construção  do  pesquisador.  O  Programa  Nacional  de  Apoio  à
 
-Em função dessas inquietações observadas, este texto...
+Gestão Administrativa e Fiscal remetia o Município de até cinquenta mil habitantes a projeto
 
-A busca empreendida aqui tem como um de seus pontos...
+simplificado e sequer lhe fixava meta de aumento da arrecadação própria (Pereira, 2018, p. 27
 
-Apresentadas essas considerações, agora tecer-se-á uma análise sobre...
+e  Quadro  1,  p.  29).  Os  resultados  dos  dois  principais  programas  federais  de  modernização
 
-Diante dos estudos empreendidos até aqui, na próxima seção discorrer-se-á...
+fiscal  municipal  reforçam  a  pertinência  do  recorte:  o  PMAT,  operado  por  crédito
 
-Dito isso, agora o foco estará voltado a/para...
+reembolsável com garantia sobre cotas-parte do FPM e do ICMS, contratou 366 operações em
 
-Perante o exposto, na seção que segue será trabalhada a noção de X...
+338 Municípios entre 1998 e 2014, o equivalente a 6,07% dos entes (Grin; Abrucio, 2021, p.
 
-Trazendo as contribuições teóricas de Lembertz (2019), a seção seguinte...
+9  e  p.  12);  o  PNAFM  estimou  774  Municípios  na  primeira  fase  e  contratou  86,  que
 
-Em síntese ao que se discutiu neste capítulo, pode-se dizer que...
+absorveram setenta por cento dos recursos previstos, e, na segunda, estimou 1.580 e contratou
 
-Para aprofundar essa discussão, no próximo capítulo será analisado o/a...
+28  (Pereira,  2018,  Tabela  2,  p.  31,  e  Tabela  3,  p.  35).  Dos  cem  Municípios  com  piores
 
-Para concluir este capítulo, ressalta-se a importância de/do/da...
+resultados fiscais no ano-base, oitenta e cinco por cento não aderiram, contra vinte por cento
 
-Para encerrar, vale fazer menção à/ao X, que...
+dos cem melhores (Pereira, 2018, Gráfico 6, p. 39). Esses números não demonstram intenção
 
-Passar-se-á, na próxima seção, a olhar para X, que...
+de  excluir;  documentam  um  resultado,  que  o  próprio  autor  descreve  como  viés  de
 
-Nessa empreitada, serão realizados alguns desdobramentos, para...
+autosseleção, e indicam que a capacidade de atravessar arenas decisórias federais é ela própria
 
-APÓS ELEMENTOS VISUAIS
+desigual. O ponto é relevante para esta pesquisa porque desloca a discussão sobre capacitação
 
-Em relação ao quadro, é possível observar que...
+do plano da boa gestão para o do desenho institucional.
 
-Considerando o exposto no quadro, nota-se que...
+A  escolha  da  Bahia  permite  combinar  amplitude  e  profundidade.  O  levantamento
 
-A partir do quadro disposto acima, infere-se que...
+secundário  abrangerá  o  universo  estadual  dentro  do  corte  populacional,  enquanto  os  doze
 
-Com base nas categorias presentes no quadro, alude-se que...
+estudos  de  caso  serão  selecionados  para  representar  combinações  variadas  de  porte,
 
-O quadro acima indica que o número de...
+configurações  de  capacidade  institucional,  continuidade  burocrática,  localização  territorial  e
 
-Os dados tabulados no Quadro 1 revelam que...
+contexto  econômico.  O  recorte  reduz  diferenças  legislativas  estaduais  que  poderiam
 
-As informações apresentadas no Quadro 2 indicam que...
+prejudicar  a  comparação  da  cota-parte  do  ICMS  e,  ao  mesmo  tempo,  preserva  diversidade
 
-Os valores dispostos no Quadro 3 permitem uma análise detalhada de...
+municipal  suficiente  para  testar  as  hipóteses.  As  conclusões  não  serão  generalizadas
 
-A partir dos resultados exibidos no quadro, infere-se que...
+11
 
-O Quadro 4 fornece uma visão geral dos dados coletados, mostrando que...
+automaticamente  para  todo  o  país;  servirão  para  identificar  mecanismos  e  construir
 
-De acordo com o Quadro 5, existe uma tendência à/a/ao...
+proposições analíticas passíveis de verificação em outros contextos.
 
-A relação entre as variáveis pode ser melhor compreendida no Quadro 6, que...
+A  contribuição  original  esperada  é  dupla.  No  plano  explicativo,  a  pesquisa  pretende
 
-As informações que compõem o quadro remetem à/a/ao...
+demonstrar  em  que  condições  a  capacidade  estatal  funciona  como  pressuposto  material  da
 
-Os dados presentes no quadro apontam que o Brasil possui uma média de...
+receita  incorporada  pela  regra  de  transição.  No  plano  propositivo,  buscará  diferenciar
 
-Em sua totalidade, os dados apresentados são relativamente...
+mecanismos  de  correção
 
-O quadro apresentado fornece informações importantes sobre...
+informacional,  compensação
 
-A análise do quadro permite inferir que...
+financeira  e
 
-Ao observar os dados do quadro, é possível verificar que...
+fortalecimento
 
-A Tabela 1 apresenta um histórico sobre...
+institucional, indicando o que cada um pode ou não alcançar. Essa distinção pode contribuir
 
-A tabela ilustra a perspectiva teórica de...
+para o aperfeiçoamento dos atos do CGIBS, para programas de cooperação técnica e para o
 
-A Tabela 2 sugere uma relação entre X e Y...
+debate sobre desenho institucional da reforma, sem pressupor desde o início a invalidade da
 
-Na Tabela 3, pode-se visualizar o/a...
+solução legislativa.
 
-A Tabela 4 apresenta dados relacionados à/a/ao...
+4 Estado da arte
 
-Comparando a Tabela 1 com a Tabela 2, vê-se que...
+O estado da arte está organizado em cinco eixos. O primeiro discute federalismo fiscal
 
-Os dois grupos, presentes na Tabela 5, compõem o/a...
+e autonomia municipal; o segundo examina a literatura sobre capacidades estatais; o terceiro
 
-Os números relativos à/ao..., dispostos na tabela, apontam...
+aproxima a regra de repartição da teoria do fato jurídico; o quarto trata do desenho regulatório
 
-Ao considerar o conjunto de dados apresentados na tabela, vê-se que...
+e da governança interfederativa; o quinto localiza a lacuna ocupada pelo projeto.
 
-Os dados do gráfico apontam que, no Brasil, X% dos/das...
+4.1 Federalismo fiscal e autonomia municipal
 
-A partir dos dados expostos no gráfico acima, é possível perceber o/a...
+A descentralização brasileira ampliou a responsabilidade dos Municípios na execução
 
-O Gráfico 2 mostra que o/a...
+de  políticas  e  reconheceu  sua  posição  federativa,  mas  não  distribuiu  de  modo  uniforme  os
 
-O Gráfico 3 exibe, de forma concisa, o/a...
+recursos necessários ao exercício dessas atribuições. Arretche (2003) mostra que a autonomia
 
-O gráfico detalha os resultados obtidos no contexto da/do...
+local  é  condicionada  por  mecanismos  de  financiamento  e  regulação  definidos  em  outras
 
-Os números apresentados no gráfico oferecem suporte à hipótese de que...
+esferas. Abrucio (2022), ao relacionar federalismo, democracia e desigualdade, ressalta que a
 
-Ao examinar o mapa, pode-se notar que os/as...
+coordenação  nacional  precisa  conviver  com  diferenças  territoriais  profundas.  Esses  estudos
 
-O mapa resume os dados do experimento X, que foi realizado...
+deslocam a análise da mera titularidade de competências para as condições de implementação.
 
-Com base no mapa, as diferenças entre os grupos são...
+No  campo  fiscal,  autonomia  possui  pelo  menos  duas  dimensões.  A  primeira  é
 
-O Mapa Epidemiológico da região X registra o número de...
+normativa: poder instituir tributos, definir aspectos autorizados pela Constituição e organizar
 
-Em observação ao mapa, pode-se identificar que...
+a  administração  fazendária.  A  segunda  é  operacional:  dispor  de  capacidade  para  cadastrar,
 
-O mapa do território X mostra o avanço de/do/da...
+fiscalizar,  cobrar,  registrar  e  defender  a  receita.  A  literatura  demonstra  que  transferências
 
-Conforme indica o Mapa de Santa Catarina, o índice de...
+podem  ampliar  a  capacidade  financeira  e,  ao  mesmo  tempo,  reduzir  a  margem  decisória  do
 
-A Figura 1 ilustra o que o autor compreende como X...
+ente,  sobretudo  quando  regras  e  incentivos  são  definidos  externamente.  Por  isso,  a
 
-Com base nos dados apresentados na Figura 2, questiona-se:...
+dependência  de  receitas  transferidas  não  deve  ser  confundida,  sem  mediações,  com
 
-A partir da Figura 5, pode-se pensar que o/a...
+inviabilidade municipal.
 
-Por meio da Figura 1, é possível discernir tendências em relação à/ao...
+12
 
-A Figura 2 ajuda a elucidar os resultados, exibindo de forma gráfica o/a...
+Oliveira e Oliveira (2025) questionam indicadores que classificam Municípios apenas
 
-Ao examinar a Figura 3, percebe-se que há pontos que convergem com/entre...
+pela  relação  entre  receitas  próprias  e  despesas,  mostrando  que  a  escolha  do  conceito  de
 
-A Figura 4 complementa os resultados apresentados na Tabela 2 e ...
+sustentabilidade  altera  radicalmente  o  diagnóstico.  Essa  advertência  é  relevante  para  o
 
-A Figura 5 apresenta uma visão panorâmica dos dados e fornece...
+presente projeto. Um Município pode apresentar baixa arrecadação própria por limitações de
 
-A Figura 6 busca representar, de forma visual, o/a...
+base econômica, decisões políticas, déficits administrativos ou combinação desses fatores. A
 
-Como demonstrado na Figura 7, existe uma relação significativa entre...
+análise  da  transição  ao  IBS  precisa  separar  essas  explicações  antes  de  atribuir  à  capacidade
 
-Os dados do Relatório X indicam que, no Brasil,...
+estatal o comportamento da receita de referência.
 
-Os dados apresentados na plataforma Integrada em...
+A  reforma  acrescenta  uma  dimensão  temporal  ao  problema  federativo.  O  resultado
 
-Conforme reportagem publicada pela GNV,...
+fiscal pretérito integra uma regra de distribuição futura, enquanto a competência sobre o ISS
 
-Com base na pesquisa realizada pela OTAM,...
+será progressivamente substituída pelo IBS. A autonomia passa a ser observada não apenas na
 
-Os números apresentados por X apontam que...
+relação  entre  competência  e  receita  atual,  mas  também  na  forma  como  trajetórias  anteriores
 
-Uma reportagem publicada pela CNN explica que...
+influenciam  a  posição  do  ente  durante  a  transição.  A  literatura  federalista  fornece  o
 
-Em entrevista concedida à RDV, Alves (2007) diz que...
+diagnóstico  geral  da  assimetria;  falta  examinar  como  ela  ingressa  nesse  mecanismo
 
-Uma matéria publicada pelo Blog X demonstra que...
+distributivo específico.
 
-Segundo informações do Jornal X, atualmente há...
+4.2 Capacidades estatais e desigualdade municipal
 
-De acordo com um estudo realizado por Y,...
+Capacidade  estatal  é  conceito  multidimensional  e,  por  isso,  sujeito  a  dois  riscos:
 
-Segundo os dados coletados pelo Instituto Z,...
+tornar-se  amplo  a  ponto  de  perder  utilidade  ou  ser  medido  apenas  pelos  resultados  que
 
-Conforme mencionado no artigo publicado por W,...
+pretende  explicar.  Cingolani  (2013)  sistematiza  diferentes  tradições  do  campo  e  identifica  a
 
-Os resultados obtidos a partir da análise de A revelam...
+necessidade de separar recursos institucionais, processos e efeitos. Hanson e Sigman (2021)
 
-Em conformidade com a pesquisa conduzida por B,...
+reforçam a distinção entre possuir capacidade e decidir utilizá-la. Um governo pode arrecadar
 
-De acordo com as informações divulgadas por C,...
+pouco  porque  não  consegue  fiscalizar,  porque  escolheu  conceder  benefícios  ou  porque  sua
 
-Os estudos anteriores conduzidos por D...
+base econômica é reduzida. O desenho empírico deve reconhecer essas possibilidades.
 
-Com base nos achados da investigação conduzida por...
+No  contexto  brasileiro,  Marenco  (2017)  associa  a  profissionalização  burocrática  à
 
-Segundo os especialistas na área,...
+capacidade de implementação. Em estudo sobre tributação municipal, Marenco, Strohschoen
 
-Pesquisas recentes elaboradas por G destacam que...
+e  Joner  (2017)  identificam  que  a  presença  de  burocracias  profissionais  se  relaciona  ao
 
-Alguns estudos em torno de X apontam que...
+desempenho  arrecadatório  e  que  os  efeitos  podem  ocorrer  por  limiares,  e  não  de  maneira
 
-Resultados de estudos liderados por Siqueira (2020)...
+simplesmente linear. Isso sugere que pequenos acréscimos de estrutura nem sempre produzem
 
-Segundo os especialistas e pesquisadores em...
+resultados  imediatos;  determinadas  funções  dependem  de  um  núcleo  mínimo  e  estável  de
 
-O índice de X, conforme demonstrado pelo..., está...
+pessoal qualificado.
 
-A cartilha produzida pelo governo federal, intitulada X, aponta que...
+Grin et al. (2018) mostram, por sua vez, que a existência formal de instrumentos como
 
-Em publicação datada de 2003, o Ministério da Educação...
+cadastros informatizados não explica, sozinha, o desempenho fiscal. A capacidade de operar,
 
-PARA ANÁLISE
+atualizar e integrar esses instrumentos importa tanto quanto sua previsão administrativa. Grin,
 
-Percebe-se, conforme retrata Silva (2020), que...
+Demarco  e  Abrucio  (2021)  evidenciam  a  diversidade  das  capacidades  municipais  e  a
 
-Considerando o exposto, Pereira (2020) expõe que...
+13
 
-Essas são discussões centrais que permeiam...
+fragilidade  das  estratégias  nacionais  de  fortalecimento  institucional.  Em  estudo  específico,
 
-Os aspectos acima mencionados favorecem...
+Grin  e  Abrucio  (2021)  descrevem  a  descontinuidade  das  políticas  federais  destinadas  a
 
-É crível dizer que o/a...
+promover capacidades locais e o modo desigual como os Municípios acessam apoio técnico e
 
-Os estudos de Costa (2022) indicam...
+financeiro.
 
-Vale dizer que, para Souza (2019), esse/essa...
+Essa  literatura  permite  formular  indicadores  de  insumo  e  processo  sem  transformar
 
-É importante destacar/ressaltar que...
+arrecadação  em  medida  única  de  capacidade.  Para  o  objeto  da  pesquisa,  serão  relevantes  a
 
-É interessante notar também que...
+composição  e  a  estabilidade  do  quadro  fazendário,  a  existência  de  carreiras  e  funções
 
-É interesse deste estudo abordar...
+especializadas,  o  uso  efetivo  de  sistemas,  a  qualidade  e  a  tempestividade  da  informação
 
-De qualquer modo, é necessário considerar que...
+contábil,  a  estrutura  jurídica  disponível  e  a  participação  em  redes  de  cooperação.  A  receita
 
-Isso significa (dizer) que...
+permanecerá como resultado a ser explicado, não como definição circular da capacidade.
 
-Nessa concepção, observa-se que...
+Dois aportes ajudam a operacionalizar essa observação. O primeiro é a demonstração
 
-Sob essa ótica, pode-se pensar que...
+de que a norma uniforme já produz dispersão máxima de desempenho entre Municípios: sob
 
-Isso implica pensar em...
+idêntico  piso  constitucional  de  25%  em  educação,  em  2016,  entes  de  uma  mesma  unidade
 
-Em outras palavras, entende-se que...
+federada  executaram  4,4%  e  55,5%,  e  a  variação  persiste  em  saúde  sob  piso  de  15%
 
-Ainda nessa discussão, pode-se dizer que...
+(Marenco; Ten Cate, 2021, p. 6 e p. 9-10). A heterogeneidade dentro do grupo, e não apenas
 
-Salienta-se que isso pode estar relacionado a/à...
+entre  grupos,  é  ponto  de  partida  da  hipótese  H3.  O  segundo  é  o  conceito  de  vazão
 
-Paralelamente a esse pensamento está a ideia de...
+administrativa proposto por Fratesi et al. (2026) para o caso italiano, em que cerca de oito mil
 
-Uma ideia semelhante a de X é defendida por...
+Municípios  de  porte  muito  variado  respondem  pelas  mesmas  atribuições:  em  vez  de  medir
 
-Corroborando essa informação, Sá (2018) alude que...
+capacidade por insumos ou por resultados, os autores propõem observar a etapa intermediária
 
-Como resposta a essas questões, entende-se que...
+de  conversão  de  recursos  em  produtos  administrativos.  É  essa  camada  intermediária  que  a
 
-Para reforçar essa ideia, apresenta-se...
+matriz de indicadores desta pesquisa procurará captar.
 
-As discussões sobre X revelam que...
+O que ainda não foi suficientemente investigado é o efeito jurídico-distributivo dessa
 
-Constata-se, de um modo geral, que...
+heterogeneidade  no  novo  sistema.  Os  estudos  demonstram  que  capacidades  influenciam  a
 
-Para a compreensão de X, Soares (2021) realizou...
+implementação e o desempenho fiscal. Não examinam, contudo, uma regra de transição que
 
-A fala da entrevistada demonstra que...
+utiliza parte desse desempenho pretérito para determinar coeficientes futuros de participação
 
-O movimento de análise conduz para o entendimento de que...
+na receita de um imposto compartilhado.
 
-As colocações acima permitem pensar que...
+4.3 Receita de referência e teoria do fato jurídico
 
-Um dos aspectos apontados indica que...
+A  doutrina  jurídica  sobre  a  EC  nº  132/2023  dedicou  atenção  à  competência
 
-Sobre o assunto, Alves (2020) considera que...
+compartilhada, aos limites da lei complementar e à estrutura do Comitê Gestor. Ávila (2024),
 
-Há de se ressaltar, por oportuno, a presença de...
+por  exemplo,  analisa  as  reservas  constitucionais  e  os  limites  da  delegação  normativa  na
 
-A fala da entrevistada vai ao encontro do que dispõe Pires (2004),...
+instituição  do  IBS  e  da  CBS.  Esse  debate  é  indispensável,  mas  não  esgota  a  dimensão
 
-Na fala dos entrevistados, há um ponto em comum...
+distributiva da reforma. Os arts. 114 a 117 da LC nº 227/2026 organizam uma cadeia própria:
 
-Apesar de tal aspecto revelar X, isso não significa que...
+14
 
-Evidencia-se, nesse recorte, que...
+definição da receita de referência, cálculo do coeficiente, publicidade das fontes, contestação
 
-É possível constatar, em análise ao questionário, que...
+e distribuição complementar.
 
-Os estudos de Nunes (2012) contribuem para...
+A  teoria  do  fato  jurídico  ajuda  a  reconstruir  essa  cadeia  sem  confundir  fato
 
-Os resultados da pesquisa X sinalizam que...
+normativamente selecionado e condições materiais de sua produção. Em Pontes de Miranda
 
-Com relação a/à X, pode-se observar que...
+(2012)  e  Marcos  Bernardes  de  Mello  (2017),  o  suporte  fático  corresponde  aos  elementos
 
-A análise documental permite uma compreensão sobre...
+previstos  pela  norma  para  que  se  produzam  determinados  efeitos  jurídicos.  Aplicada  com
 
-Com o intuito de X, Martin (2014) estabelece...
+cautela  ao  caso,  a  teoria  indica  que  o  suporte  diretamente  descrito  pela  LC  nº  227/2026  é  a
 
-Após a apresentação dessas discussões, constata-se...
+receita  de  ISS  e  a  cota-parte  do  ICMS  apuradas  no  período  legal,  submetidas  aos
 
-No trabalho X, Alves (2020) discute o/a...
+procedimentos de cálculo. A capacidade administrativa não aparece como item autônomo da
 
-Os resultados deste estudo vão ao encontro do que observou Gratz (2020)...
+fórmula.
 
-Os autores ressaltam a necessidade de...
+Isso  não  a  torna  juridicamente  irrelevante.  Se  a  capacidade  condicionou  de  maneira
 
-Outro trabalho que menciona X é o de Lima (2018)...
+sistemática  a  constituição,  a  cobrança  ou  o  registro  da  receita  depois  incorporada  ao
 
-A análise realizada por Rocha (2013) demonstra que...
+coeficiente,  ela  pode  ser  compreendida  como  pressuposto  material  do  fato  selecionado  pela
 
-Com respaldo nos estudos prévios conduzidos por Matos (2015)...
+norma.  A  diferença  é  importante.  Afirmar  que  a  capacidade  já  constitui,  por  si,  o  direito  à
 
-Assim como na pesquisa de Northon (2015), o estudo aqui realizado...
+receita anteciparia a conclusão e deixaria de considerar as fontes alternativas, a estimativa e a
 
-Dando sequência à análise, retoma-se o recorte/ a sequência/ a fala 1...
+contestação previstas em lei. Investigar se a regra converte efeitos de assimetrias pretéritas em
 
-A sequência X revela que o/a...
+posição distributiva duradoura é formulação mais precisa e empiricamente testável.
 
-Outro aspecto presente na materialidade em análise é...
+A  Confederação  Nacional  de  Municípios  (2025),  em  nota  técnica  de  seu  Conselho
 
-Não é difícil perceber que o imbricamento entre X e Y se dá pelo/pela...
+Técnico  das  Administrações  Tributárias,  descreve  a  lógica  do  coeficiente  de  participação  e
 
-Destaca-se, ainda, que os/as... foram transcritos conforme...
+alerta os entes para a importância da correção das informações que compõem a receita média
 
-Esses recortes marcam, neste trabalho, a/o...
+de  referência.  A  LC  nº  227/2026  ampliou  essa  disciplina  ao  prever  fontes,  estimativa  e
 
-Nesse recorte, articulando X e Y, retoma-se Orlandi (2013), que...
+procedimento de contestação. Ainda há, contudo, espaço para avaliar se a correção contábil é
 
-Nesse gesto de análise, encontra-se a primeira marca de...
+suficiente  quando  o  problema  não  está  na  informação  ausente,  mas  na  capacidade  que
 
-Mediante a mobilização desse(s)/dessa(s) termo(s)..., percebe-se que o/a...
+influenciou a arrecadação ocorrida durante a janela.
 
-Por conta disso, é indiscutível dizer que a/o...
+4.4 Desenho regulatório e governança interfederativa
 
-Dito de outra forma, as/os... comportam as/os...
+O  IBS  combina  tributação,  regulação  e  coordenação  federativa.  O  CGIBS  exerce
 
-E, para trabalhar com o objeto deste estudo, foi realizada uma...
+competências  normativas  e  administrativas,  articula  diferentes  administrações  tributárias  e
 
-Diante disso, volta-se o olhar para a/o...
+depende da participação dos próprios entes para produzir informações, fiscalizar e distribuir
 
-O objeto central desta pesquisa está formado por...
+receita.  O  arranjo  não  se  ajusta  integralmente  ao  modelo  clássico  de  uma  autoridade  que
 
-Dessa forma, o corpo experimental constitui-se por...
+regula agentes privados externos. Koop e Lodge (2017) mostram que o conceito de regulação
 
-A análise qualitativa dos dados enfatiza a importância de...
+varia  entre  disciplinas  e  que  grande  parte  da  literatura  pressupõe,  sem  explicitar,  separação
 
-Ao realizar a análise dos resultados, pode-se inferir que...
+entre regulador e regulado.
 
-Ao examinar as discrepâncias entre os resultados, fica evidente que...
+15
 
-As respostas dos participantes sugerem que...
+O modelo de intermediários regulatórios de Abbott, Levi-Faur e Snidal (2017) oferece
 
-A análise comparativa entre os grupos indicou que...
+aproximação mais adequada. Nele, atores públicos ou privados podem intermediar a relação
 
-A análise estatística permite evidenciar que...
+regulatória,  e  as  posições  de  regulador,  intermediário  e  destinatário  podem  se  sobrepor.  O
 
-Ao decompor os resultados, identificou-se que...
+Município  participa  da  governança  do  IBS,  executa  tarefas  necessárias  ao  sistema  e  se
 
-A análise dos valores revela tendências referente à/a/ao...
+submete às decisões e aos procedimentos comuns. Sua capacidade operacional, informacional
 
-É importante observar, nesse movimento de análise, que...
+e jurídica influencia tanto o cumprimento das atribuições quanto a possibilidade de participar
 
-A análise lança luz a aspectos ainda não explorados...
+de maneira efetiva.
 
-As implicações práticas deste estudo permitem concluir que...
+A  regulação  responsiva  também  contribui,  desde  que  utilizada  com  limites.
 
-Há, entre as implicações teóricas, indícios de que...
+Braithwaite  (2011)  e  Baldwin  e  Black  (2008)  defendem  respostas  calibradas  segundo
 
-Os dados coletados indicam que...
+comportamento,  contexto  e  capacidade  dos  destinatários.  No  caso  do  IBS,  o  desafio  não  é
 
-Os resultados corroboram estudos anteriores que mostraram...
+apenas  induzir  conformidade  por  sanções.  É  construir  condições  para  que  administrações
 
-Este estudo se alinha com a literatura existente, que indica...
+públicas  heterogêneas  executem  deveres  comuns.  A  cooperação  técnica,  o  monitoramento
 
-Observa-se, a partir da análise, que...
+preventivo  e  a  assistência  diferenciada  podem  ser  instrumentos  regulatórios  tão  relevantes
 
-Uma tendência que a análise aponta é que...
+quanto a fiscalização posterior.
 
-Além disso, identificou-se, ainda...
+Peci (2026), ao examinar reformas regulatórias brasileiras, chama atenção para o risco
 
-Houve uma correlação positiva/negativa entre...
+de adoção formal de instrumentos sem integração efetiva ao processo decisório. A advertência
 
-Constatou-se uma correlação entre...
+vale  para  a  governança  tributária:  prever  representação  ou  disponibilizar  sistema  não
 
-Verificou-se uma relação direta entre...
+comprova participação substantiva nem capacidade de operação. O desenho deve ser avaliado
 
-É possível estabelecer uma associação significativa entre...
+pelos incentivos, pelos recursos e pelos mecanismos de aprendizagem que oferece aos entes
 
-É possível, assim, confirmar a hipótese de que...
+com maiores dificuldades.
 
-As descobertas anteriores refletem...
+Há  ainda  uma  dimensão  de  custo  que  a  literatura  recente  permite  dimensionar.  Ao
 
-A análise estatística demonstrou/evidenciou que...
+examinarem  empiricamente  13.273  atos  normativos  editados  pela  Receita  Federal  do  Brasil
 
-A análise dos dados permite identificar padrões/distinções relevantes em...
+entre  1988  e  2020,  Gomes  e  Seixas  (2024)  mostram  que  a  produção  infralegal  cresce  não
 
-Uma diferença estatisticamente significativa foi encontrada entre os grupos...
+apenas em quantidade, mas em extensão dos atos e em densidade da rede de remissões que os
 
-As descobertas prévias são congruentes com...
+conecta,  com  implicações  regulatórias  que  ultrapassam  a  discussão  sobre  legalidade.  A
 
-Foi identificada uma diferença estatisticamente significativa entre os grupos...
+transição  ao  IBS  reproduz  esse  padrão  em  ritmo  comprimido:  em  poucos  meses  foram
 
-Interessa, por fim, pontuar que esse/essa é um/uma...
+editados  o  regulamento  do  imposto,  resoluções,  portarias  e  atos  conjuntos  que  disciplinam
 
-Pelo que se observou nas análises aqui realizadas, embora...,
+cadastro,  documento  fiscal  eletrônico,  obrigações  acessórias  e  repasse.  Acompanhar,
 
-Verificou-se, no recorte acima, que a maioria desses/dessas...
+interpretar  e  implementar  esse  fluxo  é,  ele  próprio,  exigência  de  capacidade,  e  recai  sobre
 
-Em primeiro lugar, chama a atenção...; em segundo lugar, o/a...
+administrações cujas condições de partida são desiguais.
 
-Por um lado, pode-se dizer que...; por outro, entende-se que...
+No  PCP  1.4,  essa  perspectiva  permite  relacionar
 
-Ainda que somente um dos entrevistados tenha essa compreensão,...
+tributação,
 
-Os resultados corroboram as conclusões apresentadas por Silva (2022),...
+instituições  e
 
-Os resultados indicam, de maneira contundente, que...
+desenvolvimento. Se capacidades desiguais condicionarem a posição municipal na transição,
 
-Os resultados apontam para a necessidade de pesquisas adicionais em...
+mecanismos  de  fortalecimento
 
-Os resultados obtidos reforçam a teoria de...
+institucional  deixam  de  ser  questão  exclusivamente
 
-Os resultados estão em consonância com as observações de Vieira (2022),...
+16
 
-Os resultados obtidos estão em concordância com as expectativas iniciais,...
+administrativa. Passam a integrar a avaliação do próprio desenho regulatório da reforma e de
 
-Os resultados respaldam de forma consistente a afirmação de Gil (2008),...
+seus efeitos territoriais.
 
-Os resultados vão de encontro ao que diz Campos (2022),...
+4.5 Síntese da lacuna e posição da pesquisa
 
-Os resultados sugerem fortemente que...
+Os  quatro  campos  revisados  oferecem  peças  importantes,  mas  não  uma  resposta
 
-Os resultados evidenciam/revelam que...
+conjunta. O federalismo fiscal demonstra que autonomia formal e capacidade de ação podem
 
-Os resultados fornecem suporte à teoria de...
+divergir.  A  literatura  de  capacidades  identifica  recursos  institucionais  e  desigualdades  de
 
-Os resultados destacam a importância de...
+implementação. A dogmática permite reconstruir a regra de repartição e distinguir seu suporte
 
-Os achados apoiam a hipótese de que...
+jurídico  das  condições  de  formação  da  receita.  A  teoria  da  regulação  oferece  critérios  para
 
-Os achados corroboram as evidências apresentadas por Santos (2022),...
+avaliar coordenação, responsividade e participação em arranjos complexos.
 
-Os achados se alinham ao que aponta Silveira (2020) em seu texto "..."...
+A  lacuna  está  na  relação  entre  esses  elementos:  ainda  não  se  sabe  em  que  medida  a
 
-Os achados dialogam com a hipótese de que...
+receita  de  referência  da  transição  ao  IBS  incorpora  desigualdades  pretéritas  de  capacidade
 
-Os achados fortalecem a hipótese de que...
+municipal, nem se os mecanismos informacionais e financeiros previstos pela LC nº 227/2026
 
-Os dados revelaram uma variação significativa em...
+são  suficientes  para  enfrentar  esse  efeito.  Também  não  está  esclarecido  quais  dimensões  de
 
-Esses achados têm implicações importantes para a teoria/prática em...
+capacidade  são  mais  relevantes,  como  elas  se  combinam  com  fatores  econômicos  e  que
 
-Nota-se, nesse recorte, que o/a entrevistado/a...
+instrumentos cooperativos seriam juridicamente adequados.
 
-As respostas ao questionário permitem inferir que...
+O  projeto  ocupa  esse  espaço  mediante  pesquisa  jurídico-institucional  apoiada  em
 
-Observa-se, a partir da Lei X, que o processo de...
+evidências  empíricas.  Sua  contribuição  não  depende  de  provar  que  todos  os  Municípios
 
-Observou-se, então, que, do ponto de vista da Teoria X, o/a...
+pequenos  perderão  receita  ou  que  a  transição  é  inconstitucional.  O  resultado  poderá  revelar
 
-Esse movimento de análise tem efeitos sobre...
+efeitos
 
-Todas essas descobertas foram sendo realizadas em paralelo com...
+limitados,  capacidades  heterogêneas  ou  salvaguardas  mais  eficazes  do  que
 
-CONSIDERAÇÕES FINAIS
+inicialmente  esperado.  A  originalidade  está  em  formular  o  mecanismo,  submetê-lo  a  teste  e
 
-A temática central deste texto levou a uma discussão em torno de...
+distinguir correção de informação, compensação de receita e fortalecimento de capacidade.
 
-O tema desta pesquisa levou em conta os principais...
+5 Metodologia
 
-O envolvimento com a temática partiu de...
+5.1 Método
 
-Ao longo deste estudo, investigou-se...
+A  pesquisa  terá  natureza  jurídico-institucional,  abordagem  predominantemente
 
-Inicialmente, buscou-se X, com a finalidade de Y...
+qualitativa e componente quantitativo descritivo. O método foi definido a partir da pergunta: a
 
-Num primeiro momento, buscou-se delinear X; num segundo momento,...
+análise  normativa  é  necessária  para  reconstruir  a  regra  de  transição  e  os  mecanismos  de
 
-A fim de trabalhar com essa indagação, tomou-se como ponto de partida...
+correção;  os  dados  secundários  permitem  observar  padrões  no  universo  escolhido;  e  os
 
-Com vistas à responder a pergunta que norteou esta pesquisa, realizou-se...
+estudos de caso ajudam a compreender como diferentes capacidades interferem na produção
 
-Com o propósito de responder ao problema desta pesquisa, desenvolveu-se...
+da informação e da receita.
 
-A partir da pergunta norteadora, o caminho percorrido contou com...
+O  desenho  será  desenvolvido  em  três  blocos  articulados.  O  primeiro  é  jurídico-
 
-A partir do problema traçado, definiu-se como objetivo central da pesquisa...
+documental  e  examina  o  regime  da  receita  de  referência,  as  atribuições  do  CGIBS  e  as
 
-Para desenhar o percurso de análise, estabeleceu-se como objetivo principal...
+17
 
-Diante do exposto, definiu-se como objetivo geral deste estudo...
+políticas  de  modernização  fiscal.  O  segundo  constrói  um  panorama  dos  Municípios  baianos
 
-Com o intuito de atingir o objetivo desta pesquisa, buscou-se...
+de  até  cinquenta  mil  habitantes  a  partir  de  bases  públicas.  O  terceiro  aprofunda  doze  casos
 
-Com vistas a atender ao primeiro objetivo proposto, procurou-se...
+selecionados  por  máxima  variação.  A  combinação  evita  dois  extremos:  uma
 
-Visando atingir o segundo objetivo traçado, realizou-se...
+tese
 
-Com a finalidade de responder ao terceiro objetivo desta pesquisa, buscou-se...
+exclusivamente  dogmática,  incapaz  de  verificar  sua  premissa  fática,  e  um  levantamento
 
-Para dar conta do quarto objetivo específico, desenvolveu-se...
+estatístico que trate a norma apenas como contexto.
 
-Com o propósito de alcançar o quinto objetivo delineado, analisou-se...
+A  análise  não  pretende  demonstrar  causalidade  em  sentido  estrito.  As  bases
 
-O material de análise foi constituído por...
+disponíveis não oferecem experimento, grupo de controle ou série homogênea suficiente para
 
-Ao eleger X como objeto de estudo, tomou-se como ponto de ancoragem o/a...
+isolar  todos  os  determinantes  da  receita.  O  objetivo  é  identificar  associações,  comparar
 
-A perspectiva metodológica se caracterizou pela abordagem...
+configurações  institucionais  e  avaliar  se  as  evidências  são  compatíveis  com  o  mecanismo
 
-A pesquisa foi dividida em duas partes: na primeira,...; e na segunda,...
+proposto.  Explicações  alternativas  —  base  econômica,  política  de  benefícios,  mudanças  de
 
-A dissertação/tese apresentou uma estrutura com X capítulos teóricos...
+gestão, terceirização, consórcios e apoio estadual — serão incorporadas à interpretação.
 
-Ao discutir a relação entre X e Y, observou-se que...
+Convém nomear as escolhas de desenho, porque delas dependem o alcance e os limites
 
-Por meio das análises realizadas neste trabalho, pôde-se observar que...
+das  conclusões.  Entre  as  perspectivas  correntes  de  inferência  —  associação  sistemática,
 
-Nesse sentido, procurando delinear o caminho percorrido, primeiramente...
+contrafactual,  manipulação  experimental  e  identificação  de  mecanismos  —,  a  pesquisa  se
 
-Torna-se possível observar, assim, que...
+posiciona  na  última:  interessa  reconstruir  as  etapas  pelas  quais  condições  institucionais
 
-Os inúmeros trabalhos citados no Estado da arte permitiram compreender que...
+desiguais  se  conectam  à  formação  da  receita  depois  incorporada  pelo  coeficiente  (Silva,
 
-A retomada dos conceitos X e Y permitiu esboçar...
+2018).  A  ausência  de  desenho  experimental  não  é,  nessa  perspectiva,  deficiência  a  ser
 
-O objeto de análise tomou como mote a discussão em torno de...
+lamentada:  é  a  própria  razão  pela  qual  a  explicitação  do  mecanismo  e  a  comparação
 
-As formulações apontaram para a existência de um/uma...
+estruturada de configurações constituem o caminho adequado, e não um substituto de segunda
 
-Para desenvolver a análise, as reflexões se concentraram em/no/na...
+ordem.
 
-Tal contexto apontou que há, no Brasil, um/uma...
+Quanto  à  articulação  entre  as  etapas,  adota-se  desenho  sequencial  e  integrado  de
 
-No movimento de caracterizar os profissionais que participaram do estudo,...
+métodos  combinados,  inspirado  nas  propostas  de  Creswell  (2009):  o  levantamento
 
-Os dados mostraram que, durante os anos pesquisados, a quantidade de...
+quantitativo  do  universo  estadual  precede  e  orienta  a  análise  documental  dos  casos,  que
 
-Isso significa que a categoria X foi constituída predominantemente por...
+interpreta os padrões observados. A combinação não será conduzida como triangulação entre
 
-Percebeu-se, por meio da análise, que há um significativo índice de...
+técnicas  aplicadas  separadamente  à  mesma  pergunta.  Seawright  (2016)  mostra  por  que  esse
 
-Analisando o índice de X, averiguou-se que...
+procedimento  é  pouco  convincente:  métodos  distintos  não  formulam  exatamente  a  mesma
 
-Por meio das análises apresentadas no terceiro capítulo, pôde-se pensar que...
+pergunta, ainda quando incidem sobre o mesmo tópico, de modo que a coincidência entre seus
 
-O ponto central, portanto, está ligado à/ao...
+resultados  nada  confirma  e  a  divergência  nada  refuta.  Adota-se,  por  isso,  desenho
 
-As análises mostraram tratar-se de um gesto...
+multimétodo  integrado,  com  atribuição  explícita  de  funções:  a  comparação  documental  dos
 
-Apoiando-se na teoria X, pôde-se perceber que...
+casos  sustentará  a  inferência  principal  sobre  o  mecanismo,  ao  passo  que  o  levantamento
 
-Tomou-se como possível um diálogo entre X e Y, na medida em que...
+quantitativo delimitará o universo, orientará a seleção dos casos, dimensionará a extensão dos
 
-Ao partir de X, percebeu-se que o processo Y...
+padrões e submeterá a proposição a verificação externa.
 
-Caso fosse considerado o papel de X, seria possível determinar que...
+5.2 Corpus, fontes e técnicas de pesquisa
 
-Esse movimento de análise permite inferir que...
+18
 
-Deve-se evidenciar que não se pretendeu, aqui, discutir X, mas...
+O  corpus  normativo  compreenderá  a  Emenda  Constitucional  nº  132/2023;  as  Leis
 
-Frente à discussão empreendida aqui, pôde-se constatar que...
+Complementares  nº  214/2025  e  nº  227/2026;  o  Regulamento  do  IBS  e  os  atos  do  CGIBS
 
-Igualmente, não se pode dizer que...
+relacionados  à  administração,  ao  compartilhamento  de  informações,  ao  cálculo  e  à
 
-Voltando à ideia de X, pressupôs-se que...
+distribuição da receita; além de normas constitucionais, financeiras e tributárias necessárias à
 
-Assistiu-se a um movimento de X, o que tornou possível identificar Y...
+interpretação (Brasil, 2023, 2025, 2026a, 2026b). Os atos posteriores serão incluídos até data
 
-Há de se considerar, além disso, que no/na...
+de corte declarada na tese. A análise abrangerá também documentos oficiais e avaliações dos
 
-Sob o viés da Teoria X, entendeu-se que...
+programas de modernização da administração fiscal municipal, em especial PMAT e PNAFM
 
-Ademais, merece atenção o aspecto X, que...
+(Grin; Abrucio, 2021; Pereira, 2018).
 
-Já, ao se atentar para a noção de X, ressaltou-se que...
+A  documentação  será  codificada  segundo  cinco  categorias:  capacidades  exigidas;
 
-Ressalvadas as particularidades do objeto de estudo, a/o X mostrou que...
+deveres de informação e integração; mecanismos de correção; instrumentos de cooperação e
 
-É possível, diante dos relatos observados nas entrevistas, asseverar que...
+capacitação; e formas de compensação financeira. Para cada dispositivo ou documento serão
 
-Ainda sobre o contexto/conceito X, pode-se pensar que...
+registrados  destinatário,  competência,  procedimento,  prazo,  consequência  e  existência  de
 
-Ao relacionar os conceitos com a análise, entende-se que...
+diferenciação  por  porte  ou  capacidade.  A  matriz  permitirá  comparar  aquilo  que  o  sistema
 
-Por fim, é possível, como fruto desta análise, concluir que...
+exige com os meios que oferece para o cumprimento.
 
-Em última instância, considerou-se que o trabalho...
+O  universo  empírico  será  composto  pelos  Municípios  baianos  com  população  de  até
 
-Assim, foi a partir da seleção e organização do corpus que se tornou possível...
+cinquenta  mil  habitantes,  conforme  a  estimativa  oficial  correspondente  à  data  de  corte.  O
 
-Sobre esse processo, Vieira (2004) aponta que...
+limite  será  operacionalizado  de  modo  compatível  com  as  classes  de  tamanho  populacional
 
-É imprescindível ressaltar que, mesmo respaldado pela legislação, o tema...
+adotadas na Pesquisa de Informações Básicas Municipais (Instituto Brasileiro de Geografia e
 
-Frente a essas proposições, elucida-se que...
+Estatística,  2025).  O  universo  será  examinado  exclusivamente  por  dados  secundários  e
 
-Nesse sentido, cabe registrar, ainda, que o/a...
+documentação institucional.
 
-Não obstante, é imprescindível demarcar que...
+As  fontes  secundárias  incluirão:  MUNIC/IBGE,  para  estrutura  administrativa  e
 
-Isso posto, conclui-se que o recorte de análise enseja...
+instrumentos de gestão; Finbra/Siconfi e o Boletim de Finanças dos Entes Subnacionais, para
 
-Ao mesmo tempo, esta pesquisa também busca contribuir para o/a...
+receitas  de  ISS,  cota-parte  do  ICMS  e  consistência  das  informações  fiscais  (Brasil,  2026c);
 
-É interessante observar também que...
+monitoramento oficial da NFS-e e dados de integração a sistemas (Brasil, 2026d); legislação
 
-Caminhando para fechar essas (in)conclusões, reporta-se que...
+municipal e portais de transparência; documentos dos tribunais de contas; e dados divulgados
 
-Ao passo que se fecha este trabalho, ainda há muito a ser discutido sobre X...
+pelo  CGIBS  sobre  o  cálculo  da  receita  de  referência.  Cada  variável  terá  definição,  fonte,
 
-Vale ressaltar que este estudo apresentou algumas limitações, como...
+período, cobertura e limitação registradas em dicionário próprio.
 
-Como contribuições futuras, sugere-se...
+A  capacidade  estatal  será  observada  por  indicadores  que  não  se  confundam  com  a
+
+receita.  Na  dimensão  administrativa,  serão  considerados  quadro  próprio,  vínculo  e
+
+qualificação do pessoal fazendário, estabilidade das equipes e posição da unidade tributária na
+
+estrutura municipal. Na dimensão fiscal, serão examinados cadastro mobiliário, fiscalização,
+
+cobrança administrativa e estrutura de dívida ativa. Na dimensão tecnológica e informacional,
+
+interessam o uso efetivo de NFS-e, a integração de sistemas, a tempestividade das contas e a
+
+consistência dos dados. A dimensão jurídica abrangerá suporte procuratorial e regulamentação
+
+19
+
+local. A capacidade de coordenação será observada pela participação em consórcios, redes de
+
+assistência,  treinamentos  e  canais  interfederativos  documentados.  Quanto  à  cota-parte  do
+
+ICMS, serão examinados o acompanhamento do valor adicionado, as rotinas de conferência e
+
+contestação das informações e a interação documentada com a administração estadual.
+
+Os doze casos serão escolhidos após o levantamento secundário, e a seleção observará
+
+duas exigências. A primeira é responder à pergunta "caso do quê?": cada Município é tomado
+
+não como unidade de observação isolada, mas como instância de uma categoria teórica — a
+
+formação  da  receita  de  referência  sob  determinada  configuração  de  capacidade  institucional
+
+(Vennesson, 2008). A segunda é evitar a seleção pela variável que se pretende explicar. Por
+
+essa  razão,  os  critérios  incidirão  sobre  capacidade  e  contexto,  e  não  sobre  a  receita:  faixa
+
+populacional,  nível  e  composição  dos  indicadores  de  capacidade,  localização  territorial  e
+
+estrutura  econômica.  O  comportamento  do  ISS,  da  cota-parte  do  ICMS  e  da  qualidade  da
+
+informação  fiscal  permanecerá  como  resultado  a  observar  em  cada  caso,  jamais  como
+
+condição de entrada na amostra.
+
+Combinam-se, na linguagem de Seawright e Gerring (2008), duas técnicas de seleção.
+
+A primeira é a de casos diversos, que busca cobrir a variação das configurações de capacidade
+
+presentes no universo e cumpre função exploratória. A segunda é a de casos mais similares:
+
+pares de Municípios próximos em porte, região e base econômica, mas distintos em estrutura
+
+administrativa,  formando  contrastes  em  que  a  diferença  de  capacidade  fica  isolada  das
+
+demais.  Serão  deliberadamente  incluídos  casos  negativos  —  entes  de  baixa  capacidade
+
+aparente  com  receita  estável  e  entes  bem  estruturados  com  desempenho  fiscal  fraco  —,
+
+porque é a existência ou a ausência desses casos que permite julgar se o mecanismo proposto
+
+se  sustenta.  O  número  de  doze  permite  comparação  sistemática  sem  converter  a  etapa
+
+qualitativa em levantamento censitário, e a composição final poderá ser revista à medida que a
+
+delimitação dos casos se precise ao longo da pesquisa documental.
+
+Em  cada  caso  serão  analisados  organogramas,
+
+leis  de  estrutura  e  carreira,
+
+regulamentos  tributários,  contratos  ou  instrumentos  de  tecnologia  pertinentes,  relatórios
+
+fiscais,  documentos  de  controle,  processos  administrativos,  respostas  a  pedidos  de  acesso  à
+
+informação  e  registros  públicos  de  implementação.  As  evidências  dos  casos  serão
+
+exclusivamente documentais e secundárias, obtidas em bases públicas ou mediante solicitação
+
+institucional de documentos, com registro da origem, da data e das limitações de cada fonte.
+
+O pedido formulado com base na Lei de Acesso à Informação será tratado como técnica de
+
+coleta,  e  não  como  recurso  subsidiário:  roteiro  padronizado,  dirigido  às  mesmas  unidades
+
+administrativas em todos os casos, com registro da data, da íntegra da resposta, do prazo de
+
+20
+
+atendimento  e  de  eventual  negativa.  A  própria  resposta  constitui  evidência.  A  ausência  de
+
+resposta,  a  alegação  de  inexistência  do  documento  solicitado  e  o  descumprimento  do  prazo
+
+legal  informam  sobre  a  capacidade  informacional  do  ente  tanto  quanto  o  conteúdo
+
+eventualmente enviado, e serão codificados como tal.
+
+A receita média de referência será reconstituída segundo os arts. 114 a 116 da LC nº
+
+227/2026  e  confrontada,  quando  disponíveis,  com  os  valores  e  coeficientes  publicados  pelo
+
+CGIBS.  A  análise  do  art.  117  considerará  separadamente  a  distribuição  complementar,  para
+
+evitar que a existência desse mecanismo seja tratada como ausência de proteção. Simulações
+
+serão  apresentadas  com  memória  de  cálculo  e  análise  de  sensibilidade,  sem  substituir  o
+
+cálculo oficial.
+
+5.3 Análise de dados
+
+A  análise  ocorrerá  em  três  níveis.  No  primeiro,  a  interpretação  jurídico-dogmática
+
+reconstruirá  as  relações  entre  receita  de  referência,  coeficiente,  contestação,  estimativa  e
+
+distribuição  complementar.  O  resultado  será  uma  matriz  do  desenho  institucional,  com
+
+identificação do problema enfrentado por cada mecanismo e dos limites expressos em lei.
+
+No  segundo  nível,  os  dados  do  universo  municipal  serão  submetidos  a  estatística
+
+descritiva.  Serão  examinadas  distribuição,  completude,  estabilidade  e  associação  entre
+
+indicadores  de  capacidade  e  receitas  consideradas  na  transição.  O  porte  será  tratado  como
+
+variável de estratificação, não como substituto da capacidade. Quando a qualidade dos dados
+
+permitir,  serão  empregados  testes  de  associação  e  modelos  exploratórios  com  controles
+
+básicos  de  população  e  estrutura  econômica.  Os  resultados  serão  interpretados  como
+
+evidência associativa, sem linguagem causal.
+
+No  terceiro  nível,  os  casos  serão  comparados  por  análise  temática  documental  e
+
+comparação  estruturada.  Os  documentos  de  cada  caso  serão  codificados  pelas  mesmas
+
+dimensões  utilizadas  na  matriz  de  capacidade,  acrescentando-se  categorias  emergentes
+
+quando o material as justificar. A comparação será organizada em torno de uma distinção da
+
+análise histórica comparada: separar, em cada trajetória, os mecanismos que reproduziram a
+
+configuração  institucional  existente  daqueles  que  produziram  mudança  (Silva,  2018).  A
+
+distinção  importa  porque  a  literatura  sobre  desempenho  fiscal  municipal  identifica  na
+
+trajetória  pretérita  o  preditor  mais  robusto,  resultado  que  permanece  quase  tautológico
+
+enquanto não se explicita o mecanismo que o produz. É esse mecanismo que os casos devem
+
+ajudar a revelar.
+
+21
+
+A integração entre os níveis não se dará por simples confronto de resultados. Os dados
+
+fiscais, as normas locais e os documentos administrativos serão articulados para sustentar uma
+
+inferência  única  sobre  o  mecanismo,  cabendo  a  cada  fonte  função  definida:  os  dados
+
+delimitam e situam os padrões; as normas estabelecem a estrutura formal; e os documentos de
+
+execução  permitem  verificar,  dentro  dos  limites  do  registro  disponível,  como  essa  estrutura
+
+foi operacionalizada. Divergências entre fontes não serão eliminadas nem tomadas como falha
+
+de  convergência;  serão  tratadas  como  informação  sobre  a  distância  entre  previsão  formal,
+
+registro administrativo e resultado fiscal.
+
+Três  riscos  de  viés  reconhecidos  na  pesquisa  com  número  reduzido  de  casos  serão
+
+enfrentados de modo explícito. Contra o viés de confirmação, os indicadores e o protocolo de
+
+codificação documental serão fixados antes da seleção dos casos, e as evidências contrárias à
+
+hipótese  serão  registradas  em  seção  própria.  Contra  o  viés  de  explicação  desejada,  cada
+
+padrão  observado  será  submetido  às  explicações  concorrentes  já  enumeradas  antes  de  ser
+
+atribuído à capacidade institucional. Contra o viés de ignorância do caso negativo, a amostra
+
+incluirá, por construção, entes em que o resultado esperado não se verificou.
+
+O  critério  de  revisão  da  hipótese  é  explícito.  A  hipótese  central  perderá  força  se  os
+
+indicadores  de  capacidade  não  apresentarem  associação  consistente  com  a  receita  de
+
+referência,  se  os  casos  indicarem  predominância  de  fatores  econômicos  ou  de  escolhas
+
+políticas,  ou  se  os  mecanismos  dos  arts.  116  e  117  neutralizarem  os  efeitos  inicialmente
+
+previstos.  Nesse  cenário,  a  tese  deverá  limitar  a  conclusão  à  existência  de  desigualdades
+
+institucionais sem afirmar sua incorporação relevante pelo coeficiente.
+
+Há quatro riscos principais. O primeiro é a incompletude das séries de 2025 e 2026; a
+
+alternativa será trabalhar com dados oficiais consolidados e cenários claramente identificados.
+
+O  segundo  é  a  alteração  normativa  durante  a  pesquisa;  será  adotada  data  de  corte,  com
+
+registro  das  mudanças  subsequentes  relevantes.  O  terceiro  é  o  acesso  desigual  à
+
+documentação municipal; a mitigação ocorrerá por pedidos formais de acesso à informação,
+
+reconstrução  a  partir  de  fontes  públicas  e,  quando  indispensável,  substituição  justificada  do
+
+caso,  com  registro  do  motivo.  O  quarto  é  a  comparabilidade  limitada  entre  estruturas
+
+municipais; por isso, os indicadores serão usados como dimensões analíticas, não como índice
+
+sintético presumidamente universal.
+
+6 Vínculo da pesquisa com o projeto coletivo de pesquisa
+
+O  projeto  vincula-se  diretamente  ao  PCP  1.4  —  Instituições  e  Desenvolvimento:
+
+Tributação,  Regulação  e  Defesa  da  Concorrência  —  porque  examina  uma  instituição
+
+22
+
+tributária  nacional  a  partir  de  seu  desenho  regulatório  e  de  seus  efeitos  sobre  autonomia,
+
+capacidade  governamental  e  desenvolvimento  territorial.  A  reforma  é  tratada  não  apenas
+
+como  mudança  de  base  tributária,  mas  como  arranjo  de  coordenação  que  distribui
+
+competências, informação, poder decisório e receita entre entes materialmente desiguais.
+
+A aderência ao ponto 1 do PCP — Direito, tributação e política regulatória no Brasil
+
+— aparece na análise da LC nº 227/2026 e do CGIBS como componentes de uma arquitetura
+
+regulatória.  O  projeto  investiga  como  a  norma  organiza  deveres,  produz  incentivos,  corrige
+
+informações e responde a diferentes capacidades de implementação. O diálogo com Koop e
+
+Lodge (2017), Abbott, Levi-Faur e Snidal (2017), Braithwaite (2011) e Peci (2026) permite
+
+avaliar a sobreposição entre regulador, intermediário e destinatário, bem como os limites de
+
+uma  regulação  uniforme  diante  de  administrações  públicas  heterogêneas.  A  preocupação
+
+encontra  formulação  próxima  na  proposta  de  um  modelo  de  análise  de  impacto  regulatório
+
+para as normas tributárias indutoras, construída a partir da experiência neozelandesa (Seixas,
+
+2022), que submete a norma tributária ao exame antecipado de seus efeitos concretos sobre os
+
+destinatários.  O  deslocamento  aqui  proposto  é  de  destinatário:  em  lugar  do  contribuinte,  o
+
+ente  federativo  encarregado  de  operar  o  tributo  e  de  produzir  a  informação  que  o  sistema
+
+exige.
+
+O vínculo com o ponto 5 — reforma tributária e suas perspectivas como instrumento
+
+indutor do desenvolvimento econômico e social — é igualmente substantivo. A distribuição
+
+da receita do IBS influencia a capacidade municipal de financiar políticas e investimentos ao
+
+longo  da  transição.  Se  o  coeficiente  incorporar  desigualdades  institucionais  pretéritas,  o
+
+potencial  indutor  da  reforma  poderá  variar  entre  territórios.  A  interlocução  é  direta  com  a
+
+pesquisa desenvolvida por Luiz Felipe Monteiro Seixas sobre tributação indutora e avaliação
+
+dos  efeitos  concretos  da  norma  tributária  (Seixas,  2024),  bem  como  com  a  agenda  do  PCP
+
+voltada  às  repercussões  econômico-sociais  do  sistema  tributário.  O  projeto  transporta  essas
+
+preocupações para a dimensão federativa e distributiva da transição ao IBS.
+
+Há  ainda  relação  pertinente  com  a  regulação  responsiva  e  o  compliance  fiscal,  sem
+
+deslocamento  artificial  do  objeto.  A  implementação  do  IBS  exige  conformidade  não  apenas
+
+dos contribuintes, mas das próprias administrações tributárias integradas ao sistema. A agenda
+
+da conformidade cooperativa, já examinada no âmbito da reforma da tributação do consumo
+
+por  Oliveira  e  Leite  (2025),  supõe  confiança  recíproca  e  capacidade  técnica  instaladas  em
+
+ambos os polos da relação; transposta para o vínculo entre administrações tributárias de entes
+
+federativos  distintos,  essa  exigência  passa  a  incidir  sobre  estruturas  com  condições  muito
+
+desiguais  de  atendê-la.  Nesse  contexto,  assistência  técnica,  monitoramento  e  aprendizagem
+
+23
+
+institucional  podem  ser  respostas  mais  adequadas  do  que  a  simples  imposição  uniforme  de
+
+deveres. A pesquisa poderá contribuir para uma concepção de responsividade voltada a entes
+
+públicos que acumulam funções de participantes, executores e destinatários da governança.
+
+Há,  por  fim,  uma  aproximação  possível  com  o  ponto  3  do  Projeto  Coletivo,  aqui
+
+declarada como possibilidade a desenvolver sob orientação, e não como resultado adquirido.
+
+A  repartição  do  produto  do  IBS  é  decidida  em  instância  cuja  composição  não  assegura
+
+participação efetiva a todos os entes cuja receita ela determina. Antes de ser um problema de
+
+federalismo  fiscal,  isso  é  um  problema  de  constituição  do  demos  afetado  pela  decisão,  e  a
+
+chave  do  transconstitucionalismo  e  da  transdemocracia  (Neves,  2017)  oferece  vocabulário
+
+para  examinar  arranjos  normativos  que  vinculam  quem  não  participou  de  sua  formação.  A
+
+pesquisa não parte dessa chave e não depende dela; reconhece, porém, que ela pode iluminar a
+
+dimensão de legitimidade que o exame das capacidades, isoladamente, não alcança.
+
+O  PCP  oferece  ambiente  apropriado  para  articular  dogmática  tributária,  teoria
+
+regulatória  e  análise  institucional.  Em  contrapartida,  o  projeto  acrescenta  às  pesquisas  do
+
+programa  um  objeto  ainda  em  formação  e  uma  perspectiva  municipal  pouco  explorada:  a
+
+relação  entre  capacidade  estatal,  receita  de  referência  e  transição  federativa  do  IBS.  Essa
+
+contribuição é coerente com a proposta coletiva de compreender como instituições tributárias
+
+afetam  o  desenvolvimento,  sem  reduzir  a  avaliação  da  reforma  à  eficiência  econômica
+
+agregada.
+
+7 Prévia de sumário
+
+Introdução
+
+1 Receita de referência e transição federativa do IBS
+
+1.1 A reforma da tributação do consumo e a substituição do ISS
+
+1.2 O art. 131 do ADCT e a transição até 2077
+
+1.3 Os arts. 109 e 114 a 117 da LC nº 227/2026
+
+1.4 Cálculo, publicidade, estimativa, contestação e distribuição complementar
+
+O capítulo reconstrói o desenho normativo que será avaliado ao longo da tese.
+
+2 Autonomia municipal e capacidades estatais
+
+2.1 Autonomia formal e capacidade de implementação
+
+2.2 Capacidades administrativa, fiscal, tecnológica, informacional e jurídica
+
+2.3 Coordenação interfederativa e desigualdades territoriais
+
+2.4 Capacidade como pressuposto material da receita
+
+24
+
+O capítulo delimita os conceitos e estabelece a matriz de análise empírica.
+
+3 Capacidades e receitas nos Municípios baianos de pequeno porte
+
+3.1 Delimitação do universo e qualidade das bases
+
+3.2 Mapeamento das capacidades municipais
+
+3.3 Formação da receita de ISS e da cota-parte do ICMS
+
+3.4 Associações, heterogeneidades e explicações concorrentes
+
+O capítulo apresenta o panorama estadual e testa a plausibilidade do mecanismo proposto.
+
+4 Estudos de caso e mecanismos institucionais
+
+4.1 Critérios de seleção e comparação dos doze casos
+
+4.2 Trajetórias administrativas e escolhas locais
+
+4.3 Sistemas, pessoal, informação e coordenação
+
+4.4 Padrões comuns, contrastes e limites de generalização
+
+O capítulo aprofunda os mecanismos que os dados agregados não permitem observar.
+
+5 Suficiência do desenho e alternativas de cooperação
+
+5.1 Alcance das salvaguardas do art. 116
+
+5.2 Distribuição complementar e seus limites
+
+5.3 Federalismo cooperativo e deveres de capacitação
+
+5.4 Diretrizes para correção, acompanhamento e fortalecimento institucional
+
+O capítulo integra os resultados normativos e empíricos e formula as proposições da tese.
+
+Conclusão
+
+8 Cronograma
+
+As  atividades  distribuem-se  pelos  quarenta  e  oito  meses  do  curso,  conforme  os  quadros  a
+
+seguir. As células sombreadas indicam os meses de execução de cada atividade.
+
+1º ano
+
+Atividades / meses
+
+1º
+
+2º
+
+3º
+
+4º
+
+5º
+
+6º
+
+7º
+
+8º
+
+9º
+
+10º
+
+11º
+
+12º
+
+Cumprimento de créditos
+
+Revisão do referencial teórico
+
+Atualização do corpus normativo
+
+Refinamento das categorias de
+capacidade
+
+Análise dos arts. 109 e 114 a 117 da
+LC nº 227/2026 e dos atos do CGIBS
+
+25
+
+Definição do dicionário de variáveis
+e do protocolo de coleta
+
+Reunião de orientação
+
+Produtos:  matriz  conceitual  preliminar,  ao  final  do  1º  semestre;  matriz  normativa  e  artigo
+
+teórico inicial, ao final do 2º semestre.
+
+2º ano
+
+Atividades / meses
+
+1º
+
+2º
+
+3º
+
+4º
+
+5º
+
+6º
+
+7º
+
+8º
+
+9º
+
+10º
+
+11º
+
+12º
+
+Cumprimento de créditos
+
+Coleta e tratamento das bases
+MUNIC/IBGE e Finbra/Siconfi
+
+Levantamento de dados de
+integração tecnológica
+
+Análise de completude das bases
+
+Análise descritiva do universo
+municipal
+
+Definição dos critérios e seleção dos
+doze casos
+
+Elaboração do protocolo de coleta e
+codificação documental
+
+Reunião de orientação
+
+Produtos:  banco  preliminar  documentado,  ao  final  do  3º  semestre;  relatório  de  panorama
+
+estadual  e  protocolo  dos  casos,  ao  final  do  4º  semestre.  Dependência  declarada:
+
+disponibilidade e consistência das bases.
+
+3º ano
+
+Atividades / meses
+
+1º
+
+2º
+
+3º
+
+4º
+
+5º
+
+6º
+
+7º
+
+8º
+
+9º
+
+10º
+
+11º
+
+12º
+
+Coleta documental nos primeiros
+casos
+
+Redação dos capítulos 1 e 2
+
+Comparação preliminar
+
+Preparação para a qualificação
+
+Qualificação
+
+Conclusão da coleta documental nos
+casos
+
+Incorporação das recomendações da
+banca
+
+Análise temática e integração das
+evidências
+
+Submissão de artigo
+
+Reunião de orientação
+
+Produtos:  capítulos  teóricos  e  relatório  parcial,  ao  final  do  5º  semestre;  banco  qualitativo
+
+codificado e texto qualificado, ao final do 6º semestre.
+
+26
+
+4º ano
+
+Atividades / meses
+
+1º
+
+2º
+
+3º
+
+4º
+
+5º
+
+6º
+
+7º
+
+8º
+
+9º
+
+10º
+
+11º
+
+12º
+
+Confronto entre coeficientes oficiais
+e simulações
+
+Redação dos capítulos 3 e 4
+
+Análise dos arts. 116 e 117 da LC nº
+227/2026
+
+Apresentação em evento acadêmico
+
+Redação do capítulo 5 e da conclusão
+
+Revisão de coerência e atualização
+normativa
+
+Normalização
+
+Depósito e defesa
+
+Reunião de orientação
+
+Produtos: resultados empíricos consolidados, ao final do 7º semestre; tese depositada no prazo
+
+de quarenta e oito meses.
+
+Referências
+
+ABBOTT, Kenneth W.; LEVI-FAUR, David; SNIDAL, Duncan. Theorizing regulatory
+intermediaries: the RIT model. The ANNALS of the American Academy of Political and Social
+Science, v. 670, n. 1, p. 14-35, 2017.
+
+ABRUCIO, Fernando Luiz. Federalismo brasileiro e projeto nacional: os desafios da democracia e da
+desigualdade. Revista USP, São Paulo, n. 134, p. 127-142, 2022.
+
+ARRETCHE, Marta. Financiamento federal e gestão local de políticas sociais: o difícil equilíbrio entre
+regulação, responsabilidade e autonomia. Ciência & Saúde Coletiva, v. 8, n. 2, p. 331-345, 2003.
+
+ÁVILA, Humberto. Limites constitucionais à instituição do IBS e da CBS. Revista Direito Tributário
+Atual, São Paulo, v. 56, p. 701-730, 2024.
+
+BALDWIN, Robert; BLACK, Julia. Really responsive regulation. The Modern Law Review, v. 71, n.
+1, p. 59-94, 2008.
+
+BRAITHWAITE, John. The essence of responsive regulation. UBC Law Review, v. 44, n. 3, p. 475-
+520, 2011.
+
+BRASIL. Emenda Constitucional nº 132, de 20 de dezembro de 2023. Altera o Sistema Tributário
+Nacional. Diário Oficial da União: seção 1, Brasília, DF, 21 dez. 2023.
+
+BRASIL. Lei Complementar nº 214, de 16 de janeiro de 2025. Institui o Imposto sobre Bens e
+Serviços, a Contribuição Social sobre Bens e Serviços e o Imposto Seletivo. Diário Oficial da União:
+seção 1, Brasília, DF, 16 jan. 2025.
+
+BRASIL. Lei Complementar nº 227, de 13 de janeiro de 2026. Institui o Comitê Gestor do Imposto
+sobre Bens e Serviços e dispõe sobre o processo administrativo tributário do IBS e a distribuição de
+sua arrecadação. Diário Oficial da União: seção 1, Brasília, DF, 14 jan. 2026a.
+
+BRASIL. Comitê Gestor do Imposto sobre Bens e Serviços. Resolução CGIBS nº 6, de 30 de abril de
+2026. Regulamenta o Imposto sobre Bens e Serviços e dá outras providências. Brasília, DF: CGIBS,
+2026b.
+
+27
+
+BRASIL. Ministério da Fazenda. Secretaria do Tesouro Nacional. Boletim de Finanças dos Entes
+Subnacionais 2025: ano-base 2024. Brasília, DF: STN, 2026c.
+
+BRASIL. Ministério da Fazenda. Portal da Nota Fiscal de Serviço eletrônica. Monitoramento das
+adesões à NFS-e. Brasília, DF, 2026d. Disponível em: https://www.gov.br/nfse/pt-
+br/municipios/monitoramento-adesoes. Acesso em: 3 ago. 2026.
+
+CINGOLANI, Luciana. The state of state capacity: a review of concepts, evidence and measures.
+Maastricht: UNU-MERIT, 2013. Working Paper n. 2013-053.
+
+CONFEDERAÇÃO NACIONAL DE MUNICÍPIOS. Conselho Técnico das Administrações
+Tributárias. Distribuição do IBS: coeficiente de participação. Nota Técnica CTAT n. 04/2025.
+Brasília, DF: CNM, 2025.
+
+CRESWELL, John W. Research design: qualitative, quantitative, and mixed methods
+approaches. 3. ed. Thousand Oaks: Sage, 2009.
+
+FRATESI, Ugo; LIVERT, Felipe; POLVERARI, Laura; ZERBINATI, Cristina. Challenging
+conventional wisdom on administrative capacity with open data: could ‘administrative throughput’ be
+the missing link between administrative inputs and outputs? Governance, v. 39, e70117, 2026. DOI:
+10.1111/gove.70117.
+
+GOMES, Lucas Thevenard; SEIXAS, Luiz Felipe Monteiro. A evolução da produção
+normativa da Receita Federal do Brasil (1988-2020): análise empírica e implicações
+regulatórias. Revista Direito GV, São Paulo, v. 20, e2414, 2024. DOI: 10.1590/2317-
+6172202414.
+
+GRIN, Eduardo José; ABRUCIO, Fernando Luiz. O elo perdido da descentralização no Brasil: a
+promoção das capacidades estatais municipais pelo governo federal. Revista de Sociologia e Política,
+v. 29, n. 77, e002, 2021.
+
+GRIN, Eduardo José; DEMARCO, Diogo Joel; ABRUCIO, Fernando Luiz (org.). Capacidades
+estatais municipais: o universo desconhecido no federalismo brasileiro. Porto Alegre: Editora da
+UFRGS/CEGOV, 2021.
+
+GRIN, Eduardo José; NASCIMENTO, Alex Bruno do; ABRUCIO, Fernando Luiz; FERNANDES,
+Antônio Sérgio Araújo. Sobre desconexões e hiatos: uma análise de capacidades estatais e finanças
+públicas em municípios brasileiros. Cadernos Gestão Pública e Cidadania, São Paulo, v. 23, n. 76,
+2018.
+
+HANSON, Jonathan K.; SIGMAN, Rachel. Leviathan's latent dimensions: measuring state capacity
+for comparative political research. The Journal of Politics, v. 83, n. 4, p. 1495-1510, 2021.
+
+INSTITUTO BRASILEIRO DE GEOGRAFIA E ESTATÍSTICA. Coordenação de População e
+Indicadores Sociais. Perfil dos Municípios Brasileiros: 2024. Rio de Janeiro: IBGE, 2025.
+
+KOOP, Christel; LODGE, Martin. What is regulation? An interdisciplinary concept analysis.
+Regulation & Governance, v. 11, n. 1, p. 95-108, 2017.
+
+MARENCO, André. Burocracias profissionais ampliam capacidade estatal para implementar
+políticas? DADOS – Revista de Ciências Sociais, Rio de Janeiro, v. 60, n. 4, p. 1025-1058, 2017.
+
+MARENCO, André; STROHSCHOEN, Maria Tereza Blanco; JONER, William. Capacidade estatal,
+burocracia e tributação nos municípios brasileiros. Revista de Sociologia e Política, v. 25, n. 64, p. 3-
+21, 2017.
+
+MARENCO, André; TEN CATE, Lidia. Municípios são todos iguais? Decisões sobre gasto,
+orçamento e políticas públicas em governos locais. Revista de Sociologia e Política, Curitiba, v. 29, n.
+77, e001, 2021. DOI: 10.1590/1678-987321297701.
+
+MELLO, Marcos Bernardes de. Teoria do fato jurídico: plano da existência. 21. ed. São Paulo:
+Saraiva, 2017.
+
+28
+
+MIRANDA, Francisco Cavalcanti Pontes de. Tratado de direito privado: parte geral. Tomo I. São
+Paulo: Revista dos Tribunais, 2012.
+
+NEVES, Marcelo. Do transconstitucionalismo à transdemocracia. In: BUENO, Roberto
+(org.). Democracia: da crise à ruptura, jogos de armar, reflexões para a ação. São Paulo:
+Max Limonad, 2017. cap. 30, p. 1097-1119.
+
+OLIVEIRA, Débora Tazinasso de; OLIVEIRA, Antonio Gonçalves de. Índice de Sustentabilidade
+Financeira Municipal: alternativa à frágil caracterização proposta na PEC do Pacto Federativo
+Brasileiro. DADOS – Revista de Ciências Sociais, Rio de Janeiro, v. 68, n. 1, e20220222, 2025.
+
+OLIVEIRA, José André Wanderley Dantas de; LEITE, Ana Luiza. Conformidade cooperativa
+fiscal: o papel da Reforma Tributária sobre o consumo. In: ROCHA, Sérgio André; FARO,
+Maurício Pereira (org.). Questões Controvertidas no CARF. Belo Horizonte: Letramento,
+2025. v. 2, p. 93-107.
+
+PECI, Alketa. Reformas regulatória e de melhoria regulatória: uma análise histórica. In: CUNHA,
+Bruno Queiroz (org.). O Estado regulador brasileiro. Rio de Janeiro: Ipea/MDIC, 2026. p. 45-72.
+
+PEREIRA, José Wilas. O impacto do Programa Nacional de Apoio à Gestão Administrativa e Fiscal
+dos Municípios Brasileiros na eficiência fiscal das prefeituras. Cadernos de Finanças Públicas,
+Brasília, v. 18, n. 3, 2018.
+
+SEAWRIGHT, Jason. Multi-method social science: combining qualitative and quantitative
+tools. Cambridge: Cambridge University Press, 2016.
+
+SEAWRIGHT, Jason; GERRING, John. Case selection techniques in case study research: a
+menu of qualitative and quantitative options. Political Research Quarterly, v. 61, n. 2, p. 294-
+308, 2008.
+
+SEIXAS, Luiz Felipe Monteiro. Proposta de um modelo de análise de impacto regulatório
+da tributação indutora com base na experiência da Nova Zelândia. Brasília: Enap, 2022.
+87 p. (Cadernos Enap).
+
+SEIXAS, Luiz Felipe Monteiro. Tributação indutora e análise econômica do direito: uma
+investigação crítica. Rio de Janeiro: Lumen Juris, 2024.
+
+SILVA, Glauco Peres da. Desenho de pesquisa. Brasília: Enap, 2018. (Coleção Metodologias
+de Pesquisa).
+
+VENNESSON, Pascal. Case studies and process tracing: theories and practices. In: DELLA
+PORTA, Donatella; KEATING, Michael (ed.). Approaches and methodologies in the social
+sciences: a pluralist perspective. Cambridge: Cambridge University Press, 2008. p. 223-238.
+
+29
 
 
