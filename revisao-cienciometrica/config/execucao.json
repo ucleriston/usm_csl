@@ -1,0 +1,60 @@
+{
+  "_comentario": "Registro de execução das buscas (PRISMA-S). Preencher a cada execução; sem isto, o resultado não é reproduzível.",
+  "data_de_corte": "",
+  "responsavel": "",
+  "versao_protocolo": "1.0",
+  "execucoes": [
+    {
+      "base": "scopus",
+      "string_id": "S1",
+      "data": "",
+      "hora": "",
+      "filtros": "PUBYEAR>1989; DOCTYPE ar,re,ch,cp; LANGUAGE en,pt,es",
+      "resultados": 0,
+      "arquivo": ""
+    },
+    {
+      "base": "wos",
+      "string_id": "W1",
+      "data": "",
+      "hora": "",
+      "filtros": "1990-corte; Article, Review, Book Chapter, Proceedings Paper; en,pt,es",
+      "resultados": 0,
+      "arquivo": ""
+    },
+    {
+      "base": "scielo",
+      "string_id": "SC1..SC7",
+      "data": "",
+      "hora": "",
+      "filtros": "coleções BR, AR, CL, CO, MX, ES, PT",
+      "resultados": 0,
+      "arquivo": ""
+    },
+    {
+      "base": "dimensions",
+      "string_id": "D1",
+      "data": "",
+      "hora": "",
+      "filtros": "1990-corte; Article, Chapter, Proceeding; título e resumo",
+      "resultados": 0,
+      "arquivo": ""
+    },
+    {
+      "base": "lens",
+      "string_id": "L1",
+      "data": "",
+      "hora": "",
+      "filtros": "year_published 1990-corte",
+      "resultados": 0,
+      "arquivo": ""
+    }
+  ],
+  "recall_sementes": {
+    "recuperadas": 0,
+    "total": 25,
+    "minimo_exigido": 22,
+    "observacao": "Se ficar abaixo do mínimo, revisar a string antes de prosseguir (protocolo, §5)."
+  },
+  "desvios_do_protocolo": []
+}

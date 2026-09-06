@@ -2,3 +2,12 @@
 __pycache__/
 *.pyc
 markitdown/
+
+# Revisão cienciométrica: exportações proprietárias e saídas de trabalho
+revisao-cienciometrica/dados/bruto/*
+!revisao-cienciometrica/dados/bruto/.gitkeep
+!revisao-cienciometrica/dados/bruto/LEIA-ME.md
+revisao-cienciometrica/dados/processado/*
+!revisao-cienciometrica/dados/processado/.gitkeep
+revisao-cienciometrica/saidas/*
+!revisao-cienciometrica/saidas/.gitkeep
