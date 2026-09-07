@@ -47,6 +47,7 @@ NOMES_TESAUROS = {
     "fontes": "thesauro-fontes.json",
     "instituicoes": "thesauro-instituicoes.json",
     "paises": "lexico-paises.json",
+    "iso2": "iso2-iso3.json",
 }
 
 PADRAO = {

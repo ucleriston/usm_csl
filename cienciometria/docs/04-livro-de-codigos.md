@@ -12,6 +12,7 @@ códigos da própria revisão.
 | `doi` | automática | Minúsculas, sem prefixo de URL |
 | `base_origem` | automática | Base de onde vieram os metadados que prevaleceram |
 | `bases_todas` | automática | Todas as bases em que o registro apareceu |
+| `id_externo` | automática | Identificador na fonte aberta (`openalex:W123`, `doi:10.x/y`). Torna a co-citação exata quando a fonte entrega referências por identificador, em vez de casá-las por autor e ano |
 | `titulo`, `titulo_norm` | automática | O normalizado (sem acento e pontuação) serve só à deduplicação |
 
 ## 2 Autoria e afiliação

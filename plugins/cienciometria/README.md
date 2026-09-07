@@ -77,10 +77,15 @@ proposições declaradas e log de auditoria de cada execução.
 Saídas em Markdown, JSON, CSV e redes em Pajek (`.net`) e GML — abrem direto no VOSviewer e no
 Gephi, para quem quiser refinar os mapas visualmente.
 
-## Bases suportadas na importação
+## Bases suportadas
 
-Scopus (CSV), Web of Science (*plain text* com referências citadas), SciELO (RIS/BibTeX),
-Dimensions (CSV), Lens (CSV) e qualquer exportação RIS ou BibTeX de gerenciador de referências.
+**Coleta direta pela API** (sem chave, sem acesso institucional): OpenAlex e Crossref —
+`cienciometria coletar --revisao <slug> --fonte openalex --busca "..." --email voce@exemplo.org`.
+A resposta crua é salva e a execução, registrada automaticamente.
+
+**Importação de exportações:** Scopus (CSV), Web of Science (*plain text* com referências citadas),
+SciELO (RIS/BibTeX), Dimensions (CSV), Lens (CSV) e qualquer exportação RIS ou BibTeX de gerenciador
+de referências.
 O parser é escolhido pelo nome do arquivo e pela extensão — daí a convenção
 `scopus_AAAA-MM-DD.csv`, `wos_AAAA-MM-DD_01.txt`, `scielo_AAAA-MM-DD.ris`.
 

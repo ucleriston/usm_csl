@@ -137,6 +137,42 @@ def escrever_wos(registros, caminho):
             fh.write("ER\n\n")
 
 
+def escrever_openalex(registros, caminho):
+    """Grava no formato cru do OpenAlex, para exercitar também o parser de fonte aberta."""
+    import json
+
+    def invertido(texto):
+        indice = {}
+        for posicao, palavra in enumerate(texto.split()):
+            indice.setdefault(palavra, []).append(posicao)
+        return indice
+
+    obras = []
+    for i, r in enumerate(registros):
+        obras.append({
+            "id": "https://openalex.org/W90000%04d" % i,
+            "doi": "https://doi.org/" + r["doi"],
+            "title": r["titulo"],
+            "publication_year": r["ano"],
+            "cited_by_count": r["citacoes"],
+            "type": "article",
+            "language": "en",
+            "abstract_inverted_index": invertido(r["resumo"]),
+            "primary_location": {"source": {"display_name": r["fonte"], "issn_l": r["issn"]}},
+            "authorships": [
+                {"author": {"display_name": autor},
+                 "institutions": [{"display_name": "Instituto Sintetico", "country_code": "BR"}]}
+                for autor in r["autores"]
+            ],
+            "keywords": [{"display_name": p} for p in r["palavras"]],
+            "referenced_works": ["https://openalex.org/W90000%04d" % j
+                                 for j in range(max(0, i - 12), i)],
+        })
+    with open(caminho, "w", encoding="utf-8") as fh:
+        json.dump({"meta": {"count": len(obras), "next_cursor": None}, "results": obras}, fh,
+                  ensure_ascii=False)
+
+
 def escrever_ris(registros, caminho):
     with open(caminho, "w", encoding="utf-8") as fh:
         for r in registros:
@@ -162,6 +198,7 @@ def main():
     escrever_scopus(registros[:90], os.path.join(DESTINO, "scopus_exemplo.csv"))
     escrever_wos(registros[60:110], os.path.join(DESTINO, "wos_exemplo.txt"))
     escrever_ris(registros[100:], os.path.join(DESTINO, "scielo_exemplo.ris"))
+    escrever_openalex(registros[110:], os.path.join(DESTINO, "openalex_exemplo.json"))
     with open(os.path.join(DESTINO, "LEIA-ME.md"), "w", encoding="utf-8") as fh:
         fh.write(
             "# Amostra sintética\n\n"

@@ -11,7 +11,7 @@ import json
 import os
 import sys
 
-from . import __version__, indicadores, parsers, proposicoes, redes, relatorio, triagem
+from . import __version__, coleta, indicadores, parsers, proposicoes, redes, relatorio, triagem
 from .corpus_io import (
     carregar_corpus, registrar_execucao, salvar_arestas, salvar_corpus, salvar_nos, salvar_tabela,
 )
@@ -72,6 +72,88 @@ def cmd_listar(args):
         marca = "•" if r["corpus"] else " "
         print("%s %-36s %-14s %s" % (marca, r["slug"], r["corte"], r["titulo"]))
     print("\n(• = corpus já construído)")
+    return 0
+
+
+# tipos do corpus → vocabulário de cada API
+TIPOS_API = {
+    "openalex": {"artigo": "article", "revisao": "review", "capitulo": "book-chapter",
+                 "anais": "proceedings-article"},
+    "crossref": {"artigo": "journal-article", "revisao": "journal-article",
+                 "capitulo": "book-chapter", "anais": "proceedings-article"},
+}
+
+
+def cmd_coletar(args):
+    """Baixa registros de fontes abertas (OpenAlex, Crossref) para dados/bruto."""
+    import datetime
+
+    revisao = _revisao(args)
+    if not args.busca:
+        raise SystemExit("Informe o que buscar: --busca \"termos da consulta\"")
+    janela = revisao.config.get("janela") or {}
+    de = args.de if args.de is not None else janela.get("inicio")
+    ate = args.ate if args.ate is not None else janela.get("fim")
+    tipos = sorted({TIPOS_API[args.fonte].get(t) for t in revisao.config.get("tipos_documento") or []
+                    if TIPOS_API[args.fonte].get(t)})
+    idiomas = revisao.config.get("idiomas") or []
+
+    hoje = datetime.date.today().isoformat()
+    destino = os.path.join(revisao.dir_bruto, "%s_%s" % (args.fonte, hoje))
+    os.makedirs(destino, exist_ok=True)
+
+    def progresso(baixados, total):
+        print("  %d registros baixados%s" % (baixados, " de %s" % total if total else ""))
+
+    print("Consultando %s: %s" % (args.fonte, args.busca))
+    try:
+        resultado = coleta.coletar(
+            args.fonte, busca=args.busca, destino=destino, de=de, ate=ate, tipos=tipos,
+            idiomas=idiomas if args.fonte == "openalex" else None, email=args.email,
+            limite=args.limite, extra=args.filtro_extra if args.fonte == "openalex" else None,
+            ao_avancar=progresso,
+        )
+    except coleta.ColetaBloqueada as erro:
+        print("\nColeta interrompida: %s" % erro)
+        print("Nada foi gravado além das páginas já baixadas. Não há como contornar um bloqueio "
+              "de política de rede a partir daqui — use outra rede ou exporte pela interface da base.")
+        return 1
+    except ValueError as erro:
+        raise SystemExit(str(erro))
+
+    if not resultado["registros"]:
+        print("A consulta não devolveu resultados. Reveja os termos antes de concluir que a "
+              "literatura não existe.")
+        return 1
+
+    # o registro da execução é o que torna a coleta repetível (PRISMA-S)
+    caminho_execucao = os.path.join(revisao.dir_config, "execucao.json")
+    dados = revisao.execucao() or {}
+    dados.setdefault("execucoes", []).append({
+        "base": args.fonte,
+        "string_id": "API",
+        "data": hoje,
+        "hora": datetime.datetime.now().strftime("%H:%M"),
+        "filtros": resultado["filtro"],
+        "resultados": resultado["registros"],
+        "arquivo": os.path.relpath(destino, revisao.dir),
+        "consulta": args.busca,
+        "limite_aplicado": args.limite,
+    })
+    if not dados.get("data_de_corte"):
+        dados["data_de_corte"] = hoje
+    with open(caminho_execucao, "w", encoding="utf-8") as fh:
+        json.dump(dados, fh, ensure_ascii=False, indent=2)
+
+    print("\n%d registros salvos em %s (%d páginas)" % (
+        resultado["registros"], os.path.relpath(destino), len(resultado["paginas"])))
+    print("Execução registrada em %s" % os.path.relpath(caminho_execucao))
+    if resultado["registros"] >= args.limite:
+        print("ATENÇÃO: o limite de %d foi atingido — a consulta provavelmente tem mais resultados. "
+              "Refine a busca ou aumente --limite, e registre a decisão." % args.limite)
+    print("Próximo passo: %s importar --revisao %s" % ("cienciometria", revisao.slug))
+    registrar_execucao(revisao.dir_saidas, "coletar", "fonte=%s registros=%d busca=%s" % (
+        args.fonte, resultado["registros"], args.busca))
     return 0
 
 
@@ -405,6 +487,7 @@ def principal(argv=None):
     lst.set_defaults(funcao=cmd_listar)
 
     ajuda = {
+        "coletar": "baixa registros de fontes abertas (OpenAlex, Crossref)",
         "importar": "lê as exportações e monta o corpus",
         "dedup": "deduplica e separa os pares ambíguos para conferência humana",
         "triagem": "gera a planilha cega de triagem",
@@ -416,6 +499,7 @@ def principal(argv=None):
         "analise": "importar → dedup → indicadores → redes → prisma → relatorio",
     }
     funcoes = {
+        "coletar": cmd_coletar,
         "importar": cmd_importar, "dedup": cmd_dedup, "triagem": cmd_triagem, "kappa": cmd_kappa,
         "indicadores": cmd_indicadores, "redes": cmd_redes, "prisma": cmd_prisma,
         "relatorio": cmd_relatorio, "analise": cmd_analise,
@@ -431,6 +515,16 @@ def principal(argv=None):
         for limiar in ("min-termo", "min-autor", "min-cocitacao", "min-acoplamento"):
             sp.add_argument("--" + limiar, type=int, default=None,
                             help="sobrepõe o limiar declarado na revisão")
+        if nome == "coletar":
+            sp.add_argument("--fonte", choices=("openalex", "crossref"), default="openalex")
+            sp.add_argument("--busca", default=None, help="termos da consulta (título e resumo)")
+            sp.add_argument("--de", type=int, default=None, help="ano inicial (padrão: o da revisão)")
+            sp.add_argument("--ate", type=int, default=None, help="ano final (padrão: o da revisão)")
+            sp.add_argument("--email", default=None,
+                            help="e-mail de contato: as duas APIs pedem, e dá acesso à fila rápida")
+            sp.add_argument("--limite", type=int, default=5000, help="teto de registros")
+            sp.add_argument("--filtro-extra", default=None,
+                            help="filtro adicional do OpenAlex, ex.: 'is_oa:true'")
         sp.set_defaults(funcao=funcao)
 
     args = p.parse_args(argv)

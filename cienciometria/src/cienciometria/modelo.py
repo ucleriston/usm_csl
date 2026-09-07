@@ -9,6 +9,7 @@ SEP = "; "
 CAMPOS = [
     "id",
     "doi",
+    "id_externo",
     "base_origem",
     "bases_todas",
     "titulo",

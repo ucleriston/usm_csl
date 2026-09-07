@@ -48,6 +48,7 @@ outra revisão, não editar o código.
 python -m cienciometria nova <slug> --titulo "..." --tema "..."
 python -m cienciometria listar
 
+python -m cienciometria coletar     --revisao <slug> --fonte openalex --busca "..."
 python -m cienciometria importar    --revisao <slug>
 python -m cienciometria dedup       --revisao <slug>
 python -m cienciometria triagem     --revisao <slug>

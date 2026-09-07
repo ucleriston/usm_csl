@@ -46,7 +46,14 @@ baixo significa string ruim, não literatura escassa.
 
 ## 4 Buscar e exportar
 
-Salve as exportações em `revisoes/<slug>/dados/bruto/`, com o nome da base no arquivo
+Sem acesso a bases proprietárias, colete das fontes abertas — o comando salva a resposta crua e já
+registra a execução:
+
+```bash
+cienciometria coletar --revisao <slug> --fonte openalex --busca "..." --email voce@exemplo.org
+```
+
+Com acesso, o caminho é a interface da base. Salve as exportações em `revisoes/<slug>/dados/bruto/`, com o nome da base no arquivo
 (`scopus_2026-04-10.csv`, `wos_2026-04-10_01.txt`, `scielo_2026-04-10.ris`). Registre cada execução
 em `config/execucao.json`: string, filtros, data, hora, contagem e arquivo. Sem esse registro a
 execução não existe para efeito de relato.

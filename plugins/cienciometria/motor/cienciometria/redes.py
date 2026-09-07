@@ -56,9 +56,17 @@ def rede_copalavras(corpus, campo="palavras_chave", minimo=5, limite_nos=200):
     return rede_coocorrencia([r.get(campo) or [] for r in corpus], minimo, limite_nos)
 
 
-def _chave_referencia(ref):
-    """Chave curta e estável de uma referência citada: autor + ano (+ doi, se houver)."""
+def _chave_referencia(ref, rotulos=None):
+    """Chave curta e estável de uma referência citada.
+
+    Identificadores de fontes abertas (`openalex:W123`, `doi:10.x/y`) já são únicos e
+    viram chave direto — o que torna a co-citação mais exata que o casamento por
+    autor e ano. Quando o trabalho citado está no próprio corpus, `rotulos` troca o
+    identificador por algo legível ("Oates (1972)").
+    """
     ref = re.sub(r"\s+", " ", ref.strip())
+    if ref.startswith(("openalex:", "doi:")):
+        return (rotulos or {}).get(ref, ref)
     doi = re.search(r"10\.\d{4,9}/\S+", ref)
     if doi:
         return doi.group(0).lower().rstrip(".,;")
@@ -70,10 +78,27 @@ def _chave_referencia(ref):
     return "%s (%s)" % (autor.upper(), ano.group(0) if ano else "s.d.")
 
 
+def rotulos_do_corpus(corpus):
+    """Mapa identificador → "Sobrenome (ano)" para os trabalhos do próprio corpus.
+
+    Serve para que referências citadas que apontam para dentro do corpus apareçam com
+    nome legível nas redes, em vez de um identificador de API.
+    """
+    rotulos = {}
+    for r in corpus:
+        externo = (r.get("id_externo") or "").strip()
+        if not externo:
+            continue
+        primeiro = (r.get("autores") or ["s.a."])[0].split(",")[0]
+        rotulos[externo] = "%s (%s)" % (primeiro, r.get("ano") or "s.d.")
+    return rotulos
+
+
 def rede_cocitacao(corpus, minimo=5, limite_nos=200):
     """Co-citação de referências, restrita ao subcorpus com campo de referências."""
     subcorpus = [r for r in corpus if r.get("referencias")]
-    listas = [[_chave_referencia(x) for x in r["referencias"]] for r in subcorpus]
+    rotulos = rotulos_do_corpus(corpus)
+    listas = [[_chave_referencia(x, rotulos) for x in r["referencias"]] for r in subcorpus]
     listas = [[c for c in l if c] for l in listas]
     nos, arestas = rede_coocorrencia(listas, minimo, limite_nos)
     cobertura = round(100 * len(subcorpus) / len(corpus), 2) if corpus else 0.0
@@ -83,8 +108,9 @@ def rede_cocitacao(corpus, minimo=5, limite_nos=200):
 def acoplamento_bibliografico(corpus, minimo=3, limite_nos=300):
     """Documentos ligados pelo número de referências compartilhadas."""
     subcorpus = [r for r in corpus if r.get("referencias")]
+    rotulos = rotulos_do_corpus(corpus)
     chaves = {
-        r["id"]: set(c for c in (_chave_referencia(x) for x in r["referencias"]) if c)
+        r["id"]: set(c for c in (_chave_referencia(x, rotulos) for x in r["referencias"]) if c)
         for r in subcorpus
     }
     ordenados = sorted(subcorpus, key=lambda r: -len(chaves[r["id"]]))[:limite_nos]

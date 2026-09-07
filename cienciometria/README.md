@@ -89,6 +89,7 @@ nova <slug>            cria a revisão a partir do esqueleto
 docs/ + revisao.json   recorte, protocolo, strings, proposições com critério de refutação
    ↓
 buscar nas bases       exportações em revisoes/<slug>/dados/bruto/ + registro em execucao.json
+   ou coletar          OpenAlex/Crossref pela API aberta, com registro automático da execução
    ↓
 importar → dedup       corpus normalizado; faixa de dúvida separada para conferência humana
    ↓

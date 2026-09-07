@@ -132,6 +132,19 @@ def extrair_paises(afiliacoes, lexico):
     return achados
 
 
+def converter_paises(codigos, tabela):
+    """Converte ISO-2 (como o OpenAlex devolve) para ISO-3; o que não constar passa adiante."""
+    saida = []
+    for codigo in codigos or []:
+        limpo = (codigo or "").strip().upper()
+        if not limpo:
+            continue
+        convertido = tabela.get(chave_texto(limpo), limpo) if len(limpo) == 2 else limpo
+        if convertido not in saida:
+            saida.append(convertido)
+    return saida
+
+
 def normalizar_registro(reg, tesauros):
     """Aplica todas as normalizações a um registro já importado."""
     reg["doi"] = normalizar_doi(reg.get("doi"))
@@ -149,7 +162,9 @@ def normalizar_registro(reg, tesauros):
         reg["instituicoes"] = instituicoes_de_afiliacao(
             reg.get("afiliacoes", ""), tesauros["instituicoes"]
         )
-    if not reg.get("paises"):
+    if reg.get("paises"):
+        reg["paises"] = converter_paises(reg["paises"], tesauros.get("iso2", {}))
+    else:
         reg["paises"] = extrair_paises(reg.get("afiliacoes", ""), tesauros["paises"])
     reg["colab_internacional"] = 1 if len(reg["paises"]) > 1 else 0
     reg["n_referencias"] = len(reg.get("referencias", []))
@@ -207,4 +222,5 @@ def carregar_tesauros(dir_config):
         "fontes": carregar_tesauro(j("thesauro-fontes.json")),
         "instituicoes": carregar_tesauro(j("thesauro-instituicoes.json")),
         "paises": carregar_tesauro(j("lexico-paises.json")),
+        "iso2": carregar_tesauro(j("iso2-iso3.json")),
     }

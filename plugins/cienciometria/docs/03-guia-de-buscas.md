@@ -57,7 +57,45 @@ ficar lado a lado: o motor concatena. Nunca edite uma exportação à mão.
 principal não o exporta, diga isso no protocolo e trate a estrutura intelectual como análise de
 cobertura parcial.
 
-## 5 Registro da execução
+## 5 Quando não há Scopus nem Web of Science
+
+Duas APIs abertas cobrem boa parte do que as bases proprietárias cobrem, sem chave de acesso, e o
+motor as consulta direto:
+
+```bash
+cienciometria coletar --revisao <slug> --fonte openalex \
+    --busca "fiscal federalism" --email voce@exemplo.org --limite 3000
+cienciometria importar --revisao <slug>
+```
+
+O comando pagina por cursor, salva a **resposta crua** em `dados/bruto/openalex_<data>/` e registra
+a execução em `config/execucao.json` — consulta, filtros, data, hora e contagem. O mapeamento para o
+corpus acontece na importação: ajustar o mapeamento depois não exige consultar a API de novo.
+
+| Fonte | Vantagem | Limite a declarar |
+|---|---|---|
+| **OpenAlex** | Cobertura ampla; traz referências citadas (`referenced_works`), afiliação com país e acesso aberto | Palavras-chave são conceitos inferidos por máquina, não termos de autor |
+| **Crossref** | Cobre tudo o que tem DOI | Referências só quando a editora as deposita; afiliação quase sempre ausente, o que enfraquece as redes de colaboração |
+
+Três cuidados que precisam ir para o texto da revisão, não ficar implícitos:
+
+1. **Conceito do OpenAlex não é palavra-chave de autor.** Serve para a rede de co-palavras, mas
+   muda o que a rede significa — diga isso ao relatar.
+2. **A busca por API não é a mesma da interface.** `title_and_abstract.search` tem processamento
+   textual próprio; não espere o mesmo conjunto que a string do Scopus devolve. Usando as duas,
+   relate cada uma separadamente.
+3. **Teto de registros.** `--limite` corta a coleta; atingir o teto significa corpus truncado — o
+   comando avisa, e a decisão (refinar a busca ou elevar o teto) precisa ficar registrada.
+
+Se a coleta falhar:
+
+| Mensagem | Significado | O que fazer |
+|---|---|---|
+| HTTP 403 ao consultar | A rede, ou uma política de egresso, bloqueia o host | Usar outra rede; não há como contornar de dentro. A alternativa é exportar pela interface da base |
+| Nenhum resultado | Termos restritivos demais, ou filtro de ano/tipo excluindo tudo | Testar a mesma consulta na interface web da fonte antes de concluir que não há literatura |
+| Registros sem afiliação ou sem referências | A fonte não traz esses campos ali | Declarar a cobertura; considerar complementar com outra base |
+
+## 6 Registro da execução
 
 Cada busca executada gera uma entrada em `config/execucao.json`: base, identificador da string,
 data, hora, filtros, número de resultados e arquivo gerado. É esse registro — e não a memória —

@@ -57,6 +57,7 @@ da instalação do plugin. Rode os comandos a partir da pasta do projeto dele, o
 |---|---|
 | `"$CIENCIO" nova <slug> --titulo "..." --tema "..."` | Cria a revisão a partir do esqueleto |
 | `"$CIENCIO" listar` | Lista as revisões da pasta e a situação de cada uma |
+| `"$CIENCIO" coletar --revisao <slug> --fonte openalex --busca "..."` | Baixa registros das APIs abertas (OpenAlex, Crossref) |
 | `"$CIENCIO" importar --revisao <slug>` | Lê as exportações e monta o corpus normalizado |
 | `"$CIENCIO" dedup --revisao <slug>` | Deduplica; separa pares ambíguos para conferência humana |
 | `"$CIENCIO" triagem --revisao <slug>` | Gera a planilha cega de triagem |
@@ -117,10 +118,26 @@ Para montar as strings, use a skill **estrategia-de-busca**. Para o desenho da t
 
 ### 4. Buscar
 
-Você não tem acesso às bases: quem executa as buscas é o usuário, com o login institucional dele.
-Entregue as strings prontas para copiar e colar, diga exatamente como exportar cada base e onde
-salvar os arquivos (`revisoes/<slug>/dados/bruto/`, com o nome da base no arquivo). Depois, peça a
-ele que registre cada execução em `config/execucao.json` — string, filtros, data, hora, contagem.
+Há dois caminhos, e a escolha depende do acesso que o usuário tem.
+
+**Bases proprietárias (Scopus, Web of Science).** Você não tem o login dele: quem executa é o
+usuário. Entregue as strings prontas para copiar e colar, diga exatamente como exportar cada base —
+no caso da WoS, *Full Record and Cited References*, senão não há co-citação — e onde salvar
+(`revisoes/<slug>/dados/bruto/`, com o nome da base no arquivo). Depois peça que registre cada
+execução em `config/execucao.json`: string, filtros, data, hora, contagem.
+
+**Fontes abertas (OpenAlex, Crossref).** Aqui você mesmo pode coletar, e o comando já registra a
+execução:
+
+```bash
+"$CIENCIO" coletar --revisao <slug> --fonte openalex --busca "termos" --email <e-mail do usuário> --limite 3000
+```
+
+Peça o e-mail: as duas APIs pedem contato e dão fila mais rápida a quem o informa. Se o comando
+falhar com HTTP 403, a rede do usuário bloqueia o host — reporte isso e siga pela interface da base,
+sem tentar rotas alternativas. Vale saber, para relatar como limitação: as palavras-chave do
+OpenAlex são conceitos inferidos por máquina, não termos de autor, e o Crossref raramente traz
+afiliação, o que enfraquece as redes de colaboração.
 
 **Nunca invente registros bibliográficos, contagens de resultados ou datas de corte.** Um corpus
 fabricado destrói a revisão inteira e é indefensável. Se faltar dado, o certo é dizer que falta.
@@ -194,7 +211,8 @@ Estas regras não são burocracia: são o que faz a revisão sobreviver à revis
 
 | Sintoma | Causa provável | O que fazer |
 |---|---|---|
-| `importar` não encontra registros | Nome do arquivo sem a base, ou formato não exportado | Renomear (`scopus_*.csv`, `wos_*.txt`, `scielo_*.ris`); reexportar |
+| `importar` não encontra registros | Nome do arquivo sem a base, ou formato não exportado | Renomear (`scopus_*.csv`, `wos_*.txt`, `scielo_*.ris`, `openalex_*.json`); reexportar |
+| `coletar` devolve HTTP 403 | Política de rede bloqueia a API | Reportar o host bloqueado; usar outra rede ou a interface da base — nunca contornar |
 | Muitos registros sem ano ou sem autor | Exportação parcial de campos | Reexportar com todos os campos marcados |
 | Co-citação vazia ou quase | Base sem campo de referências | Declarar a cobertura; usar acoplamento e co-palavras como estrutura principal |
 | α de Lotka negativo ou absurdo | Homonímia ou corpus pequeno demais | Conferir a desambiguação dos autores mais produtivos antes de interpretar |

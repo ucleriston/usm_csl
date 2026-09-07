@@ -2,7 +2,7 @@
 name: estrategia-de-busca
 description: >-
   Constrói, calibra e documenta strings de busca bibliográfica para Scopus, Web of Science, SciELO,
-  Dimensions, Lens, PubMed e afins — blocos conceituais, sinônimos em português, inglês e espanhol,
+  Dimensions, Lens, OpenAlex, Crossref, PubMed e afins — blocos conceituais, sinônimos em português, inglês e espanhol,
   truncamento, operadores de proximidade, filtros por ano, tipo e idioma, teste de recall com
   conjunto-semente e registro conforme PRISMA-S. Use SEMPRE que o usuário pedir string de busca,
   estratégia de busca, termos de busca, expressão de pesquisa, descritores, operadores booleanos,
@@ -81,6 +81,13 @@ quebre em buscas simples, registre cada uma, exporte em RIS ou BibTeX.
 **Dimensions e Lens**: busca em título e resumo, filtro por ano e tipo, exportação CSV completa.
 
 **PubMed**: `("termo a"[tiab] OR "termo b"[tiab]) AND ("termo c"[MeSH Terms])`; exportar em RIS.
+
+**OpenAlex e Crossref** são abertas e podem ser consultadas pelo próprio motor
+(`cienciometria coletar --revisao <slug> --fonte openalex --busca "..." --email ...`), que pagina,
+salva a resposta crua e registra a execução. É o caminho de quem não tem acesso institucional a
+Scopus e WoS. Duas ressalvas para o relato: a busca por API tem processamento textual próprio e não
+devolve o mesmo conjunto da interface do Scopus; e os "conceitos" do OpenAlex são atribuídos por
+máquina, não são palavras-chave de autor.
 
 **Google Scholar** não é base para corpus: não exporta de forma reprodutível e não tem controle de
 tipo documental. Serve para conferir recall, e isso é tudo.

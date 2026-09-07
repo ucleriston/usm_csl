@@ -10,6 +10,7 @@ Cada função devolve uma lista de registros no formato de modelo.registro_vazio
 """
 
 import csv
+import json
 import os
 import re
 import sys
@@ -336,11 +337,160 @@ def ler_csv_generico(caminho, base):
     return registros
 
 
+# --------------------------------------------------------------------------- fontes abertas (JSON)
+
+def _abstract_openalex(indice):
+    """Reconstrói o resumo a partir do índice invertido que o OpenAlex devolve."""
+    if not indice:
+        return ""
+    posicoes = []
+    for palavra, indices in indice.items():
+        for i in indices:
+            posicoes.append((i, palavra))
+    return " ".join(palavra for _, palavra in sorted(posicoes))
+
+
+def _texto(valor):
+    if isinstance(valor, list):
+        return valor[0] if valor else ""
+    return valor or ""
+
+
+def ler_openalex_json(dados, origem="openalex"):
+    """Converte a resposta crua do OpenAlex para registros do corpus."""
+    registros = []
+    for i, obra in enumerate(dados.get("results") or []):
+        reg = registro_vazio(id="%s:%d" % (origem, i), base_origem=origem)
+        reg["id_externo"] = (obra.get("id") or "").replace("https://openalex.org/", "openalex:")
+        reg["doi"] = (obra.get("doi") or "").replace("https://doi.org/", "")
+        reg["titulo"] = obra.get("title") or obra.get("display_name") or ""
+        reg["ano"] = int(obra.get("publication_year") or 0)
+        reg["citacoes"] = int(obra.get("cited_by_count") or 0)
+        reg["fonte_citacoes"] = origem if reg["citacoes"] else ""
+        reg["tipo_documento"] = obra.get("type") or ""
+        reg["idioma"] = obra.get("language") or ""
+        reg["resumo"] = _abstract_openalex(obra.get("abstract_inverted_index"))
+
+        local = (obra.get("primary_location") or {}).get("source") or {}
+        reg["fonte"] = local.get("display_name") or ""
+        reg["issn"] = local.get("issn_l") or ""
+        reg["editora"] = local.get("host_organization_name") or ""
+        reg["url"] = obra.get("doi") or obra.get("id") or ""
+        reg["acesso_aberto"] = str((obra.get("open_access") or {}).get("is_oa", "")).lower()
+
+        afiliacoes, paises, instituicoes = [], [], []
+        for autoria in obra.get("authorships") or []:
+            autor = (autoria.get("author") or {}).get("display_name")
+            if autor:
+                reg["autores"].append(autor)
+            orcid = (autoria.get("author") or {}).get("orcid")
+            if orcid:
+                reg["orcid"].append(orcid.replace("https://orcid.org/", ""))
+            for instituicao in autoria.get("institutions") or []:
+                nome = instituicao.get("display_name")
+                if nome:
+                    afiliacoes.append(nome)
+                    if nome not in instituicoes:
+                        instituicoes.append(nome)
+                pais = instituicao.get("country_code")
+                if pais and pais not in paises:
+                    paises.append(pais)
+        reg["afiliacoes"] = " ; ".join(afiliacoes)
+        reg["instituicoes"] = instituicoes
+        # o OpenAlex já entrega o país em ISO-2; o léxico do motor usa ISO-3, então
+        # a conversão fica com o normalizador — aqui guardamos o que a fonte deu
+        reg["paises"] = paises
+
+        termos = []
+        for chave in ("keywords", "concepts"):
+            for termo in obra.get(chave) or []:
+                nome = termo.get("display_name")
+                if nome and nome not in termos:
+                    termos.append(nome)
+        reg["palavras_chave"] = termos
+
+        reg["referencias"] = [
+            (ref or "").replace("https://openalex.org/", "openalex:")
+            for ref in obra.get("referenced_works") or []
+        ]
+        if reg["titulo"]:
+            registros.append(reg)
+    return registros
+
+
+def _referencia_crossref(ref):
+    """Monta uma referência legível a partir do registro estruturado do Crossref."""
+    if ref.get("DOI"):
+        return "doi:" + ref["DOI"].lower()
+    if ref.get("unstructured"):
+        return re.sub(r"\s+", " ", ref["unstructured"]).strip()
+    partes = [ref.get("author"), ref.get("year"), _texto(ref.get("journal-title")),
+              _texto(ref.get("article-title"))]
+    return ", ".join(p for p in partes if p)
+
+
+def ler_crossref_json(dados, origem="crossref"):
+    """Converte a resposta crua do Crossref para registros do corpus."""
+    registros = []
+    itens = (dados.get("message") or {}).get("items") or []
+    for i, obra in enumerate(itens):
+        reg = registro_vazio(id="%s:%d" % (origem, i), base_origem=origem)
+        reg["doi"] = (obra.get("DOI") or "").lower()
+        reg["id_externo"] = "doi:" + reg["doi"] if reg["doi"] else ""
+        reg["titulo"] = _texto(obra.get("title"))
+        partes = ((obra.get("issued") or {}).get("date-parts") or [[None]])[0]
+        reg["ano"] = int(partes[0]) if partes and partes[0] else 0
+        reg["fonte"] = _texto(obra.get("container-title"))
+        reg["issn"] = _texto(obra.get("ISSN"))
+        reg["editora"] = obra.get("publisher") or ""
+        reg["citacoes"] = int(obra.get("is-referenced-by-count") or 0)
+        reg["fonte_citacoes"] = origem if reg["citacoes"] else ""
+        reg["tipo_documento"] = obra.get("type") or ""
+        reg["idioma"] = obra.get("language") or ""
+        reg["resumo"] = re.sub(r"<[^>]+>", " ", obra.get("abstract") or "").strip()
+        reg["volume"] = obra.get("volume") or ""
+        reg["numero"] = obra.get("issue") or ""
+        reg["paginas"] = obra.get("page") or ""
+        reg["url"] = obra.get("URL") or ""
+        reg["palavras_chave"] = list(obra.get("subject") or [])
+
+        afiliacoes = []
+        for autor in obra.get("author") or []:
+            nome = ", ".join(p for p in (autor.get("family"), autor.get("given")) if p)
+            if nome:
+                reg["autores"].append(nome)
+            if autor.get("ORCID"):
+                reg["orcid"].append(autor["ORCID"].replace("http://orcid.org/", ""))
+            for afiliacao in autor.get("affiliation") or []:
+                if afiliacao.get("name"):
+                    afiliacoes.append(afiliacao["name"])
+        reg["afiliacoes"] = " ; ".join(afiliacoes)
+        reg["referencias"] = [
+            r for r in (_referencia_crossref(ref) for ref in obra.get("reference") or []) if r
+        ]
+        if reg["titulo"]:
+            registros.append(reg)
+    return registros
+
+
+def ler_json(caminho):
+    """Lê um JSON de fonte aberta, detectando OpenAlex ou Crossref pelo formato."""
+    with open(caminho, encoding="utf-8") as fh:
+        dados = json.load(fh)
+    if isinstance(dados, dict) and "results" in dados:
+        return ler_openalex_json(dados)
+    if isinstance(dados, dict) and isinstance(dados.get("message"), dict):
+        return ler_crossref_json(dados)
+    if isinstance(dados, list):  # lista crua de obras do OpenAlex
+        return ler_openalex_json({"results": dados})
+    return []
+
+
 # --------------------------------------------------------------------------- despacho
 
 def detectar_base(nome):
     n = nome.lower()
-    for base in ("scopus", "wos", "scielo", "dimensions", "lens"):
+    for base in ("scopus", "wos", "scielo", "dimensions", "lens", "openalex", "crossref"):
         if base in n:
             return base
     if "web_of_science" in n or "savedrecs" in n:
@@ -360,6 +510,8 @@ def ler_arquivo(caminho):
         return ler_bibtex(caminho, base)
     if ext == ".ris":
         return ler_ris(caminho, base)
+    if ext == ".json":
+        return ler_json(caminho)
     return []
 
 
@@ -371,7 +523,8 @@ def ler_diretorio(diretorio):
             if arquivo.startswith("."):
                 continue
             caminho = os.path.join(raiz, arquivo)
-            if os.path.splitext(arquivo)[1].lower() not in (".csv", ".txt", ".bib", ".ris", ".ciw"):
+            if os.path.splitext(arquivo)[1].lower() not in (
+                    ".csv", ".txt", ".bib", ".ris", ".ciw", ".json"):
                 continue
             try:
                 lidos = ler_arquivo(caminho)
