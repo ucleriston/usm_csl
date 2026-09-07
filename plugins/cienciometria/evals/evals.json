@@ -1,0 +1,76 @@
+{
+  "plugin": "cienciometria",
+  "evals": [
+    {
+      "id": 0,
+      "nome": "inicio-de-revisao",
+      "skill": "revisao-cienciometrica",
+      "prompt": "oi, tô começando o mestrado em administração pública e meu orientador falou pra eu fazer um \"estado da arte\" sobre orçamento participativo antes de escrever o projeto. tenho acesso ao portal de periódicos da capes pela universidade. não faço ideia de por onde começar, só sei que ele quer alguma coisa mais sistemática que ler 20 artigos e resumir. me ajuda?",
+      "expected_output": "Distingue mapeamento do campo de síntese de conteúdo antes de agir; faz as perguntas de delimitação; cria a revisão com o motor; deixa config/revisao.json e o projeto preenchidos; não inventa dados.",
+      "assertions": [
+        "Distingue mapear o campo (cienciometria) de sintetizar o que a literatura concluiu, antes de propor o caminho",
+        "Faz perguntas de delimitação concretas: objeto, janela temporal, idiomas e bases efetivamente acessíveis",
+        "Cria de fato a estrutura da revisão com o motor (pasta revisoes/<slug> com config/ e docs/)",
+        "config/revisao.json fica preenchido com janela, idiomas e ao menos uma proposição com critério de refutação",
+        "Indica o próximo passo concreto (strings de busca por base) em vez de parar no plano abstrato",
+        "Não apresenta registros bibliográficos, contagens de bases ou resultados de busca inventados"
+      ]
+    },
+    {
+      "id": 1,
+      "nome": "string-com-ruido",
+      "skill": "estrategia-de-busca",
+      "prompt": "montei essa busca no scopus e voltou quase 12 mil resultados, sendo que uns 70% é coisa de engenharia de materiais que não tem nada a ver: TITLE-ABS-KEY (resilience AND governance AND network). meu tema é resiliência de governança em cidades diante de eventos climáticos extremos. como eu fecho isso sem perder artigo importante?",
+      "expected_output": "Decompõe em blocos, aponta o termo genérico sozinho como causa, propõe string corrigida com aspas, sinônimos e três idiomas, e prescreve o teste de recall com conjunto-semente antes de valer.",
+      "assertions": [
+        "Identifica que os termos genéricos combinados sem contexto são a causa do ruído",
+        "Entrega string revisada com expressões entre aspas e sinônimos",
+        "Inclui bloco de contexto (cidade/urbano/clima) que elimina o ruído de engenharia de materiais",
+        "Prescreve teste de recall com conjunto-semente antes de adotar a string",
+        "Menciona exportação com referências citadas ou registro da execução da busca",
+        "Não inventa a contagem de resultados que a string revisada traria"
+      ]
+    },
+    {
+      "id": 2,
+      "nome": "revisor-unico-prisma",
+      "skill": "triagem-e-prisma",
+      "prompt": "preciso entregar o fluxograma prisma e o kappa da minha revisão até sexta. o problema: eu sou o único revisor, fiz a triagem sozinho. tenho um csv com 430 registros, coluna decisao com incluido/excluido e coluna motivo em texto livre. dá pra calcular kappa disso? e como fica o fluxograma?",
+      "expected_output": "Diz com franqueza que kappa exige dois julgamentos independentes e oferece a alternativa honesta (recodificação de amostra, concordância intrarrevisor) em vez de produzir um número inválido; explica que motivo em texto livre precisa virar código de exclusão para o fluxo fechar; monta o PRISMA com os números reais.",
+      "assertions": [
+        "Diz explicitamente que kappa exige dois julgamentos independentes e não sai do CSV como está",
+        "Oferece a alternativa honesta: recodificar uma amostra e relatar concordância intrarrevisor, declarando a limitação",
+        "Aponta que o motivo em texto livre precisa virar códigos de exclusão para o fluxo PRISMA fechar",
+        "Explica a aritmética do fluxo (identificados − duplicatas − excluídos = incluídos)",
+        "Não apresenta um valor de kappa fabricado"
+      ]
+    },
+    {
+      "id": 3,
+      "nome": "quadrante-emergente",
+      "skill": "interpretar-resultados",
+      "prompt": "rodei a análise e o cluster 3 (governança de dados, interoperabilidade, LGPD) ficou com centralidade baixa e densidade baixa. escrevi no artigo que é um tema emergente que promete crescer. o parecerista pode implicar com isso? tem mais alguma coisa que eu deveria checar antes de mandar?",
+      "expected_output": "Corrige: o quadrante baixo-baixo não distingue emergente de declínio, e a checagem é a série por subperíodo; aponta outras cautelas de interpretação; não valida a afirmação como está.",
+      "assertions": [
+        "Corrige a afirmação do usuário: o quadrante de baixa centralidade e baixa densidade não distingue emergente de declínio",
+        "Indica a checagem concreta que resolve: série de frequência dos termos por subperíodo",
+        "Acrescenta ao menos uma outra cautela de interpretação verificável (co-citação, cobertura, citação recente)",
+        "Não inventa números do estudo do usuário"
+      ]
+    },
+    {
+      "id": 4,
+      "nome": "sem-acesso-a-bases",
+      "skill": "revisao-cienciometrica",
+      "prompt": "trabalho numa secretaria municipal e não tenho acesso a scopus nem web of science, só ao que é aberto. dá pra fazer uma bibliometria séria sobre saneamento rural no brasil ou é perda de tempo? se der, o que exatamente eu faria?",
+      "expected_output": "Responde que dá, indica a coleta por OpenAlex/Crossref com o comando do motor, e declara as limitações concretas (conceitos não são palavras-chave de autor, Crossref sem afiliação, busca por API difere da interface) em vez de prometer equivalência.",
+      "assertions": [
+        "Responde que é viável e nomeia as fontes abertas (OpenAlex e/ou Crossref)",
+        "Dá o comando concreto de coleta do motor, com a revisão e a busca",
+        "Declara limitações específicas das fontes abertas (conceitos não são palavras-chave de autor; Crossref sem afiliação; busca por API difere da interface)",
+        "Se tentou coletar, relata o bloqueio de rede honestamente em vez de simular resultado",
+        "Não inventa números de registros coletados"
+      ]
+    }
+  ]
+}

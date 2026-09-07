@@ -58,6 +58,13 @@ class TestEstrutura(unittest.TestCase):
             self.assertIn("name: %s" % skill, frontmatter,
                           "o campo name de %s precisa bater com a pasta" % skill)
             self.assertIn("description:", frontmatter)
+            # o instalador recusa descrição acima de 1024 caracteres
+            descricao = frontmatter.split("description:", 1)[1]
+            descricao = " ".join(l.strip() for l in descricao.splitlines()
+                                 if not l.strip().startswith(("name:", "compatibility:")))
+            self.assertLessEqual(
+                len(descricao.replace(">-", "").strip()), 1024,
+                "descrição de %s passa do limite de 1024 caracteres do instalador" % skill)
 
     def test_comandos_declaram_descricao(self):
         pasta = os.path.join(PLUGIN, "commands")

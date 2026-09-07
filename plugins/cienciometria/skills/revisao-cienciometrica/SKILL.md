@@ -1,19 +1,16 @@
 ---
 name: revisao-cienciometrica
 description: >-
-  Conduz revisões cienciométricas e bibliométricas de ponta a ponta — delimitação do recorte,
-  protocolo PRISMA, strings de busca, deduplicação, triagem dupla com kappa, indicadores (Lotka,
-  Bradford, Price, h-index), redes de co-citação, coautoria e co-palavras, mapa temático e
-  relatório reprodutível — com um motor de análise embarcado que roda sem R, VOSviewer ou
-  bibliotecas externas. Use SEMPRE que o usuário mencionar revisão bibliométrica, cienciometria,
-  cientometria, análise bibliométrica, mapeamento da literatura, mapeamento científico, estado da
-  arte sistemático, revisão de escopo, bibliometrix, biblioshiny, VOSviewer, CiteSpace, análise de
-  co-citação, acoplamento bibliográfico, co-palavras ou mapa temático. Use TAMBÉM quando ele
-  disser coisas como "quero mapear o que já se publicou sobre X", "preciso do estado da arte da
-  minha tese", "quem são os autores centrais desse campo", "exportei da Scopus e não sei o que
-  fazer com isso", "tenho um .bib/.ris/.csv de referências para analisar", "quais as lacunas da
-  literatura sobre Y" ou "monta o levantamento bibliográfico do meu projeto" — mesmo que não
-  use a palavra bibliometria.
+  Conduz revisões cienciométricas e bibliométricas de ponta a ponta — recorte, protocolo PRISMA,
+  strings de busca, coleta em fontes abertas, deduplicação, triagem com kappa, indicadores (Lotka,
+  Bradford, Price, h-index), redes de co-citação, coautoria e co-palavras, mapa temático e relatório
+  reprodutível — com motor de análise embarcado, sem R nem VOSviewer. Use SEMPRE que aparecer
+  revisão bibliométrica, cienciometria, análise bibliométrica, mapeamento da literatura ou do campo
+  científico, estado da arte sistemático, revisão de escopo, bibliometrix, VOSviewer, CiteSpace,
+  co-citação, acoplamento bibliográfico, co-palavras ou mapa temático. Use TAMBÉM em pedidos como
+  "quero mapear o que já se publicou sobre X", "preciso do estado da arte da minha tese", "quem são
+  os autores centrais desse campo", "exportei da Scopus e não sei o que fazer", "tenho um .bib/.ris
+  para analisar" ou "quais as lacunas da literatura sobre Y" — mesmo sem a palavra bibliometria.
 ---
 
 # Revisão cienciométrica
