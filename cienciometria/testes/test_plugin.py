@@ -98,3 +98,23 @@ class TestMotorEmbarcado(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestVersao(unittest.TestCase):
+    """A versão do motor e a do plugin precisam contar a mesma história."""
+
+    def test_versao_do_motor_bate_com_a_do_manifesto(self):
+        sys.path.insert(0, os.path.join(RAIZ_MOTOR, "src"))
+        from cienciometria import __version__
+
+        with open(os.path.join(PLUGIN, ".claude-plugin", "plugin.json"), encoding="utf-8") as fh:
+            manifesto = json.load(fh)
+        self.assertEqual(__version__, manifesto["version"])
+
+    def test_marketplace_declara_a_mesma_versao(self):
+        with open(os.path.join(PLUGIN, ".claude-plugin", "plugin.json"), encoding="utf-8") as fh:
+            manifesto = json.load(fh)
+        with open(os.path.join(RAIZ_REPO, ".claude-plugin", "marketplace.json"), encoding="utf-8") as fh:
+            mercado = json.load(fh)
+        entrada = [p for p in mercado["plugins"] if p["name"] == "cienciometria"][0]
+        self.assertEqual(entrada["version"], manifesto["version"])

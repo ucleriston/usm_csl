@@ -124,7 +124,12 @@ def cmd_fichar(args):
     if args.sugeridas:
         caminho = os.path.join(revisao.dir_processado, "leitura-sugerida.csv")
         if not os.path.exists(caminho):
-            raise SystemExit("Rode antes: cienciometria fichar --revisao %s --sugerir" % revisao.slug)
+            # calcula a lista aqui mesmo: exigir dois comandos para o caso mais comum é atrito à toa
+            sugestoes = fichamento.sugerir_leitura(
+                corpus, _ler_parcial(revisao.dir_saidas), args.quantidade)
+            salvar_tabela(caminho, sugestoes)
+            print("Lista de leitura calculada (%d artigos) → %s"
+                  % (len(sugestoes), os.path.relpath(caminho)))
         import csv as _csv
         with open(caminho, encoding="utf-8-sig", newline="") as fh:
             alvos += [linha["id"] for linha in _csv.DictReader(fh)]
