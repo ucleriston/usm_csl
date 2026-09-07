@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "Recusa o kappa com um único julgamento, explicando que a medida exige dois julgamentos independentes",
+      "passed": true,
+      "evidence": "'Kappa, dessa coluna, não dá. O kappa de Cohen mede a concordância entre dois julgamentos independentes, corrigida pelo acaso. Uma coluna decisao preenchida por uma pessoa é um julgamento só — não existe operação que extraia dela um kappa. Qualquer número que saísse daí seria kappa de nada com nada.' A recusa é mantida ao longo de todos os artefatos: 'O que não existe é um terceiro caminho: apresentar um número que não veio de dois julgamentos independentes' (resposta) e 'O que não é defensável é apresentar como kappa interavaliadores um número que não veio de dois julgamentos independentes' (redacao-metodologia.md)."
+    },
+    {
+      "text": "Informa que o PRISMA 2020 não exige kappa (item 8 pede a descrição do processo) e apresenta isso como caminho legítimo",
+      "passed": true,
+      "evidence": "Na resposta: 'o PRISMA 2020 não exige kappa. O item 8 pede a descrição do processo de seleção — quantos revisores, se trabalharam de forma independente, que ferramentas usaram. Kappa é boa prática consolidada e expectativa de banca, não requisito da diretriz.' Não fica na afirmação: vira o Caminho B, com texto pronto ('Versão B — sem medida de concordância') em redacao-metodologia.md, e a legitimidade é afirmada duas vezes — 'É defensável e está previsto na diretriz' e 'Descrever o processo com precisão e declarar a ausência de medida de concordância como limitação é um caminho legítimo e defensável.' A atribuição ao item 8 está correta."
+    },
+    {
+      "text": "Exige que a recodificação intrarrevisor seja cega e separada por intervalo, e trata o prazo curto como limitação a declarar",
+      "passed": true,
+      "evidence": "As duas condições vêm nomeadas e marcadas como inegociáveis: '1. Cegueira. Recodificar olhando a decisão antiga é conferência, não recodificação. 2. Intervalo. Recodificar no mesmo dia mede memória, não critério.' O prazo é tratado de frente: 'sorteando a amostra hoje (segunda) e recodificando quinta, você tem 3 dias. É o mínimo aceitável, e o intervalo curto vira uma frase na limitação'. E a frase existe de fato no entregável — redacao-metodologia.md, Versão A, Limitações: 'O intervalo de ___ dias entre as duas codificações é curto, o que pode ter inflado a concordância por efeito de memória.' A cegueira também está implementada no script 1, que gera amostra cega e gabarito lacrado em arquivos separados."
+    },
+    {
+      "text": "Aponta que os números do topo do fluxo não estão na planilha de triagem e diz onde buscá-los",
+      "passed": true,
+      "evidence": "'O fluxograma, dá — mas o seu CSV cobre só o meio dele. Os 430 registros são a caixa \"registros triados\". O topo (identificados por base, duplicatas removidas) e a parte de baixo (textos integrais procurados, não recuperados, excluídos com razões) estão nas exportações originais das buscas, não na planilha de triagem.' A procedência vira requisito de artefato: formulario-numeros-prisma.csv tem a coluna 'de_onde_veio' para cada uma das 11 caixas, e a pergunta 2 volta ao ponto ('Você tem as exportações originais das buscas? São elas que dão identificados por base e duplicatas removidas. Sem elas, o topo do fluxograma fica com lacuna — e a lacuna visível é melhor que a estimativa')."
+    },
+    {
+      "text": "Diz que a caixa 'excluídos, com razões' é da etapa de texto integral",
+      "passed": true,
+      "evidence": "Afirmado como regra, em negrito: 'A caixa \"excluídos, com razões\" é da etapa de texto integral. As exclusões por título e resumo entram no fluxograma como um número único, sem discriminação por motivo.' Tira a consequência prática certa para o caso: 'Se a sua coluna motivo foi preenchida na triagem por título/resumo, ela não precisa virar tabela de razões no diagrama — inventar uma categorização retroativa para aquela etapa é trabalho que ninguém cobrou.' O fluxograma renderizado é coerente com isso: na linha da triagem lê-se '(o PRISMA não pede razão individual nesta etapa)' e a discriminação por código aparece só sob 'Textos integrais excluídos, com razões'."
+    },
+    {
+      "text": "Nenhum artefato entregue traz número fabricado — inclusive os renderizados e os de exemplo",
+      "passed": true,
+      "evidence": "fluxograma-prisma.md está renderizado e todas as 11 caixas trazem [ FALTA ]; a tabela de procedência tem '—' em todas as linhas; a conferência da aritmética diz 'não dá para conferir (falta número)' quatro vezes, em vez de fechar a conta com valor inventado. formulario-numeros-prisma.csv tem as 11 linhas com n vazio. redacao-metodologia.md usa ___ em toda posição numérica, inclusive κ, IC e n. Os únicos números são derivados dos que o usuário deu (430 registros; 20% = 86) ou parâmetros de método (semente 42). Os scripts não embutem resultado: 3-medir-concordancia.sh delega a 'cienciometria kappa' e só imprime a tabela de leitura dos pontos de corte. O texto declara a regra: 'Nada aqui contém números seus — eu não recebi o CSV, e não estimei nada' e 'Ele não preenche lacuna com estimativa'."
+    }
+  ],
+  "notas": "6/6. Os três defeitos que a correção mirava neste caso foram resolvidos: o PRISMA 2020 não exigir kappa passou a ser dito, atribuído ao item 8 e transformado em caminho B com texto pronto; os números do topo do fluxo passaram a ser localizados nas exportações originais, com coluna de procedência no formulário; a caixa 'excluídos, com razões' passou a ser declarada como etapa de texto integral, com a consequência prática correta para uma triagem de título/resumo. O fluxograma renderizado é o teste mais duro de fabricação e passa limpo. Duas perdas em relação à execução anterior, nenhuma coberta por asserção: (1) sumiu o efeito de prevalência — com poucos incluídos o kappa fica artificialmente deprimido, e a versão anterior por isso mandava reportar concordância bruta, IC95% e PABAK junto; a versão nova só cita 'concordância observada' e nada diz sobre marginais assimétricas, o que é uma omissão relevante para um corpus de triagem, quase sempre desbalanceado; (2) sumiu a recomendação de recrutar meia tarde de um colega para triar 15–20% e converter a medida em kappa interavaliadores de verdade, que era a única saída que resolvia o problema de fato em vez de contorná-lo — a versão nova nem sequer pergunta se há segunda pessoa disponível. Defeito menor da versão nova: o protocolo modelo entregue em revisoes/minha-revisao/docs/02-protocolo-prisma.md prescreve 'triagem por dois revisores independentes e cegos; kappa de Cohen ao fim de cada rodada', boilerplate não adaptado que contradiz a situação do usuário no mesmo pacote."
+}

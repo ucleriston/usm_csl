@@ -53,6 +53,12 @@ verdade:
 Agrupamento com menos de ~5 itens em geral não sustenta rótulo próprio; trate como periferia ou
 funda-o ao vizinho, dizendo que fez isso.
 
+Antes de escrever qualquer conclusão sobre um agrupamento, teste se ele sobrevive a um empurrão:
+recalcule as redes com o limiar de ocorrência ±1 e veja se o agrupamento se mantém e se continua no
+mesmo quadrante. Agrupamento que muda de lugar com uma unidade de limiar é achado frágil, e dizer
+isso no texto é mais forte que fingir estabilidade. Registre também a semente usada — a partição
+vem de procedimento estocástico, e sem a semente ninguém reproduz o seu mapa.
+
 ## 3 Ler o mapa temático
 
 O mapa cruza **centralidade** (quanto o tema se liga aos outros) com **densidade** (quanto ele é

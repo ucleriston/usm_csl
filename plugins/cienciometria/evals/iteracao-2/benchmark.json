@@ -1,0 +1,376 @@
+{
+  "metadata": {
+    "skill_name": "cienciometria — iteração 2 (skill corrigida vs. anterior)",
+    "skill_path": "/home/user/usm_csl/plugins/cienciometria",
+    "timestamp": "2026-09-07",
+    "evals_run": [
+      1,
+      2,
+      3
+    ],
+    "runs_per_configuration": 1
+  },
+  "runs": [
+    {
+      "eval_id": 1,
+      "eval_name": "string-com-ruido",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": 276.3,
+        "tokens": 76997,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Diagnostica que a string não expressa dois dos recortes do tema (cidade e clima), em vez de tratá-la como larga demais",
+          "passed": true,
+          "evidence": "Título da resposta: 'Sua busca não está \"aberta demais\" — ela ainda não diz o seu tema'. E: 'Dos quatro recortes que essa frase tem, a string expressa dois (resiliência, governança) e não expressa os outros dois: cidade e clima. Não estão lá em nenhuma forma.' Consequência tirada explicitamente: 'o problema não é ruído a filtrar numa busca correta. É que a busca certa ainda não foi escrita' — e isso muda o instrumento (blocos em vez de exclusão). Em 03-estrategias-de-busca.md §0 a tabela de diagnóstico traz as duas linhas 'Ausência de bloco climático / tema não expresso' e 'Ausência de bloco urbano / tema não expresso'."
+        },
+        {
+          "text": "Rejeita explicitamente excluir áreas inteiras ou usar AND NOT sobre o resumo como solução, explicando o que isso derrubaria",
+          "passed": true,
+          "evidence": "§7 do doc de estratégias: 'Nunca excluir: ENGI, ENVI, EART, SOCI, BUSI, DECI, MULT — é exatamente onde governança climática urbana é publicada. Excluir ENGI para matar engenharia de materiais mataria junto boa parte da literatura de infraestrutura urbana resiliente.' Na resposta: 'quem tenta resolver isso com EXCLUDE SUBJAREA corta por fora e perde artigo bom'. O filtro de área é rebaixado a último recurso e a diagnóstico ('rodar S1 com e sem a exclusão, e ler os títulos removidos por ela antes de adotá-la')."
+        },
+        {
+          "text": "Usa operador de proximidade (W/n ou NEAR/n) ou justifica por que não usar",
+          "passed": true,
+          "evidence": "Variante S5 em 03-estrategias-de-busca.md §6: 'Proximidade: TITLE-ABS-KEY ( resilien* W/5 governance ) AND B3 AND B4 — alternativa de precisão caso a S1 ainda venha grande demais; exige o mesmo teste de recall'. A resposta condiciona o uso: 'sistemática com triagem manual precisa de precisão maior, e aí a S5 (com operador de proximidade resilien* W/5 governance) passa a valer a pena'. Pass, com ressalva: a proximidade fica só na variante e a S1 principal não traz uma justificativa direta de por que não a adota."
+        },
+        {
+          "text": "Prescreve variantes de sensibilidade e um modo de medir o que cada alteração derruba, não só a contagem total",
+          "passed": true,
+          "evidence": "§6 traz quatro variantes (S2 sem bloco urbano, S3 sem bloco climático, S4 bloco de rede obrigatório, S5 proximidade) com uma coluna 'O que a variante mede'. A unidade de medida é explicitamente elegibilidade, não volume: 'comparar o ganho de registros elegíveis (não de registros brutos) e registrar a decisão, inclusive quando for descartar a variante'. Há instrumento: 'cienciometria comparar --antes ... --depois ...' e execucao.json com uma linha por variante. Ressalva: não fixa o tamanho da amostra a triar do excedente — a versão anterior era mais operacional nesse ponto ('triando uma amostra de 100 ou 150 do excedente')."
+        },
+        {
+          "text": "Teste de recall com piso numérico declarado, e sementes escolhidas antes da busca",
+          "passed": true,
+          "evidence": "§9: 'Conjunto-semente em config/sementes.csv, montado ANTES de rodar a S1. Mínimo exigido: 22 de 25.' execucao.json grava o piso como dado: 'recall_sementes: {recuperadas: null, total: 25, minimo_exigido: 22}'. O cabeçalho de sementes.csv reforça a anterioridade com a razão: 'Escolher nunca depois: semente colhida no resultado não testa nada, confirma.' As 25 linhas estão em branco e estratificadas por cinco tradições (A–E), o que é o desenho certo para detectar perda de vocabulário inteiro."
+        },
+        {
+          "text": "Não inventa contagens de resultado nem registros bibliográficos",
+          "passed": true,
+          "evidence": "Varredura dos quatro docs e cinco arquivos de config: nenhuma contagem de resultado de busca. execucao.json tem 'resultados': null nas oito execuções e diz por quê: 'resultados fica em null enquanto a busca não tiver sido efetivamente rodada'. sementes.csv tem as 25 linhas vazias. O cabeçalho do doc declara a regra: 'este documento não traz número algum que não tenha sido efetivamente rodado'. Os únicos números do texto são os do próprio usuário (12 mil, 70%) e o piso 22/25. As referências em 01-projeto-de-pesquisa.md (Lotka 1926, Bradford 1934, Callon/Courtial/Laville 1991, Zupic e Čater 2015) são clássicos metodológicos reais, não registros do corpus."
+        }
+      ],
+      "notes": [
+        "6/6. Ganho real sobre a versão anterior: entra o operador de proximidade (W/5), que antes não existia em nenhum arquivo, e o diagnóstico fica mais afiado ('a busca certa ainda não foi escrita' em vez de 'subespecificada'). O filtro de área ganha a instrução de usá-lo primeiro como diagnóstico, comparando os títulos removidos. Três perdas em relação à execução anterior, nenhuma capturada pelas asserções: (1) sumiu o truque de medir recall dentro do próprio Scopus, ( S1 ) AND ( DOI(...) OR DOI(...) ), que operacionalizava o teste sem trabalho manual; (2) o bloco de resiliência perdeu vulnerabilit*, adaptation e polycentric*, e a versão anterior argumentava com razão que a tradição de vulnerability assessment é parcialmente disjunta em vocabulário — para uma pergunta cujo enunciado é 'sem perder artigo importante', isso é perda de recall; (3) a S1 nova aplica LIMIT-TO LANGUAGE en/pt/es com blocos inteiramente em inglês, o que é internamente inconsistente — sem termos pt/es nos blocos, os registros lusófonos não são recuperados de qualquer modo, e a versão anterior recusava LIMIT-TO LANGUAGE justamente por descartar registro com idioma mal etiquetado. A justificativa dada ('resilien* já cobre os cognatos') cobre B1, não cobre governança/cidade/clima."
+      ]
+    },
+    {
+      "eval_id": 1,
+      "eval_name": "string-com-ruido",
+      "configuration": "skill_anterior",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.8333333333333334,
+        "passed": 5,
+        "failed": 1,
+        "total": 6,
+        "time_seconds": 258.1,
+        "tokens": 74591,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Diagnostica que a string não expressa dois dos recortes do tema (cidade e clima), em vez de tratá-la como larga demais",
+          "passed": true,
+          "evidence": "Primeira frase: 'O diagnóstico é o contrário do que parece. Sua busca não está larga demais — está subespecificada. resilience AND governance AND network não diz em lugar nenhum que o objeto é uma cidade nem que o gatilho é climático.' A tabela nomeia as duas ausências: 'Falta o bloco de unidade de análise (cidade, município, urbano)' e 'Falta o bloco de fenômeno (clima, evento extremo)'. Conclusão explícita: 'a saída não é excluir engenharia de materiais. É dizer o que o trabalho é.'"
+        },
+        {
+          "text": "Rejeita explicitamente excluir áreas inteiras ou usar AND NOT sobre o resumo como solução, explicando o que isso derrubaria",
+          "passed": true,
+          "evidence": "Seção 'A correção que não perde artigo': 'Primeiro, o que não fazer: AND NOT (material OR polymer OR concrete...). Parece resolver e é o jeito mais eficiente de perder artigo bom em silêncio — qualquer estudo de infraestrutura verde, drenagem urbana ou retrofit menciona material ou concreto de passagem, e some sem deixar rastro.' E sobre área: 'nunca exclua ENGI, ENVI, SOCI ou EART — infraestrutura urbana, adaptação e desastre moram justamente nelas', com o mecanismo dado ('o Scopus classifica por revista e não por artigo'). Cobre as duas metades da asserção."
+        },
+        {
+          "text": "Usa operador de proximidade (W/n ou NEAR/n) ou justifica por que não usar",
+          "passed": false,
+          "evidence": "Busca por 'W/', 'NEAR', 'PRE/', 'ONEAR' e 'proximidade' nos cinco arquivos entregues (resposta.md, strings-scopus.txt, 03-estrategias-de-busca.md, sementes.csv, execucao.json) não retorna nenhuma ocorrência. As sete strings (S0–S5, W1, SC1) usam apenas AND/OR, aspas e truncamento. Nenhuma justificativa de por que a proximidade não foi usada, embora o caso — dois termos genéricos que precisam coocorrer em contexto — seja o caso de manual para W/n."
+        },
+        {
+          "text": "Prescreve variantes de sensibilidade e um modo de medir o que cada alteração derruba, não só a contagem total",
+          "passed": true,
+          "evidence": "Seção 'Rode duas versões, não uma': S2 é S1 sem o bloco climático, e o critério de medida é o certo e está operacionalizado: 'a pergunta certa não é quantos registros a mais, é quantos elegíveis a mais — triando uma amostra de 100 ou 150 do excedente. Se o ganho for desprezível, você descarta S2 com um número na mão em vez de com uma intuição.' execucao.json tem o campo dedicado 'ganho_marginal_S2_sobre_S1: {registros_brutos_adicionais, registros_elegiveis_adicionais, decisao}'. Além disso manda refazer o recall depois de aplicar S4, 'para ver o que a exclusão custou', e sementes.csv tem colunas de recall por variante (recuperado_S1, recuperado_S2, recuperado_apos_S4)."
+        },
+        {
+          "text": "Teste de recall com piso numérico declarado, e sementes escolhidas antes da busca",
+          "passed": true,
+          "evidence": "'Antes de rodar qualquer coisa, monte 20 a 25 trabalhos que você já sabe que são do seu tema — escolhidos agora, antes de ver o resultado da busca, não catados depois entre os que apareceram... Menos de ~90% (22 de 25) significa string incompleta.' O piso está em três lugares: no texto, no cabeçalho de sementes.csv e em execucao.json ('minimo_exigido': 22 para S1, S2 e S1_apos_S4). Ainda operacionaliza a medição dentro da base (S5: ( S1 ) AND ( DOI(...) OR DOI(...) ))."
+        },
+        {
+          "text": "Não inventa contagens de resultado nem registros bibliográficos",
+          "passed": true,
+          "evidence": "Nenhum número de resultado em nenhum arquivo. execucao.json traz 'resultados': null nas sete execuções e 'recuperadas': null nos três blocos de recall; sementes.csv tem as 25 linhas vazias; os DOIs de S5 são marcadores óbvios ('10.xxxx/aaaa'). Declaração explícita: 'não rodei nada. Não tenho acesso ao Scopus, então não há aqui nenhuma contagem estimada nem nenhuma referência inventada'. O único número não ancorado é retórico ('metade desses trabalhos fala em flood*...'), e não é contagem de resultado."
+        }
+      ],
+      "notes": [
+        "5/6 com as asserções novas — contra 6/6 com as antigas, o que confirma que as antigas não discriminavam. O único ponto que a correção de fato virou foi a proximidade: era ausência total, virou variante S5 explícita. Os outros cinco já passavam antes, e em dois deles a versão anterior é melhor que a corrigida: o teste de recall era medível dentro do Scopus por lista de DOIs (S5), e o modo de medir o que cada variante derruba tinha tamanho de amostra ('100 ou 150 do excedente') e campo próprio em execucao.json para o ganho marginal. A versão anterior também inclui vulnerabilit* no bloco de resiliência com a justificativa correta de tradição disjunta, termo que a corrigida deixou cair. Erro remanescente da anterior, não coberto por asserção: S4 lista CENG (Chemical Engineering) entre as áreas de baixo risco, e o texto diz 'nunca exclua ENGI' — CENG é área irmã e a exclusão dela derruba periódico interdisciplinar de infraestrutura pela mesma razão que ENGI."
+      ]
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "revisor-unico-prisma",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": 319.9,
+        "tokens": 89123,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Recusa o kappa com um único julgamento, explicando que a medida exige dois julgamentos independentes",
+          "passed": true,
+          "evidence": "'Kappa, dessa coluna, não dá. O kappa de Cohen mede a concordância entre dois julgamentos independentes, corrigida pelo acaso. Uma coluna decisao preenchida por uma pessoa é um julgamento só — não existe operação que extraia dela um kappa. Qualquer número que saísse daí seria kappa de nada com nada.' A recusa é mantida ao longo de todos os artefatos: 'O que não existe é um terceiro caminho: apresentar um número que não veio de dois julgamentos independentes' (resposta) e 'O que não é defensável é apresentar como kappa interavaliadores um número que não veio de dois julgamentos independentes' (redacao-metodologia.md)."
+        },
+        {
+          "text": "Informa que o PRISMA 2020 não exige kappa (item 8 pede a descrição do processo) e apresenta isso como caminho legítimo",
+          "passed": true,
+          "evidence": "Na resposta: 'o PRISMA 2020 não exige kappa. O item 8 pede a descrição do processo de seleção — quantos revisores, se trabalharam de forma independente, que ferramentas usaram. Kappa é boa prática consolidada e expectativa de banca, não requisito da diretriz.' Não fica na afirmação: vira o Caminho B, com texto pronto ('Versão B — sem medida de concordância') em redacao-metodologia.md, e a legitimidade é afirmada duas vezes — 'É defensável e está previsto na diretriz' e 'Descrever o processo com precisão e declarar a ausência de medida de concordância como limitação é um caminho legítimo e defensável.' A atribuição ao item 8 está correta."
+        },
+        {
+          "text": "Exige que a recodificação intrarrevisor seja cega e separada por intervalo, e trata o prazo curto como limitação a declarar",
+          "passed": true,
+          "evidence": "As duas condições vêm nomeadas e marcadas como inegociáveis: '1. Cegueira. Recodificar olhando a decisão antiga é conferência, não recodificação. 2. Intervalo. Recodificar no mesmo dia mede memória, não critério.' O prazo é tratado de frente: 'sorteando a amostra hoje (segunda) e recodificando quinta, você tem 3 dias. É o mínimo aceitável, e o intervalo curto vira uma frase na limitação'. E a frase existe de fato no entregável — redacao-metodologia.md, Versão A, Limitações: 'O intervalo de ___ dias entre as duas codificações é curto, o que pode ter inflado a concordância por efeito de memória.' A cegueira também está implementada no script 1, que gera amostra cega e gabarito lacrado em arquivos separados."
+        },
+        {
+          "text": "Aponta que os números do topo do fluxo não estão na planilha de triagem e diz onde buscá-los",
+          "passed": true,
+          "evidence": "'O fluxograma, dá — mas o seu CSV cobre só o meio dele. Os 430 registros são a caixa \"registros triados\". O topo (identificados por base, duplicatas removidas) e a parte de baixo (textos integrais procurados, não recuperados, excluídos com razões) estão nas exportações originais das buscas, não na planilha de triagem.' A procedência vira requisito de artefato: formulario-numeros-prisma.csv tem a coluna 'de_onde_veio' para cada uma das 11 caixas, e a pergunta 2 volta ao ponto ('Você tem as exportações originais das buscas? São elas que dão identificados por base e duplicatas removidas. Sem elas, o topo do fluxograma fica com lacuna — e a lacuna visível é melhor que a estimativa')."
+        },
+        {
+          "text": "Diz que a caixa 'excluídos, com razões' é da etapa de texto integral",
+          "passed": true,
+          "evidence": "Afirmado como regra, em negrito: 'A caixa \"excluídos, com razões\" é da etapa de texto integral. As exclusões por título e resumo entram no fluxograma como um número único, sem discriminação por motivo.' Tira a consequência prática certa para o caso: 'Se a sua coluna motivo foi preenchida na triagem por título/resumo, ela não precisa virar tabela de razões no diagrama — inventar uma categorização retroativa para aquela etapa é trabalho que ninguém cobrou.' O fluxograma renderizado é coerente com isso: na linha da triagem lê-se '(o PRISMA não pede razão individual nesta etapa)' e a discriminação por código aparece só sob 'Textos integrais excluídos, com razões'."
+        },
+        {
+          "text": "Nenhum artefato entregue traz número fabricado — inclusive os renderizados e os de exemplo",
+          "passed": true,
+          "evidence": "fluxograma-prisma.md está renderizado e todas as 11 caixas trazem [ FALTA ]; a tabela de procedência tem '—' em todas as linhas; a conferência da aritmética diz 'não dá para conferir (falta número)' quatro vezes, em vez de fechar a conta com valor inventado. formulario-numeros-prisma.csv tem as 11 linhas com n vazio. redacao-metodologia.md usa ___ em toda posição numérica, inclusive κ, IC e n. Os únicos números são derivados dos que o usuário deu (430 registros; 20% = 86) ou parâmetros de método (semente 42). Os scripts não embutem resultado: 3-medir-concordancia.sh delega a 'cienciometria kappa' e só imprime a tabela de leitura dos pontos de corte. O texto declara a regra: 'Nada aqui contém números seus — eu não recebi o CSV, e não estimei nada' e 'Ele não preenche lacuna com estimativa'."
+        }
+      ],
+      "notes": [
+        "6/6. Os três defeitos que a correção mirava neste caso foram resolvidos: o PRISMA 2020 não exigir kappa passou a ser dito, atribuído ao item 8 e transformado em caminho B com texto pronto; os números do topo do fluxo passaram a ser localizados nas exportações originais, com coluna de procedência no formulário; a caixa 'excluídos, com razões' passou a ser declarada como etapa de texto integral, com a consequência prática correta para uma triagem de título/resumo. O fluxograma renderizado é o teste mais duro de fabricação e passa limpo. Duas perdas em relação à execução anterior, nenhuma coberta por asserção: (1) sumiu o efeito de prevalência — com poucos incluídos o kappa fica artificialmente deprimido, e a versão anterior por isso mandava reportar concordância bruta, IC95% e PABAK junto; a versão nova só cita 'concordância observada' e nada diz sobre marginais assimétricas, o que é uma omissão relevante para um corpus de triagem, quase sempre desbalanceado; (2) sumiu a recomendação de recrutar meia tarde de um colega para triar 15–20% e converter a medida em kappa interavaliadores de verdade, que era a única saída que resolvia o problema de fato em vez de contorná-lo — a versão nova nem sequer pergunta se há segunda pessoa disponível. Defeito menor da versão nova: o protocolo modelo entregue em revisoes/minha-revisao/docs/02-protocolo-prisma.md prescreve 'triagem por dois revisores independentes e cegos; kappa de Cohen ao fim de cada rodada', boilerplate não adaptado que contradiz a situação do usuário no mesmo pacote."
+      ]
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "revisor-unico-prisma",
+      "configuration": "skill_anterior",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.5,
+        "passed": 3,
+        "failed": 3,
+        "total": 6,
+        "time_seconds": 300.3,
+        "tokens": 79521,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Recusa o kappa com um único julgamento, explicando que a medida exige dois julgamentos independentes",
+          "passed": true,
+          "evidence": "'Kappa de Cohen entre revisores, do seu CSV, não dá — e não é questão de método, é de aritmética. O kappa compara duas classificações independentes do mesmo registro. Você tem uma coluna decisao. Não existe segunda classificação para comparar; qualquer número que saísse daí seria inventado.' Reforça a fronteira: 'O que não fazer: relatar o intrarrevisor como se fosse interavaliadores. A frase muda uma palavra e a metodologia inteira.'"
+        },
+        {
+          "text": "Informa que o PRISMA 2020 não exige kappa (item 8 pede a descrição do processo) e apresenta isso como caminho legítimo",
+          "passed": false,
+          "evidence": "Não só não informa, afirma o contrário. Em 'Como ler o kappa quando ele sair': 'Kappa ruim relatado é limitação; kappa não medido é falha metodológica.' Isso trata a medida como obrigatória e fecha exatamente o caminho que a diretriz autoriza. Nenhuma menção ao PRISMA 2020 item 8 nem à descrição do processo de seleção como requisito real, em nenhum dos cinco arquivos; texto-metodos-e-limitacao.md também não oferece versão sem medida de concordância — só a versão com kappa intrarrevisor. Consequência prática: o usuário fica sem o plano B legítimo caso a recodificação cega não caiba antes de sexta."
+        },
+        {
+          "text": "Exige que a recodificação intrarrevisor seja cega e separada por intervalo, e trata o prazo curto como limitação a declarar",
+          "passed": false,
+          "evidence": "As duas primeiras condições estão bem cobertas — cegueira ('_gabarito-original.csv (não abra antes de recodificar — a cegueira é o valor todo do exercício)') e intervalo ('recodificar no mesmo dia mede memória, não critério', com a recodificação agendada para quarta ou quinta). A terceira falha: em nenhum lugar o intervalo curto é tratado como limitação a declarar. texto-metodos-e-limitacao.md pede 'retriada pelo mesmo revisor após [?] dias' mas o parágrafo de Limitações não menciona inflação da concordância por memória — cita só a ausência de segundo revisor. E o texto puxa na direção oposta ao chamar o exercício de algo que 'cabe em uma tarde', o que, se seguido, anula o intervalo que ele mesmo exigiu."
+        },
+        {
+          "text": "Aponta que os números do topo do fluxo não estão na planilha de triagem e diz onde buscá-los",
+          "passed": true,
+          "evidence": "Na resposta: '[o fluxograma] Depende de números que o seu CSV provavelmente não tem inteiros'. Em prisma-fluxograma.md §1, 'Antes de desenhar: de onde vêm os 430?', com dois casos e a fonte: 'você ainda precisa do total identificado por base e de quantas duplicatas caíram. Se você tem os arquivos de exportação das bases, esses dois números são recuperáveis: basta contar as linhas de cada exportação e a diferença até 430.' A pergunta 1 repete o encaminhamento. Cobre o topo do fluxo com a mesma substância da versão corrigida."
+        },
+        {
+          "text": "Diz que a caixa 'excluídos, com razões' é da etapa de texto integral",
+          "passed": false,
+          "evidence": "A regra nunca é enunciada. O diagrama a posiciona corretamente (F 'Textos integrais avaliados' --> G 'Excluídos, com razões'), mas o resto do pacote a contradiz: a suposição 2 declara que 'A triagem foi em uma etapa só (título/resumo), sem fase separada de texto integral' e, sob essa suposição, a resposta encaminha a coluna motivo do usuário para aquela caixa — 'A caixa \"excluídos, com razões\" conta registros por código' e o script 3 'gera a contagem por código, já no formato da caixa do PRISMA'. É precisamente a categorização retroativa de motivos de título/resumo que a asserção quer ver recusada. Some-se a isso a aritmética errada em prisma-fluxograma.md §4: 'identificados − removidos antes da triagem − excluídos na triagem = incluídos' omite a exclusão de texto integral, isto é, omite a própria caixa em discussão."
+        },
+        {
+          "text": "Nenhum artefato entregue traz número fabricado — inclusive os renderizados e os de exemplo",
+          "passed": true,
+          "evidence": "prisma-fluxograma.md traz [?] em todas as caixas, e o único número é o do próprio usuário, marcado como pendente de verificação ('n = [430?]'). texto-metodos-e-limitacao.md usa [?] em toda posição numérica, inclusive κ, IC95% e PABAK. Os três scripts não embutem resultado (grep por κ, 0,xx e n = não retorna nada além dos defaults --fracao 0.20 e --seed 42). Nenhuma saída de exemplo foi deixada na pasta. Declaração conferida: 'Nenhum número deste pacote é seu: os resultados só aparecem quando você rodar sobre o seu arquivo.' A tabela de leitura do kappa são pontos de corte convencionais, não resultados."
+        }
+      ],
+      "notes": [
+        "3/6 com as asserções novas — contra 5/5 com as antigas. É o caso em que a reescrita das asserções mais discriminou, e as três falhas são as três correções pedidas. A mais grave é a segunda: a versão anterior não só omitia que o PRISMA 2020 não exige kappa, como afirmava o oposto ('kappa não medido é falha metodológica'), transformando em falha metodológica algo que a diretriz não pede e empurrando um usuário com prazo de quatro dias para a única saída que exige intervalo entre codificações. A terceira falha é a que fecha o círculo: a caixa 'excluídos, com razões' está desenhada no lugar certo mas usada no lugar errado, e a conferência aritmética entregue omite a própria transição de texto integral. Nenhuma regressão a registrar da anterior para a nova neste caso: tudo o que a anterior fazia bem (recusa do kappa, procedência do topo do fluxo, ausência de números fabricados) a nova também faz — mas ver a nota do with_skill, que a nova perdeu o efeito de prevalência/PABAK e a recomendação de recrutar segundo revisor para 15–20%."
+      ]
+    },
+    {
+      "eval_id": 3,
+      "eval_name": "quadrante-emergente",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": 107.8,
+        "tokens": 59460,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Corrige a leitura do quadrante: baixa centralidade e baixa densidade não distinguem emergente de em declínio",
+          "passed": true,
+          "evidence": "'Centralidade baixa + densidade baixa é o quadrante que abriga emergente OU em declínio — os dois ocupam exatamente o mesmo lugar, porque o mapa temático é uma fotografia sincrônica: ele não tem dimensão temporal. Um tema que está nascendo e um tema que está morrendo têm a mesma assinatura estrutural (poucas ligações externas, pouca coesão interna).' O mecanismo, e não só a conclusão, está dado. A correção reaparece na terceira redação sugerida, para o caso de não haver tempo de checar: 'posição que na formulação de Cobo et al. (2011) é ocupada indistintamente por temas emergentes e por temas em declínio.'"
+        },
+        {
+          "text": "Distingue 'emergente' (posição estrutural) de 'promissor' (juízo de valor que indicador nenhum sustenta)",
+          "passed": true,
+          "evidence": "Separação explícita e nomeada: 'Mesmo que você prove que o tema é emergente, \"emergente\" descreve posição estrutural; \"promissor\" é juízo de valor sobre o futuro. Nenhum indicador bibliométrico sustenta previsão.' E o encaminhamento é diferente para cada um: o primeiro se resolve com checagem, o segundo não se resolve com dado nenhum — 'Essa parte da frase eu cortaria independentemente do que as checagens abaixo mostrarem — ou reescreveria como expectativa explicitamente sua, na Discussão e não nos Resultados, ancorada em algo externo (agenda regulatória, política pública, chamada de financiamento), não no mapa.'"
+        },
+        {
+          "text": "Dá as duas checagens em ordem de custo: ano médio de publicação do agrupamento e série por subperíodo",
+          "passed": true,
+          "evidence": "Seção A, rotulada 'Emergente ou em declínio (barata → forte)', na ordem pedida: '1. Ano médio de publicação dos trabalhos do agrupamento, comparado ao do corpus. Acima da média do corpus = indício de emergência; abaixo = indício de declínio. É a checagem mais barata e já elimina metade das dúvidas. É indício, não prova. 2. Série de frequência dos termos por subperíodo (saidas/evolucao_tematica.csv)... Esta é a evidência forte — é ela que vai no texto, com os números.' O estatuto epistêmico de cada uma é distinguido (indício vs. evidência), e o fecho é operacional: 'Sem pelo menos uma das duas, não afirme nem uma coisa nem outra.'"
+        },
+        {
+          "text": "Alerta que LGPD e GDPR não devem ser unificados no tesauro, por serem normas distintas",
+          "passed": true,
+          "evidence": "Item 4, em negrito, logo depois de recomendar a unificação das variantes legítimas: 'Mas cuidado com o oposto: LGPD e GDPR não se unificam. São normas distintas, de jurisdições distintas, e fundi-las destrói exatamente a distinção que talvez seja o seu achado. A regra é: só unifica o que é o mesmo referente escrito de outro jeito.' O alerta traz a regra geral que o generaliza, não só o caso. A pergunta 6 fecha o laço: 'LGPD e GDPR estão como termos separados, ou alguém já os fundiu em \"proteção de dados\"?'"
+        },
+        {
+          "text": "Menciona o último ano de indexação incompleto como artefato que penaliza temas emergentes",
+          "passed": true,
+          "evidence": "Item 3, dentro da seção B ('Descartar artefato — antes de concluir qualquer coisa sobre cluster periférico'): 'O último ano do recorte está incompleto? A indexação do ano corrente ainda está entrando na base, e isso penaliza exatamente os temas recentes — pode ser o que está achatando a densidade e a centralidade do cluster 3. Recalcule sem o último ano e veja se a leitura muda. Se mudar, relate a decisão.' Traz o mecanismo, a direção do viés, o teste e o que fazer com o resultado. A suposição correspondente está declarada ('O recorte temporal inclui o ano corrente, por isso a checagem 3') e a pergunta 3 confirma o dado que falta."
+        },
+        {
+          "text": "Não inventa números do estudo do usuário",
+          "passed": true,
+          "evidence": "Nenhum valor atribuído ao estudo. As redações sugeridas usam marcadores: '[n1] ocorrências em [período 1] para [n2] em [período 2]', 'ano médio... ([ano]) é superior ao do corpus ([ano])', 'com N ligações entre eles'. Declarado antes das redações: 'Os colchetes são para você preencher com os números que estão nas suas saídas — não tenho seus dados e não vou inventar valor nenhum.' Os únicos números do texto são limiares heurísticos genéricos ('abaixo de ~5 itens', 'os 10 itens de maior frequência', 'três a cinco palavras') e as citações de método Callon/Courtial/Laville 1991 e Cobo et al. 2011, que são reais e vêm com a instrução de conferir volume e páginas antes de submeter."
+        }
+      ],
+      "notes": [
+        "6/6. Este é o caso em que a correção mais rendeu: os três pontos mirados eram falhas reais e limpas da versão anterior. O ano médio de publicação do agrupamento não existia; o último ano de indexação incompleto não existia; e o alerta sobre LGPD/GDPR inverte uma orientação que a versão anterior dava errada, não apenas preenche uma lacuna. A distinção emergente/promissor também ficou mais nítida, porque separa as duas objeções por tipo — uma se resolve com dado, a outra não se resolve com dado nenhum. Três perdas em relação à execução anterior, nenhuma coberta por asserção: (1) sumiu o aviso sobre percentual em base pequena ('cresceu 300%' pode ser de 2 para 8 registros), que num cluster periférico é justamente o erro seguinte que o parecerista pega — a redação sugerida dá absolutos, o que mitiga, mas o aviso explícito se perdeu; (2) sumiu o teste de sensibilidade do limiar de co-ocorrência (±1) para ver se o cluster muda de quadrante, que era a checagem que media a fragilidade da própria posição no mapa; (3) sumiu a semente fixa dos procedimentos estocásticos de agrupamento — sem ela 'cluster 3' pode virar outro cluster na mão do revisor, e o texto do usuário nomeia o cluster pelo número."
+      ]
+    },
+    {
+      "eval_id": 3,
+      "eval_name": "quadrante-emergente",
+      "configuration": "skill_anterior",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.5,
+        "passed": 3,
+        "failed": 3,
+        "total": 6,
+        "time_seconds": 110.4,
+        "tokens": 62441,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Corrige a leitura do quadrante: baixa centralidade e baixa densidade não distinguem emergente de em declínio",
+          "passed": true,
+          "evidence": "'Centralidade baixa + densidade baixa é o quadrante emergente OU em declínio. Os dois ocupam exatamente o mesmo lugar no mapa de Callon: um tema que está nascendo e um tema que está saindo de cena produzem a mesma assinatura (poucas ligações externas, pouca coesão interna). O quadrante é ambíguo por construção — ele não decide nada sozinho.' E nomeia o custo para o texto do usuário: 'você escolheu um dos dois ramos da ambiguidade sem mostrar o critério da escolha.'"
+        },
+        {
+          "text": "Distingue 'emergente' (posição estrutural) de 'promissor' (juízo de valor que indicador nenhum sustenta)",
+          "passed": true,
+          "evidence": "A distinção é feita, ainda que sem os rótulos: '\"promete crescer\" é projeção, que é um passo além ainda: o mapa é uma fotografia sincrônica, não tem informação sobre o futuro. Essa frase é do tipo que sai do artigo no primeiro round.' Reforçada no item 4e, que lista 'promissor' entre os adjetivos a cortar e conclui: '\"Promete crescer\" é o caso extremo disso: é adjetivo sobre o futuro.' Os dois problemas recebem tratamentos diferentes — 'emergente' se resolve com a série, 'promete crescer' não é reabilitado nem no desfecho de crescimento ('Cresce → mantenha \"emergente\"', não 'mantenha promissor')."
+        },
+        {
+          "text": "Dá as duas checagens em ordem de custo: ano médio de publicação do agrupamento e série por subperíodo",
+          "passed": false,
+          "evidence": "O ano médio de publicação do agrupamento não aparece em lugar nenhum do arquivo. A seção 2 ('O teste que decide') oferece três checagens, todas da mesma família e do mesmo custo: série por subperíodo em evolucao_tematica.csv, palavras em ascensão, e produção anual dos registros que carregam os termos do cluster. Todas exigem que a análise por subperíodos já tenha sido rodada — e a própria resposta reconhece que pode não ter sido ('Sua revisão tem subperíodos definidos e gerou saída de evolução temática. Se não gerou, esse é o passo que falta'). Sem a checagem barata, o usuário com prazo fica sem nada para fazer no caso mais provável."
+        },
+        {
+          "text": "Alerta que LGPD e GDPR não devem ser unificados no tesauro, por serem normas distintas",
+          "passed": false,
+          "evidence": "Afirma o contrário. Item 4b: 'Se \"LGPD\", \"Lei Geral de Proteção de Dados\", \"GDPR\", \"proteção de dados pessoais\" e \"privacidade\" entraram como termos distintos, a coesão interna despenca artificialmente — o cluster se fragmenta em sinônimos. Confira o tesauro de termos da revisão.' Trata GDPR como sinônimo de LGPD e recomenda a unificação. A pergunta 4 repete o enquadramento errado: 'O tesauro unifica LGPD / GDPR / proteção de dados / privacidade, ou eles entraram separados?'. Seguir esse conselho fundiria duas normas de jurisdições distintas e apagaria justamente a distinção que num tema de governança de dados brasileiro pode ser o achado."
+        },
+        {
+          "text": "Menciona o último ano de indexação incompleto como artefato que penaliza temas emergentes",
+          "passed": false,
+          "evidence": "Não aparece. O item 4c trata de viés de cobertura de base (anglofonia, livros, literatura institucional), que é outro artefato; o checklist da seção 6 pede 'data de corte da coleta declarada' e 'citações por ano ao lado do total' porque 'trabalhos dos últimos dois anos ainda não acumularam citações' — este último é sobre acúmulo de citação, não sobre indexação incompleta do último ano deprimindo a frequência dos termos e, com ela, a densidade e a centralidade de um cluster recente. A pergunta 'o último ano está fechado?' não é feita."
+        },
+        {
+          "text": "Não inventa números do estudo do usuário",
+          "passed": true,
+          "evidence": "Nenhum valor atribuído ao cluster 3 ou ao corpus. As redações sugeridas usam \\_\\_ em todas as posições numéricas, com a ressalva 'preencha com os seus números — eu não tenho seus dados'. O '300%' e o 'de 2 para 8 registros' aparecem declaradamente como exemplo aritmético do efeito de base pequena, não como dado do usuário. 'a LGPD é de 2018, com vigência escalonada depois' é fato externo correto. Os limiares ('menos de ~5 itens', 'os 10 termos de maior frequência', '±1') são heurísticas genéricas."
+        }
+      ],
+      "notes": [
+        "3/6 com as asserções novas — contra 4/4 com as antigas. As três falhas são exatamente os três pontos que a correção mirava, e uma delas não é lacuna e sim erro ativo: recomendar a unificação de LGPD e GDPR no tesauro é conselho que degrada a análise, e vinha embutido numa seção por outros aspectos boa (fragmentação de vocabulário como artefato de densidade). A ausência do ano médio de publicação deixa a resposta dependente de uma saída que pode não existir. A ausência do último ano incompleto deixa passar o artefato que mais penaliza justamente o tipo de cluster em discussão. O que a versão anterior tem de melhor e a corrigida deixou cair: o aviso sobre percentual em base pequena, a sensibilidade do limiar de co-ocorrência ±1 como teste da fragilidade da posição no mapa, e a semente fixa do agrupamento — os três estão registrados como regressão na nota do with_skill."
+      ]
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 234.667,
+        "stddev": 91.457,
+        "min": 107.8,
+        "max": 319.9
+      },
+      "tokens": {
+        "mean": 75193.333,
+        "stddev": 12176.844,
+        "min": 59460,
+        "max": 89123
+      }
+    },
+    "skill_anterior": {
+      "pass_rate": {
+        "mean": 0.611,
+        "stddev": 0.157,
+        "min": 0.5,
+        "max": 0.833
+      },
+      "time_seconds": {
+        "mean": 222.933,
+        "stddev": 81.417,
+        "min": 110.4,
+        "max": 300.3
+      },
+      "tokens": {
+        "mean": 72184.333,
+        "stddev": 7177.541,
+        "min": 62441,
+        "max": 79521
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.39",
+      "time_seconds": "+11.7",
+      "tokens": "+3009"
+    }
+  },
+  "observacoes_do_analista": [
+    "Skill corrigida 18/18; skill anterior 11/18 nas mesmas asserções. As asserções da iteração 1 davam 100% às duas versões — foram reescritas para medir o que a correção mirava.",
+    "Maior ganho no caso 2: a versão anterior afirmava que kappa não medido é falha metodológica, o que fecha o caminho legítimo previsto no PRISMA 2020 (item 8 pede a descrição do processo, não o kappa).",
+    "Caso 3: a versão anterior recomendava unificar LGPD com GDPR no tesauro — normas de jurisdições distintas. A correção inverte e generaliza a regra.",
+    "Caso 1: ganho estreito; o operador de proximidade não existia em nenhum arquivo da versão anterior.",
+    "Nenhum artefato com número fabricado nas três execuções, inclusive os renderizados.",
+    "Cinco regressões apontadas pelo avaliador (efeito de prevalência e PABAK, recomendação de segundo revisor, medição de recall por DOI dentro da base, tradições concorrentes no bloco de sinônimos, sensibilidade de limiar) foram incorporadas às skills depois desta rodada."
+  ]
+}

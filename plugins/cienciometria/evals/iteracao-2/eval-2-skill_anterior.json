@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "Recusa o kappa com um único julgamento, explicando que a medida exige dois julgamentos independentes",
+      "passed": true,
+      "evidence": "'Kappa de Cohen entre revisores, do seu CSV, não dá — e não é questão de método, é de aritmética. O kappa compara duas classificações independentes do mesmo registro. Você tem uma coluna decisao. Não existe segunda classificação para comparar; qualquer número que saísse daí seria inventado.' Reforça a fronteira: 'O que não fazer: relatar o intrarrevisor como se fosse interavaliadores. A frase muda uma palavra e a metodologia inteira.'"
+    },
+    {
+      "text": "Informa que o PRISMA 2020 não exige kappa (item 8 pede a descrição do processo) e apresenta isso como caminho legítimo",
+      "passed": false,
+      "evidence": "Não só não informa, afirma o contrário. Em 'Como ler o kappa quando ele sair': 'Kappa ruim relatado é limitação; kappa não medido é falha metodológica.' Isso trata a medida como obrigatória e fecha exatamente o caminho que a diretriz autoriza. Nenhuma menção ao PRISMA 2020 item 8 nem à descrição do processo de seleção como requisito real, em nenhum dos cinco arquivos; texto-metodos-e-limitacao.md também não oferece versão sem medida de concordância — só a versão com kappa intrarrevisor. Consequência prática: o usuário fica sem o plano B legítimo caso a recodificação cega não caiba antes de sexta."
+    },
+    {
+      "text": "Exige que a recodificação intrarrevisor seja cega e separada por intervalo, e trata o prazo curto como limitação a declarar",
+      "passed": false,
+      "evidence": "As duas primeiras condições estão bem cobertas — cegueira ('_gabarito-original.csv (não abra antes de recodificar — a cegueira é o valor todo do exercício)') e intervalo ('recodificar no mesmo dia mede memória, não critério', com a recodificação agendada para quarta ou quinta). A terceira falha: em nenhum lugar o intervalo curto é tratado como limitação a declarar. texto-metodos-e-limitacao.md pede 'retriada pelo mesmo revisor após [?] dias' mas o parágrafo de Limitações não menciona inflação da concordância por memória — cita só a ausência de segundo revisor. E o texto puxa na direção oposta ao chamar o exercício de algo que 'cabe em uma tarde', o que, se seguido, anula o intervalo que ele mesmo exigiu."
+    },
+    {
+      "text": "Aponta que os números do topo do fluxo não estão na planilha de triagem e diz onde buscá-los",
+      "passed": true,
+      "evidence": "Na resposta: '[o fluxograma] Depende de números que o seu CSV provavelmente não tem inteiros'. Em prisma-fluxograma.md §1, 'Antes de desenhar: de onde vêm os 430?', com dois casos e a fonte: 'você ainda precisa do total identificado por base e de quantas duplicatas caíram. Se você tem os arquivos de exportação das bases, esses dois números são recuperáveis: basta contar as linhas de cada exportação e a diferença até 430.' A pergunta 1 repete o encaminhamento. Cobre o topo do fluxo com a mesma substância da versão corrigida."
+    },
+    {
+      "text": "Diz que a caixa 'excluídos, com razões' é da etapa de texto integral",
+      "passed": false,
+      "evidence": "A regra nunca é enunciada. O diagrama a posiciona corretamente (F 'Textos integrais avaliados' --> G 'Excluídos, com razões'), mas o resto do pacote a contradiz: a suposição 2 declara que 'A triagem foi em uma etapa só (título/resumo), sem fase separada de texto integral' e, sob essa suposição, a resposta encaminha a coluna motivo do usuário para aquela caixa — 'A caixa \"excluídos, com razões\" conta registros por código' e o script 3 'gera a contagem por código, já no formato da caixa do PRISMA'. É precisamente a categorização retroativa de motivos de título/resumo que a asserção quer ver recusada. Some-se a isso a aritmética errada em prisma-fluxograma.md §4: 'identificados − removidos antes da triagem − excluídos na triagem = incluídos' omite a exclusão de texto integral, isto é, omite a própria caixa em discussão."
+    },
+    {
+      "text": "Nenhum artefato entregue traz número fabricado — inclusive os renderizados e os de exemplo",
+      "passed": true,
+      "evidence": "prisma-fluxograma.md traz [?] em todas as caixas, e o único número é o do próprio usuário, marcado como pendente de verificação ('n = [430?]'). texto-metodos-e-limitacao.md usa [?] em toda posição numérica, inclusive κ, IC95% e PABAK. Os três scripts não embutem resultado (grep por κ, 0,xx e n = não retorna nada além dos defaults --fracao 0.20 e --seed 42). Nenhuma saída de exemplo foi deixada na pasta. Declaração conferida: 'Nenhum número deste pacote é seu: os resultados só aparecem quando você rodar sobre o seu arquivo.' A tabela de leitura do kappa são pontos de corte convencionais, não resultados."
+    }
+  ],
+  "notas": "3/6 com as asserções novas — contra 5/5 com as antigas. É o caso em que a reescrita das asserções mais discriminou, e as três falhas são as três correções pedidas. A mais grave é a segunda: a versão anterior não só omitia que o PRISMA 2020 não exige kappa, como afirmava o oposto ('kappa não medido é falha metodológica'), transformando em falha metodológica algo que a diretriz não pede e empurrando um usuário com prazo de quatro dias para a única saída que exige intervalo entre codificações. A terceira falha é a que fecha o círculo: a caixa 'excluídos, com razões' está desenhada no lugar certo mas usada no lugar errado, e a conferência aritmética entregue omite a própria transição de texto integral. Nenhuma regressão a registrar da anterior para a nova neste caso: tudo o que a anterior fazia bem (recusa do kappa, procedência do topo do fluxo, ausência de números fabricados) a nova também faz — mas ver a nota do with_skill, que a nova perdeu o efeito de prevalência/PABAK e a recomendação de recrutar segundo revisor para 15–20%."
+}

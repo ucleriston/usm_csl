@@ -22,13 +22,21 @@
       "skill": "estrategia-de-busca",
       "prompt": "montei essa busca no scopus e voltou quase 12 mil resultados, sendo que uns 70% é coisa de engenharia de materiais que não tem nada a ver: TITLE-ABS-KEY (resilience AND governance AND network). meu tema é resiliência de governança em cidades diante de eventos climáticos extremos. como eu fecho isso sem perder artigo importante?",
       "expected_output": "Decompõe em blocos, aponta o termo genérico sozinho como causa, propõe string corrigida com aspas, sinônimos e três idiomas, e prescreve o teste de recall com conjunto-semente antes de valer.",
-      "assertions": [
+      "assertions_iteracao_1": [
         "Identifica que os termos genéricos combinados sem contexto são a causa do ruído",
         "Entrega string revisada com expressões entre aspas e sinônimos",
         "Inclui bloco de contexto (cidade/urbano/clima) que elimina o ruído de engenharia de materiais",
         "Prescreve teste de recall com conjunto-semente antes de adotar a string",
         "Menciona exportação com referências citadas ou registro da execução da busca",
         "Não inventa a contagem de resultados que a string revisada traria"
+      ],
+      "assertions": [
+        "Diagnostica que a string não expressa dois dos recortes do tema (cidade e clima), em vez de tratá-la como larga demais",
+        "Rejeita explicitamente excluir áreas inteiras ou usar AND NOT sobre o resumo como solução, explicando o que isso derrubaria",
+        "Usa operador de proximidade (W/n ou NEAR/n) ou justifica por que não usar",
+        "Prescreve variantes de sensibilidade e um modo de medir o que cada alteração derruba, não só a contagem total",
+        "Teste de recall com piso numérico declarado, e sementes escolhidas antes da busca",
+        "Não inventa contagens de resultado nem registros bibliográficos"
       ]
     },
     {
@@ -37,12 +45,20 @@
       "skill": "triagem-e-prisma",
       "prompt": "preciso entregar o fluxograma prisma e o kappa da minha revisão até sexta. o problema: eu sou o único revisor, fiz a triagem sozinho. tenho um csv com 430 registros, coluna decisao com incluido/excluido e coluna motivo em texto livre. dá pra calcular kappa disso? e como fica o fluxograma?",
       "expected_output": "Diz com franqueza que kappa exige dois julgamentos independentes e oferece a alternativa honesta (recodificação de amostra, concordância intrarrevisor) em vez de produzir um número inválido; explica que motivo em texto livre precisa virar código de exclusão para o fluxo fechar; monta o PRISMA com os números reais.",
-      "assertions": [
+      "assertions_iteracao_1": [
         "Diz explicitamente que kappa exige dois julgamentos independentes e não sai do CSV como está",
         "Oferece a alternativa honesta: recodificar uma amostra e relatar concordância intrarrevisor, declarando a limitação",
         "Aponta que o motivo em texto livre precisa virar códigos de exclusão para o fluxo PRISMA fechar",
         "Explica a aritmética do fluxo (identificados − duplicatas − excluídos = incluídos)",
         "Não apresenta um valor de kappa fabricado"
+      ],
+      "assertions": [
+        "Recusa o kappa com um único julgamento, explicando que a medida exige dois julgamentos independentes",
+        "Informa que o PRISMA 2020 não exige kappa (item 8 pede a descrição do processo) e apresenta isso como caminho legítimo",
+        "Exige que a recodificação intrarrevisor seja cega e separada por intervalo, e trata o prazo curto como limitação a declarar",
+        "Aponta que os números do topo do fluxo não estão na planilha de triagem e diz onde buscá-los",
+        "Diz que a caixa 'excluídos, com razões' é da etapa de texto integral",
+        "Nenhum artefato entregue traz número fabricado — inclusive os renderizados e os de exemplo"
       ]
     },
     {
@@ -51,10 +67,18 @@
       "skill": "interpretar-resultados",
       "prompt": "rodei a análise e o cluster 3 (governança de dados, interoperabilidade, LGPD) ficou com centralidade baixa e densidade baixa. escrevi no artigo que é um tema emergente que promete crescer. o parecerista pode implicar com isso? tem mais alguma coisa que eu deveria checar antes de mandar?",
       "expected_output": "Corrige: o quadrante baixo-baixo não distingue emergente de declínio, e a checagem é a série por subperíodo; aponta outras cautelas de interpretação; não valida a afirmação como está.",
-      "assertions": [
+      "assertions_iteracao_1": [
         "Corrige a afirmação do usuário: o quadrante de baixa centralidade e baixa densidade não distingue emergente de declínio",
         "Indica a checagem concreta que resolve: série de frequência dos termos por subperíodo",
         "Acrescenta ao menos uma outra cautela de interpretação verificável (co-citação, cobertura, citação recente)",
+        "Não inventa números do estudo do usuário"
+      ],
+      "assertions": [
+        "Corrige a leitura do quadrante: baixa centralidade e baixa densidade não distinguem emergente de em declínio",
+        "Distingue 'emergente' (posição estrutural) de 'promissor' (juízo de valor que indicador nenhum sustenta)",
+        "Dá as duas checagens em ordem de custo: ano médio de publicação do agrupamento e série por subperíodo",
+        "Alerta que LGPD e GDPR não devem ser unificados no tesauro, por serem normas distintas",
+        "Menciona o último ano de indexação incompleto como artefato que penaliza temas emergentes",
         "Não inventa números do estudo do usuário"
       ]
     },
@@ -72,5 +96,6 @@
         "Não inventa números de registros coletados"
       ]
     }
-  ]
+  ],
+  "nota": "As asserções da iteração 1 não discriminavam (19 de 26 passavam com e sem skill). As dos casos 1 a 3 foram reescritas na iteração 2 para medir o que as correções miravam; as dos casos 0 e 4 continuam as originais."
 }

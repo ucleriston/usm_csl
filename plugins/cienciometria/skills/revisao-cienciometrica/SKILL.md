@@ -114,6 +114,11 @@ depende de leitura entra como `"tipo": "manual"` e é relatada como pendente —
 Preencha `docs/02-protocolo-prisma.md` (elegibilidade, códigos de exclusão, procedimento de
 triagem) e `docs/03-estrategias-de-busca.md` (blocos e strings por base).
 
+Os documentos vêm de um esqueleto, e esqueleto não sabe do caso: **adapte-os à situação real do
+usuário antes de entregar**. Um protocolo que prescreve "dois revisores independentes e kappa a cada
+rodada" para quem está sozinho não é rigor, é um documento que contradiz o próprio pacote — e é
+pior que documento nenhum, porque a contradição aparece na banca.
+
 Para montar as strings, use a skill **estrategia-de-busca**. Para o desenho da triagem, a skill
 **triagem-e-prisma**.
 

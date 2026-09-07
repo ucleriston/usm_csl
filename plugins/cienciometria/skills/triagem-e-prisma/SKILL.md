@@ -46,8 +46,10 @@ Identificação → Deduplicação → Triagem 1 (título/resumo) → Triagem 2 
   compartilhada com as duas colunas visíveis não é triagem dupla, é conferência.
 - **Divergências:** consenso; persistindo, um terceiro decide. Toda divergência resolvida fica
   registrada com a razão — é o que mostra que o critério foi aplicado, e não improvisado.
-- **Revisor único:** quando não houver segunda pessoa (comum em pesquisa individual), diga isso ao
-  usuário com franqueza e ofereça o segundo melhor: recodificar uma amostra de 20% e relatar a
+- **Revisor único:** antes de tratar isso como fato consumado, pergunte se existe alguém — colega,
+  colega de turma, orientando do mesmo grupo — que possa triar 15% a 20% dos registros. Meia tarde
+  de outra pessoa converte a medida em kappa interavaliadores de verdade, e essa é a única saída que
+  não vira limitação. Só quando não houver mesmo ninguém, ofereça o segundo melhor: recodificar uma amostra de 20% e relatar a
   **concordância intrarrevisor**, com esse nome. Duas condições fazem essa medida valer alguma
   coisa: a recodificação é cega (sem ver a decisão anterior) e separada por um intervalo de alguns
   dias — recodificar no dia seguinte mede memória, não critério. Registre a escolha como limitação
@@ -65,6 +67,14 @@ e não demonstram nada. Referência usual de leitura:
 | 0,40–0,59 | moderada |
 | 0,60–0,74 | substancial |
 | ≥ 0,75 | quase perfeita |
+
+**O paradoxo da prevalência.** Corpus de triagem é quase sempre desbalanceado: exclui-se a grande
+maioria. Quando uma categoria domina, a concordância esperada pelo acaso fica altíssima e o kappa
+despenca mesmo com os revisores concordando em quase tudo — dois revisores com 95% de concordância
+observada podem terminar com kappa de 0,40. Antes de concluir que o critério está ruim, olhe a
+matriz de confusão e a distribuição das decisões; e relate, ao lado do kappa, a concordância
+observada e o PABAK (kappa ajustado por prevalência), que é imune a esse efeito. Kappa baixo com
+prevalência extrema é fato conhecido da literatura de confiabilidade, não sentença sobre a revisão.
 
 Kappa abaixo do mínimo declarado no protocolo significa **critério mal escrito**. A resposta é
 reescrever o critério, registrar a emenda e refazer a rodada — não negociar registro a registro até

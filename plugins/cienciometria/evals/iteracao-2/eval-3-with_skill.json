@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "Corrige a leitura do quadrante: baixa centralidade e baixa densidade não distinguem emergente de em declínio",
+      "passed": true,
+      "evidence": "'Centralidade baixa + densidade baixa é o quadrante que abriga emergente OU em declínio — os dois ocupam exatamente o mesmo lugar, porque o mapa temático é uma fotografia sincrônica: ele não tem dimensão temporal. Um tema que está nascendo e um tema que está morrendo têm a mesma assinatura estrutural (poucas ligações externas, pouca coesão interna).' O mecanismo, e não só a conclusão, está dado. A correção reaparece na terceira redação sugerida, para o caso de não haver tempo de checar: 'posição que na formulação de Cobo et al. (2011) é ocupada indistintamente por temas emergentes e por temas em declínio.'"
+    },
+    {
+      "text": "Distingue 'emergente' (posição estrutural) de 'promissor' (juízo de valor que indicador nenhum sustenta)",
+      "passed": true,
+      "evidence": "Separação explícita e nomeada: 'Mesmo que você prove que o tema é emergente, \"emergente\" descreve posição estrutural; \"promissor\" é juízo de valor sobre o futuro. Nenhum indicador bibliométrico sustenta previsão.' E o encaminhamento é diferente para cada um: o primeiro se resolve com checagem, o segundo não se resolve com dado nenhum — 'Essa parte da frase eu cortaria independentemente do que as checagens abaixo mostrarem — ou reescreveria como expectativa explicitamente sua, na Discussão e não nos Resultados, ancorada em algo externo (agenda regulatória, política pública, chamada de financiamento), não no mapa.'"
+    },
+    {
+      "text": "Dá as duas checagens em ordem de custo: ano médio de publicação do agrupamento e série por subperíodo",
+      "passed": true,
+      "evidence": "Seção A, rotulada 'Emergente ou em declínio (barata → forte)', na ordem pedida: '1. Ano médio de publicação dos trabalhos do agrupamento, comparado ao do corpus. Acima da média do corpus = indício de emergência; abaixo = indício de declínio. É a checagem mais barata e já elimina metade das dúvidas. É indício, não prova. 2. Série de frequência dos termos por subperíodo (saidas/evolucao_tematica.csv)... Esta é a evidência forte — é ela que vai no texto, com os números.' O estatuto epistêmico de cada uma é distinguido (indício vs. evidência), e o fecho é operacional: 'Sem pelo menos uma das duas, não afirme nem uma coisa nem outra.'"
+    },
+    {
+      "text": "Alerta que LGPD e GDPR não devem ser unificados no tesauro, por serem normas distintas",
+      "passed": true,
+      "evidence": "Item 4, em negrito, logo depois de recomendar a unificação das variantes legítimas: 'Mas cuidado com o oposto: LGPD e GDPR não se unificam. São normas distintas, de jurisdições distintas, e fundi-las destrói exatamente a distinção que talvez seja o seu achado. A regra é: só unifica o que é o mesmo referente escrito de outro jeito.' O alerta traz a regra geral que o generaliza, não só o caso. A pergunta 6 fecha o laço: 'LGPD e GDPR estão como termos separados, ou alguém já os fundiu em \"proteção de dados\"?'"
+    },
+    {
+      "text": "Menciona o último ano de indexação incompleto como artefato que penaliza temas emergentes",
+      "passed": true,
+      "evidence": "Item 3, dentro da seção B ('Descartar artefato — antes de concluir qualquer coisa sobre cluster periférico'): 'O último ano do recorte está incompleto? A indexação do ano corrente ainda está entrando na base, e isso penaliza exatamente os temas recentes — pode ser o que está achatando a densidade e a centralidade do cluster 3. Recalcule sem o último ano e veja se a leitura muda. Se mudar, relate a decisão.' Traz o mecanismo, a direção do viés, o teste e o que fazer com o resultado. A suposição correspondente está declarada ('O recorte temporal inclui o ano corrente, por isso a checagem 3') e a pergunta 3 confirma o dado que falta."
+    },
+    {
+      "text": "Não inventa números do estudo do usuário",
+      "passed": true,
+      "evidence": "Nenhum valor atribuído ao estudo. As redações sugeridas usam marcadores: '[n1] ocorrências em [período 1] para [n2] em [período 2]', 'ano médio... ([ano]) é superior ao do corpus ([ano])', 'com N ligações entre eles'. Declarado antes das redações: 'Os colchetes são para você preencher com os números que estão nas suas saídas — não tenho seus dados e não vou inventar valor nenhum.' Os únicos números do texto são limiares heurísticos genéricos ('abaixo de ~5 itens', 'os 10 itens de maior frequência', 'três a cinco palavras') e as citações de método Callon/Courtial/Laville 1991 e Cobo et al. 2011, que são reais e vêm com a instrução de conferir volume e páginas antes de submeter."
+    }
+  ],
+  "notas": "6/6. Este é o caso em que a correção mais rendeu: os três pontos mirados eram falhas reais e limpas da versão anterior. O ano médio de publicação do agrupamento não existia; o último ano de indexação incompleto não existia; e o alerta sobre LGPD/GDPR inverte uma orientação que a versão anterior dava errada, não apenas preenche uma lacuna. A distinção emergente/promissor também ficou mais nítida, porque separa as duas objeções por tipo — uma se resolve com dado, a outra não se resolve com dado nenhum. Três perdas em relação à execução anterior, nenhuma coberta por asserção: (1) sumiu o aviso sobre percentual em base pequena ('cresceu 300%' pode ser de 2 para 8 registros), que num cluster periférico é justamente o erro seguinte que o parecerista pega — a redação sugerida dá absolutos, o que mitiga, mas o aviso explícito se perdeu; (2) sumiu o teste de sensibilidade do limiar de co-ocorrência (±1) para ver se o cluster muda de quadrante, que era a checagem que media a fragilidade da própria posição no mapa; (3) sumiu a semente fixa dos procedimentos estocásticos de agrupamento — sem ela 'cluster 3' pode virar outro cluster na mão do revisor, e o texto do usuário nomeia o cluster pelo número."
+}

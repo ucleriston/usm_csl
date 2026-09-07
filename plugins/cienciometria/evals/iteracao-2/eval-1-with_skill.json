@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "Diagnostica que a string não expressa dois dos recortes do tema (cidade e clima), em vez de tratá-la como larga demais",
+      "passed": true,
+      "evidence": "Título da resposta: 'Sua busca não está \"aberta demais\" — ela ainda não diz o seu tema'. E: 'Dos quatro recortes que essa frase tem, a string expressa dois (resiliência, governança) e não expressa os outros dois: cidade e clima. Não estão lá em nenhuma forma.' Consequência tirada explicitamente: 'o problema não é ruído a filtrar numa busca correta. É que a busca certa ainda não foi escrita' — e isso muda o instrumento (blocos em vez de exclusão). Em 03-estrategias-de-busca.md §0 a tabela de diagnóstico traz as duas linhas 'Ausência de bloco climático / tema não expresso' e 'Ausência de bloco urbano / tema não expresso'."
+    },
+    {
+      "text": "Rejeita explicitamente excluir áreas inteiras ou usar AND NOT sobre o resumo como solução, explicando o que isso derrubaria",
+      "passed": true,
+      "evidence": "§7 do doc de estratégias: 'Nunca excluir: ENGI, ENVI, EART, SOCI, BUSI, DECI, MULT — é exatamente onde governança climática urbana é publicada. Excluir ENGI para matar engenharia de materiais mataria junto boa parte da literatura de infraestrutura urbana resiliente.' Na resposta: 'quem tenta resolver isso com EXCLUDE SUBJAREA corta por fora e perde artigo bom'. O filtro de área é rebaixado a último recurso e a diagnóstico ('rodar S1 com e sem a exclusão, e ler os títulos removidos por ela antes de adotá-la')."
+    },
+    {
+      "text": "Usa operador de proximidade (W/n ou NEAR/n) ou justifica por que não usar",
+      "passed": true,
+      "evidence": "Variante S5 em 03-estrategias-de-busca.md §6: 'Proximidade: TITLE-ABS-KEY ( resilien* W/5 governance ) AND B3 AND B4 — alternativa de precisão caso a S1 ainda venha grande demais; exige o mesmo teste de recall'. A resposta condiciona o uso: 'sistemática com triagem manual precisa de precisão maior, e aí a S5 (com operador de proximidade resilien* W/5 governance) passa a valer a pena'. Pass, com ressalva: a proximidade fica só na variante e a S1 principal não traz uma justificativa direta de por que não a adota."
+    },
+    {
+      "text": "Prescreve variantes de sensibilidade e um modo de medir o que cada alteração derruba, não só a contagem total",
+      "passed": true,
+      "evidence": "§6 traz quatro variantes (S2 sem bloco urbano, S3 sem bloco climático, S4 bloco de rede obrigatório, S5 proximidade) com uma coluna 'O que a variante mede'. A unidade de medida é explicitamente elegibilidade, não volume: 'comparar o ganho de registros elegíveis (não de registros brutos) e registrar a decisão, inclusive quando for descartar a variante'. Há instrumento: 'cienciometria comparar --antes ... --depois ...' e execucao.json com uma linha por variante. Ressalva: não fixa o tamanho da amostra a triar do excedente — a versão anterior era mais operacional nesse ponto ('triando uma amostra de 100 ou 150 do excedente')."
+    },
+    {
+      "text": "Teste de recall com piso numérico declarado, e sementes escolhidas antes da busca",
+      "passed": true,
+      "evidence": "§9: 'Conjunto-semente em config/sementes.csv, montado ANTES de rodar a S1. Mínimo exigido: 22 de 25.' execucao.json grava o piso como dado: 'recall_sementes: {recuperadas: null, total: 25, minimo_exigido: 22}'. O cabeçalho de sementes.csv reforça a anterioridade com a razão: 'Escolher nunca depois: semente colhida no resultado não testa nada, confirma.' As 25 linhas estão em branco e estratificadas por cinco tradições (A–E), o que é o desenho certo para detectar perda de vocabulário inteiro."
+    },
+    {
+      "text": "Não inventa contagens de resultado nem registros bibliográficos",
+      "passed": true,
+      "evidence": "Varredura dos quatro docs e cinco arquivos de config: nenhuma contagem de resultado de busca. execucao.json tem 'resultados': null nas oito execuções e diz por quê: 'resultados fica em null enquanto a busca não tiver sido efetivamente rodada'. sementes.csv tem as 25 linhas vazias. O cabeçalho do doc declara a regra: 'este documento não traz número algum que não tenha sido efetivamente rodado'. Os únicos números do texto são os do próprio usuário (12 mil, 70%) e o piso 22/25. As referências em 01-projeto-de-pesquisa.md (Lotka 1926, Bradford 1934, Callon/Courtial/Laville 1991, Zupic e Čater 2015) são clássicos metodológicos reais, não registros do corpus."
+    }
+  ],
+  "notas": "6/6. Ganho real sobre a versão anterior: entra o operador de proximidade (W/5), que antes não existia em nenhum arquivo, e o diagnóstico fica mais afiado ('a busca certa ainda não foi escrita' em vez de 'subespecificada'). O filtro de área ganha a instrução de usá-lo primeiro como diagnóstico, comparando os títulos removidos. Três perdas em relação à execução anterior, nenhuma capturada pelas asserções: (1) sumiu o truque de medir recall dentro do próprio Scopus, ( S1 ) AND ( DOI(...) OR DOI(...) ), que operacionalizava o teste sem trabalho manual; (2) o bloco de resiliência perdeu vulnerabilit*, adaptation e polycentric*, e a versão anterior argumentava com razão que a tradição de vulnerability assessment é parcialmente disjunta em vocabulário — para uma pergunta cujo enunciado é 'sem perder artigo importante', isso é perda de recall; (3) a S1 nova aplica LIMIT-TO LANGUAGE en/pt/es com blocos inteiramente em inglês, o que é internamente inconsistente — sem termos pt/es nos blocos, os registros lusófonos não são recuperados de qualquer modo, e a versão anterior recusava LIMIT-TO LANGUAGE justamente por descartar registro com idioma mal etiquetado. A justificativa dada ('resilien* já cobre os cognatos') cobre B1, não cobre governança/cidade/clima."
+}

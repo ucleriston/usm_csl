@@ -1,0 +1,35 @@
+{
+  "expectations": [
+    {
+      "text": "Diagnostica que a string não expressa dois dos recortes do tema (cidade e clima), em vez de tratá-la como larga demais",
+      "passed": true,
+      "evidence": "Primeira frase: 'O diagnóstico é o contrário do que parece. Sua busca não está larga demais — está subespecificada. resilience AND governance AND network não diz em lugar nenhum que o objeto é uma cidade nem que o gatilho é climático.' A tabela nomeia as duas ausências: 'Falta o bloco de unidade de análise (cidade, município, urbano)' e 'Falta o bloco de fenômeno (clima, evento extremo)'. Conclusão explícita: 'a saída não é excluir engenharia de materiais. É dizer o que o trabalho é.'"
+    },
+    {
+      "text": "Rejeita explicitamente excluir áreas inteiras ou usar AND NOT sobre o resumo como solução, explicando o que isso derrubaria",
+      "passed": true,
+      "evidence": "Seção 'A correção que não perde artigo': 'Primeiro, o que não fazer: AND NOT (material OR polymer OR concrete...). Parece resolver e é o jeito mais eficiente de perder artigo bom em silêncio — qualquer estudo de infraestrutura verde, drenagem urbana ou retrofit menciona material ou concreto de passagem, e some sem deixar rastro.' E sobre área: 'nunca exclua ENGI, ENVI, SOCI ou EART — infraestrutura urbana, adaptação e desastre moram justamente nelas', com o mecanismo dado ('o Scopus classifica por revista e não por artigo'). Cobre as duas metades da asserção."
+    },
+    {
+      "text": "Usa operador de proximidade (W/n ou NEAR/n) ou justifica por que não usar",
+      "passed": false,
+      "evidence": "Busca por 'W/', 'NEAR', 'PRE/', 'ONEAR' e 'proximidade' nos cinco arquivos entregues (resposta.md, strings-scopus.txt, 03-estrategias-de-busca.md, sementes.csv, execucao.json) não retorna nenhuma ocorrência. As sete strings (S0–S5, W1, SC1) usam apenas AND/OR, aspas e truncamento. Nenhuma justificativa de por que a proximidade não foi usada, embora o caso — dois termos genéricos que precisam coocorrer em contexto — seja o caso de manual para W/n."
+    },
+    {
+      "text": "Prescreve variantes de sensibilidade e um modo de medir o que cada alteração derruba, não só a contagem total",
+      "passed": true,
+      "evidence": "Seção 'Rode duas versões, não uma': S2 é S1 sem o bloco climático, e o critério de medida é o certo e está operacionalizado: 'a pergunta certa não é quantos registros a mais, é quantos elegíveis a mais — triando uma amostra de 100 ou 150 do excedente. Se o ganho for desprezível, você descarta S2 com um número na mão em vez de com uma intuição.' execucao.json tem o campo dedicado 'ganho_marginal_S2_sobre_S1: {registros_brutos_adicionais, registros_elegiveis_adicionais, decisao}'. Além disso manda refazer o recall depois de aplicar S4, 'para ver o que a exclusão custou', e sementes.csv tem colunas de recall por variante (recuperado_S1, recuperado_S2, recuperado_apos_S4)."
+    },
+    {
+      "text": "Teste de recall com piso numérico declarado, e sementes escolhidas antes da busca",
+      "passed": true,
+      "evidence": "'Antes de rodar qualquer coisa, monte 20 a 25 trabalhos que você já sabe que são do seu tema — escolhidos agora, antes de ver o resultado da busca, não catados depois entre os que apareceram... Menos de ~90% (22 de 25) significa string incompleta.' O piso está em três lugares: no texto, no cabeçalho de sementes.csv e em execucao.json ('minimo_exigido': 22 para S1, S2 e S1_apos_S4). Ainda operacionaliza a medição dentro da base (S5: ( S1 ) AND ( DOI(...) OR DOI(...) ))."
+    },
+    {
+      "text": "Não inventa contagens de resultado nem registros bibliográficos",
+      "passed": true,
+      "evidence": "Nenhum número de resultado em nenhum arquivo. execucao.json traz 'resultados': null nas sete execuções e 'recuperadas': null nos três blocos de recall; sementes.csv tem as 25 linhas vazias; os DOIs de S5 são marcadores óbvios ('10.xxxx/aaaa'). Declaração explícita: 'não rodei nada. Não tenho acesso ao Scopus, então não há aqui nenhuma contagem estimada nem nenhuma referência inventada'. O único número não ancorado é retórico ('metade desses trabalhos fala em flood*...'), e não é contagem de resultado."
+    }
+  ],
+  "notas": "5/6 com as asserções novas — contra 6/6 com as antigas, o que confirma que as antigas não discriminavam. O único ponto que a correção de fato virou foi a proximidade: era ausência total, virou variante S5 explícita. Os outros cinco já passavam antes, e em dois deles a versão anterior é melhor que a corrigida: o teste de recall era medível dentro do Scopus por lista de DOIs (S5), e o modo de medir o que cada variante derruba tinha tamanho de amostra ('100 ou 150 do excedente') e campo próprio em execucao.json para o ganho marginal. A versão anterior também inclui vulnerabilit* no bloco de resiliência com a justificativa correta de tradição disjunta, termo que a corrigida deixou cair. Erro remanescente da anterior, não coberto por asserção: S4 lista CENG (Chemical Engineering) entre as áreas de baixo risco, e o texto diz 'nunca exclua ENGI' — CENG é área irmã e a exclusão dela derruba periódico interdisciplinar de infraestrutura pela mesma razão que ENGI."
+}

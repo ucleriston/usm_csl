@@ -34,6 +34,12 @@ Para levantar sinônimos, três fontes valem mais que a memória: as palavras-ch
 o usuário já conhece, os termos do tesauro da base quando houver (índice de assuntos, MeSH em
 saúde) e as variações que aparecem nos títulos dos 20 primeiros resultados de um teste rápido.
 
+Sinônimo, aqui, não é só a mesma palavra escrita de outro jeito: é **a tradição vizinha que estuda o
+mesmo fenômeno com outro nome**. Quem busca resiliência e deixa `vulnerabilit*` e `adaptation` de
+fora perde uma literatura inteira que responde à mesma pergunta; quem busca capacidade estatal e
+ignora `bureaucratic quality` perde outra. Antes de fechar o bloco, pergunte-se que outra escola
+chamaria isso de outra coisa.
+
 ## 2 Erros que custam caro
 
 1. **Campo errado.** `TITLE-ABS-KEY` na Scopus, `TS=` na WoS. Só no título perde metade da
@@ -54,6 +60,8 @@ saúde) e as variações que aparecem nos títulos dos 20 primeiros resultados d
 
 Antes de valer, monte de 20 a 25 trabalhos que você e o usuário já sabem pertinentes — escolhidos
 **antes** da busca, nunca depois de vê-los no resultado — e verifique quantos a string recupera.
+Dentro do próprio Scopus dá para medir sem exportar nada: `( sua string ) AND ( DOI("10.x/a") OR
+DOI("10.x/b") ... )` devolve quantas sementes a string alcança.
 Menos de ~90% significa string incompleta: leia os que escaparam e descubra que termo faltou. É o
 teste mais barato e o mais convincente na hora de defender a revisão.
 
