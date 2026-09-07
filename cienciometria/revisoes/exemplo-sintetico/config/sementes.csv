@@ -1,0 +1,7 @@
+# Conjunto-semente para o teste de recall (protocolo, §5).
+# Preencher com trabalhos reconhecidamente pertinentes ao tema, escolhidos ANTES da busca.
+# Recall mínimo sugerido: 22 de 25.
+n,autor_ano,titulo,doi,tradicao,recuperado_base1,recuperado_base2,recuperado_base3
+1,,,,,,,
+2,,,,,,,
+3,,,,,,,

@@ -1,0 +1,110 @@
+{
+  "slug": "federalismo-fiscal-subnacional",
+  "titulo": "Federalismo fiscal dos entes subnacionais: estrutura e evolução da produção científica",
+  "tema": "Arranjos fiscais entre níveis de governo em que o ente subnacional é a unidade de análise",
+  "responsavel": "",
+  "janela": {"inicio": 1990, "fim": 2026},
+  "idiomas": ["pt", "en", "es"],
+  "tipos_documento": ["artigo", "revisao", "capitulo", "anais"],
+  "bases": ["scopus", "wos", "scielo", "dimensions", "lens"],
+  "precedencia_bases": ["scopus", "wos", "dimensions", "lens", "scielo", "manual"],
+  "campo_termos": "palavras_chave",
+  "semente": 42,
+  "limiares": {
+    "min_termo": 5,
+    "min_autor": 2,
+    "min_cocitacao": 5,
+    "min_acoplamento": 3,
+    "limite_nos": 300,
+    "dedup_automatico": 0.93,
+    "dedup_revisao_humana": 0.88,
+    "kappa_minimo": 0.75
+  },
+  "periodos": [[1990, 1999], [2000, 2009], [2010, 2019], [2020, 2100]],
+  "codigos_exclusao": {
+    "E1": "Federalismo apenas político, sem componente fiscal",
+    "E2": "Finanças do governo central, sem recorte subnacional",
+    "E3": "Descentralização sem componente fiscal",
+    "E4": "Editorial, resenha, errata, carta, entrevista",
+    "E5": "Metadado insuficiente",
+    "E6": "Duplicata",
+    "E7": "Menção marginal ou metafórica",
+    "E8": "Texto integral indisponível"
+  },
+  "vocabulario_temas": {
+    "T01": "Competência e atribuição tributária",
+    "T02": "Transferências intergovernamentais",
+    "T03": "Equalização e desigualdade territorial",
+    "T04": "Endividamento subnacional e restrição orçamentária",
+    "T05": "Esforço e capacidade fiscal",
+    "T06": "Competição e coordenação horizontal",
+    "T07": "Descentralização de despesa e serviços",
+    "T08": "Regras fiscais e governança",
+    "T09": "Economia política do federalismo",
+    "T10": "Reformas tributárias e transição",
+    "T11": "Efeitos econômicos da descentralização",
+    "T12": "Dogmática e jurisdição constitucional fiscal"
+  },
+  "proposicoes": [
+    {
+      "id": "P1",
+      "enunciado": "A produtividade dos autores aproxima-se da Lei de Lotka, com expoente próximo de 2",
+      "indicador": "expoente α e teste de Kolmogorov-Smirnov",
+      "criterio": {
+        "tipo": "todos",
+        "condicoes": [
+          {"campo": "lotka.alpha", "operador": "entre", "valor": [1.7, 2.3]},
+          {"campo": "lotka.adere", "operador": "==", "valor": true}
+        ]
+      }
+    },
+    {
+      "id": "P2",
+      "enunciado": "A dispersão por fontes segue Bradford, com primeira zona concentrada em poucos periódicos",
+      "indicador": "participação da zona 1 na produção",
+      "criterio": {"campo": "bradford.zonas.0.artigos_%", "operador": ">=", "valor": 25}
+    },
+    {
+      "id": "P3",
+      "enunciado": "A base intelectual é dominada por obras da tradição anglófona de fiscal federalism",
+      "indicador": "origem das 50 referências mais co-citadas",
+      "criterio": {
+        "tipo": "manual",
+        "observacao": "codificar a origem das 50 referências mais co-citadas (saidas/cocitacao_nos.csv); refutada se menos de 60% forem anglófonas"
+      }
+    },
+    {
+      "id": "P4",
+      "enunciado": "As redes de colaboração são fragmentadas por região linguística, com baixa coautoria internacional",
+      "indicador": "componente gigante da coautoria e taxa de coautoria internacional",
+      "criterio": {
+        "tipo": "algum",
+        "condicoes": [
+          {"campo": "coautoria.metricas.componente_gigante_%", "operador": "<=", "valor": 60},
+          {"campo": "colaboracao.coautoria_internacional_%", "operador": "<=", "valor": 40}
+        ]
+      }
+    },
+    {
+      "id": "P5",
+      "enunciado": "O mapa temático separa um núcleo maduro de temas emergentes ligados a crise fiscal, capacidade estatal e reformas do consumo",
+      "indicador": "quadrantes do mapa temático de Callon",
+      "criterio": {
+        "tipo": "todos",
+        "condicoes": [
+          {"campo": "copalavras.agrupamentos", "operador": ">=", "valor": 2},
+          {"campo": "copalavras.quadrantes.emergente_ou_declinio", "operador": ">=", "valor": 1}
+        ]
+      }
+    },
+    {
+      "id": "P6",
+      "enunciado": "A produção brasileira concentra-se em temas de aplicação nacional e é citada sobretudo por trabalhos brasileiros",
+      "indicador": "matriz de citação cruzada entre grupos",
+      "criterio": {
+        "tipo": "manual",
+        "observacao": "exige identificar o citado nas referências (plano de análise, §5); refutada se mais de 40% das citações a trabalhos brasileiros vierem de fora do Brasil"
+      }
+    }
+  ]
+}

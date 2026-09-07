@@ -1,0 +1,134 @@
+{
+  "slug": "exemplo-sintetico",
+  "titulo": "Revisão de demonstração (dados sintéticos)",
+  "tema": "Nenhum — este corpus é fabricado para exercitar o pipeline",
+  "responsavel": "",
+  "janela": {
+    "inicio": 1990,
+    "fim": 2026
+  },
+  "idiomas": [
+    "pt",
+    "en",
+    "es"
+  ],
+  "tipos_documento": [
+    "artigo",
+    "revisao",
+    "capitulo",
+    "anais"
+  ],
+  "bases": [
+    "scopus",
+    "wos",
+    "scielo",
+    "dimensions",
+    "lens"
+  ],
+  "precedencia_bases": [
+    "scopus",
+    "wos",
+    "dimensions",
+    "lens",
+    "scielo",
+    "manual"
+  ],
+  "campo_termos": "palavras_chave",
+  "semente": 42,
+  "limiares": {
+    "min_termo": 3,
+    "min_autor": 2,
+    "min_cocitacao": 2,
+    "min_acoplamento": 2,
+    "limite_nos": 300,
+    "dedup_automatico": 0.93,
+    "dedup_revisao_humana": 0.88,
+    "kappa_minimo": 0.75
+  },
+  "periodos": [
+    [
+      1990,
+      1999
+    ],
+    [
+      2000,
+      2009
+    ],
+    [
+      2010,
+      2019
+    ],
+    [
+      2020,
+      2100
+    ]
+  ],
+  "codigos_exclusao": {
+    "E1": "Fora do objeto — dimensão diversa da investigada",
+    "E2": "Fora do objeto — unidade de análise diversa",
+    "E3": "Fora do objeto — sem o componente central do tema",
+    "E4": "Editorial, resenha, errata, carta, entrevista",
+    "E5": "Metadado insuficiente",
+    "E6": "Duplicata",
+    "E7": "Menção marginal ou metafórica ao tema",
+    "E8": "Texto integral indisponível"
+  },
+  "vocabulario_temas": {
+    "T01": "«definir os temas do livro de códigos, §6»"
+  },
+  "proposicoes": [
+    {
+      "id": "P1",
+      "enunciado": "A produtividade dos autores segue a Lei de Lotka",
+      "indicador": "expoente α e teste KS",
+      "criterio": {
+        "tipo": "todos",
+        "condicoes": [
+          {
+            "campo": "lotka.alpha",
+            "operador": "entre",
+            "valor": [
+              1.7,
+              2.3
+            ]
+          },
+          {
+            "campo": "lotka.adere",
+            "operador": "==",
+            "valor": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "P2",
+      "enunciado": "A zona 1 de Bradford concentra ao menos um quarto da produção",
+      "indicador": "participação da zona 1",
+      "criterio": {
+        "campo": "bradford.zonas.0.artigos_%",
+        "operador": ">=",
+        "valor": 25
+      }
+    },
+    {
+      "id": "P3",
+      "enunciado": "A rede de coautoria é fragmentada",
+      "indicador": "componente gigante da rede de coautoria",
+      "criterio": {
+        "campo": "coautoria.metricas.componente_gigante_%",
+        "operador": "<",
+        "valor": 60
+      }
+    },
+    {
+      "id": "P4",
+      "enunciado": "Exemplo de proposição que depende de leitura",
+      "indicador": "codificação manual",
+      "criterio": {
+        "tipo": "manual",
+        "observacao": "mostra como o relatório trata o que o pipeline não decide"
+      }
+    }
+  ],
+  "_comentario": "Revisão de demonstração. Dados sintéticos: nenhum número daqui é resultado de pesquisa."
+}
