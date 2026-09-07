@@ -11,7 +11,8 @@ import json
 import os
 import sys
 
-from . import __version__, coleta, indicadores, parsers, proposicoes, redes, relatorio, triagem
+from . import (__version__, coleta, comparacao, indicadores, parsers, proposicoes, redes,
+               relatorio, triagem)
 from .corpus_io import (
     carregar_corpus, registrar_execucao, salvar_arestas, salvar_corpus, salvar_nos, salvar_tabela,
 )
@@ -154,6 +155,35 @@ def cmd_coletar(args):
     print("Próximo passo: %s importar --revisao %s" % ("cienciometria", revisao.slug))
     registrar_execucao(revisao.dir_saidas, "coletar", "fonte=%s registros=%d busca=%s" % (
         args.fonte, resultado["registros"], args.busca))
+    return 0
+
+
+def cmd_comparar(args):
+    """Mede o que uma alteração na string de busca derrubou e o que ela trouxe."""
+    if not args.antes or not args.depois:
+        raise SystemExit("Informe as duas exportações: --antes <arquivo|pasta> --depois <arquivo|pasta>")
+    revisao = _revisao(args)
+    resultado = comparacao.comparar(args.antes, args.depois)
+    saida = args.saida or revisao.dir_saidas
+    salvar_tabela(os.path.join(saida, "comparacao_perdidos.csv"), resultado["tabela_perdidos"])
+    salvar_tabela(os.path.join(saida, "comparacao_ganhos.csv"), resultado["tabela_ganhos"])
+    salvar_tabela(os.path.join(saida, "comparacao_fontes_perdidas.csv"), resultado["fontes_dos_perdidos"])
+
+    print("antes: %d registros | depois: %d" % (resultado["antes"], resultado["depois"]))
+    print("mantidos: %d (%.2f%% do conjunto anterior)" % (resultado["mantidos"], resultado["retencao_%"]))
+    print("perdidos: %d | ganhos: %d" % (resultado["perdidos"], resultado["ganhos"]))
+    if resultado["fontes_dos_perdidos"]:
+        print("\nDe onde vêm os registros perdidos:")
+        for linha in resultado["fontes_dos_perdidos"][:8]:
+            print("  %-52s %d" % (linha["fonte"][:52], linha["registros"]))
+    if resultado["mais_citado_perdido"]:
+        maior = resultado["mais_citado_perdido"]
+        print("\nMais citado entre os perdidos (%s citações): %s" % (
+            maior["citacoes"], maior["titulo"][:80]))
+    print("\nA contagem sozinha não decide nada: leia comparacao_perdidos.csv e julgue se o que "
+          "saiu era ruído ou literatura pertinente. Um único perdido relevante já condena o filtro.")
+    registrar_execucao(revisao.dir_saidas, "comparar", "perdidos=%d ganhos=%d retencao=%s" % (
+        resultado["perdidos"], resultado["ganhos"], resultado["retencao_%"]))
     return 0
 
 
@@ -488,6 +518,7 @@ def principal(argv=None):
 
     ajuda = {
         "coletar": "baixa registros de fontes abertas (OpenAlex, Crossref)",
+        "comparar": "mede o que mudou entre duas exportações de busca",
         "importar": "lê as exportações e monta o corpus",
         "dedup": "deduplica e separa os pares ambíguos para conferência humana",
         "triagem": "gera a planilha cega de triagem",
@@ -500,6 +531,7 @@ def principal(argv=None):
     }
     funcoes = {
         "coletar": cmd_coletar,
+        "comparar": cmd_comparar,
         "importar": cmd_importar, "dedup": cmd_dedup, "triagem": cmd_triagem, "kappa": cmd_kappa,
         "indicadores": cmd_indicadores, "redes": cmd_redes, "prisma": cmd_prisma,
         "relatorio": cmd_relatorio, "analise": cmd_analise,
@@ -515,6 +547,9 @@ def principal(argv=None):
         for limiar in ("min-termo", "min-autor", "min-cocitacao", "min-acoplamento"):
             sp.add_argument("--" + limiar, type=int, default=None,
                             help="sobrepõe o limiar declarado na revisão")
+        if nome == "comparar":
+            sp.add_argument("--antes", default=None, help="exportação da busca anterior")
+            sp.add_argument("--depois", default=None, help="exportação da busca alterada")
         if nome == "coletar":
             sp.add_argument("--fonte", choices=("openalex", "crossref"), default="openalex")
             sp.add_argument("--busca", default=None, help="termos da consulta (título e resumo)")

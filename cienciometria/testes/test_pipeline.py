@@ -409,3 +409,52 @@ class TestProposicoes(unittest.TestCase):
     def test_sem_proposicoes_declaradas(self):
         linhas = self.mod.avaliar([], self.resultados)
         self.assertEqual(linhas[0]["situacao"], "não avaliável")
+
+
+class TestComparacao(unittest.TestCase):
+    """Comparação entre duas exportações de busca (calibração de string)."""
+
+    def setUp(self):
+        from cienciometria import comparacao
+
+        self.mod = comparacao
+        self.dir = tempfile.mkdtemp()
+
+    def _csv(self, nome, linhas):
+        caminho = os.path.join(self.dir, nome)
+        with open(caminho, "w", encoding="utf-8", newline="") as fh:
+            fh.write("Authors,Title,Year,Source title,Cited by,DOI\n")
+            for linha in linhas:
+                fh.write(linha + "\n")
+        return caminho
+
+    def test_mede_perdidos_ganhos_e_retencao(self):
+        antes = self._csv("scopus_v1.csv", [
+            '"Alfa A.","Artigo um",2010,"Revista X",10,10.1/a',
+            '"Beta B.","Artigo dois",2011,"Revista Y",5,10.1/b',
+            '"Gama C.","Artigo tres",2012,"Revista X",1,10.1/c',
+        ])
+        depois = self._csv("scopus_v2.csv", [
+            '"Alfa A.","Artigo um",2010,"Revista X",10,10.1/a',
+            '"Delta D.","Artigo quatro",2013,"Revista Z",0,10.1/d',
+        ])
+        r = self.mod.comparar(antes, depois)
+        self.assertEqual((r["antes"], r["depois"]), (3, 2))
+        self.assertEqual((r["mantidos"], r["perdidos"], r["ganhos"]), (1, 2, 1))
+        self.assertAlmostEqual(r["retencao_%"], 33.33, places=1)
+
+    def test_ordena_perdidos_por_citacao_e_agrupa_fontes(self):
+        antes = self._csv("scopus_v1.csv", [
+            '"Alfa A.","Artigo um",2010,"Revista X",3,10.1/a',
+            '"Beta B.","Artigo dois",2011,"Revista X",90,10.1/b',
+        ])
+        depois = self._csv("scopus_v2.csv", [])
+        r = self.mod.comparar(antes, depois)
+        self.assertEqual(r["mais_citado_perdido"]["citacoes"], 90)
+        self.assertEqual(r["fontes_dos_perdidos"][0], {"fonte": "REVISTA X", "registros": 2})
+
+    def test_casa_por_titulo_quando_falta_doi(self):
+        antes = self._csv("scopus_v1.csv", ['"Alfa A.","Mesmo artigo",2010,"Revista X",1,'])
+        depois = self._csv("scopus_v2.csv", ['"Alfa A.","Mesmo  Artigo!",2010,"Revista X",1,'])
+        r = self.mod.comparar(antes, depois)
+        self.assertEqual(r["perdidos"], 0)

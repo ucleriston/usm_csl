@@ -56,6 +56,7 @@ da instalação do plugin. Rode os comandos a partir da pasta do projeto dele, o
 | `"$CIENCIO" listar` | Lista as revisões da pasta e a situação de cada uma |
 | `"$CIENCIO" coletar --revisao <slug> --fonte openalex --busca "..."` | Baixa registros das APIs abertas (OpenAlex, Crossref) |
 | `"$CIENCIO" importar --revisao <slug>` | Lê as exportações e monta o corpus normalizado |
+| `"$CIENCIO" comparar --revisao <slug> --antes a.csv --depois b.csv` | Mede o que uma alteração na busca derrubou e o que trouxe |
 | `"$CIENCIO" dedup --revisao <slug>` | Deduplica; separa pares ambíguos para conferência humana |
 | `"$CIENCIO" triagem --revisao <slug>` | Gera a planilha cega de triagem |
 | `"$CIENCIO" kappa --revisao <slug> --triagem <arquivo>` | Concordância entre revisores |
@@ -87,9 +88,12 @@ O que você precisa saber:
 - **A janela temporal e a razão dela.** Um marco legal, uma virada teórica, um evento. Janela sem
   razão declarada vira pergunta na banca.
 - **Idiomas e bases disponíveis.** Isso depende do acesso institucional do usuário — pergunte, não
-  presuma. Sem Scopus e Web of Science, ainda dá para fazer revisão séria com SciELO, Lens,
-  Dimensions e exportações do Google Scholar via gerenciador de referências; o que muda é a
-  cobertura, e isso precisa ser declarado como limitação.
+  presuma. Duas coisas que costumam passar batido: o Portal de Periódicos da CAPES é meio de acesso,
+  não base de busca (busca-se *dentro* de Scopus, WoS, SciELO por ele); e, em temas brasileiros, as
+  bases nacionais decidem o resultado — SciELO, SPELL na administração, LILACS e BVS na saúde, BDTD
+  e o Catálogo de Teses da CAPES, além da literatura cinzenta institucional (IPEA, Fiocruz, Embrapa,
+  ministérios). Elas exigem exportação manual, e deixá-las de fora é decisão a declarar, não
+  omissão neutra.
 - **A pergunta que só esta revisão faz.** As cinco primeiras perguntas (volume, distribuição,
   estrutura intelectual, social e conceitual) servem a qualquer revisão. A sexta é a do usuário.
 
@@ -190,6 +194,12 @@ O relatório entrega números e agrupamentos; ele não entrega leitura. Use a sk
 **interpretar-resultados** para rotular agrupamentos, ler o mapa temático e redigir a seção de
 resultados sem extrapolar o que os indicadores sustentam.
 
+Quando o usuário for de fora da academia — gestão pública, terceiro setor, empresa —, pergunte que
+decisão está em jogo. O mapa ganha outro uso quando é cruzado com dado do próprio domínio: onde a
+produção científica se concentra *versus* onde está o problema (déficit de serviço, gasto,
+população afetada). Esse cruzamento não é indicador bibliométrico, e sim a razão pela qual alguém
+fora da universidade encomendaria a revisão.
+
 ## Integridade
 
 Estas regras não são burocracia: são o que faz a revisão sobreviver à revisão por pares.
@@ -203,6 +213,11 @@ Estas regras não são burocracia: são o que faz a revisão sobreviver à revis
   o rótulo definitivo sai da leitura dos itens mais centrais.
 - **Decisão discricionária vai para arquivo versionado**, não para o meio do código nem para a
   memória de quem executou.
+- **Não afirme verificação que você não fez.** "Conferi que o motor lê a configuração" só vale se
+  você rodou o comando e viu a saída; caso contrário, diga o que fez e o que ficou por conferir.
+- **Exemplo com número fabricado nunca sai em formato de entrega.** Se precisar demonstrar um
+  formato, o aviso de que os dados são fictícios vai dentro do próprio arquivo — um relatório ou
+  fluxograma renderizado se separa da pasta em que nasceu, e o aviso ao lado não o acompanha.
 
 ## Quando algo dá errado
 

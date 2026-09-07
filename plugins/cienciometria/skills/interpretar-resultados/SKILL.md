@@ -31,6 +31,7 @@ intelectual. Esta skill existe para manter a leitura no que os dados sustentam �
 | Co-citação | Que dois trabalhos são lidos juntos pela comunidade | Que concordem entre si — pares em disputa aberta são co-citados o tempo todo |
 | Acoplamento bibliográfico | Que dois trabalhos partem da mesma base de leitura | Que cheguem a conclusões parecidas |
 | Co-palavras | Vizinhança de vocabulário declarado pelos autores | Vizinhança conceitual real, se a terminologia for instável |
+| Mapa temático | Posição estrutural do tema no campo, na data de corte | Que o tema seja promissor, importante ou que vá crescer |
 
 Duas advertências que valem para o texto inteiro. **Ausência não é inexistência:** o que não aparece
 pode não estar indexado, sobretudo produção não anglófona, livros e literatura institucional.
@@ -64,10 +65,27 @@ internamente coeso). Os quatro quadrantes:
 | Nicho | baixa | alta | Comunidade coesa e isolada — especialidade que não conversa |
 | Emergente ou em declínio | baixa | baixa | Ambíguo por natureza: só a série temporal distingue |
 
-O último quadrante é onde mais se erra. Emergente e em declínio ocupam o mesmo lugar no mapa; para
-separá-los, olhe a evolução por subperíodo (`saidas/evolucao_tematica.csv`): termo que cresce entre
-os dois últimos períodos é emergente; termo que encolhe está saindo de cena. Sem essa checagem, não
-afirme nem uma coisa nem outra.
+O último quadrante é onde mais se erra. Emergente e em declínio ocupam o mesmo lugar no mapa, porque
+a fotografia sincrônica não tem dimensão temporal. Duas checagens resolvem, nesta ordem de custo:
+
+1. **Ano médio de publicação dos trabalhos do agrupamento**, comparado ao do corpus. Abaixo da média
+   é indício de declínio; acima, de emergência. É a mais barata, e já elimina metade das dúvidas.
+2. **Série de frequência dos termos por subperíodo** (`saidas/evolucao_tematica.csv`): cresce entre
+   os dois últimos períodos, é emergente; encolhe, está saindo de cena. É a evidência forte.
+
+Sem uma delas, não afirme nem uma coisa nem outra — e note que "emergente" descreve a posição
+estrutural, enquanto "promissor" é juízo de valor que nenhum indicador sustenta.
+
+Antes de concluir qualquer coisa sobre um agrupamento periférico, descarte dois artefatos:
+
+- **Último ano incompleto.** A indexação do ano corrente ainda está entrando. Isso penaliza
+  justamente os temas emergentes; recalcule sem o último ano e veja se a leitura muda.
+- **Fragmentação do vocabulário.** Variantes não unificadas (`data governance`, `governança de
+  dados`, `gobernanza de datos`) espalham o mesmo tema por vários nós fracos, produzindo um
+  agrupamento periférico artificial. Unifique no tesauro e reexecute. **Mas unificar não é fundir
+  coisas diferentes:** LGPD e GDPR são normas distintas, de jurisdições distintas, e juntá-las
+  destrói a distinção que talvez seja o achado. A regra é: só unifica o que é o mesmo referente
+  escrito de outro jeito.
 
 ## 4 Lacunas: as que existem e as que não existem
 
@@ -102,7 +120,16 @@ Ao escrever, ancore cada afirmação num número que existe nas saídas, e nomei
 ("segundo a rede de co-citação, com cobertura de 78% do corpus"). Adjetivo sem número —
 "crescimento expressivo", "forte concentração" — é o que o parecerista corta primeiro.
 
-## 6 Frases que costumam estar erradas
+## 6 Referência para citar
+
+Ao descrever o método no artigo, o leitor espera as fontes canônicas: o mapa estratégico de
+centralidade e densidade vem de Callon, Courtial e Laville (*Scientometrics*, 1991); a formulação
+de mapa temático em quatro quadrantes hoje corrente, e a análise por subperíodos, vêm de Cobo,
+López-Herrera, Herrera-Viedma e Herrera (*Journal of Informetrics*, 2011). Confira volume e páginas
+no registro da base antes de submeter — citação de método errada é o tipo de deslize que o
+parecerista lê como descuido no resto.
+
+## 7 Frases que costumam estar erradas
 
 | Frase | Problema | Substituir por |
 |---|---|---|

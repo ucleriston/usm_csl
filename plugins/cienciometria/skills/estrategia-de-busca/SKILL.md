@@ -57,7 +57,7 @@ Antes de valer, monte de 20 a 25 trabalhos que você e o usuário já sabem pert
 Menos de ~90% significa string incompleta: leia os que escaparam e descubra que termo faltou. É o
 teste mais barato e o mais convincente na hora de defender a revisão.
 
-## 4 Sintaxe por base
+## 6 Sintaxe por base
 
 **Scopus**
 ```
@@ -92,6 +92,18 @@ máquina, não são palavras-chave de autor.
 **Google Scholar** não é base para corpus: não exporta de forma reprodutível e não tem controle de
 tipo documental. Serve para conferir recall, e isso é tudo.
 
+**Portal de Periódicos da CAPES é meio de acesso, não base de busca.** Quem tem acesso por ele
+busca *dentro* de Scopus, Web of Science, SciELO ou Scopus/Elsevier — a busca federada do portal
+não tem sintaxe estável nem exportação reprodutível. Dizer "busquei no Portal CAPES" numa seção de
+métodos é declarar o caminho, não a fonte.
+
+**Bases nacionais e regionais decidem temas brasileiros.** SciELO, SPELL (administração), LILACS e
+BVS (saúde), BDTD e o Catálogo de Teses da CAPES (teses e dissertações), e a literatura cinzenta
+institucional (IPEA, Fiocruz, Embrapa, ministérios) concentram parte relevante da produção que as
+bases anglófonas não indexam. Nenhuma delas é coletável pela API do motor: a exportação é manual, em
+RIS ou BibTeX, e entra em `dados/bruto/` como qualquer outra. Deixá-las de fora não é decisão
+neutra — é decidir que aquela literatura não existe.
+
 ## 5 Registrar
 
 Cada execução gera uma linha: base, identificador da string, data, hora, filtros, número de
@@ -103,7 +115,7 @@ string documentada em `docs/03-estrategias-de-busca.md`. Os arquivos exportados 
 `revisoes/<slug>/dados/bruto/` **com o nome da base no arquivo** (`scopus_2026-04-10.csv`,
 `wos_2026-04-10_01.txt`, `scielo_2026-04-10.ris`) — é assim que o motor escolhe o parser.
 
-## 6 Quando a busca vem torta
+## 9 Quando a busca vem torta
 
 | Sintoma | Causa provável | Correção |
 |---|---|---|

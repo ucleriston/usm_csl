@@ -47,8 +47,11 @@ Identificação → Deduplicação → Triagem 1 (título/resumo) → Triagem 2 
 - **Divergências:** consenso; persistindo, um terceiro decide. Toda divergência resolvida fica
   registrada com a razão — é o que mostra que o critério foi aplicado, e não improvisado.
 - **Revisor único:** quando não houver segunda pessoa (comum em pesquisa individual), diga isso ao
-  usuário com franqueza e ofereça o segundo melhor: recodificar uma amostra de 20% depois de alguns
-  dias e relatar a concordância intrarrevisor. Registre a escolha como limitação em vez de omiti-la.
+  usuário com franqueza e ofereça o segundo melhor: recodificar uma amostra de 20% e relatar a
+  **concordância intrarrevisor**, com esse nome. Duas condições fazem essa medida valer alguma
+  coisa: a recodificação é cega (sem ver a decisão anterior) e separada por um intervalo de alguns
+  dias — recodificar no dia seguinte mede memória, não critério. Registre a escolha como limitação
+  em vez de omiti-la.
 
 ## 3 Kappa de Cohen
 
@@ -65,7 +68,14 @@ e não demonstram nada. Referência usual de leitura:
 
 Kappa abaixo do mínimo declarado no protocolo significa **critério mal escrito**. A resposta é
 reescrever o critério, registrar a emenda e refazer a rodada — não negociar registro a registro até
-os números baterem. E kappa ruim relatado é limitação; kappa não medido é falha metodológica.
+os números baterem. Kappa ruim relatado é limitação; kappa medido e omitido é outra coisa.
+
+Vale saber, porque muda o que é possível prometer num prazo curto: **o PRISMA 2020 não exige
+kappa.** O item 8 pede a descrição do processo de seleção — quantos revisores, se trabalharam de
+forma independente, que ferramentas usaram. Kappa é boa prática consolidada e expectativa comum de
+banca, não requisito da diretriz. Quem não tem como medir tem um caminho legítimo: descrever o
+processo com precisão e declarar a ausência de medida de concordância como limitação. O que não
+existe é o caminho de apresentar um número que não foi obtido de dois julgamentos independentes.
 
 Com o plugin:
 
@@ -87,16 +97,31 @@ Gera as contagens a partir do que realmente aconteceu no pipeline — identifica
 duplicatas removidas (por DOI, por título e ano, por similaridade), triados, excluídos por código e
 incluídos — e escreve `saidas/prisma.md`.
 
-Duas conferências antes de publicar o diagrama:
+Antes de prometer o diagrama, confira **se os números existem**. É aqui que a maioria trava: a
+planilha de triagem tem as decisões, mas o topo do fluxo pede o que costuma estar noutro lugar —
+identificados por base, duplicatas removidas, e textos integrais que não foram recuperados. Se o
+usuário não tem esses números, o caminho é reconstruí-los das exportações originais, não estimá-los.
+
+Duas conferências antes de publicar:
 
 1. **A aritmética fecha?** Identificados − duplicatas − excluídos = incluídos. Se não fecha, há
    registro sem decisão ou exclusão sem código.
 2. **As perdas estão explicadas?** Cada código de exclusão com a sua contagem. Um "outros" grande
    é sinal de que faltou um critério no protocolo.
 
+Uma precisão que evita retrabalho: a caixa **"excluídos, com razões" é da etapa de texto integral**.
+As exclusões por título e resumo entram como número único, sem discriminação por motivo — o PRISMA
+não pede razão individual ali, e inventar uma categorização retroativa para aquela etapa só cria
+trabalho que ninguém cobrou.
+
 Se o usuário já tem os números de uma revisão feita fora do plugin e quer só o diagrama, monte-o com
 os números dele — sem completar lacuna com estimativa. Número que ninguém contou não entra no
-fluxograma.
+fluxograma: deixe a lacuna visível, para ele preencher.
+
+E vale para qualquer artefato que você gerar aqui: **um exemplo com números fabricados nunca sai em
+formato de entrega**. Um fluxograma renderizado com um kappa inventado no rodapé é indistinguível
+do real assim que sai da pasta onde estava; se precisar demonstrar o formato, o aviso vai dentro do
+próprio arquivo, não num README ao lado.
 
 ## 5 Extração depois da inclusão
 
