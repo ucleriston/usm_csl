@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Lançador do motor cienciométrico embarcado no plugin.
+#
+#   cienciometria nova <slug> --titulo "..." --tema "..."
+#   cienciometria analise --revisao <slug>
+#
+# As revisões são criadas na pasta de trabalho de quem chama (ou em $CIENCIOMETRIA_DIR),
+# nunca dentro da instalação do plugin.
+set -euo pipefail
+AQUI="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PYTHON="${CIENCIOMETRIA_PYTHON:-python3}"
+PYTHONPATH="$AQUI/../motor${PYTHONPATH:+:$PYTHONPATH}" exec "$PYTHON" -m cienciometria "$@"

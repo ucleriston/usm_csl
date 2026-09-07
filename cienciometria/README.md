@@ -18,6 +18,10 @@ make analise REVISAO=capacidade-estatal-municipal
 
 Requisito: Python 3.9+. **Nenhuma dependência externa.**
 
+> Para usar isto dentro do Claude (Cowork, Claude Code ou app), há um plugin que embarca este motor
+> e adiciona as skills que conduzem a revisão: [`plugins/cienciometria`](../plugins/cienciometria/README.md).
+> Instalação: `/plugin marketplace add ucleriston/usm_csl` e `/plugin install cienciometria@usm-csl`.
+
 ---
 
 ## Comece por aqui
@@ -106,8 +110,13 @@ cienciometria/
 ├── src/cienciometria/    parsers, normalização, dedup, indicadores, redes, triagem, relatório
 ├── modelos/revisao-modelo/  esqueleto copiado ao criar uma revisão
 ├── revisoes/<slug>/      docs/, config/, dados/, saidas/ de cada revisão
+├── ferramentas/          sincronização do plugin
 └── testes/               testes automatizados e gerador da amostra sintética
 ```
+
+O plugin em `../plugins/cienciometria/` é uma **cópia sincronizada** deste motor (`make plugin`),
+para que possa ser instalado e usado fora daqui. O motor é a fonte de verdade; um teste falha se as
+cópias divergirem.
 
 ---
 

@@ -9,7 +9,7 @@ TRIAGEM  ?=
 
 ARGS = --revisao $(REVISAO) $(if $(SEED),--seed $(SEED),)
 
-.PHONY: ajuda nova listar importar dedup triagem kappa indicadores redes prisma relatorio analise exemplo teste limpar exige-revisao
+.PHONY: ajuda nova listar importar dedup triagem kappa indicadores redes prisma relatorio analise exemplo teste limpar plugin exige-revisao
 
 ajuda:
 	@echo "Motor de revisões cienciométricas"
@@ -29,6 +29,7 @@ ajuda:
 	@echo "  make analise      tudo, na ordem"
 	@echo
 	@echo "  make exemplo      roda a revisão de demonstração (dados SINTÉTICOS)"
+	@echo "  make plugin       sincroniza o plugin em ../plugins/cienciometria com este motor"
 	@echo "  make teste        executa os testes"
 	@echo "  make limpar       apaga saídas e dados processados de uma revisão"
 
@@ -76,6 +77,10 @@ exemplo:
 	$(MAKE) analise REVISAO=exemplo-sintetico
 	@echo
 	@echo "AVISO: a revisão 'exemplo-sintetico' usa dados FABRICADOS. Não é resultado de pesquisa."
+
+plugin:
+	$(PY) ferramentas/sincronizar_plugin.py
+	@$(PY) ferramentas/sincronizar_plugin.py --conferir
 
 teste:
 	$(PY) -m unittest discover -s testes -v

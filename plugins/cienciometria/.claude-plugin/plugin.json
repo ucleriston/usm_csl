@@ -1,0 +1,13 @@
+{
+  "name": "cienciometria",
+  "version": "1.0.0",
+  "description": "Conduz revisões cienciométricas (bibliométricas) de ponta a ponta: delimitação do recorte, protocolo PRISMA, strings de busca por base, deduplicação, triagem dupla com kappa, indicadores (Lotka, Bradford, Price, h-index), redes de co-citação, coautoria e co-palavras, mapa temático e relatório reprodutível. Traz o motor de análise embarcado — não depende de R, VOSviewer nem de bibliotecas externas.",
+  "author": {
+    "name": "Cleriston Menezes",
+    "email": "ucleriston.menezes@gmail.com"
+  },
+  "keywords": [
+    "cienciometria", "bibliometria", "revisão de literatura", "PRISMA", "estado da arte",
+    "co-citação", "mapa temático", "Scopus", "Web of Science", "SciELO", "pesquisa acadêmica"
+  ]
+}

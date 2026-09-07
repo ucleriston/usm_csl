@@ -1,0 +1,73 @@
+{
+  "_comentario": "Configuração da revisão. É daqui que o motor tira tudo o que é específico do tema.",
+  "slug": "",
+  "titulo": "",
+  "tema": "",
+  "responsavel": "",
+  "janela": {"inicio": 1990, "fim": null},
+  "idiomas": ["pt", "en", "es"],
+  "tipos_documento": ["artigo", "revisao", "capitulo", "anais"],
+  "bases": ["scopus", "wos", "scielo", "dimensions", "lens"],
+  "precedencia_bases": ["scopus", "wos", "dimensions", "lens", "scielo", "manual"],
+  "campo_termos": "palavras_chave",
+  "semente": 42,
+  "limiares": {
+    "min_termo": 5,
+    "min_autor": 2,
+    "min_cocitacao": 5,
+    "min_acoplamento": 3,
+    "limite_nos": 300,
+    "dedup_automatico": 0.93,
+    "dedup_revisao_humana": 0.88,
+    "kappa_minimo": 0.75
+  },
+  "periodos": [[1990, 1999], [2000, 2009], [2010, 2019], [2020, 2100]],
+  "codigos_exclusao": {
+    "E1": "Fora do objeto — dimensão diversa da investigada",
+    "E2": "Fora do objeto — unidade de análise diversa",
+    "E3": "Fora do objeto — sem o componente central do tema",
+    "E4": "Editorial, resenha, errata, carta, entrevista",
+    "E5": "Metadado insuficiente",
+    "E6": "Duplicata",
+    "E7": "Menção marginal ou metafórica ao tema",
+    "E8": "Texto integral indisponível"
+  },
+  "vocabulario_temas": {
+    "T01": "«definir os temas do livro de códigos, §6»"
+  },
+  "proposicoes": [
+    {
+      "id": "P1",
+      "enunciado": "A produtividade dos autores segue a Lei de Lotka",
+      "indicador": "expoente α e teste de Kolmogorov-Smirnov",
+      "criterio": {
+        "tipo": "todos",
+        "condicoes": [
+          {"campo": "lotka.alpha", "operador": "entre", "valor": [1.7, 2.3]},
+          {"campo": "lotka.adere", "operador": "==", "valor": true}
+        ]
+      }
+    },
+    {
+      "id": "P2",
+      "enunciado": "A dispersão por fontes segue o padrão de Bradford, com núcleo concentrado",
+      "indicador": "participação da zona 1",
+      "criterio": {"campo": "bradford.zonas.0.artigos_%", "operador": ">=", "valor": 25}
+    },
+    {
+      "id": "P3",
+      "enunciado": "A rede de coautoria é fragmentada, sem comunidade dominante",
+      "indicador": "componente gigante da rede de coautoria",
+      "criterio": {"campo": "coautoria.metricas.componente_gigante_%", "operador": "<", "valor": 60}
+    },
+    {
+      "id": "P4",
+      "enunciado": "«enunciado próprio da sua revisão»",
+      "indicador": "«indicador do plano de análise»",
+      "criterio": {
+        "tipo": "manual",
+        "observacao": "depende de codificação manual — descrever aqui o que será codificado"
+      }
+    }
+  ]
+}
