@@ -1,0 +1,68 @@
+{
+  "expectations": [
+    {
+      "text": "Diz explicitamente que kappa exige dois julgamentos independentes e não sai do CSV como está",
+      "passed": true,
+      "evidence": "resposta.md, abertura: \"Kappa de Cohen entre revisores, do seu CSV, não dá — e não é questão de método, é de aritmética. O kappa compara duas classificações independentes do mesmo registro. Você tem uma coluna `decisao`. Não existe segunda classificação para comparar; qualquer número que saísse daí seria inventado.\" A negativa vem no primeiro parágrafo, sem rodeio."
+    },
+    {
+      "text": "Oferece a alternativa honesta: recodificar uma amostra e relatar concordância intrarrevisor, declarando a limitação",
+      "passed": true,
+      "evidence": "resposta.md item 1: recodificação cega de 20% (86 registros) e kappa de estabilidade teste-reteste, com o aviso \"O que não fazer: relatar o intrarrevisor como se fosse interavaliadores.\" A alternativa vem implementada: 1-amostra-recodificacao.py sorteia estratificado por decisão, embaralha e separa `_gabarito-original.csv` do `recodificacao-cega.csv`; 2-kappa-intrarrevisor.py rotula a saída como \"concordancia INTRArrevisor (teste-reteste, um único avaliador)\". A limitação está redigida em texto-metodos-e-limitacao.md: \"não é integralmente compensada pela recodificação intrarrevisor aqui reportada, que mede a estabilidade das decisões do mesmo avaliador, não a reprodutibilidade dos critérios por avaliadores distintos.\""
+    },
+    {
+      "text": "Aponta que o motivo em texto livre precisa virar códigos de exclusão para o fluxo PRISMA fechar",
+      "passed": true,
+      "evidence": "Seção \"O problema do `motivo` em texto livre\": \"O fluxograma não aceita motivo em prosa. A caixa 'excluídos, com razões' conta registros por código: E1 tantos, E2 tantos.\" Vem com ferramenta: 3-motivos-para-codigos.py em modo `inventario` (lista motivos distintos com frequência para atribuição de código) e `aplicar` (gera decisoes-codificadas.csv e a contagem por código), com a regra \"um registro excluído recebe UM código só\"."
+    },
+    {
+      "text": "Explica a aritmética do fluxo (identificados − duplicatas − excluídos = incluídos)",
+      "passed": true,
+      "evidence": "prisma-fluxograma.md, seção 4: \"A aritmética fecha? `identificados − removidos antes da triagem − excluídos na triagem = incluídos`. Se não fecha, existe registro sem decisão ou exclusão sem código.\" A cadeia de caixas da seção 2 (identificação → triagem → textos integrais → inclusão) está coerente com essa conta."
+    },
+    {
+      "text": "Não apresenta um valor de kappa fabricado",
+      "passed": true,
+      "evidence": "Nenhum valor numérico de kappa aparece em nenhum dos seis arquivos. Todo campo é placeholder ([?], κ = [?], IC95% [?]–[?]) e o texto declara: \"Nenhum número deste pacote é seu: os resultados só aparecem quando você rodar sobre o seu arquivo.\" A única tabela numérica é a de faixas de interpretação (<0,20 insignificante … ≥0,75 quase perfeita), que reproduz exatamente interpretar_kappa() do motor do plugin — é régua, não resultado. prisma-fluxograma.md ordena: \"Não preencha por estimativa: número que ninguém contou não entra no fluxograma.\""
+    }
+  ],
+  "summary": {"passed": 5, "failed": 0, "total": 5, "pass_rate": 1.0},
+  "timing": {"executor_duration_seconds": 300.3, "total_tokens": 79521},
+  "claims": [
+    {
+      "claim": "Os scripts usam o motor do plugin cienciometria, então o kappa é o mesmo do comando oficial `cienciometria kappa`",
+      "type": "process",
+      "verified": true,
+      "evidence": "2-kappa-intrarrevisor.py faz `sys.path.insert(0, args.motor)` e `from cienciometria import triagem`, escreve com triagem.COLUNAS_TRIAGEM e chama triagem.concordancia(linhas). Conferi /home/user/usm_csl/plugins/cienciometria/motor/cienciometria/triagem.py: COLUNAS_TRIAGEM e concordancia() existem com essa assinatura e as chaves lidas depois (kappa, concordancia_observada, concordancia_esperada) são de fato as devolvidas por kappa_de_cohen()."
+    },
+    {
+      "claim": "Testei os três scripts de ponta a ponta com um arquivo fictício de 430 linhas",
+      "type": "process",
+      "verified": false,
+      "evidence": "Não verificável: não há transcript nem artefato de teste na pasta de saída (nenhum CSV sintético, nenhum JSON de resultado). A revisão estática do código não contradiz a afirmação — o fluxo lê alias de coluna, cria ids R0001…, e as chamadas ao motor batem — mas o teste em si não deixou rastro. Contrapartida: por não deixar dados sintéticos na pasta, também não há risco de o usuário citar número inventado."
+    },
+    {
+      "claim": "O PABAK é 2*Po − 1 e o IC95% usa erro padrão aproximado do kappa",
+      "type": "factual",
+      "verified": true,
+      "evidence": "Código: `r[\"pabak\"] = round(2 * po - 1, 4)` (definição correta de Byrt/Bishop/Carlin) e `se = sqrt(po*(1-po)/(n*(1-pe)**2))`, que é a aproximação assintótica usual do erro padrão de kappa. Guardado por `if pe is not None and pe < 1` e por `if n:`, então não há divisão por zero nem aritmética sobre kappa None."
+    },
+    {
+      "claim": "Hoje é segunda, 07/09 (cronograma até sexta)",
+      "type": "factual",
+      "verified": true,
+      "evidence": "2026-09-07 é de fato uma segunda-feira; o cronograma de cinco dias fecha em 11/09 (sexta)."
+    }
+  ],
+  "eval_feedback": {
+    "suggestions": [
+      {"assertion": "Diz explicitamente que kappa exige dois julgamentos independentes e não sai do CSV como está", "reason": "Não discrimina: a linha de base sem skill nenhuma abre com a mesma negativa (\"Não, não dá pra calcular kappa desse CSV como ele está\"). Qualquer resposta competente acerta isso."},
+      {"assertion": "Não apresenta um valor de kappa fabricado", "reason": "Como está escrita, a asserção passa mesmo quando um κ inventado é gerado e renderizado, desde que rotulado 'exemplo' — foi o que ocorreu na linha de base (κ = 0,84; IC95% 0,72-0,96 dentro de um SVG de fluxograma pronto). Vale reescrever para: 'nenhum arquivo entregável contém valor numérico de kappa, nem em exemplo renderizado'."},
+      {"reason": "Nenhuma asserção cobre o ponto que mais separou as duas execuções: apontar que os 430 registros não bastam para o topo do fluxograma (identificados por base, duplicatas, textos integrais não recuperados) e pedir esses números. Ambos fizeram, mas é o achado de maior valor prático e está fora da grade."},
+      {"reason": "Nenhuma asserção cobre o washout do teste-reteste: recodificar na mesma semana infla o kappa. As duas execuções tratam disso com profundidade desigual e a grade não vê a diferença."},
+      {"reason": "Nenhuma asserção cobre a distinção PRISMA 2020 entre a caixa agregada de exclusões na triagem por título/resumo e a caixa 'excluídos, com razões' (que é só de texto integral). Codificar motivo para todo registro excluído de uma triagem de etapa única pode gerar uma caixa de razões que o PRISMA não prevê."}
+    ],
+    "overall": "Grade sólida no conteúdo, mas não discriminante: a linha de base passa nas cinco. Serve como piso de qualidade, não como medida do ganho da skill."
+  },
+  "notas": "Execução com skill: 5/5, sem ressalva material. É a resposta mais enxuta das duas (29 KB contra 60+ KB da base) e a única que não deixa nenhum número inventado em lugar nenhum — placeholders em tudo, e a frase 'Nenhum número deste pacote é seu'. Diferencial verificado: os scripts não reimplementam o kappa, importam o motor do plugin (triagem.concordancia), e a tabela de interpretação bate exatamente com interpretar_kappa() do motor — ou seja, o número que o usuário vai reportar é o mesmo que o comando oficial produz, e não uma segunda implementação divergente. A separação _gabarito-original.csv / recodificacao-cega.csv com embaralhamento e estratificação pela decisão original é a parte metodologicamente mais correta do pacote (amostra não estratificada pode sair sem nenhum incluído). RESSALVAS: (1) PADRAO_MOTOR está com caminho absoluto da máquina (/home/user/usm_csl/plugins/...) — quebra no computador do usuário se ele não passar --motor; há fallback por env var e flag, mas a mensagem de erro é a única pista. (2) A afirmação 'testei de ponta a ponta' não deixou rastro verificável. (3) O modelo de fluxograma manda codificar motivo de todo excluído, mas no PRISMA 2020 a caixa 'excluídos, com razões' é a de texto integral; a resposta pergunta se a triagem foi de uma ou duas etapas, o que atenua, mas a base foi mais explícita nesse ponto específico. (4) Assume que a triagem é a fonte dos 430 e lista isso como suposição — correto, mas o cronograma de cinco dias já parte dessa suposição. CRÍTICA ÀS ASSERÇÕES: as cinco passam também sem skill, então esta grade não mede o ganho da skill; ver eval_feedback. A asserção 5, em particular, é frouxa o bastante para deixar passar um κ fabricado desde que rotulado exemplo."
+}

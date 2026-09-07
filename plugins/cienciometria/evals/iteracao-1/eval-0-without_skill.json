@@ -1,0 +1,71 @@
+{
+  "expectations": [
+    {
+      "text": "Distingue mapear o campo (cienciometria) de sintetizar o que a literatura concluiu, antes de propor o caminho",
+      "passed": true,
+      "evidence": "01-protocolo-revisao.md, secao 1, traz tabela de familias de revisao com a linha decisiva: '**Revisao bibliometrica** | Analisa padroes de producao, autoria, citacao e coocorrencia de termos | Quando a pergunta e sobre o *campo*, nao sobre os *achados*', contraposta a 'Revisao sistematica ... quando existe corpo consolidado e voce quer sintetizar evidencia'. A distincao vem antes da recomendacao ('Recomendacao para o seu caso: revisao de escopo sistematica com componente bibliometrico') e ha ate um campo de decisao registrada. resposta.md repete: 'uma revisao sistematica no molde da saude (com sintese quantitativa de efeitos) nao se sustenta'. A distincao existe, mas fica dentro do arquivo anexo e da recomendacao ja tomada, em vez de virar a pergunta que o aluno leva ao orientador (ver notas)."
+    },
+    {
+      "text": "Faz perguntas de delimitação concretas: objeto, janela temporal, idiomas e bases efetivamente acessíveis",
+      "passed": true,
+      "evidence": "Bases: pergunta 4 — 'Sua instituicao assina Scopus e Web of Science pelo CAFe?', reforcada por 'o Portal CAPES e como voce consegue o PDF, nao e onde voce faz a busca sistematica'. Objeto: pergunta 3 ('Ja existe um angulo do orientador — efeitos do OP, difusao, declinio pos-2010, OP digital?') e secao 6, itens 1-3 (literatura cinzenta, livros/capitulos, recorte geografico). Janela: secao 6, item 4 — 'Marco temporal: 1989 ... e o corte natural e defensavel'. Idiomas: apenas como suposicao declarada em 'Suposicoes que fiz (corrija o que estiver errado) — Idiomas: portugues, ingles e espanhol', nao como pergunta."
+    },
+    {
+      "text": "Cria de fato a estrutura da revisão com o motor (pasta revisoes/<slug> com config/ e docs/)",
+      "passed": false,
+      "evidence": "Nao existe. A saida sao nove arquivos soltos na raiz de outputs/ (01-protocolo-revisao.md, 02-strings-de-busca.md, 03-planilha-triagem.csv, 04-formulario-extracao.csv, 05-diagrama-prisma.md, 06-primeiros-passos.md, resposta.md e dois de instrucoes). Nenhuma pasta revisoes/, nenhum diretorio config/ ou docs/, nenhum slug, e nenhuma mencao ao motor de cienciometria em qualquer arquivo. O fluxo proposto e manual, apoiado em ferramentas de terceiros (Zotero, Rayyan, VOSviewer, bibliometrix, Taguette)."
+    },
+    {
+      "text": "config/revisao.json fica preenchido com janela, idiomas e ao menos uma proposição com critério de refutação",
+      "passed": false,
+      "evidence": "Nenhum arquivo JSON foi produzido em toda a execucao. Nao ha equivalente conceitual: o protocolo em markdown define escopo, criterios de inclusao/exclusao e cronograma, mas nao formula nenhuma proposicao com criterio de refutacao escrito antes do resultado — o mais proximo e o 'mapa de lacunas', que e produto e nao hipotese testavel. Janela e idiomas aparecem como texto no protocolo, nunca em configuracao legivel por maquina."
+    },
+    {
+      "text": "Indica o próximo passo concreto (strings de busca por base) em vez de parar no plano abstrato",
+      "passed": true,
+      "evidence": "02-strings-de-busca.md (11,6 KB) traz strings prontas por base — Scopus (TITLE-ABS-KEY com lista canonica de termos em pt/en/es/fr/de/it), Web of Science, SciELO, SPELL e BDTD — mais bloco NOT para o ruido de 'budget participation' da contabilidade gerencial, orientacao sobre acentuacao por base e log de busca. 06-primeiros-passos.md sequencia dia a dia: 'Dia 3 — Busca-piloto. Rode as strings do 02-strings-de-busca.md no Scopus e na SciELO'. Tambem entrega planilha de triagem e formulario de extracao em CSV."
+    },
+    {
+      "text": "Não apresenta registros bibliográficos, contagens de bases ou resultados de busca inventados",
+      "passed": true,
+      "evidence": "Varredura por DOIs, contagens e listas de registros nos 9 arquivos: nenhum DOI, nenhuma contagem, nenhuma lista de artigos. A recusa e explicita e dupla: 'Nao busquei nada por voce. Nao tenho acesso ao seu Portal CAPES e nao vou inventar contagens de registros nem lista de artigos'. Os nomes de autores usados como pista de busca (Avritzer, Wampler, Baiocchi, Sintomer, Abers) sao pesquisadores reais do campo e vem com ressalva explicita: 'estao la como pistas de busca ... Nao sao bibliografia verificada e nenhum deles deve entrar no seu texto sem que voce localize e leia o trabalho especifico'. Idem para Ferreira (2002) e Romanowski & Ens (2006): 'Confirme esses dois no Portal antes de citar'."
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 2,
+    "total": 6,
+    "pass_rate": 0.67
+  },
+  "timing": {
+    "executor_duration_seconds": 427.8,
+    "total_tokens": 74844
+  },
+  "claims": [
+    {
+      "claim": "'O Portal CAPES e como voce consegue o PDF, nao e onde voce faz a busca sistematica'",
+      "type": "factual",
+      "verified": true,
+      "evidence": "Correto e util: a busca integrada do Portal nao expoe sintaxe controlavel nem regras de indexacao documentaveis. E um dos melhores achados desta execucao e nao esta coberto por nenhuma asercao."
+    },
+    {
+      "claim": "'budget participation' / 'budgetary participation' em ingles e tema de contabilidade gerencial e vai poluir a busca",
+      "type": "factual",
+      "verified": true,
+      "evidence": "Correto — e literatura consolidada de controle gerencial, homonima do objeto. A execucao converte o achado em bloco NOT com instrucao de medir quantos registros ele removeu."
+    },
+    {
+      "claim": "SPELL e base da ANPAD e 'pular o SPELL e erro grave' para um programa de administracao publica",
+      "type": "quality",
+      "verified": true,
+      "evidence": "Base real da ANPAD, pertinente ao programa do usuario. E uma base que a execucao com skill nao mencionou — vantagem real da baseline."
+    },
+    {
+      "claim": "As strings entregues cobrem seis idiomas e trazem filtro NOT calibrado",
+      "type": "factual",
+      "verified": true,
+      "evidence": "Conferido em 02-strings-de-busca.md: termos em pt (com e sem acento), en, es, fr, de e it, mais o bloco NOT. Cobertura terminologica mais ampla que a da execucao com skill neste ponto."
+    }
+  ],
+  "notas": "EXECUCAO. Boa e honesta, e melhor que a versao com skill em dois pontos concretos que nenhuma asercao captura: (a) alerta que o Portal CAPES nao e onde se faz a busca sistematica, so onde se obtem o PDF; (b) inclui SPELL (base da ANPAD) e BDTD, decisivas para um mestrado brasileiro em administracao publica, e ausentes da execucao com skill. As strings tambem cobrem mais idiomas (frances, alemao, italiano) e trazem o bloco NOT contra o ruido de 'budget participation' da contabilidade gerencial.\n\nONDE PERDE. Fica no plano do documento avulso. Nao ha estrutura de projeto, nao ha configuracao legivel por maquina, e — o mais relevante metodologicamente — nao ha nenhuma proposicao com criterio de refutacao escrito antes do resultado. O protocolo diz o que sera feito, mas nao se compromete com o que contaria como refutacao; o produto prometido e um 'mapa de lacunas', que nao e testavel. Tambem deixa a decisao entre mapear o campo e sintetizar achados tomada por si (recomenda escopo + bibliometrico) em vez de devolve-la ao orientador, o que e defensavel mas mais arriscado. O teste de recall existe, porem frouxo: '8-10 trabalhos que voce sabe que deveriam aparecer', sem limiar numerico de aceitacao, contra as 25 sementes com piso de 22 da versao com skill.\n\nHONESTIDADE DE DADOS. Sem falhas. Recusa explicita de inventar contagens e nomes de autores marcados como pista nao verificada.\n\nCRITICA AS ASERCOES (identica a registrada na execucao com skill). Quatro das seis asercoes (#1, #2, #5, #6) passam nas duas execucoes e portanto nao discriminam; #5 e #6 a baseline cumpre tao bem quanto ou melhor. So #3 e #4 separam as duas execucoes, e ambas testam adesao a ferramenta, nao qualidade metodologica. Falta asercao para: limiar numerico no teste de recall; proposicoes falseaveis definidas antes da busca; cobertura de bases nacionais pertinentes ao programa (SPELL/BDTD), onde a baseline vence; e correcao sintatica das strings por base."
+}

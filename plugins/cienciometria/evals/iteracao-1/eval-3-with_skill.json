@@ -1,0 +1,63 @@
+{
+  "expectations": [
+    {
+      "text": "Corrige a afirmação do usuário: o quadrante de baixa centralidade e baixa densidade não distingue emergente de declínio",
+      "passed": true,
+      "evidence": "Seção 1: \"Centralidade baixa + densidade baixa é o quadrante emergente OU em declínio. Os dois ocupam exatamente o mesmo lugar no mapa de Callon: um tema que está nascendo e um tema que está saindo de cena produzem a mesma assinatura (poucas ligações externas, pouca coesão interna). O quadrante é ambíguo por construção.\" Vai além e ataca a segunda metade da frase do usuário: \"'promete crescer' é projeção... o mapa é uma fotografia sincrônica, não tem informação sobre o futuro.\""
+    },
+    {
+      "text": "Indica a checagem concreta que resolve: série de frequência dos termos por subperíodo",
+      "passed": true,
+      "evidence": "Seção 2, com nome de arquivo: \"Abra `saidas/evolucao_tematica.csv` e olhe os termos do cluster 3 entre os dois últimos subperíodos. Termo que cresce entre o penúltimo e o último período é emergente; termo que encolhe está saindo de cena.\" Conferi que o arquivo é real: motor/cienciometria/__main__.py linha 339 grava evolucao_tematica.csv a partir de redes.evolucao_tematica(). Também está certo o `saidas/copalavras_nos.csv` citado adiante (prefixo 'copalavras' + '_nos.csv' na função exportar()). Enumera os três desfechos possíveis (cresce / encolhe / ambíguo) e o que escrever em cada um."
+    },
+    {
+      "text": "Acrescenta ao menos uma outra cautela de interpretação verificável (co-citação, cobertura, citação recente)",
+      "passed": true,
+      "evidence": "Várias, todas com procedimento de verificação: (b) densidade baixa como artefato de sinonímia — conferir o tesauro e rodar sensibilidade de limiar ±1, \"se muda de quadrante com limiar ±1, o achado é frágil\"; (c) centralidade baixa como viés de cobertura de base anglófona para tema ancorado em norma brasileira; (a) rótulo largo demais e regra de cluster com menos de ~5 itens; (d) lacuna relacional em vez de lacuna de ausência; checklist final com cobertura da co-citação (n e % do corpus com campo de referências), citações por ano ao lado do total e semente fixa dos procedimentos estocásticos. A cautela do percentual sobre base pequena (\"'cresceu 300%' pode ser de 2 para 8 registros\") é a mais diretamente aplicável ao caso."
+    },
+    {
+      "text": "Não inventa números do estudo do usuário",
+      "passed": true,
+      "evidence": "Todos os campos das duas versões do parágrafo estão em branco (\"passam de \\_\\_ para \\_\\_ ocorrências entre \\_\\_ e \\_\\_\"), com a ressalva explícita \"preencha com os seus números — eu não tenho seus dados\". Os únicos números do texto são de domínio público ou regras genéricas (LGPD de 2018 com vigência escalonada; cluster com menos de ~5 itens; limiar ±1; 300% como exemplo aritmético hipotético). Nenhuma centralidade, densidade, contagem de termos ou frequência é atribuída ao cluster 3 do usuário."
+    }
+  ],
+  "summary": {"passed": 4, "failed": 0, "total": 4, "pass_rate": 1.0},
+  "timing": {"executor_duration_seconds": 110.4, "total_tokens": 62441},
+  "claims": [
+    {
+      "claim": "Os arquivos saidas/evolucao_tematica.csv e saidas/copalavras_nos.csv existem nas saídas da análise",
+      "type": "factual",
+      "verified": true,
+      "evidence": "Ambos conferidos no motor do plugin: salvar_tabela(os.path.join(saida, 'evolucao_tematica.csv'), fluxos) e exportar('copalavras', ...) que grava '%s_nos.csv' % prefixo. A resposta manda o usuário a arquivos que de fato existem no toolchain dele, não a nomes plausíveis."
+    },
+    {
+      "claim": "O motor nomeia o cluster pelo item mais frequente, então o rótulo é pista e não nome",
+      "type": "factual",
+      "verified": true,
+      "evidence": "Coerente com o pipeline (propagacao_de_rotulos + mapa_tematico sobre nós de co-palavras ordenados por frequência). A consequência prática que a resposta tira disso — reler os 10 termos mais frequentes e os documentos correspondentes antes de aceitar o rótulo — é verificável pelo usuário."
+    },
+    {
+      "claim": "Unificar LGPD / GDPR / proteção de dados / privacidade no tesauro elevaria a densidade do cluster",
+      "type": "quality",
+      "verified": false,
+      "evidence": "Parcialmente errado como conselho. A lista de sinônimos do item (b) mistura variantes do mesmo referente (LGPD / Lei Geral de Proteção de Dados) com um referente distinto: GDPR é o regulamento europeu, não a lei brasileira, e fundir os dois no tesauro é erro de pré-processamento, não correção. A resposta não manda fundir explicitamente, mas põe GDPR na mesma enumeração de 'sinônimos que fragmentam'. A execução sem skill acerta o ponto oposto e avisa que GDPR \"não deve ser fundida com LGPD, mas frequentemente é\"."
+    },
+    {
+      "claim": "'Emergente' não sustenta projeção de crescimento sem série temporal",
+      "type": "quality",
+      "verified": true,
+      "evidence": "Justificado: o mapa de Callon é construído sobre a rede agregada da janela inteira, sem componente temporal; a projeção exige a série que a própria resposta manda levantar. A alternativa redigida para o caso ambíguo (\"posição indefinida... agenda de verificação\") é metodologicamente defensável e não enfraquece o artigo."
+    }
+  ],
+  "eval_feedback": {
+    "suggestions": [
+      {"assertion": "Corrige a afirmação do usuário: o quadrante de baixa centralidade e baixa densidade não distingue emergente de declínio", "reason": "Trivial nesta amostra: é a resposta de manual e as duas execuções abrem com ela nas três primeiras linhas. Não separa nada."},
+      {"assertion": "Acrescenta ao menos uma outra cautela de interpretação verificável (co-citação, cobertura, citação recente)", "reason": "'Ao menos uma' com três alternativas aceitas passa com qualquer resposta longa. As duas execuções entregaram cinco a oito cautelas cada. Uma asserção discriminante exigiria a cautela específica que o caso pede — a fragmentação por sinonímia bilíngue LGPD/GDPR, que é a explicação alternativa mais provável para densidade baixa neste cluster."},
+      {"reason": "Nenhuma asserção cobre o teste do ano médio de publicação do cluster contra o ano médio do corpus — a desambiguação mais barata de todas (um número, uma frase). A execução com skill não o menciona; a sem skill lidera com ele. A grade não vê essa diferença."},
+      {"reason": "Nenhuma asserção verifica a qualidade do conselho de tesauro. Uma resposta que mandasse fundir GDPR com LGPD estaria dando conselho errado e passaria nas quatro asserções."},
+      {"reason": "Nenhuma asserção cobre a reescrita da frase do artigo, que é o que o usuário de fato precisa entregar. Ambos entregaram; poderia ser um requisito explícito ('propõe redação substituta que declara a ambiguidade antes que o parecerista a levante')."}
+    ],
+    "overall": "As quatro asserções passam nas duas execuções. Testam o piso (não errar o quadrante, não inventar número) e não a qualidade do diagnóstico."
+  },
+  "notas": "Execução com skill: 4/4. Mais rápida das duas (110 s contra 165 s) e a mais operacional: é a única que aponta arquivos de saída reais do pipeline do usuário (saidas/evolucao_tematica.csv, saidas/copalavras_nos.csv — ambos conferidos no motor do plugin), o que transforma 'cheque a série por subperíodo' em uma instrução executável hoje. Também é a única a antecipar o artefato aritmético específico do caso: tema de origem regulatória tem data de nascimento marcada (LGPD, 2018), gera curva de base zero e percentual espetacular sobre poucos registros — daí a regra de dar os absolutos ao lado do percentual. A alternativa redigida para o desfecho ambíguo ('posição indefinida... agenda de verificação') é a melhor parte da resposta: resolve o caso em que a checagem não decide, que é o cenário que o usuário não tinha considerado. PONTOS FRACOS: (1) o item (b) enfileira GDPR entre os sinônimos de LGPD a unificar no tesauro; GDPR é o regulamento europeu e fundir os dois é erro de pré-processamento — a execução sem skill acerta isso explicitamente. (2) Não menciona o teste do ano médio de publicação do cluster contra o do corpus, que é a desambiguação mais barata e a que rende uma frase de artigo com um número só. (3) Não cita fonte para o quadrante ambíguo (Callon 1991, Cobo 2011), e o usuário vai precisar da citação no texto — a versão sem skill entrega as duas. (4) A seção 6 é checklist genérico de submissão (Lotka, Bradford, h-index, contagem fracionária) pouco ligada à pergunta; é útil, mas dilui. CRÍTICA ÀS ASSERÇÕES: as quatro passam também sem skill; ver eval_feedback."
+}

@@ -1,0 +1,62 @@
+{
+  "expectations": [
+    {
+      "text": "Corrige a afirmação do usuário: o quadrante de baixa centralidade e baixa densidade não distingue emergente de declínio",
+      "passed": true,
+      "evidence": "Abertura: \"Baixa centralidade + baixa densidade é justamente o quadrante que a literatura clássica (Callon, Courtial & Laville, 1991; depois Cobo et al., 2011, no SciMAT) rotula como 'temas emergentes ou em declínio'. A ambiguidade é constitutiva do quadrante... O mapa não distingue os dois casos — só a dimensão temporal distingue.\" E: \"você escolheu uma das duas leituras possíveis sem apresentar a evidência que exclui a outra\". Também separa a projeção: \"'promete crescer' é uma projeção, e projeção exige um modelo ou pelo menos uma série temporal — não sai de um mapa estático.\""
+    },
+    {
+      "text": "Indica a checagem concreta que resolve: série de frequência dos termos por subperíodo",
+      "passed": true,
+      "evidence": "Item (b): \"Série anual de ocorrências dos termos do cluster. Plote a frequência ano a ano dos principais termos ('governança de dados', 'interoperabilidade', 'LGPD'). Emergência tem assinatura visual clara: quase zero no início da janela, crescimento nos últimos anos.\" E item (c), o mapa temático evolutivo: \"Divida a janela em 2 ou 3 subperíodos e rode o mapa em cada um... Esta é a evidência mais forte das três, e é a que a literatura metodológica recomenda explicitamente para desambiguar Q3.\" Cita a função concreta fieldByYear() do bibliometrix."
+    },
+    {
+      "text": "Acrescenta ao menos uma outra cautela de interpretação verificável (co-citação, cobertura, citação recente)",
+      "passed": true,
+      "evidence": "Seção 2 inteira, com as três da asserção presentes: cobertura de base (\"se o corpus vem só de Scopus e/ou WoS, e o tema é LGPD/administração pública brasileira, há um viés de cobertura sério... checar contra SciELO/BASE/Google Scholar\"); citação recente (item d: \"citações por ano por documento relativamente alta e crescente\"); triangulação com acoplamento bibliográfico (item e: \"coocorrência de palavras-chave é retrospectiva e tem lag... se não aparece em lugar nenhum além da coocorrência, cuidado\"). Acrescenta truncamento do último ano incompleto, instabilidade da densidade em cluster pequeno e sensibilidade a parâmetros (top-N, frequência mínima, autor-keywords vs KeyWords Plus, normalização, algoritmo)."
+    },
+    {
+      "text": "Não inventa números do estudo do usuário",
+      "passed": true,
+      "evidence": "O parágrafo modelo é todo em colchetes (\"ano médio de publicação de [X], contra [Y] do corpus... de [n] no subperíodo [A] para [n] no subperíodo [B]\") e a resposta declara: \"Não usei nenhum número seu porque não tenho nenhum — todos os colchetes acima são para você preencher.\" Os únicos números do texto são anos de referências reais (1991, 2011) e hipóteses de configuração (top 50/100/250), nenhuma atribuída ao cluster 3."
+    }
+  ],
+  "summary": {"passed": 4, "failed": 0, "total": 4, "pass_rate": 1.0},
+  "timing": {"executor_duration_seconds": 164.7, "total_tokens": 55203},
+  "claims": [
+    {
+      "claim": "Callon, Courtial & Laville (1991) e Cobo et al. (2011, SciMAT) são as fontes do quadrante 'emergente ou em declínio'",
+      "type": "factual",
+      "verified": true,
+      "evidence": "Atribuição correta: Callon et al. 1991 é a origem do diagrama estratégico centralidade × densidade e Cobo et al. 2011 é o artigo do SciMAT que consolidou a leitura por quadrantes. São exatamente as duas citações que o usuário precisa colar no artigo."
+    },
+    {
+      "claim": "GDPR não deve ser fundida com LGPD no tesauro, embora frequentemente seja",
+      "type": "quality",
+      "verified": true,
+      "evidence": "Correto e é o ponto mais fino da resposta: LGPD e GDPR são normas distintas (brasileira e europeia); unificá-las no tesauro cria um nó falso. A execução com skill enfileira GDPR entre os sinônimos a unificar, sem essa ressalva."
+    },
+    {
+      "claim": "O ano médio de publicação do cluster contra o do corpus é o teste mais direto de emergência",
+      "type": "quality",
+      "verified": true,
+      "evidence": "Defensável: é um único número, calculável a partir dos documentos já atribuídos ao cluster, e a menção à overlay visualization por ano médio do VOSviewer está correta. A execução com skill não oferece esse teste."
+    },
+    {
+      "claim": "Truncamento do último ano penaliza justamente os temas emergentes",
+      "type": "factual",
+      "verified": true,
+      "evidence": "Correto e específico: extração no meio do ano achata a ponta da curva, que é exatamente onde a evidência de emergência precisa aparecer. Nenhuma outra execução levanta isso."
+    }
+  ],
+  "eval_feedback": {
+    "suggestions": [
+      {"assertion": "Indica a checagem concreta que resolve: série de frequência dos termos por subperíodo", "reason": "Passa aqui de forma genérica ('plote a frequência ano a ano') e passa na outra execução de forma executável (nome do arquivo de saída do pipeline). A asserção não distingue conselho de instrução. Vale exigir que a checagem seja operacionalizável com o que o usuário já tem em mãos."},
+      {"assertion": "Não inventa números do estudo do usuário", "reason": "Ambas as execuções passam com folga; é um piso de honestidade, não um discriminador. Manter como guarda-corpo, sem contar como sinal."},
+      {"reason": "Nenhuma asserção cobre a qualidade do conselho de normalização de termos, onde as duas execuções divergem de forma verificável: uma avisa que GDPR não é sinônimo de LGPD, a outra as enfileira juntas. É o tipo de erro que um parecerista da área pega e a grade atual não vê."},
+      {"reason": "Nenhuma asserção cobre a citação da fonte do quadrante (Callon 1991 / Cobo 2011). O usuário vai precisar citar no artigo, e só uma das execuções entrega."}
+    ],
+    "overall": "As quatro asserções passam nas duas execuções, com evidência igualmente forte. Grade de piso, não de discriminação."
+  },
+  "notas": "Linha de base sem skill: 4/4, e no mérito é a resposta ligeiramente mais forte deste caso. Vantagens verificadas: (a) entrega as citações que o usuário vai precisar (Callon, Courtial & Laville 1991; Cobo et al. 2011) e atribui corretamente o quadrante ambíguo a elas; (b) oferece o teste do ano médio de publicação do cluster contra o do corpus, que é a desambiguação de menor custo e não aparece na execução com skill; (c) acerta o ponto de tesauro que a outra erra — GDPR não deve ser fundida com LGPD; (d) levanta o truncamento do último ano incompleto, que penaliza justamente a evidência de emergência; (e) é a única a alertar contra o deslize normativo de 'emergente' para 'promissor/estratégico/prioritário', que é a segunda crítica que o parecerista faria. PONTOS FRACOS: (1) tudo é genérico quanto à ferramenta — fala de bibliometrix, VOSviewer, SciMAT, sem apontar nenhum arquivo de saída concreto que o usuário já tenha, então a checagem decisiva fica como tarefa a montar, não a executar; (2) não trata do artefato de percentual sobre base pequena, que é risco alto num cluster periférico de tema com data de nascimento regulatória; (3) não oferece redação para o desfecho em que a checagem não decide — assume implicitamente que a série vai confirmar ou negar; (4) mais longa e mais lenta (165 s contra 110 s) para a mesma nota. CRÍTICA ÀS ASSERÇÕES: as quatro passam nas duas execuções e nenhuma alcança as diferenças reais de qualidade listadas acima; ver eval_feedback."
+}

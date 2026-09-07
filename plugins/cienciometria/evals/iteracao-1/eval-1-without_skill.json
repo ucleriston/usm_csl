@@ -1,0 +1,71 @@
+{
+  "expectations": [
+    {
+      "text": "Identifica que os termos genéricos combinados sem contexto são a causa do ruído",
+      "passed": true,
+      "evidence": "Abre com o mesmo diagnostico, e mais detalhado por termo: 'O problema da sua string nao e ela estar larga demais — e ela estar subespecificada. resilience AND governance AND network nao contem nenhum termo que amarre a busca ao seu objeto (cidade + evento climatico extremo)', seguido do segundo dono de cada termo ('resilience e vocabulario central de engenharia de materiais e estruturas ... network e vocabulario central de redes neurais, redes de sensores, telecom e biologia de sistemas ... governance ... aparece em data governance, IT governance'). Acrescenta um diagnostico que a versao com skill nao faz: o AND aceita os termos 'em pontas opostas do resumo, sem relacao', e por isso propoe proximidade."
+    },
+    {
+      "text": "Entrega string revisada com expressões entre aspas e sinônimos",
+      "passed": true,
+      "evidence": "strings-scopus.txt entrega V0 a V7. V1 (principal) usa aspas em todas as expressoes multipalavra e truncamento correto: \"local government*\", \"city region*\", \"built environment\", \"climate hazard*\", \"sea level rise\", \"coastal hazard*\", \"natural disaster*\", resilien*, urban*, municipal*, neighbourhood*/neighborhood*. Sinonimia rica no bloco de clima (24 termos, incluindo typhoon, wildfire, inundation) e no relacional V2. Usa ainda o operador de proximidade W/5, ausente na versao com skill. Ponto fraco: os blocos sao so em ingles — nao ha 'governanca', 'resiliencia' nem 'ciudad', embora V5 aplique LANGUAGE(portuguese)/LANGUAGE(spanish), o que e incoerente com blocos monolingues."
+    },
+    {
+      "text": "Inclui bloco de contexto (cidade/urbano/clima) que elimina o ruído de engenharia de materiais",
+      "passed": true,
+      "evidence": "Tabela de arquitetura declara os blocos B (urbano — 'recorte de escala') e C (clima/evento extremo — 'recorte de perturbacao'), com o risco de cada ausencia, e V1 os implementa como AND obrigatorios: '( urban* OR city OR cities OR municipal* OR metropolitan OR \"local government*\" OR \"city region*\" OR town OR towns OR neighbourhood* ... ) AND ( \"climate change\" OR ... flood* OR heatwave* OR drought* OR storm* OR hurricane* OR typhoon* OR cyclone* OR wildfire* OR \"sea level rise\" ... )'. Reforca o bloco A com proximidade (resilien* W/5 governance OR institution* ...), que 'descarta o artigo de composito que menciona governance na secao de financiamento'."
+    },
+    {
+      "text": "Prescreve teste de recall com conjunto-semente antes de adotar a string",
+      "passed": true,
+      "evidence": "'Passo 1 — Monte um conjunto-ouro ANTES de fechar a string. Reuna de 15 a 25 artigos que voce sabe que precisam estar no resultado ... Anote o DOI de cada um. Criterio de aceitacao: a string final tem de recuperar pelo menos 95% do conjunto-ouro. Se recuperar menos, ela nao esta pronta.' O Passo 2 fecha o ciclo de diagnostico: rodar DOI(...) isolado para cada ausencia e descobrir qual bloco falhou ('o artigo diz coastal city e voce so tinha urban*'). Limiar mais exigente (95%) que o da versao com skill (90%), embora sem planilha para registrar o resultado."
+    },
+    {
+      "text": "Menciona exportação com referências citadas ou registro da execução da busca",
+      "passed": true,
+      "evidence": "Satisfeita pelo segundo ramo do OR. Registro: cabecalho do strings-scopus.txt — 'Registre SEMPRE: data da busca, base, string exata, n de itens' — e 'Passo 6 — Documente para o metodo. Guarde, para cada versao: string exata, data, base, n de resultados, e a justificativa de cada exclusao. E literalmente o que o PRISMA-S pede'. NAO cumpre o primeiro ramo: as instrucoes de exportacao pedem 'EID, Authors, Title, Year, Source title, DOI, Author Keywords' e em nenhum momento o campo References — sem ele nao ha co-citacao nem acoplamento bibliografico. Nao ha arquivo de registro, so a instrucao de registrar."
+    },
+    {
+      "text": "Não inventa a contagem de resultados que a string revisada traria",
+      "passed": true,
+      "evidence": "Recusa explicita e antecipada: 'Nao tenho acesso ao Scopus daqui, entao nao vou chutar numeros de resultados. Todas as contagens abaixo voce preenche rodando as strings; o metodo e justamente medir, nao confiar na intuicao.' Nenhuma contagem consta dos arquivos. Ressalva: em 'Ordem pratica de execucao' aparece uma faixa de grandeza — 'e normal o resultado cair de milhares para algo na casa das centenas. Se cair para poucas dezenas, desconfie' — que e rubrica de diagnostico (com o que fazer em cada faixa), nao afirmacao de resultado. Passa por pouco; e o unico ponto onde qualquer das quatro execucoes chega perto de numerar um resultado nao medido."
+    }
+  ],
+  "summary": {
+    "passed": 6,
+    "failed": 0,
+    "total": 6,
+    "pass_rate": 1.0
+  },
+  "timing": {
+    "executor_duration_seconds": 257.7,
+    "total_tokens": 62133
+  },
+  "claims": [
+    {
+      "claim": "'AND NOT TITLE-ABS-KEY(\"neural network\") mata um artigo excelente de governanca climatica que usou uma rede neural no metodo; AND NOT TITLE so mata o artigo que E sobre isso'",
+      "type": "quality",
+      "verified": true,
+      "evidence": "Correto e operacionalizado: V3 aplica a exclusao restrita a TITLE, com a instrucao 'Aplicar SEMPRE restrito a TITLE (nunca a TITLE-ABS-KEY) e SEMPRE testando o que sai'. E uma solucao diferente da da execucao com skill (que rejeita o AND NOT por completo) e igualmente defensavel, desde que medida — e a resposta manda medir."
+    },
+    {
+      "claim": "O script diff_eids.py compara dois exports do Scopus, calcula recall da versao estreita contra a ampla e lista periodicos entre os perdidos, so com stdlib",
+      "type": "process",
+      "verified": true,
+      "evidence": "Codigo real e sintaticamente valido (ast.parse OK), 3,4 KB, importa apenas argparse/csv/sys/collections, detecta o campo identificador entre EID e DOI e grava perdidos.csv. Nao foi executado sobre dados reais (nao ha CSV do Scopus), mas o artefato existe e faz o que a resposta diz."
+    },
+    {
+      "claim": "Excluir ENGI ou COMP em bloco perde infraestrutura urbana, drenagem, critical infrastructure e analise de redes sociais",
+      "type": "factual",
+      "verified": true,
+      "evidence": "Correto, e coerente com V4, que exclui apenas MATE, CHEM, PHYS, BIOC, IMMU, PHAR, VETE, DENT e NEUR. Mesma conclusao a que a execucao com skill chega por outro caminho."
+    },
+    {
+      "claim": "'e normal o resultado cair de milhares para algo na casa das centenas'",
+      "type": "factual",
+      "verified": false,
+      "evidence": "Nao verificavel: nenhuma busca foi executada. E plausivel como ordem de grandeza e vem embalada como rubrica de diagnostico, mas e uma estimativa nao medida em uma resposta que declarou nao chutar numeros. E a fragilidade unica desta execucao no eixo de honestidade de dados."
+    }
+  ],
+  "notas": "EXECUCAO. Excelente, e neste caso a baseline empata ou supera a versao com skill em varios pontos. Vantagens reais dela: (a) o operador de proximidade resilien* W/5 (governance OR institution* ...), que ataca a causa mais fina do ruido — dois termos em pontas opostas do resumo — e nao aparece na versao com skill; (b) a distincao AND NOT em TITLE versus em TITLE-ABS-KEY, que preserva recall sem abrir mao do filtro; (c) diff_eids.py, script real que MEDE empiricamente o que cada filtro derrubou, com ranking de periodicos entre os perdidos como diagnostico ('se aparecer Cities ou Urban Climate, voce cortou musculo junto com a gordura') e amostragem de 30 perdidos para classificacao manual; (d) o passo de ler as facetas Subject Area e Source title do proprio Scopus antes de desenhar o filtro; (e) limiar de recall mais exigente (95% contra 90%).\n\nONDE PERDE PARA A VERSAO COM SKILL. (i) Blocos monolingues em ingles, com V5 aplicando LANGUAGE(portuguese) e LANGUAGE(spanish) — incoerencia interna: filtra idiomas cujo vocabulario nao esta na string. (ii) Nao instrui a exportar o campo References; a lista de campos sugerida (EID, Authors, Title, Year, Source title, DOI, Author Keywords) inviabiliza co-citacao e acoplamento, e o usuario so descobre isso quando a base ja mudou. (iii) Nao produz nenhum artefato de registro: manda registrar, mas nao entrega planilha de sementes nem arquivo de execucao — a diferenca entre prescrever e instrumentar. (iv) Mantem 'network' como bloco opcional de entrada (V2, com AND obrigatorio), enquanto a versao com skill o converte em recorte posterior sobre o corpus ja formado, que e a solucao metodologicamente superior. (v) Arrisca faixa de grandeza do resultado.\n\nCRITICA AS ASERCOES. Esta grade nao discrimina nada: as seis asercoes passam nas duas execucoes. Pior, as duas diferencas que realmente importam entre as execucoes — 'network' como recorte posterior versus filtro de entrada, e exportar ou nao com o campo References — ficam invisiveis: a primeira nao tem asercao, e a segunda e absorvida pelo OR frouxo da asercao 5, que a baseline satisfaz pelo ramo do registro sem cumprir o ramo que importa. Sugestoes: separar a asercao 5 em duas; endurecer a 6 para proibir qualquer estimativa de volume nao medida; criar asercao para o tratamento do termo ambiguo ('network' vira recorte declarado, nao filtro obrigatorio); criar asercao para a existencia de artefato de registro preenchivel (planilha de sementes e registro de execucao), que e o que separa prescrever de instrumentar; e criar asercao sobre cobertura multilingue dos blocos quando o usuario e brasileiro e o tema tem producao regional."
+}

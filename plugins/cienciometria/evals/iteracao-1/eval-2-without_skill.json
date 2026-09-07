@@ -1,0 +1,66 @@
+{
+  "expectations": [
+    {
+      "text": "Diz explicitamente que kappa exige dois julgamentos independentes e não sai do CSV como está",
+      "passed": true,
+      "evidence": "resposta.md, primeiro parágrafo: \"Não, não dá pra calcular kappa desse CSV como ele está. Kappa mede concordância entre dois julgamentos independentes sobre os mesmos registros. Você tem um julgamento por registro. A coluna `motivo` não é um segundo avaliador — ela é o detalhamento do mesmo julgamento.\" Acrescenta corretamente que o PRISMA 2020 não exige kappa (item 8 pede a descrição do processo)."
+    },
+    {
+      "text": "Oferece a alternativa honesta: recodificar uma amostra e relatar concordância intrarrevisor, declarando a limitação",
+      "passed": true,
+      "evidence": "\"Caminho B — re-triagem de você mesmo (test-retest)\": \"você re-tria uma subamostra às cegas depois de um intervalo e calcula kappa intra-avaliador... Precisa ser rotulado assim no texto, sem ambiguidade.\" Vem com o parágrafo pronto (templates_texto.md, cenário A.2: \"afere a consistência interna do julgamento de um mesmo avaliador, e não a concordância entre revisores independentes\") e com o parágrafo de limitações (seção B). O script 01 tem `--modo intra` que gera o arquivo cego. Além disso alerta sobre o washout curto: \"com o prazo de sexta o intervalo de washout vai ser de poucos dias, e você provavelmente vai lembrar de vários registros — o que infla o kappa artificialmente.\""
+    },
+    {
+      "text": "Aponta que o motivo em texto livre precisa virar códigos de exclusão para o fluxo PRISMA fechar",
+      "passed": true,
+      "evidence": "resposta.md ponto 3: \"A coluna `motivo` em texto livre não entra no diagrama como está. Ela precisa virar categorias contáveis, e essas categorias devem espelhar os seus critérios de elegibilidade.\" O script 03_categorizar_motivos.py existe e funciona por de-para: motivos_para_codificar.csv traz motivo_original, frequencia, categoria, etapa. Acrescenta a precisão de que a caixa de motivos do PRISMA é só de texto integral e propõe usar o próprio motivo para reconstruir a etapa de cada exclusão."
+    },
+    {
+      "text": "Explica a aritmética do fluxo (identificados − duplicatas − excluídos = incluídos)",
+      "passed": true,
+      "evidence": "Bloco de cadeia em resposta.md: \"identificados nas bases − removidos antes da triagem (duplicatas) = registros triados − excluídos na triagem = relatórios buscados − não recuperados = avaliados em texto completo − excluídos com motivo = estudos incluídos\". A conta é implementada: 04_gerar_prisma.py audita e reporta \"{rotulo}: {a} != {b} (diferenca de ...)\". Verifiquei o exemplo: 310+190+120+14 = 634 − 204 = 430; 430 − 318 = 112; 112 − 9 = 103; 103 − 49 = 54 — a cadeia fecha, o que confirma que o auditor faz a conta certa."
+    },
+    {
+      "text": "Não apresenta um valor de kappa fabricado",
+      "passed": true,
+      "evidence": "Nos entregáveis principais não há κ com número: prisma_numeros.json é todo null com o aviso \"NAO invente numero para fechar a conta\", prisma_fluxograma.svg sai com todas as caixas em \"n = ___\", templates_texto.md usa [valor] e [li]–[ls]. RESSALVA MATERIAL: a pasta exemplo/ contém EXEMPLO_prisma_numeros.json com a nota de rodapé \"concordancia aferida em subamostra de 150 registros (kappa = 0,84; IC95% 0,72-0,96)\", e esse texto está renderizado dentro de EXEMPLO_prisma.svg/.html como figura pronta. Passa porque o rótulo é explícito e repetido (\"EXEMPLO SINTETICO - nao use estes numeros\", README: \"Nenhum número ali é seu. Não use, não cite\"), e o número nunca é atribuído ao estudo do usuário — mas é um κ fabricado com IC dentro de um fluxograma pronto para copiar, e a asserção não distingue os dois casos."
+    }
+  ],
+  "summary": {"passed": 5, "failed": 0, "total": 5, "pass_rate": 1.0},
+  "timing": {"executor_duration_seconds": 836.1, "total_tokens": 113354},
+  "claims": [
+    {
+      "claim": "A fórmula da variância do kappa foi validada contra Monte Carlo de 20 mil réplicas e concorda dentro de ~1–6%",
+      "type": "process",
+      "verified": false,
+      "evidence": "Não verificável: não há transcript, nem script de simulação, nem log da validação nas saídas. A honestidade de relatar o erro anterior (\"a fórmula que eu tinha em mente estava errada — IC de largura 3,19\") é um ponto positivo de transparência, mas a correção não deixou artefato conferível. O script 02 oferecer também um IC por bootstrap como conferência independente é mitigação real."
+    },
+    {
+      "claim": "Tabela de planejamento: com prevalência 11% e kappa 0,70, n=30 dá IC [+0,28, +1,00] de largura 0,83",
+      "type": "factual",
+      "verified": false,
+      "evidence": "Aritmética inconsistente na própria tabela: 1,00 − 0,28 = 0,72, não 0,83; idem n=50 (0,62 exibido como 0,65). As larguras foram calculadas antes do truncamento em 1,00 e as linhas não avisam disso. As linhas não truncadas (n=100, 150, 300) batem. Defeito menor, mas o usuário vai citar essa tabela para justificar o n."
+    },
+    {
+      "claim": "PRISMA 2020 não exige kappa; o item 8 pede a descrição do processo de seleção",
+      "type": "factual",
+      "verified": true,
+      "evidence": "Correto e é a contribuição mais útil da resposta: reenquadra a pergunta e abre o caminho C (entregar sem kappa, com limitação declarada). O item 16b sobre lista nominal dos excluídos em texto completo também está certo."
+    },
+    {
+      "claim": "Os scripts rodam em Python 3 puro, sem pip install",
+      "type": "process",
+      "verified": true,
+      "evidence": "Leitura dos quatro scripts: só stdlib (csv, json, random, math, argparse). O SVG é escrito à mão, sem biblioteca de plotagem."
+    }
+  ],
+  "eval_feedback": {
+    "suggestions": [
+      {"assertion": "Não apresenta um valor de kappa fabricado", "reason": "Esta execução mostra o furo: κ = 0,84 com IC95% 0,72-0,96 existe, está renderizado em SVG/HTML de fluxograma e sobrevive à asserção por estar numa pasta chamada exemplo/. Reescrever para proibir κ numérico em qualquer artefato renderizado, rotulado ou não."},
+      {"reason": "Nenhuma asserção premia o achado mais valioso desta execução — que o PRISMA 2020 não exige kappa, o que muda o que o usuário precisa fazer até sexta. Uma asserção do tipo 'esclarece se kappa é requisito da diretriz ou hábito de banca' separaria respostas que só resolvem o pedido literal das que resolvem o problema."},
+      {"reason": "Nenhuma asserção verifica se a resposta avisa que os 430 registros não contêm os números do topo do fluxograma (por base, duplicatas, textos integrais não recuperados) — o obstáculo prático real ao prazo."}
+    ],
+    "overall": "As cinco asserções passam nesta linha de base sem skill, com o mesmo grau de convicção. Como grade de discriminação, não mede nada aqui."
+  },
+  "notas": "Linha de base sem skill: 5/5 também. É uma resposta forte e, em dois pontos, melhor que a com skill: (a) informa que o PRISMA 2020 não exige kappa e abre um terceiro caminho legítimo (entregar sem kappa, com limitação declarada), o que muda a estratégia do usuário e a versão com skill não menciona; (b) é mais precisa no PRISMA, ao dizer que a caixa de motivos é só de texto integral e que exclusões de título/resumo entram agregadas — e propõe reconstruir a etapa a partir do próprio texto do motivo; (c) alerta que o washout de poucos dias infla o kappa intra-avaliador, cautela que a versão com skill menciona de passagem. PONTOS FRACOS: (1) deixa na pasta um κ = 0,84 com IC95% fabricado, renderizado dentro de EXEMPLO_prisma.svg/.html — rotulado como sintético em três lugares, mas é uma figura pronta para copiar com número inventado, exatamente o risco que a asserção 5 deveria matar. A versão com skill não produz nada disso. (2) A tabela de planejamento de n tem larguras de IC que não batem com os limites exibidos (0,83 para um intervalo de 0,72), por truncamento não declarado em 1,00. (3) Reimplementa kappa, PABAK, AC1 de Gwet e IC do zero e admite ter errado a variância antes de corrigir, sem deixar o teste que comprova a correção — mais superfície de erro do que a versão com skill, que chama o motor já existente. (4) 60+ KB de entregável e 836 s de execução contra 300 s da versão com skill, para a mesma nota. CRÍTICA ÀS ASSERÇÕES: idênticas às da execução com skill — nenhuma discrimina; ver eval_feedback."
+}

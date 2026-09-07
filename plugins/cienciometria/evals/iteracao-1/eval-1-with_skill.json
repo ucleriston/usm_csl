@@ -1,0 +1,71 @@
+{
+  "expectations": [
+    {
+      "text": "Identifica que os termos genéricos combinados sem contexto são a causa do ruído",
+      "passed": true,
+      "evidence": "Diagnostico e a primeira frase: 'Sua busca nao esta **larga demais** — esta **subespecificada**. resilience AND governance AND network nao diz em lugar nenhum que o objeto e uma cidade nem que o gatilho e climatico. Os tres termos sao genericos e dois deles (resilience, network) sao vocabulario corrente em materiais, polimeros, redes eletricas e telecomunicacoes. E exatamente dai que vem os seus 70%.' Tabela item-por-item nomeia as duas ausencias (bloco de unidade de analise e bloco de fenomeno) e ainda mostra que 'network' obrigatorio por AND e 'o pior dos dois mundos': atrai polymer network e ao mesmo tempo exclui a literatura de governanca climatica urbana que nao fala em rede."
+    },
+    {
+      "text": "Entrega string revisada com expressões entre aspas e sinônimos",
+      "passed": true,
+      "evidence": "strings-scopus.txt traz S1 completa e colavel, com expressoes multipalavra entre aspas e truncamento correto: \"policy network*\", \"institutional arrangement*\", \"adaptive capacity\", \"local government*\", \"sea level rise\", \"natural hazard*\", resilien*, vulnerabilit*, municipal*, polycentric*. Sinonimos por bloco em tres idiomas (governance/governanca/gobernanza; resilien*/resiliencia; urban*/municipio*/ciudad*). Justifica escolhas de truncamento: 'nao usei cit* (traria citation, citizen) nem munic* (traria Munich)'. Inclui nota de sintaxe sobre curinga dentro de aspas no Scopus, com a forma expandida alternativa."
+    },
+    {
+      "text": "Inclui bloco de contexto (cidade/urbano/clima) que elimina o ruído de engenharia de materiais",
+      "passed": true,
+      "evidence": "S1 tem quatro blocos ligados por AND, dois deles exatamente os de contexto: B3 urbano (urban* OR city OR cities OR municipal* OR metropolitan OR \"local government*\" OR \"local authorit*\" OR town* OR \"municipio*\" OR \"ciudad*\") e B4 clima (climate change, extreme weather, flood*, drought*, heatwave*, storm*, cyclone*, hurricane*, typhoon*, \"sea level rise\", \"natural hazard*\", disaster*, landslide*). O raciocinio esta explicito: 'Com B3 (urbano) e B4 (clima) obrigatorios, o ruido de materiais cai por construcao, nao por veto' — e recusa a alternativa perigosa: 'Primeiro, o que nao fazer: AND NOT (material OR polymer OR concrete...) ... e o jeito mais eficiente de perder artigo bom em silencio'."
+    },
+    {
+      "text": "Prescreve teste de recall com conjunto-semente antes de adotar a string",
+      "passed": true,
+      "evidence": "Secao propria ('Como voce prova que nao perdeu nada'): 'Antes de rodar qualquer coisa, monte 20 a 25 trabalhos que voce ja sabe que sao do seu tema — escolhidos agora, antes de ver o resultado da busca, nao catados depois entre os que apareceram ... Menos de ~90% (22 de 25) significa string incompleta'. E operacionalizado, nao so recomendado: S5 no arquivo de strings implementa a medicao no Scopus ( ( S1 ) AND ( DOI(...) OR DOI(...) ) ), sementes.csv tem colunas de recall por variante (recuperado_S1, recuperado_S2, recuperado_apos_S4) e execucao.json tem o bloco recall_sementes com minimo_exigido 22. Manda ainda cobrir tradicoes distintas de proposito e incluir ao menos 3 trabalhos em pt/es, para detectar perda de tradicao inteira."
+    },
+    {
+      "text": "Menciona exportação com referências citadas ou registro da execução da busca",
+      "passed": true,
+      "evidence": "Ambos. Exportacao: 'Export -> CSV, todos os campos, com *References* marcado, em lotes de 2.000. Sem o campo de referencias nao ha co-citacao nem acoplamento bibliografico'; em 03-estrategias-de-busca.md, WoS em 'Plain Text — Full Record and Cited References'. Registro: execucao.json existe como arquivo, com sete execucoes (S0-S4, W1, SC1) descritas por base, string_id, filtros, data, hora e arquivo, alem do campo ganho_marginal_S2_sobre_S1 e desvios_do_protocolo, tudo declarado sob PRISMA-S."
+    },
+    {
+      "text": "Não inventa a contagem de resultados que a string revisada traria",
+      "passed": true,
+      "evidence": "Nenhum numero de resultado aparece em nenhum dos quatro arquivos. Declaracao explicita: 'Uma nota de honestidade: nao rodei nada. Nao tenho acesso ao Scopus, entao nao ha aqui nenhuma contagem estimada nem nenhuma referencia inventada — os campos de resultado estao em branco de proposito.' Confirmado no arquivo: execucao.json tem \"resultados\": null em todas as sete entradas e recall_sementes com \"recuperadas\": null; sementes.csv tem as 25 linhas vazias; os DOIs em S5 sao marcadores obvios (\"10.xxxx/aaaa\"), nao referencias falsas. Nem sequer arrisca faixa de grandeza para o resultado da string nova."
+    }
+  ],
+  "summary": {
+    "passed": 6,
+    "failed": 0,
+    "total": 6,
+    "pass_rate": 1.0
+  },
+  "timing": {
+    "executor_duration_seconds": 258.1,
+    "total_tokens": 74591
+  },
+  "claims": [
+    {
+      "claim": "Boa parte da literatura pertinente se declara sob 'vulnerabilidade' e nao sob 'resiliencia'; deixar vulnerabilit* de fora perde uma tradicao inteira",
+      "type": "factual",
+      "verified": true,
+      "evidence": "Correto e substantivo — as tradicoes de vulnerability assessment e de resilience thinking sao parcialmente disjuntas em vocabulario. O termo esta de fato no bloco B2 de S1, e nao so no texto."
+    },
+    {
+      "claim": "Nao basta 'climate change' no bloco de clima: metade dos trabalhos fala em flood*, drought*, heatwave* sem escrever 'clima'",
+      "type": "quality",
+      "verified": true,
+      "evidence": "O raciocinio e correto e esta implementado: B4 lista 24 variantes de evento. A fracao 'metade' e retorica, nao medida — e o unico numero nao ancorado do texto, mas nao e contagem de resultado de busca."
+    },
+    {
+      "claim": "Excluir SUBJAREA derruba periodico interdisciplinar inteiro porque o Scopus classifica por revista e nao por artigo",
+      "type": "factual",
+      "verified": true,
+      "evidence": "Correto: a classificacao ASJC do Scopus e por fonte. A consequencia pratica esta operacionalizada em S4, que exclui apenas areas inequivocamente estranhas e proibe explicitamente excluir ENGI, ENVI, SOCI e EART."
+    },
+    {
+      "claim": "Sem filtro de idioma na string, porque LIMIT-TO descartaria registro cujo idioma o Scopus etiquetou errado",
+      "type": "process",
+      "verified": true,
+      "evidence": "Decisao coerente com as strings entregues: S1 nao tem LIMIT-TO(LANGUAGE) e os idiomas entram por termo nos blocos B1-B3. Declarada como suposicao a corrigir, nao como fato."
+    }
+  ],
+  "notas": "EXECUCAO. Forte, e a peca mais valiosa nao esta coberta por nenhuma asercao: o tratamento de 'network'. Em vez de manter, remover ou negar o termo, a resposta o converte em recorte declarado sobre o corpus ja formado (S3, aplicado DEPOIS de S1), com a justificativa exata — 'assim voce enxerga a literatura de rede sem que ela decida, por tabela, qual literatura existe'. Igualmente sem asercao: a recusa argumentada do AND NOT como instrumento de precisao ('o jeito mais eficiente de perder artigo bom em silencio'), a string de sensibilidade S2 com a metrica certa (ganho de registros ELEGIVEIS, nao brutos, triando amostra de 100-150), e a ordem de operacoes imposta ao filtro de area (medir recall, aplicar S4, medir de novo).\n\nHONESTIDADE DE DADOS. Impecavel. Zero numeros; execucao.json com null em todas as contagens; DOIs de exemplo obviamente marcadores. Nao arrisca nem faixa de grandeza para o resultado da string nova.\n\nRESSALVA. 'Metade desses trabalhos fala em flood*, drought*...' e uma proporcao retorica sem ancoragem; nao e contagem de busca e nao viola a asercao 6, mas e o unico numero solto do texto.\n\nCRITICA AS ASERCOES.\n- TRIVIAIS/NAO DISCRIMINANTES: as SEIS asercoes passam tambem na baseline sem skill. Esta grade nao separa as duas execucoes em nenhum ponto. #1 e #2 sao especialmente fracas: qualquer resposta competente sobre string ruidosa diagnostica o termo generico e usa aspas.\n- #6 e mal calibrada: exige apenas 'nao inventar a contagem'. A baseline arrisca 'e normal o resultado cair de milhares para algo na casa das centenas' e ainda assim passa, porque nao afirma um numero. Deveria proibir qualquer estimativa de volume nao medida.\n- #5 e satisfeita por um OR generoso demais: 'exportacao com referencias citadas OU registro da execucao'. Mencionar 'anote a data da busca' ja passa. O que importa metodologicamente — exportar COM o campo References, sem o qual nao existe co-citacao nem acoplamento — deveria ser exigido sozinho.\n- SEM ASERCAO (o que de fato distingue uma resposta boa de uma medíocre aqui): (a) tratar 'network' como recorte posterior em vez de filtro de entrada; (b) recusar AND NOT sobre resumo como instrumento de precisao; (c) exigir limiar numerico de recall antes de adotar a string; (d) medir o ganho da variante em registros ELEGIVEIS e nao brutos; (e) proibir a exclusao das areas onde o objeto de fato mora (ENGI, ENVI, SOCI, EART). Todos os cinco foram observados nesta execucao e nenhum e testado."
+}

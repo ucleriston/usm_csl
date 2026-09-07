@@ -1,0 +1,543 @@
+{
+  "metadata": {
+    "skill_name": "cienciometria (plugin, 4 skills)",
+    "skill_path": "/home/user/usm_csl/plugins/cienciometria",
+    "timestamp": "2026-09-07",
+    "evals_run": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "runs_per_configuration": 1
+  },
+  "runs": [
+    {
+      "eval_id": 0,
+      "eval_name": "inicio-de-revisao",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": 568.5,
+        "tokens": 133081,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Distingue mapear o campo (cienciometria) de sintetizar o que a literatura concluiu, antes de propor o caminho",
+          "passed": true,
+          "evidence": "resposta.md abre com a distincao, antes de qualquer proposta: \"'O que a literatura concluiu sobre OP?' ... isso e revisao **sistematica de conteudo**. A sintese sai de leitura.\" vs. \"'Como o conhecimento sobre OP esta organizado?' ... isso e revisao **cienciometrica**. A resposta sai de indicadores e redes.\" Declara qual presumiu ('presumi a segunda'), oferece a ponte ('o corpus triado e exatamente o insumo da primeira') e entrega a pergunta literal para o orientador. COMECE-AQUI.md repete a distincao em tabela na secao 'Antes de tudo'."
+        },
+        {
+          "text": "Faz perguntas de delimitação concretas: objeto, janela temporal, idiomas e bases efetivamente acessíveis",
+          "passed": true,
+          "evidence": "Bases: pergunta 2 — 'A CAPES da sua universidade te da acesso a **Scopus** e a **Web of Science**?'. Objeto: perguntas 3 e 4 (OP escolar/universitario entram? anais do EnANPAD/CONSAD entram?) e docs/01, secao 12, itens 3-4. Janela: secao 12, item 2 — '1989 e o marco defensavel. Se a preferencia for a producao contemporanea, 2000 e o corte alternativo'. Idiomas: aparecem em 'O que presumi (corrija o que estiver errado) — Que portugues, ingles e espanhol bastam', ou seja, como suposicao explicitada para correcao, nao como pergunta direta (ver notas)."
+        },
+        {
+          "text": "Cria de fato a estrutura da revisão com o motor (pasta revisoes/<slug> com config/ e docs/)",
+          "passed": true,
+          "evidence": "Arvore real no disco: outputs/revisoes/orcamento-participativo/ com config/ (revisao.json 8,6 KB, execucao.json, sementes.csv, thesauro-termos.json, thesauro-fontes.json, thesauro-instituicoes.json), docs/ (01-projeto-de-pesquisa.md 13,8 KB, 02-protocolo-prisma.md 10,7 KB, 03-estrategias-de-busca.md 10,4 KB, 04-livro-de-codigos.md 5,8 KB), dados/bruto/, dados/processado/ e saidas/ com .gitkeep. Nao e casca: os arquivos estao preenchidos com conteudo especifico do objeto, e a resposta cita o binario do motor ('$CIENCIO' importar/dedup/triagem/kappa/analise) com o caminho do plugin."
+        },
+        {
+          "text": "config/revisao.json fica preenchido com janela, idiomas e ao menos uma proposição com critério de refutação",
+          "passed": true,
+          "evidence": "config/revisao.json traz \"janela\": {\"inicio\": 1989, \"fim\": 2026}, \"idiomas\": [\"pt\", \"en\", \"es\"] e 7 proposicoes (P1-P7), cada uma com indicador e criterio operacional testavel. Ex.: P5 — 'O campo tem obsolescencia lenta' com {\"campo\": \"price.indice_price_corpus\", \"operador\": \"<=\", \"valor\": 35}; P6 (manual) escreve explicitamente a condicao de refutacao: 'REFUTADA se a participacao brasileira se manter ou subir, ou se ficar acima de 30% no subperiodo recente'. Comentario final: 'Todos os criterios foram escritos ANTES de existir qualquer resultado'."
+        },
+        {
+          "text": "Indica o próximo passo concreto (strings de busca por base) em vez de parar no plano abstrato",
+          "passed": true,
+          "evidence": "docs/03-estrategias-de-busca.md traz strings prontas por base: S1 Scopus com sintaxe real ('TITLE-ABS-KEY ( \"participatory budget*\" OR \"orcamento participativo\" ... ) AND PUBYEAR > 1988 AND ( LIMIT-TO ( DOCTYPE , \"ar\" ) ...'), W1 para WoS (TS=...), SC1-SC3 para SciELO com sintaxe ti/ab/kw, mais a variante de sensibilidade S2. Inclui o modo de exportacao por base ('Export -> CSV, marcar todos os campos, obrigatoriamente incluindo References'; WoS 'Full Record and Cited References') e o nome de arquivo exigido pelo parser. COMECE-AQUI.md sequencia as tres semanas seguintes."
+        },
+        {
+          "text": "Não apresenta registros bibliográficos, contagens de bases ou resultados de busca inventados",
+          "passed": true,
+          "evidence": "Varredura por DOIs, contagens e registros nos 11 arquivos de texto: nenhum DOI, nenhum titulo de artigo do corpus, nenhuma contagem de base. execucao.json tem todos os campos 'resultados': 0 e datas vazias, com o comentario 'NENHUMA contagem foi preenchida: nenhuma busca foi executada ate agora'; sementes.csv esta com as 25 linhas em branco. A falha de rede e declarada em tres lugares ('HTTP 403 no CONNECT para api.openalex.org e api.crossref.org. Nenhum registro baixado'), inclusive como desvio datado do protocolo. As unicas citacoes sao metodologicas e canonicas (Lotka 1926, Bradford 1934, Price 1965, Kessler 1963, Small 1973, Callon/Courtial/Laville 1991, Zupic e Cater 2015, Donthu et al. 2021, PRISMA 2020, PRISMA-S 2021, Mongeon e Paul-Hus 2016, Visser/van Eck/Waltman 2021) — todas reais e corretas, acompanhadas do aviso 'Confira cada uma dessas entradas na base antes de citar'."
+        }
+      ],
+      "notes": [
+        "EXECUCAO. Muito forte. O ponto mais valioso nao esta coberto por nenhuma asercao: a resposta transforma decisoes que normalmente ficariam implicitas em compromissos escritos ANTES de existir resultado — nove casos de fronteira decididos de antemao no protocolo, criterio de refutacao por proposicao, e o teste de recall com piso numerico (22 de 25) definido antes da busca. Isso e exatamente o que separa revisao sistematica de leitura assistemática, e passaria despercebido pela grade atual.\n\nHONESTIDADE DE DADOS. Impecavel, e ativamente honesta: nao so evita inventar como registra a falha de coleta como desvio datado do protocolo, deixa 'resultados': 0 no execucao.json em vez de apagar as linhas, e manda conferir na base ate as referencias metodologicas canonicas que citou.\n\nRESSALVAS. (a) A afirmacao 'Verifiquei que o motor le a configuracao sem erro' e um claim de processo nao comprovavel pelos outputs; se o motor nao foi de fato executado, e uma afirmacao forte demais. (b) Idiomas nao viram pergunta: entram como suposicao a corrigir. (c) A revisao foi montada inteira presumindo que o orientador quer o mapa do campo — a resposta admite a presuncao com clareza e oferece a ponte, mas ha risco de retrabalho se a resposta for outra. (d) Custo: 133 mil tokens e 568 s, o dobro da baseline em tokens.\n\nCRITICA AS ASERCOES.\n- TRIVIAIS (passam nas duas execucoes, nao discriminam): #1 (a baseline tambem distingue, via tabela de familias de revisao com a linha 'Revisao bibliometrica — quando a pergunta e sobre o *campo*, nao sobre os *achados*'); #2 (as duas explicitam objeto/janela/bases; nenhuma das duas pergunta idiomas de fato — a asercao e satisfeita pelo mecanismo fraco de 'suposicoes a corrigir'); #5 (as duas entregam strings por base, e as da baseline sao ate mais extensas, com bloco NOT); #6 (as duas se recusam a inventar, e a baseline diz isso de forma explicita).\n- DISCRIMINANTES DE VERDADE: apenas #3 e #4 — e sao as duas asercoes que testam o uso do motor/config, ou seja, a grade so discrimina no eixo 'usou a ferramenta', nao no eixo 'a revisao ficou melhor'.\n- #3 e verificavel de forma superficial: bastaria criar a arvore de pastas vazia para passar. Deveria exigir que os docs tenham conteudo especifico do objeto (ex.: codigos de exclusao proprios do tema, nao genericos).\n- SEM ASERCAO (lacunas importantes): teste de recall com conjunto-semente e limiar numerico definido antes da busca; casos de fronteira decididos previamente; correcao da sintaxe das strings por base (uma string sintaticamente invalida passaria em #5); registro da execucao das buscas (PRISMA-S); tratamento da SciELO como base principal com a limitacao de referencias citadas declarada e medida — todos observados na execucao com skill e ausentes ou mais fracos na baseline."
+      ]
+    },
+    {
+      "eval_id": 0,
+      "eval_name": "inicio-de-revisao",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.6666666666666666,
+        "passed": 4,
+        "failed": 2,
+        "total": 6,
+        "time_seconds": 427.8,
+        "tokens": 74844,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Distingue mapear o campo (cienciometria) de sintetizar o que a literatura concluiu, antes de propor o caminho",
+          "passed": true,
+          "evidence": "01-protocolo-revisao.md, secao 1, traz tabela de familias de revisao com a linha decisiva: '**Revisao bibliometrica** | Analisa padroes de producao, autoria, citacao e coocorrencia de termos | Quando a pergunta e sobre o *campo*, nao sobre os *achados*', contraposta a 'Revisao sistematica ... quando existe corpo consolidado e voce quer sintetizar evidencia'. A distincao vem antes da recomendacao ('Recomendacao para o seu caso: revisao de escopo sistematica com componente bibliometrico') e ha ate um campo de decisao registrada. resposta.md repete: 'uma revisao sistematica no molde da saude (com sintese quantitativa de efeitos) nao se sustenta'. A distincao existe, mas fica dentro do arquivo anexo e da recomendacao ja tomada, em vez de virar a pergunta que o aluno leva ao orientador (ver notas)."
+        },
+        {
+          "text": "Faz perguntas de delimitação concretas: objeto, janela temporal, idiomas e bases efetivamente acessíveis",
+          "passed": true,
+          "evidence": "Bases: pergunta 4 — 'Sua instituicao assina Scopus e Web of Science pelo CAFe?', reforcada por 'o Portal CAPES e como voce consegue o PDF, nao e onde voce faz a busca sistematica'. Objeto: pergunta 3 ('Ja existe um angulo do orientador — efeitos do OP, difusao, declinio pos-2010, OP digital?') e secao 6, itens 1-3 (literatura cinzenta, livros/capitulos, recorte geografico). Janela: secao 6, item 4 — 'Marco temporal: 1989 ... e o corte natural e defensavel'. Idiomas: apenas como suposicao declarada em 'Suposicoes que fiz (corrija o que estiver errado) — Idiomas: portugues, ingles e espanhol', nao como pergunta."
+        },
+        {
+          "text": "Cria de fato a estrutura da revisão com o motor (pasta revisoes/<slug> com config/ e docs/)",
+          "passed": false,
+          "evidence": "Nao existe. A saida sao nove arquivos soltos na raiz de outputs/ (01-protocolo-revisao.md, 02-strings-de-busca.md, 03-planilha-triagem.csv, 04-formulario-extracao.csv, 05-diagrama-prisma.md, 06-primeiros-passos.md, resposta.md e dois de instrucoes). Nenhuma pasta revisoes/, nenhum diretorio config/ ou docs/, nenhum slug, e nenhuma mencao ao motor de cienciometria em qualquer arquivo. O fluxo proposto e manual, apoiado em ferramentas de terceiros (Zotero, Rayyan, VOSviewer, bibliometrix, Taguette)."
+        },
+        {
+          "text": "config/revisao.json fica preenchido com janela, idiomas e ao menos uma proposição com critério de refutação",
+          "passed": false,
+          "evidence": "Nenhum arquivo JSON foi produzido em toda a execucao. Nao ha equivalente conceitual: o protocolo em markdown define escopo, criterios de inclusao/exclusao e cronograma, mas nao formula nenhuma proposicao com criterio de refutacao escrito antes do resultado — o mais proximo e o 'mapa de lacunas', que e produto e nao hipotese testavel. Janela e idiomas aparecem como texto no protocolo, nunca em configuracao legivel por maquina."
+        },
+        {
+          "text": "Indica o próximo passo concreto (strings de busca por base) em vez de parar no plano abstrato",
+          "passed": true,
+          "evidence": "02-strings-de-busca.md (11,6 KB) traz strings prontas por base — Scopus (TITLE-ABS-KEY com lista canonica de termos em pt/en/es/fr/de/it), Web of Science, SciELO, SPELL e BDTD — mais bloco NOT para o ruido de 'budget participation' da contabilidade gerencial, orientacao sobre acentuacao por base e log de busca. 06-primeiros-passos.md sequencia dia a dia: 'Dia 3 — Busca-piloto. Rode as strings do 02-strings-de-busca.md no Scopus e na SciELO'. Tambem entrega planilha de triagem e formulario de extracao em CSV."
+        },
+        {
+          "text": "Não apresenta registros bibliográficos, contagens de bases ou resultados de busca inventados",
+          "passed": true,
+          "evidence": "Varredura por DOIs, contagens e listas de registros nos 9 arquivos: nenhum DOI, nenhuma contagem, nenhuma lista de artigos. A recusa e explicita e dupla: 'Nao busquei nada por voce. Nao tenho acesso ao seu Portal CAPES e nao vou inventar contagens de registros nem lista de artigos'. Os nomes de autores usados como pista de busca (Avritzer, Wampler, Baiocchi, Sintomer, Abers) sao pesquisadores reais do campo e vem com ressalva explicita: 'estao la como pistas de busca ... Nao sao bibliografia verificada e nenhum deles deve entrar no seu texto sem que voce localize e leia o trabalho especifico'. Idem para Ferreira (2002) e Romanowski & Ens (2006): 'Confirme esses dois no Portal antes de citar'."
+        }
+      ],
+      "notes": [
+        "EXECUCAO. Boa e honesta, e melhor que a versao com skill em dois pontos concretos que nenhuma asercao captura: (a) alerta que o Portal CAPES nao e onde se faz a busca sistematica, so onde se obtem o PDF; (b) inclui SPELL (base da ANPAD) e BDTD, decisivas para um mestrado brasileiro em administracao publica, e ausentes da execucao com skill. As strings tambem cobrem mais idiomas (frances, alemao, italiano) e trazem o bloco NOT contra o ruido de 'budget participation' da contabilidade gerencial.\n\nONDE PERDE. Fica no plano do documento avulso. Nao ha estrutura de projeto, nao ha configuracao legivel por maquina, e — o mais relevante metodologicamente — nao ha nenhuma proposicao com criterio de refutacao escrito antes do resultado. O protocolo diz o que sera feito, mas nao se compromete com o que contaria como refutacao; o produto prometido e um 'mapa de lacunas', que nao e testavel. Tambem deixa a decisao entre mapear o campo e sintetizar achados tomada por si (recomenda escopo + bibliometrico) em vez de devolve-la ao orientador, o que e defensavel mas mais arriscado. O teste de recall existe, porem frouxo: '8-10 trabalhos que voce sabe que deveriam aparecer', sem limiar numerico de aceitacao, contra as 25 sementes com piso de 22 da versao com skill.\n\nHONESTIDADE DE DADOS. Sem falhas. Recusa explicita de inventar contagens e nomes de autores marcados como pista nao verificada.\n\nCRITICA AS ASERCOES (identica a registrada na execucao com skill). Quatro das seis asercoes (#1, #2, #5, #6) passam nas duas execucoes e portanto nao discriminam; #5 e #6 a baseline cumpre tao bem quanto ou melhor. So #3 e #4 separam as duas execucoes, e ambas testam adesao a ferramenta, nao qualidade metodologica. Falta asercao para: limiar numerico no teste de recall; proposicoes falseaveis definidas antes da busca; cobertura de bases nacionais pertinentes ao programa (SPELL/BDTD), onde a baseline vence; e correcao sintatica das strings por base."
+      ]
+    },
+    {
+      "eval_id": 1,
+      "eval_name": "string-com-ruido",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": 258.1,
+        "tokens": 74591,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Identifica que os termos genéricos combinados sem contexto são a causa do ruído",
+          "passed": true,
+          "evidence": "Diagnostico e a primeira frase: 'Sua busca nao esta **larga demais** — esta **subespecificada**. resilience AND governance AND network nao diz em lugar nenhum que o objeto e uma cidade nem que o gatilho e climatico. Os tres termos sao genericos e dois deles (resilience, network) sao vocabulario corrente em materiais, polimeros, redes eletricas e telecomunicacoes. E exatamente dai que vem os seus 70%.' Tabela item-por-item nomeia as duas ausencias (bloco de unidade de analise e bloco de fenomeno) e ainda mostra que 'network' obrigatorio por AND e 'o pior dos dois mundos': atrai polymer network e ao mesmo tempo exclui a literatura de governanca climatica urbana que nao fala em rede."
+        },
+        {
+          "text": "Entrega string revisada com expressões entre aspas e sinônimos",
+          "passed": true,
+          "evidence": "strings-scopus.txt traz S1 completa e colavel, com expressoes multipalavra entre aspas e truncamento correto: \"policy network*\", \"institutional arrangement*\", \"adaptive capacity\", \"local government*\", \"sea level rise\", \"natural hazard*\", resilien*, vulnerabilit*, municipal*, polycentric*. Sinonimos por bloco em tres idiomas (governance/governanca/gobernanza; resilien*/resiliencia; urban*/municipio*/ciudad*). Justifica escolhas de truncamento: 'nao usei cit* (traria citation, citizen) nem munic* (traria Munich)'. Inclui nota de sintaxe sobre curinga dentro de aspas no Scopus, com a forma expandida alternativa."
+        },
+        {
+          "text": "Inclui bloco de contexto (cidade/urbano/clima) que elimina o ruído de engenharia de materiais",
+          "passed": true,
+          "evidence": "S1 tem quatro blocos ligados por AND, dois deles exatamente os de contexto: B3 urbano (urban* OR city OR cities OR municipal* OR metropolitan OR \"local government*\" OR \"local authorit*\" OR town* OR \"municipio*\" OR \"ciudad*\") e B4 clima (climate change, extreme weather, flood*, drought*, heatwave*, storm*, cyclone*, hurricane*, typhoon*, \"sea level rise\", \"natural hazard*\", disaster*, landslide*). O raciocinio esta explicito: 'Com B3 (urbano) e B4 (clima) obrigatorios, o ruido de materiais cai por construcao, nao por veto' — e recusa a alternativa perigosa: 'Primeiro, o que nao fazer: AND NOT (material OR polymer OR concrete...) ... e o jeito mais eficiente de perder artigo bom em silencio'."
+        },
+        {
+          "text": "Prescreve teste de recall com conjunto-semente antes de adotar a string",
+          "passed": true,
+          "evidence": "Secao propria ('Como voce prova que nao perdeu nada'): 'Antes de rodar qualquer coisa, monte 20 a 25 trabalhos que voce ja sabe que sao do seu tema — escolhidos agora, antes de ver o resultado da busca, nao catados depois entre os que apareceram ... Menos de ~90% (22 de 25) significa string incompleta'. E operacionalizado, nao so recomendado: S5 no arquivo de strings implementa a medicao no Scopus ( ( S1 ) AND ( DOI(...) OR DOI(...) ) ), sementes.csv tem colunas de recall por variante (recuperado_S1, recuperado_S2, recuperado_apos_S4) e execucao.json tem o bloco recall_sementes com minimo_exigido 22. Manda ainda cobrir tradicoes distintas de proposito e incluir ao menos 3 trabalhos em pt/es, para detectar perda de tradicao inteira."
+        },
+        {
+          "text": "Menciona exportação com referências citadas ou registro da execução da busca",
+          "passed": true,
+          "evidence": "Ambos. Exportacao: 'Export -> CSV, todos os campos, com *References* marcado, em lotes de 2.000. Sem o campo de referencias nao ha co-citacao nem acoplamento bibliografico'; em 03-estrategias-de-busca.md, WoS em 'Plain Text — Full Record and Cited References'. Registro: execucao.json existe como arquivo, com sete execucoes (S0-S4, W1, SC1) descritas por base, string_id, filtros, data, hora e arquivo, alem do campo ganho_marginal_S2_sobre_S1 e desvios_do_protocolo, tudo declarado sob PRISMA-S."
+        },
+        {
+          "text": "Não inventa a contagem de resultados que a string revisada traria",
+          "passed": true,
+          "evidence": "Nenhum numero de resultado aparece em nenhum dos quatro arquivos. Declaracao explicita: 'Uma nota de honestidade: nao rodei nada. Nao tenho acesso ao Scopus, entao nao ha aqui nenhuma contagem estimada nem nenhuma referencia inventada — os campos de resultado estao em branco de proposito.' Confirmado no arquivo: execucao.json tem \"resultados\": null em todas as sete entradas e recall_sementes com \"recuperadas\": null; sementes.csv tem as 25 linhas vazias; os DOIs em S5 sao marcadores obvios (\"10.xxxx/aaaa\"), nao referencias falsas. Nem sequer arrisca faixa de grandeza para o resultado da string nova."
+        }
+      ],
+      "notes": [
+        "EXECUCAO. Forte, e a peca mais valiosa nao esta coberta por nenhuma asercao: o tratamento de 'network'. Em vez de manter, remover ou negar o termo, a resposta o converte em recorte declarado sobre o corpus ja formado (S3, aplicado DEPOIS de S1), com a justificativa exata — 'assim voce enxerga a literatura de rede sem que ela decida, por tabela, qual literatura existe'. Igualmente sem asercao: a recusa argumentada do AND NOT como instrumento de precisao ('o jeito mais eficiente de perder artigo bom em silencio'), a string de sensibilidade S2 com a metrica certa (ganho de registros ELEGIVEIS, nao brutos, triando amostra de 100-150), e a ordem de operacoes imposta ao filtro de area (medir recall, aplicar S4, medir de novo).\n\nHONESTIDADE DE DADOS. Impecavel. Zero numeros; execucao.json com null em todas as contagens; DOIs de exemplo obviamente marcadores. Nao arrisca nem faixa de grandeza para o resultado da string nova.\n\nRESSALVA. 'Metade desses trabalhos fala em flood*, drought*...' e uma proporcao retorica sem ancoragem; nao e contagem de busca e nao viola a asercao 6, mas e o unico numero solto do texto.\n\nCRITICA AS ASERCOES.\n- TRIVIAIS/NAO DISCRIMINANTES: as SEIS asercoes passam tambem na baseline sem skill. Esta grade nao separa as duas execucoes em nenhum ponto. #1 e #2 sao especialmente fracas: qualquer resposta competente sobre string ruidosa diagnostica o termo generico e usa aspas.\n- #6 e mal calibrada: exige apenas 'nao inventar a contagem'. A baseline arrisca 'e normal o resultado cair de milhares para algo na casa das centenas' e ainda assim passa, porque nao afirma um numero. Deveria proibir qualquer estimativa de volume nao medida.\n- #5 e satisfeita por um OR generoso demais: 'exportacao com referencias citadas OU registro da execucao'. Mencionar 'anote a data da busca' ja passa. O que importa metodologicamente — exportar COM o campo References, sem o qual nao existe co-citacao nem acoplamento — deveria ser exigido sozinho.\n- SEM ASERCAO (o que de fato distingue uma resposta boa de uma medíocre aqui): (a) tratar 'network' como recorte posterior em vez de filtro de entrada; (b) recusar AND NOT sobre resumo como instrumento de precisao; (c) exigir limiar numerico de recall antes de adotar a string; (d) medir o ganho da variante em registros ELEGIVEIS e nao brutos; (e) proibir a exclusao das areas onde o objeto de fato mora (ENGI, ENVI, SOCI, EART). Todos os cinco foram observados nesta execucao e nenhum e testado."
+      ]
+    },
+    {
+      "eval_id": 1,
+      "eval_name": "string-com-ruido",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": 257.7,
+        "tokens": 62133,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Identifica que os termos genéricos combinados sem contexto são a causa do ruído",
+          "passed": true,
+          "evidence": "Abre com o mesmo diagnostico, e mais detalhado por termo: 'O problema da sua string nao e ela estar larga demais — e ela estar subespecificada. resilience AND governance AND network nao contem nenhum termo que amarre a busca ao seu objeto (cidade + evento climatico extremo)', seguido do segundo dono de cada termo ('resilience e vocabulario central de engenharia de materiais e estruturas ... network e vocabulario central de redes neurais, redes de sensores, telecom e biologia de sistemas ... governance ... aparece em data governance, IT governance'). Acrescenta um diagnostico que a versao com skill nao faz: o AND aceita os termos 'em pontas opostas do resumo, sem relacao', e por isso propoe proximidade."
+        },
+        {
+          "text": "Entrega string revisada com expressões entre aspas e sinônimos",
+          "passed": true,
+          "evidence": "strings-scopus.txt entrega V0 a V7. V1 (principal) usa aspas em todas as expressoes multipalavra e truncamento correto: \"local government*\", \"city region*\", \"built environment\", \"climate hazard*\", \"sea level rise\", \"coastal hazard*\", \"natural disaster*\", resilien*, urban*, municipal*, neighbourhood*/neighborhood*. Sinonimia rica no bloco de clima (24 termos, incluindo typhoon, wildfire, inundation) e no relacional V2. Usa ainda o operador de proximidade W/5, ausente na versao com skill. Ponto fraco: os blocos sao so em ingles — nao ha 'governanca', 'resiliencia' nem 'ciudad', embora V5 aplique LANGUAGE(portuguese)/LANGUAGE(spanish), o que e incoerente com blocos monolingues."
+        },
+        {
+          "text": "Inclui bloco de contexto (cidade/urbano/clima) que elimina o ruído de engenharia de materiais",
+          "passed": true,
+          "evidence": "Tabela de arquitetura declara os blocos B (urbano — 'recorte de escala') e C (clima/evento extremo — 'recorte de perturbacao'), com o risco de cada ausencia, e V1 os implementa como AND obrigatorios: '( urban* OR city OR cities OR municipal* OR metropolitan OR \"local government*\" OR \"city region*\" OR town OR towns OR neighbourhood* ... ) AND ( \"climate change\" OR ... flood* OR heatwave* OR drought* OR storm* OR hurricane* OR typhoon* OR cyclone* OR wildfire* OR \"sea level rise\" ... )'. Reforca o bloco A com proximidade (resilien* W/5 governance OR institution* ...), que 'descarta o artigo de composito que menciona governance na secao de financiamento'."
+        },
+        {
+          "text": "Prescreve teste de recall com conjunto-semente antes de adotar a string",
+          "passed": true,
+          "evidence": "'Passo 1 — Monte um conjunto-ouro ANTES de fechar a string. Reuna de 15 a 25 artigos que voce sabe que precisam estar no resultado ... Anote o DOI de cada um. Criterio de aceitacao: a string final tem de recuperar pelo menos 95% do conjunto-ouro. Se recuperar menos, ela nao esta pronta.' O Passo 2 fecha o ciclo de diagnostico: rodar DOI(...) isolado para cada ausencia e descobrir qual bloco falhou ('o artigo diz coastal city e voce so tinha urban*'). Limiar mais exigente (95%) que o da versao com skill (90%), embora sem planilha para registrar o resultado."
+        },
+        {
+          "text": "Menciona exportação com referências citadas ou registro da execução da busca",
+          "passed": true,
+          "evidence": "Satisfeita pelo segundo ramo do OR. Registro: cabecalho do strings-scopus.txt — 'Registre SEMPRE: data da busca, base, string exata, n de itens' — e 'Passo 6 — Documente para o metodo. Guarde, para cada versao: string exata, data, base, n de resultados, e a justificativa de cada exclusao. E literalmente o que o PRISMA-S pede'. NAO cumpre o primeiro ramo: as instrucoes de exportacao pedem 'EID, Authors, Title, Year, Source title, DOI, Author Keywords' e em nenhum momento o campo References — sem ele nao ha co-citacao nem acoplamento bibliografico. Nao ha arquivo de registro, so a instrucao de registrar."
+        },
+        {
+          "text": "Não inventa a contagem de resultados que a string revisada traria",
+          "passed": true,
+          "evidence": "Recusa explicita e antecipada: 'Nao tenho acesso ao Scopus daqui, entao nao vou chutar numeros de resultados. Todas as contagens abaixo voce preenche rodando as strings; o metodo e justamente medir, nao confiar na intuicao.' Nenhuma contagem consta dos arquivos. Ressalva: em 'Ordem pratica de execucao' aparece uma faixa de grandeza — 'e normal o resultado cair de milhares para algo na casa das centenas. Se cair para poucas dezenas, desconfie' — que e rubrica de diagnostico (com o que fazer em cada faixa), nao afirmacao de resultado. Passa por pouco; e o unico ponto onde qualquer das quatro execucoes chega perto de numerar um resultado nao medido."
+        }
+      ],
+      "notes": [
+        "EXECUCAO. Excelente, e neste caso a baseline empata ou supera a versao com skill em varios pontos. Vantagens reais dela: (a) o operador de proximidade resilien* W/5 (governance OR institution* ...), que ataca a causa mais fina do ruido — dois termos em pontas opostas do resumo — e nao aparece na versao com skill; (b) a distincao AND NOT em TITLE versus em TITLE-ABS-KEY, que preserva recall sem abrir mao do filtro; (c) diff_eids.py, script real que MEDE empiricamente o que cada filtro derrubou, com ranking de periodicos entre os perdidos como diagnostico ('se aparecer Cities ou Urban Climate, voce cortou musculo junto com a gordura') e amostragem de 30 perdidos para classificacao manual; (d) o passo de ler as facetas Subject Area e Source title do proprio Scopus antes de desenhar o filtro; (e) limiar de recall mais exigente (95% contra 90%).\n\nONDE PERDE PARA A VERSAO COM SKILL. (i) Blocos monolingues em ingles, com V5 aplicando LANGUAGE(portuguese) e LANGUAGE(spanish) — incoerencia interna: filtra idiomas cujo vocabulario nao esta na string. (ii) Nao instrui a exportar o campo References; a lista de campos sugerida (EID, Authors, Title, Year, Source title, DOI, Author Keywords) inviabiliza co-citacao e acoplamento, e o usuario so descobre isso quando a base ja mudou. (iii) Nao produz nenhum artefato de registro: manda registrar, mas nao entrega planilha de sementes nem arquivo de execucao — a diferenca entre prescrever e instrumentar. (iv) Mantem 'network' como bloco opcional de entrada (V2, com AND obrigatorio), enquanto a versao com skill o converte em recorte posterior sobre o corpus ja formado, que e a solucao metodologicamente superior. (v) Arrisca faixa de grandeza do resultado.\n\nCRITICA AS ASERCOES. Esta grade nao discrimina nada: as seis asercoes passam nas duas execucoes. Pior, as duas diferencas que realmente importam entre as execucoes — 'network' como recorte posterior versus filtro de entrada, e exportar ou nao com o campo References — ficam invisiveis: a primeira nao tem asercao, e a segunda e absorvida pelo OR frouxo da asercao 5, que a baseline satisfaz pelo ramo do registro sem cumprir o ramo que importa. Sugestoes: separar a asercao 5 em duas; endurecer a 6 para proibir qualquer estimativa de volume nao medida; criar asercao para o tratamento do termo ambiguo ('network' vira recorte declarado, nao filtro obrigatorio); criar asercao para a existencia de artefato de registro preenchivel (planilha de sementes e registro de execucao), que e o que separa prescrever de instrumentar; e criar asercao sobre cobertura multilingue dos blocos quando o usuario e brasileiro e o tema tem producao regional."
+      ]
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "revisor-unico-prisma",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 300.3,
+        "tokens": 79521,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Diz explicitamente que kappa exige dois julgamentos independentes e não sai do CSV como está",
+          "passed": true,
+          "evidence": "resposta.md, abertura: \"Kappa de Cohen entre revisores, do seu CSV, não dá — e não é questão de método, é de aritmética. O kappa compara duas classificações independentes do mesmo registro. Você tem uma coluna `decisao`. Não existe segunda classificação para comparar; qualquer número que saísse daí seria inventado.\" A negativa vem no primeiro parágrafo, sem rodeio."
+        },
+        {
+          "text": "Oferece a alternativa honesta: recodificar uma amostra e relatar concordância intrarrevisor, declarando a limitação",
+          "passed": true,
+          "evidence": "resposta.md item 1: recodificação cega de 20% (86 registros) e kappa de estabilidade teste-reteste, com o aviso \"O que não fazer: relatar o intrarrevisor como se fosse interavaliadores.\" A alternativa vem implementada: 1-amostra-recodificacao.py sorteia estratificado por decisão, embaralha e separa `_gabarito-original.csv` do `recodificacao-cega.csv`; 2-kappa-intrarrevisor.py rotula a saída como \"concordancia INTRArrevisor (teste-reteste, um único avaliador)\". A limitação está redigida em texto-metodos-e-limitacao.md: \"não é integralmente compensada pela recodificação intrarrevisor aqui reportada, que mede a estabilidade das decisões do mesmo avaliador, não a reprodutibilidade dos critérios por avaliadores distintos.\""
+        },
+        {
+          "text": "Aponta que o motivo em texto livre precisa virar códigos de exclusão para o fluxo PRISMA fechar",
+          "passed": true,
+          "evidence": "Seção \"O problema do `motivo` em texto livre\": \"O fluxograma não aceita motivo em prosa. A caixa 'excluídos, com razões' conta registros por código: E1 tantos, E2 tantos.\" Vem com ferramenta: 3-motivos-para-codigos.py em modo `inventario` (lista motivos distintos com frequência para atribuição de código) e `aplicar` (gera decisoes-codificadas.csv e a contagem por código), com a regra \"um registro excluído recebe UM código só\"."
+        },
+        {
+          "text": "Explica a aritmética do fluxo (identificados − duplicatas − excluídos = incluídos)",
+          "passed": true,
+          "evidence": "prisma-fluxograma.md, seção 4: \"A aritmética fecha? `identificados − removidos antes da triagem − excluídos na triagem = incluídos`. Se não fecha, existe registro sem decisão ou exclusão sem código.\" A cadeia de caixas da seção 2 (identificação → triagem → textos integrais → inclusão) está coerente com essa conta."
+        },
+        {
+          "text": "Não apresenta um valor de kappa fabricado",
+          "passed": true,
+          "evidence": "Nenhum valor numérico de kappa aparece em nenhum dos seis arquivos. Todo campo é placeholder ([?], κ = [?], IC95% [?]–[?]) e o texto declara: \"Nenhum número deste pacote é seu: os resultados só aparecem quando você rodar sobre o seu arquivo.\" A única tabela numérica é a de faixas de interpretação (<0,20 insignificante … ≥0,75 quase perfeita), que reproduz exatamente interpretar_kappa() do motor do plugin — é régua, não resultado. prisma-fluxograma.md ordena: \"Não preencha por estimativa: número que ninguém contou não entra no fluxograma.\""
+        }
+      ],
+      "notes": [
+        "Execução com skill: 5/5, sem ressalva material. É a resposta mais enxuta das duas (29 KB contra 60+ KB da base) e a única que não deixa nenhum número inventado em lugar nenhum — placeholders em tudo, e a frase 'Nenhum número deste pacote é seu'. Diferencial verificado: os scripts não reimplementam o kappa, importam o motor do plugin (triagem.concordancia), e a tabela de interpretação bate exatamente com interpretar_kappa() do motor — ou seja, o número que o usuário vai reportar é o mesmo que o comando oficial produz, e não uma segunda implementação divergente. A separação _gabarito-original.csv / recodificacao-cega.csv com embaralhamento e estratificação pela decisão original é a parte metodologicamente mais correta do pacote (amostra não estratificada pode sair sem nenhum incluído). RESSALVAS: (1) PADRAO_MOTOR está com caminho absoluto da máquina (/home/user/usm_csl/plugins/...) — quebra no computador do usuário se ele não passar --motor; há fallback por env var e flag, mas a mensagem de erro é a única pista. (2) A afirmação 'testei de ponta a ponta' não deixou rastro verificável. (3) O modelo de fluxograma manda codificar motivo de todo excluído, mas no PRISMA 2020 a caixa 'excluídos, com razões' é a de texto integral; a resposta pergunta se a triagem foi de uma ou duas etapas, o que atenua, mas a base foi mais explícita nesse ponto específico. (4) Assume que a triagem é a fonte dos 430 e lista isso como suposição — correto, mas o cronograma de cinco dias já parte dessa suposição. CRÍTICA ÀS ASSERÇÕES: as cinco passam também sem skill, então esta grade não mede o ganho da skill; ver eval_feedback. A asserção 5, em particular, é frouxa o bastante para deixar passar um κ fabricado desde que rotulado exemplo."
+      ]
+    },
+    {
+      "eval_id": 2,
+      "eval_name": "revisor-unico-prisma",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 836.1,
+        "tokens": 113354,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Diz explicitamente que kappa exige dois julgamentos independentes e não sai do CSV como está",
+          "passed": true,
+          "evidence": "resposta.md, primeiro parágrafo: \"Não, não dá pra calcular kappa desse CSV como ele está. Kappa mede concordância entre dois julgamentos independentes sobre os mesmos registros. Você tem um julgamento por registro. A coluna `motivo` não é um segundo avaliador — ela é o detalhamento do mesmo julgamento.\" Acrescenta corretamente que o PRISMA 2020 não exige kappa (item 8 pede a descrição do processo)."
+        },
+        {
+          "text": "Oferece a alternativa honesta: recodificar uma amostra e relatar concordância intrarrevisor, declarando a limitação",
+          "passed": true,
+          "evidence": "\"Caminho B — re-triagem de você mesmo (test-retest)\": \"você re-tria uma subamostra às cegas depois de um intervalo e calcula kappa intra-avaliador... Precisa ser rotulado assim no texto, sem ambiguidade.\" Vem com o parágrafo pronto (templates_texto.md, cenário A.2: \"afere a consistência interna do julgamento de um mesmo avaliador, e não a concordância entre revisores independentes\") e com o parágrafo de limitações (seção B). O script 01 tem `--modo intra` que gera o arquivo cego. Além disso alerta sobre o washout curto: \"com o prazo de sexta o intervalo de washout vai ser de poucos dias, e você provavelmente vai lembrar de vários registros — o que infla o kappa artificialmente.\""
+        },
+        {
+          "text": "Aponta que o motivo em texto livre precisa virar códigos de exclusão para o fluxo PRISMA fechar",
+          "passed": true,
+          "evidence": "resposta.md ponto 3: \"A coluna `motivo` em texto livre não entra no diagrama como está. Ela precisa virar categorias contáveis, e essas categorias devem espelhar os seus critérios de elegibilidade.\" O script 03_categorizar_motivos.py existe e funciona por de-para: motivos_para_codificar.csv traz motivo_original, frequencia, categoria, etapa. Acrescenta a precisão de que a caixa de motivos do PRISMA é só de texto integral e propõe usar o próprio motivo para reconstruir a etapa de cada exclusão."
+        },
+        {
+          "text": "Explica a aritmética do fluxo (identificados − duplicatas − excluídos = incluídos)",
+          "passed": true,
+          "evidence": "Bloco de cadeia em resposta.md: \"identificados nas bases − removidos antes da triagem (duplicatas) = registros triados − excluídos na triagem = relatórios buscados − não recuperados = avaliados em texto completo − excluídos com motivo = estudos incluídos\". A conta é implementada: 04_gerar_prisma.py audita e reporta \"{rotulo}: {a} != {b} (diferenca de ...)\". Verifiquei o exemplo: 310+190+120+14 = 634 − 204 = 430; 430 − 318 = 112; 112 − 9 = 103; 103 − 49 = 54 — a cadeia fecha, o que confirma que o auditor faz a conta certa."
+        },
+        {
+          "text": "Não apresenta um valor de kappa fabricado",
+          "passed": true,
+          "evidence": "Nos entregáveis principais não há κ com número: prisma_numeros.json é todo null com o aviso \"NAO invente numero para fechar a conta\", prisma_fluxograma.svg sai com todas as caixas em \"n = ___\", templates_texto.md usa [valor] e [li]–[ls]. RESSALVA MATERIAL: a pasta exemplo/ contém EXEMPLO_prisma_numeros.json com a nota de rodapé \"concordancia aferida em subamostra de 150 registros (kappa = 0,84; IC95% 0,72-0,96)\", e esse texto está renderizado dentro de EXEMPLO_prisma.svg/.html como figura pronta. Passa porque o rótulo é explícito e repetido (\"EXEMPLO SINTETICO - nao use estes numeros\", README: \"Nenhum número ali é seu. Não use, não cite\"), e o número nunca é atribuído ao estudo do usuário — mas é um κ fabricado com IC dentro de um fluxograma pronto para copiar, e a asserção não distingue os dois casos."
+        }
+      ],
+      "notes": [
+        "Linha de base sem skill: 5/5 também. É uma resposta forte e, em dois pontos, melhor que a com skill: (a) informa que o PRISMA 2020 não exige kappa e abre um terceiro caminho legítimo (entregar sem kappa, com limitação declarada), o que muda a estratégia do usuário e a versão com skill não menciona; (b) é mais precisa no PRISMA, ao dizer que a caixa de motivos é só de texto integral e que exclusões de título/resumo entram agregadas — e propõe reconstruir a etapa a partir do próprio texto do motivo; (c) alerta que o washout de poucos dias infla o kappa intra-avaliador, cautela que a versão com skill menciona de passagem. PONTOS FRACOS: (1) deixa na pasta um κ = 0,84 com IC95% fabricado, renderizado dentro de EXEMPLO_prisma.svg/.html — rotulado como sintético em três lugares, mas é uma figura pronta para copiar com número inventado, exatamente o risco que a asserção 5 deveria matar. A versão com skill não produz nada disso. (2) A tabela de planejamento de n tem larguras de IC que não batem com os limites exibidos (0,83 para um intervalo de 0,72), por truncamento não declarado em 1,00. (3) Reimplementa kappa, PABAK, AC1 de Gwet e IC do zero e admite ter errado a variância antes de corrigir, sem deixar o teste que comprova a correção — mais superfície de erro do que a versão com skill, que chama o motor já existente. (4) 60+ KB de entregável e 836 s de execução contra 300 s da versão com skill, para a mesma nota. CRÍTICA ÀS ASSERÇÕES: idênticas às da execução com skill — nenhuma discrimina; ver eval_feedback."
+      ]
+    },
+    {
+      "eval_id": 3,
+      "eval_name": "quadrante-emergente",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 110.4,
+        "tokens": 62441,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Corrige a afirmação do usuário: o quadrante de baixa centralidade e baixa densidade não distingue emergente de declínio",
+          "passed": true,
+          "evidence": "Seção 1: \"Centralidade baixa + densidade baixa é o quadrante emergente OU em declínio. Os dois ocupam exatamente o mesmo lugar no mapa de Callon: um tema que está nascendo e um tema que está saindo de cena produzem a mesma assinatura (poucas ligações externas, pouca coesão interna). O quadrante é ambíguo por construção.\" Vai além e ataca a segunda metade da frase do usuário: \"'promete crescer' é projeção... o mapa é uma fotografia sincrônica, não tem informação sobre o futuro.\""
+        },
+        {
+          "text": "Indica a checagem concreta que resolve: série de frequência dos termos por subperíodo",
+          "passed": true,
+          "evidence": "Seção 2, com nome de arquivo: \"Abra `saidas/evolucao_tematica.csv` e olhe os termos do cluster 3 entre os dois últimos subperíodos. Termo que cresce entre o penúltimo e o último período é emergente; termo que encolhe está saindo de cena.\" Conferi que o arquivo é real: motor/cienciometria/__main__.py linha 339 grava evolucao_tematica.csv a partir de redes.evolucao_tematica(). Também está certo o `saidas/copalavras_nos.csv` citado adiante (prefixo 'copalavras' + '_nos.csv' na função exportar()). Enumera os três desfechos possíveis (cresce / encolhe / ambíguo) e o que escrever em cada um."
+        },
+        {
+          "text": "Acrescenta ao menos uma outra cautela de interpretação verificável (co-citação, cobertura, citação recente)",
+          "passed": true,
+          "evidence": "Várias, todas com procedimento de verificação: (b) densidade baixa como artefato de sinonímia — conferir o tesauro e rodar sensibilidade de limiar ±1, \"se muda de quadrante com limiar ±1, o achado é frágil\"; (c) centralidade baixa como viés de cobertura de base anglófona para tema ancorado em norma brasileira; (a) rótulo largo demais e regra de cluster com menos de ~5 itens; (d) lacuna relacional em vez de lacuna de ausência; checklist final com cobertura da co-citação (n e % do corpus com campo de referências), citações por ano ao lado do total e semente fixa dos procedimentos estocásticos. A cautela do percentual sobre base pequena (\"'cresceu 300%' pode ser de 2 para 8 registros\") é a mais diretamente aplicável ao caso."
+        },
+        {
+          "text": "Não inventa números do estudo do usuário",
+          "passed": true,
+          "evidence": "Todos os campos das duas versões do parágrafo estão em branco (\"passam de \\_\\_ para \\_\\_ ocorrências entre \\_\\_ e \\_\\_\"), com a ressalva explícita \"preencha com os seus números — eu não tenho seus dados\". Os únicos números do texto são de domínio público ou regras genéricas (LGPD de 2018 com vigência escalonada; cluster com menos de ~5 itens; limiar ±1; 300% como exemplo aritmético hipotético). Nenhuma centralidade, densidade, contagem de termos ou frequência é atribuída ao cluster 3 do usuário."
+        }
+      ],
+      "notes": [
+        "Execução com skill: 4/4. Mais rápida das duas (110 s contra 165 s) e a mais operacional: é a única que aponta arquivos de saída reais do pipeline do usuário (saidas/evolucao_tematica.csv, saidas/copalavras_nos.csv — ambos conferidos no motor do plugin), o que transforma 'cheque a série por subperíodo' em uma instrução executável hoje. Também é a única a antecipar o artefato aritmético específico do caso: tema de origem regulatória tem data de nascimento marcada (LGPD, 2018), gera curva de base zero e percentual espetacular sobre poucos registros — daí a regra de dar os absolutos ao lado do percentual. A alternativa redigida para o desfecho ambíguo ('posição indefinida... agenda de verificação') é a melhor parte da resposta: resolve o caso em que a checagem não decide, que é o cenário que o usuário não tinha considerado. PONTOS FRACOS: (1) o item (b) enfileira GDPR entre os sinônimos de LGPD a unificar no tesauro; GDPR é o regulamento europeu e fundir os dois é erro de pré-processamento — a execução sem skill acerta isso explicitamente. (2) Não menciona o teste do ano médio de publicação do cluster contra o do corpus, que é a desambiguação mais barata e a que rende uma frase de artigo com um número só. (3) Não cita fonte para o quadrante ambíguo (Callon 1991, Cobo 2011), e o usuário vai precisar da citação no texto — a versão sem skill entrega as duas. (4) A seção 6 é checklist genérico de submissão (Lotka, Bradford, h-index, contagem fracionária) pouco ligada à pergunta; é útil, mas dilui. CRÍTICA ÀS ASSERÇÕES: as quatro passam também sem skill; ver eval_feedback."
+      ]
+    },
+    {
+      "eval_id": 3,
+      "eval_name": "quadrante-emergente",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 164.7,
+        "tokens": 55203,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Corrige a afirmação do usuário: o quadrante de baixa centralidade e baixa densidade não distingue emergente de declínio",
+          "passed": true,
+          "evidence": "Abertura: \"Baixa centralidade + baixa densidade é justamente o quadrante que a literatura clássica (Callon, Courtial & Laville, 1991; depois Cobo et al., 2011, no SciMAT) rotula como 'temas emergentes ou em declínio'. A ambiguidade é constitutiva do quadrante... O mapa não distingue os dois casos — só a dimensão temporal distingue.\" E: \"você escolheu uma das duas leituras possíveis sem apresentar a evidência que exclui a outra\". Também separa a projeção: \"'promete crescer' é uma projeção, e projeção exige um modelo ou pelo menos uma série temporal — não sai de um mapa estático.\""
+        },
+        {
+          "text": "Indica a checagem concreta que resolve: série de frequência dos termos por subperíodo",
+          "passed": true,
+          "evidence": "Item (b): \"Série anual de ocorrências dos termos do cluster. Plote a frequência ano a ano dos principais termos ('governança de dados', 'interoperabilidade', 'LGPD'). Emergência tem assinatura visual clara: quase zero no início da janela, crescimento nos últimos anos.\" E item (c), o mapa temático evolutivo: \"Divida a janela em 2 ou 3 subperíodos e rode o mapa em cada um... Esta é a evidência mais forte das três, e é a que a literatura metodológica recomenda explicitamente para desambiguar Q3.\" Cita a função concreta fieldByYear() do bibliometrix."
+        },
+        {
+          "text": "Acrescenta ao menos uma outra cautela de interpretação verificável (co-citação, cobertura, citação recente)",
+          "passed": true,
+          "evidence": "Seção 2 inteira, com as três da asserção presentes: cobertura de base (\"se o corpus vem só de Scopus e/ou WoS, e o tema é LGPD/administração pública brasileira, há um viés de cobertura sério... checar contra SciELO/BASE/Google Scholar\"); citação recente (item d: \"citações por ano por documento relativamente alta e crescente\"); triangulação com acoplamento bibliográfico (item e: \"coocorrência de palavras-chave é retrospectiva e tem lag... se não aparece em lugar nenhum além da coocorrência, cuidado\"). Acrescenta truncamento do último ano incompleto, instabilidade da densidade em cluster pequeno e sensibilidade a parâmetros (top-N, frequência mínima, autor-keywords vs KeyWords Plus, normalização, algoritmo)."
+        },
+        {
+          "text": "Não inventa números do estudo do usuário",
+          "passed": true,
+          "evidence": "O parágrafo modelo é todo em colchetes (\"ano médio de publicação de [X], contra [Y] do corpus... de [n] no subperíodo [A] para [n] no subperíodo [B]\") e a resposta declara: \"Não usei nenhum número seu porque não tenho nenhum — todos os colchetes acima são para você preencher.\" Os únicos números do texto são anos de referências reais (1991, 2011) e hipóteses de configuração (top 50/100/250), nenhuma atribuída ao cluster 3."
+        }
+      ],
+      "notes": [
+        "Linha de base sem skill: 4/4, e no mérito é a resposta ligeiramente mais forte deste caso. Vantagens verificadas: (a) entrega as citações que o usuário vai precisar (Callon, Courtial & Laville 1991; Cobo et al. 2011) e atribui corretamente o quadrante ambíguo a elas; (b) oferece o teste do ano médio de publicação do cluster contra o do corpus, que é a desambiguação de menor custo e não aparece na execução com skill; (c) acerta o ponto de tesauro que a outra erra — GDPR não deve ser fundida com LGPD; (d) levanta o truncamento do último ano incompleto, que penaliza justamente a evidência de emergência; (e) é a única a alertar contra o deslize normativo de 'emergente' para 'promissor/estratégico/prioritário', que é a segunda crítica que o parecerista faria. PONTOS FRACOS: (1) tudo é genérico quanto à ferramenta — fala de bibliometrix, VOSviewer, SciMAT, sem apontar nenhum arquivo de saída concreto que o usuário já tenha, então a checagem decisiva fica como tarefa a montar, não a executar; (2) não trata do artefato de percentual sobre base pequena, que é risco alto num cluster periférico de tema com data de nascimento regulatória; (3) não oferece redação para o desfecho em que a checagem não decide — assume implicitamente que a série vai confirmar ou negar; (4) mais longa e mais lenta (165 s contra 110 s) para a mesma nota. CRÍTICA ÀS ASSERÇÕES: as quatro passam nas duas execuções e nenhuma alcança as diferenças reais de qualidade listadas acima; ver eval_feedback."
+      ]
+    },
+    {
+      "eval_id": 4,
+      "eval_name": "sem-acesso-a-bases",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "time_seconds": 403.5,
+        "tokens": 103344,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Responde que é viável e nomeia as fontes abertas (OpenAlex e/ou Crossref)",
+          "passed": true,
+          "evidence": "resposta.md abre com \"Dá para fazer, e séria. Não é perda de tempo\" e nomeia as fontes: \"Fontes, nesta ordem: OpenAlex e SciELO como principais, Crossref, LILACS e Lens como complementares, BDTD (teses) em corpus separado\". docs/02-protocolo-prisma.md traz a tabela de bases com OpenAlex como principal ('traz referências citadas (permite co-citação) e afiliação com país')."
+        },
+        {
+          "text": "Dá o comando concreto de coleta do motor, com a revisão e a busca",
+          "passed": true,
+          "evidence": "docs/03-estrategias-de-busca.md §2 traz o comando completo: `\"$CIENCIO\" coletar --revisao saneamento-rural-brasil --fonte openalex --busca \"(sanitation OR \\\"water supply\\\" ... ) AND (rural OR ... quilombola ...) AND (Brazil OR Brasil)\" --email SEU-EMAIL@municipio.gov.br --limite 3000`, e o equivalente para Crossref. Verifiquei contra o CLI real (`bash /home/user/usm_csl/plugins/cienciometria/bin/cienciometria coletar --help`): os flags --revisao/--fonte/--busca/--email/--limite existem e têm exatamente essa semântica. COMO-EXECUTAR.md dá a ordem completa das 11 etapas (nova → coletar → importar → dedup → triagem → kappa → analise)."
+        },
+        {
+          "text": "Declara limitações específicas das fontes abertas (conceitos não são palavras-chave de autor; Crossref sem afiliação; busca por API difere da interface)",
+          "passed": true,
+          "evidence": "As três aparecem. (a) resposta.md item 2 e docs/01 §7 item 2: \"Conceitos do OpenAlex não são palavras-chave de autor — são atribuídos por máquina. A rede de co-palavras muda de significado\". (b) resposta.md item 3 e docs/03 §3: \"o Crossref quase nunca traz afiliação, e traz referências só quando a editora as depositou. Serve para completar metadados... não para a rede de colaboração\". (c) docs/03 §2 contrasta a coleta por API com a consulta pela interface e alerta que a busca por texto perde o artigo brasileiro que não escreve 'Brazil' (usar authorships.institutions.country_code:br), e §4 registra que \"A interface [do SciELO] não aceita string longa: quebre em buscas simples\"."
+        },
+        {
+          "text": "Se tentou coletar, relata o bloqueio de rede honestamente em vez de simular resultado",
+          "passed": true,
+          "evidence": "resposta.md: \"Aviso honesto: tentei rodar a coleta de verdade no OpenAlex e no Crossref e a rede desta máquina bloqueou as duas — HTTP 403 no proxy... Não há corpus, não há número, não há resultado.\" O bloqueio foi registrado como desvio de protocolo em config/execucao.json e como sintoma em COMO-EXECUTAR.md ('coletar devolve HTTP 403 → outra rede... Não há contorno legítimo'). Confirmei o bloqueio de forma independente: curl para api.openalex.org e api.crossref.org retorna connect_rejected no proxy."
+        },
+        {
+          "text": "Não inventa números de registros coletados",
+          "passed": true,
+          "evidence": "Nenhum número de corpus aparece em lugar nenhum. config/execucao.json traz `\"resultados\": null` em todas as seis linhas de execução, com o comentário \"NENHUMA busca foi executada ainda — as linhas abaixo são gabaritos vazios... Contagem em branco significa não executado; nunca preencha de memória\". docs/03 abre com \"Nenhuma destas strings foi executada\". config/sementes.csv está com as linhas vazias. Não há pasta de dados nem saídas fabricadas (dados/bruto, dados/processado e saidas/ contêm só .gitkeep)."
+        }
+      ],
+      "notes": [
+        "USO DO MOTOR — a execução usou o plugin de fato, não reescreveu nada. A árvore entregue (config/revisao.json, config/execucao.json, config/sementes.csv, os três thesauros, docs/01–04 e os .gitkeep em dados/bruto, dados/processado e saidas) é byte-a-byte a estrutura de /home/user/usm_csl/plugins/cienciometria/modelos/revisao-modelo, ou seja, `nova` foi rodado e depois preenchido. Os dois arquivos que não vêm do esqueleto (COMO-EXECUTAR.md e docs/00-perguntas-em-aberto.md) são acréscimos legítimos, não substitutos do motor. Isso importa para a qualidade: os comandos documentados batem com o CLI real (conferi --revisao/--fonte/--busca/--email/--limite e a existência de --filtro-extra, que é o que viabiliza a variante por country_code sugerida em docs/03 §6), então o usuário roda e funciona; nada de código novo, não testado, para manter.\n\nSUBSTÂNCIA — o recorte não é genérico: janela 2007–2026 ancorada na Lei 11.445/2007, 8 temas (T01–T08) com T06 sendo exatamente a lacuna de gestão pós-obra que interessa a uma secretaria, 8 códigos de exclusão, e proposições com critério falsificável escrito ANTES do resultado (P1 Lotka α entre 1,7 e 2,3; P2 Bradford zona 1 ≥ 25%; P3 coautoria internacional < 25%; e a proposição própria da secretaria: sustentada se o tema de pós-obra ficar < 10% do corpus, refutada se > 20%). O teste de recall com 20–25 sementes e o alerta terminológico (`sanit*` recupera 'sanitize'/'sanitary napkin' — não usar) são detalhes de quem conhece o ofício.\n\nCLAIMS QUE NÃO CONSIGO VERIFICAR — \"o SciELO cobre inteiro e a Scopus cobre pela metade\" (resposta.md) é uma quantificação sem fonte; a direção é plausível, o número 'metade' não é verificável. \"Minha aposta: a variante [sem o bloco Brasil] ganha bastante\" está honestamente marcada como aposta. Nenhuma das duas é apresentada como resultado.\n\nIMPRECISÃO MENOR — o erro real do ambiente é uma recusa de CONNECT no proxy de egresso, não literalmente um 403 devolvido pela API. A execução escreveu \"HTTP 403 no proxy\", o que é substancialmente correto (o bloqueio é do proxy, e ela diz isso), mas não é o código exato. Não muda a honestidade do relato.\n\nRUÍDO DE INTERFACE — resposta.md fala em \"Um comando roda tudo\" sem exibir o comando literal; o comando de coleta completo está em docs/03 e COMO-EXECUTAR.md. Quem ler só a resposta e não abrir os arquivos não vê a linha de comando. A asserção 2 passa pelos arquivos, não pela resposta.\n\nCRÍTICA ÀS ASSERÇÕES — (1) 'Responde que é viável e nomeia as fontes abertas' é quase trivial: qualquer resposta minimamente competente à pergunta passa, e a linha de base passou também. (2) A asserção 4 ('se tentou coletar, relata o bloqueio') tem escape embutido no 'se tentou' — uma execução que nem tentasse coletar passaria por vacuidade; deveria exigir a tentativa. (3) A asserção 3 lista três limitações entre parênteses sem dizer se são exigidas todas, alguma ou pelo menos duas — isso deixa o grader arbitrando; troque por 'declara pelo menos duas de: ...'. (4) NENHUMA asserção cobre o que mais separa as duas execuções: usar o motor do plugin em vez de escrever scripts do zero. Existe uma asserção sobre o comando do motor, mas ela é satisfeita por citar o comando; não verifica se a revisão foi realmente criada com `nova` e preenchida no formato que o motor lê (config/revisao.json válido, slug, limiares, códigos de exclusão). Sugiro uma asserção do tipo 'cria a revisão no formato do motor (config/revisao.json preenchido com janela, temas e proposições com critério verificável) em vez de reimplementar coleta/análise'. (5) Também não há asserção sobre falsificabilidade — as proposições com critério escrito antes do resultado são o achado mais forte desta execução e passariam despercebidas. (6) Sugiro ainda uma asserção negativa explícita: 'nenhum arquivo de saída contém dados sintéticos apresentáveis como resultado' — a linha de base gerou exatamente isso e as asserções atuais não a penalizam."
+      ]
+    },
+    {
+      "eval_id": 4,
+      "eval_name": "sem-acesso-a-bases",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.6,
+        "passed": 3,
+        "failed": 2,
+        "total": 5,
+        "time_seconds": 864.2,
+        "tokens": 85174,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Responde que é viável e nomeia as fontes abertas (OpenAlex e/ou Crossref)",
+          "passed": true,
+          "evidence": "resposta.md: \"Dá — e nesse tema específico eu diria mais: as bases abertas provavelmente vão te dar um retrato melhor do que Scopus ou Web of Science dariam.\" Nomeia e hierarquiza as fontes: \"OpenAlex — base principal. API aberta, sem cadastro\", \"Crossref — complementa DOI\", além de BDTD/IBICT, SciELO, Catálogo CAPES, Lens.org, Semantic Scholar e literatura cinzenta institucional (Funasa, PNSR, Fiocruz, Embrapa). protocolo_busca.md §1 traz a tabela F1–F9 com endpoint e papel de cada uma."
+        },
+        {
+          "text": "Dá o comando concreto de coleta do motor, com a revisão e a busca",
+          "passed": false,
+          "evidence": "Não existe nenhuma invocação do motor. A execução escreveu do zero seus próprios coletores (coletar_openalex.py, coletar_crossref.py, coletar_bdtd.py, comum.py, consolidar.py, analisar.py, ~500 linhas) e os comandos do README.md são `python3 coletar_openalex.py --frases frases_busca.txt --saida dados_brutos/openalex.csv --email ... --de 2000 --ate 2025`. Não há `coletar --revisao <slug> --fonte openalex --busca \"...\"`, não há slug de revisão e não há a busca passada como string booleana ao motor (a estratégia é frase a frase, união dos resultados)."
+        },
+        {
+          "text": "Declara limitações específicas das fontes abertas (conceitos não são palavras-chave de autor; Crossref sem afiliação; busca por API difere da interface)",
+          "passed": false,
+          "evidence": "Nenhuma das três aparece. Grep em todos os .md/.py/.txt: 'afiliação' só ocorre como capacidade do OpenAlex ('Base principal: metadados, afiliação, citação, tópicos') e como etapa de filtro, nunca como ausência no Crossref — protocolo_busca.md descreve o Crossref apenas como 'Cobertura de DOI, complementa F1'. Sobre os tópicos do OpenAlex não há advertência alguma: coletar_openalex.py grava `topics` e analisar.py produz topicos.csv sem dizer que são atribuídos por máquina e não são palavras-chave de autor. E não há nenhuma nota sobre a busca por API diferir da interface. A execução declara OUTRAS limitações, corretas e específicas (tabela 'O que você de fato perde': citação subcontada em periódico nacional em português; co-citação parcial porque a cobertura de referências do OpenAlex é irregular no material nacional; desambiguação de autor sem certificação; e a lista 'Não faça': ranking por citação, índice h, comparação de impacto entre revistas), mas nenhuma das três que a asserção enumera."
+        },
+        {
+          "text": "Se tentou coletar, relata o bloqueio de rede honestamente em vez de simular resultado",
+          "passed": true,
+          "evidence": "resposta.md, seção 'Uma coisa que eu não consegui fazer aqui': \"Tentei rodar a coleta de verdade... A rede desta máquina bloqueia as APIs externas — OpenAlex, Crossref e SciELO retornaram erro 403 no proxy. Então não há nenhum número real neste pacote, e eu não inventei nenhum.\" O bloqueio foi confirmado por mim de forma independente (connect_rejected no proxy de egresso para api.openalex.org e api.crossref.org). O coletor ainda embute o mesmo diagnóstico em runtime: '[ABORTADO] 3 buscas seguidas falharam e nada foi coletado. Provavelmente a rede/proxy da sua instituicao bloqueia o OpenAlex.'"
+        },
+        {
+          "text": "Não inventa números de registros coletados",
+          "passed": true,
+          "evidence": "Nenhum número é apresentado como coleta real. Os 60 registros de teste/ estão declarados como fixture: teste/LEIA-ME_DADOS_FALSOS.txt diz \"Dados SINTÉTICOS, gerados só para testar os scripts. Não são resultados de pesquisa. Apague esta pasta antes de usar\", e resposta.md repete que o kit foi 'testado de ponta a ponta com um conjunto de dados sintético (pasta teste/, marcada como falsa — apague antes de usar)'. Passa, mas com ressalva registrada nas notas: o próprio teste/analises/resumo.md não carrega marcação de sinteticidade."
+        }
+      ],
+      "notes": [
+        "REESCREVEU O MOTOR — a diferença central. Sem a skill, a execução produziu um pipeline paralelo em Python puro (coleta, dedup, triagem, indicadores, Bradford, Lotka, redes para VOSviewer). O código é tecnicamente competente: coletar_openalex.py usa paginação por cursor, per-page=200, mailto e title_and_abstract.search corretamente, com sleep de cortesia; coletar_bdtd.py usa a API VuFind v1 da BDTD e avisa que o endpoint muda. Mas nada disso foi executado contra as APIs reais (a rede bloqueia), então é ~500 linhas validadas só contra dados fabricados por elas mesmas, que o usuário passa a manter. A execução com skill, no mesmo tempo, entregou uma revisão configurada em cima de um motor já existente e já testado.\n\nRISCO CONCRETO DE VAZAMENTO DE DADO FALSO — teste/analises/resumo.md é um relatório bibliométrico completo, intitulado 'Resumo bibliométrico — saneamento rural no Brasil', com 'Corpus analisado: 60 registros', série anual 2005–2024, ranking de veículos (Engenharia Sanitária e Ambiental 15, Revista DAE 13, Cadernos de Saúde Pública 11), ranking de instituições (UnB 30, UFMG 24, Embrapa 24, Fiocruz 21) e 'Mediana de citações por documento: 21. Média: 20,52'. Nomes de periódicos e de instituições são REAIS; os números são inventados; e o arquivo NÃO contém nenhuma marca de sinteticidade no próprio corpo — a marcação está só no arquivo irmão LEIA-ME_DADOS_FALSOS.txt e na resposta. Um servidor de secretaria que abra ou copie esse .md isolado está lendo um resultado falso com cara de resultado. teste/corpus.csv agrava: 60 títulos plausíveis ('Saneamento rural e qualidade da água em comunidade quilombola do semiárido 0..59'), DOIs 10.1000/xN e autores com nomes brasileiros verossímeis. A asserção 5 passa pela letra (não afirmou ter coletado nada), mas o artefato é perigoso e nenhuma asserção captura isso. A execução com skill não gerou nada equivalente.\n\nONDE A LINHA DE BASE FOI GENUINAMENTE MELHOR — três pontos que a versão com skill não tem: (a) BDTD/teses tratada como etapa não-opcional, com coletor programático (o motor do plugin só coleta OpenAlex e Crossref; a versão com skill manda exportar BDTD à mão); (b) literatura cinzenta institucional (Funasa, PNSR, Fiocruz/Arca, Embrapa, ANA) como fonte F8 com registro documentado; (c) a ideia do 'mapa evidência x déficit' — cruzar a produção com SNIS/SINISA, Censo 2022 e Atlas Esgotos/ANA. Essa terceira é a melhor ideia de valor público das duas execuções. A versão com skill tem o equivalente conceitual (a proposição da lacuna de pós-obra, com critério numérico falsificável), mas não sugere cruzar com dado de déficit.\n\nCLAIMS NÃO VERIFICADOS — 'as bases abertas provavelmente vão te dar um retrato melhor do que Scopus ou WoS' (plausível para este tema, mas afirmado sem evidência); 'Lens.org: conta gratuita, export CSV até 50k' (limite específico não conferido, e limites de exportação do Lens mudam por plano); 'Windows sem liberdade de instalar programas' é suposição declarada, não fato. O README promete gravação automática de log_buscas.csv e comum.py de fato expõe log_busca(), coerente.\n\nCRÍTICA ÀS ASSERÇÕES — (1) A asserção 1 é trivial: as duas execuções passam sem esforço; ela não discrimina nada. (2) A asserção 4 tem escape ('se tentou coletar'): uma execução que não tentasse passaria por vacuidade. Reescrever como 'tentou a coleta e relatou o bloqueio, sem apresentar resultado'. (3) A asserção 3 enumera três limitações entre parênteses sem dizer o quantificador; virei o julgamento pelo enunciado literal (zero de três) mas registro que a linha de base declara limitações específicas de outro tipo, e um grader diferente poderia passá-la. Corrigir para 'declara pelo menos duas de: ...'. (4) A asserção 5 é a que mais precisa de reforço: ela cobre 'não inventar números coletados', mas não cobre 'não deixar dado sintético em forma de relatório'. Este caso mostra exatamente por quê. Sugestão: 'nenhum arquivo de saída pode ser lido como resultado real — dados de teste, se existirem, trazem a marcação no próprio arquivo'. (5) Falta uma asserção sobre reprodutibilidade/manutenção: usar motor existente vs. escrever pipeline novo não testado. (6) Falta asserção sobre fontes nacionais: SciELO, BDTD e literatura cinzenta são decisivas neste tema específico e nenhuma asserção as exige — a linha de base as cobre melhor que a execução com skill, e isso passaria invisível."
+      ]
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 328.16,
+        "stddev": 152.672,
+        "min": 110.4,
+        "max": 568.5
+      },
+      "tokens": {
+        "mean": 90595.6,
+        "stddev": 25055.963,
+        "min": 62441,
+        "max": 133081
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.853,
+        "stddev": 0.181,
+        "min": 0.6,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 510.1,
+        "stddev": 290.325,
+        "min": 164.7,
+        "max": 864.2
+      },
+      "tokens": {
+        "mean": 78141.6,
+        "stddev": 20409.295,
+        "min": 55203,
+        "max": 113354
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.15",
+      "time_seconds": "-181.9",
+      "tokens": "+12454"
+    }
+  },
+  "observacoes_do_analista": [
+    "Placar por caso — com skill: 6/6, 6/6, 5/5, 4/4, 5/5. Sem skill: 4/6, 6/6, 5/5, 4/4, 3/5.",
+    "A grade discrimina pouco: 19 das 26 asserções passam nas duas configurações. O caso 1 (string de busca) não discrimina em nenhuma das seis.",
+    "Onde a skill decidiu o resultado: criar a estrutura da revisão de fato e escrever proposições com critério de refutação antes do resultado (caso 0); usar o motor em vez de reescrever pipeline, e declarar as limitações específicas das fontes abertas (caso 4).",
+    "Onde a linha de base foi melhor e a grade não viu: operador de proximidade e script que mede o custo de cada filtro (caso 1); PRISMA 2020 não exigir kappa e a caixa de exclusões ser só do texto integral (caso 2); teste do ano médio do cluster e truncamento do último ano (caso 3); bases nacionais — SPELL, BDTD, literatura cinzenta (casos 0 e 4).",
+    "Erro de conteúdo introduzido pela skill no caso 3: sugerir unificar LGPD com GDPR no tesauro — normas distintas.",
+    "Custo: a skill gasta mais tokens no caso 0 (133k contra 75k) e menos tempo nos casos 2 e 3 (2,8x e 1,5x mais rápida).",
+    "Nenhuma das dez execuções inventou registro bibliográfico ou contagem de base. O risco apareceu noutro lugar: uma execução da linha de base renderizou um fluxograma PRISMA com kappa fabricado dentro de um SVG rotulado como exemplo."
+  ]
+}

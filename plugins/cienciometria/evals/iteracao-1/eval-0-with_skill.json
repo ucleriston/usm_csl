@@ -1,0 +1,71 @@
+{
+  "expectations": [
+    {
+      "text": "Distingue mapear o campo (cienciometria) de sintetizar o que a literatura concluiu, antes de propor o caminho",
+      "passed": true,
+      "evidence": "resposta.md abre com a distincao, antes de qualquer proposta: \"'O que a literatura concluiu sobre OP?' ... isso e revisao **sistematica de conteudo**. A sintese sai de leitura.\" vs. \"'Como o conhecimento sobre OP esta organizado?' ... isso e revisao **cienciometrica**. A resposta sai de indicadores e redes.\" Declara qual presumiu ('presumi a segunda'), oferece a ponte ('o corpus triado e exatamente o insumo da primeira') e entrega a pergunta literal para o orientador. COMECE-AQUI.md repete a distincao em tabela na secao 'Antes de tudo'."
+    },
+    {
+      "text": "Faz perguntas de delimitação concretas: objeto, janela temporal, idiomas e bases efetivamente acessíveis",
+      "passed": true,
+      "evidence": "Bases: pergunta 2 — 'A CAPES da sua universidade te da acesso a **Scopus** e a **Web of Science**?'. Objeto: perguntas 3 e 4 (OP escolar/universitario entram? anais do EnANPAD/CONSAD entram?) e docs/01, secao 12, itens 3-4. Janela: secao 12, item 2 — '1989 e o marco defensavel. Se a preferencia for a producao contemporanea, 2000 e o corte alternativo'. Idiomas: aparecem em 'O que presumi (corrija o que estiver errado) — Que portugues, ingles e espanhol bastam', ou seja, como suposicao explicitada para correcao, nao como pergunta direta (ver notas)."
+    },
+    {
+      "text": "Cria de fato a estrutura da revisão com o motor (pasta revisoes/<slug> com config/ e docs/)",
+      "passed": true,
+      "evidence": "Arvore real no disco: outputs/revisoes/orcamento-participativo/ com config/ (revisao.json 8,6 KB, execucao.json, sementes.csv, thesauro-termos.json, thesauro-fontes.json, thesauro-instituicoes.json), docs/ (01-projeto-de-pesquisa.md 13,8 KB, 02-protocolo-prisma.md 10,7 KB, 03-estrategias-de-busca.md 10,4 KB, 04-livro-de-codigos.md 5,8 KB), dados/bruto/, dados/processado/ e saidas/ com .gitkeep. Nao e casca: os arquivos estao preenchidos com conteudo especifico do objeto, e a resposta cita o binario do motor ('$CIENCIO' importar/dedup/triagem/kappa/analise) com o caminho do plugin."
+    },
+    {
+      "text": "config/revisao.json fica preenchido com janela, idiomas e ao menos uma proposição com critério de refutação",
+      "passed": true,
+      "evidence": "config/revisao.json traz \"janela\": {\"inicio\": 1989, \"fim\": 2026}, \"idiomas\": [\"pt\", \"en\", \"es\"] e 7 proposicoes (P1-P7), cada uma com indicador e criterio operacional testavel. Ex.: P5 — 'O campo tem obsolescencia lenta' com {\"campo\": \"price.indice_price_corpus\", \"operador\": \"<=\", \"valor\": 35}; P6 (manual) escreve explicitamente a condicao de refutacao: 'REFUTADA se a participacao brasileira se manter ou subir, ou se ficar acima de 30% no subperiodo recente'. Comentario final: 'Todos os criterios foram escritos ANTES de existir qualquer resultado'."
+    },
+    {
+      "text": "Indica o próximo passo concreto (strings de busca por base) em vez de parar no plano abstrato",
+      "passed": true,
+      "evidence": "docs/03-estrategias-de-busca.md traz strings prontas por base: S1 Scopus com sintaxe real ('TITLE-ABS-KEY ( \"participatory budget*\" OR \"orcamento participativo\" ... ) AND PUBYEAR > 1988 AND ( LIMIT-TO ( DOCTYPE , \"ar\" ) ...'), W1 para WoS (TS=...), SC1-SC3 para SciELO com sintaxe ti/ab/kw, mais a variante de sensibilidade S2. Inclui o modo de exportacao por base ('Export -> CSV, marcar todos os campos, obrigatoriamente incluindo References'; WoS 'Full Record and Cited References') e o nome de arquivo exigido pelo parser. COMECE-AQUI.md sequencia as tres semanas seguintes."
+    },
+    {
+      "text": "Não apresenta registros bibliográficos, contagens de bases ou resultados de busca inventados",
+      "passed": true,
+      "evidence": "Varredura por DOIs, contagens e registros nos 11 arquivos de texto: nenhum DOI, nenhum titulo de artigo do corpus, nenhuma contagem de base. execucao.json tem todos os campos 'resultados': 0 e datas vazias, com o comentario 'NENHUMA contagem foi preenchida: nenhuma busca foi executada ate agora'; sementes.csv esta com as 25 linhas em branco. A falha de rede e declarada em tres lugares ('HTTP 403 no CONNECT para api.openalex.org e api.crossref.org. Nenhum registro baixado'), inclusive como desvio datado do protocolo. As unicas citacoes sao metodologicas e canonicas (Lotka 1926, Bradford 1934, Price 1965, Kessler 1963, Small 1973, Callon/Courtial/Laville 1991, Zupic e Cater 2015, Donthu et al. 2021, PRISMA 2020, PRISMA-S 2021, Mongeon e Paul-Hus 2016, Visser/van Eck/Waltman 2021) — todas reais e corretas, acompanhadas do aviso 'Confira cada uma dessas entradas na base antes de citar'."
+    }
+  ],
+  "summary": {
+    "passed": 6,
+    "failed": 0,
+    "total": 6,
+    "pass_rate": 1.0
+  },
+  "timing": {
+    "executor_duration_seconds": 568.5,
+    "total_tokens": 133081
+  },
+  "claims": [
+    {
+      "claim": "'Verifiquei que o motor le a configuracao sem erro e que o pipeline esta ligado corretamente'",
+      "type": "process",
+      "verified": false,
+      "evidence": "Nao ha transcript nem log de execucao nesta pasta que comprove a validacao. O JSON e sintaticamente valido e o schema e coerente com os comandos citados, mas a afirmacao de que o motor foi rodado nao pode ser confirmada a partir dos outputs."
+    },
+    {
+      "claim": "A coleta em OpenAlex e Crossref foi recusada com HTTP 403",
+      "type": "process",
+      "verified": true,
+      "evidence": "Coerente e repetido em tres arquivos independentes (resposta.md, COMECE-AQUI.md, docs/03 e execucao.json como desvio datado 2026-09-07), e consistente com a ausencia total de registros em dados/bruto/. O ambiente de fato roteia HTTPS por proxy com politica de dominio."
+    },
+    {
+      "claim": "As strings estao 'prontas para copiar e colar' na Scopus, WoS e SciELO",
+      "type": "quality",
+      "verified": true,
+      "evidence": "Sintaxe correta por base: TITLE-ABS-KEY/LIMIT-TO/PUBYEAR na Scopus, TS= na WoS, ti/ab/kw na SciELO. Trunca corretamente ('participatory budget*') e cobre grafias com e sem acento, com justificativa ('bases diferentes tratam diacriticos de modo diferente')."
+    },
+    {
+      "claim": "SciELO nao exporta referencias citadas, o que enfraquece a co-citacao",
+      "type": "factual",
+      "verified": true,
+      "evidence": "Correto de fato, e a resposta nao varre a limitacao para baixo do tapete: transforma-a na proposicao P7, que mede a cobertura de referencias ('cocitacao.cobertura_%' >= 60) e define o plano B (acoplamento e co-palavras assumem o papel principal)."
+    }
+  ],
+  "notas": "EXECUCAO. Muito forte. O ponto mais valioso nao esta coberto por nenhuma asercao: a resposta transforma decisoes que normalmente ficariam implicitas em compromissos escritos ANTES de existir resultado — nove casos de fronteira decididos de antemao no protocolo, criterio de refutacao por proposicao, e o teste de recall com piso numerico (22 de 25) definido antes da busca. Isso e exatamente o que separa revisao sistematica de leitura assistemática, e passaria despercebido pela grade atual.\n\nHONESTIDADE DE DADOS. Impecavel, e ativamente honesta: nao so evita inventar como registra a falha de coleta como desvio datado do protocolo, deixa 'resultados': 0 no execucao.json em vez de apagar as linhas, e manda conferir na base ate as referencias metodologicas canonicas que citou.\n\nRESSALVAS. (a) A afirmacao 'Verifiquei que o motor le a configuracao sem erro' e um claim de processo nao comprovavel pelos outputs; se o motor nao foi de fato executado, e uma afirmacao forte demais. (b) Idiomas nao viram pergunta: entram como suposicao a corrigir. (c) A revisao foi montada inteira presumindo que o orientador quer o mapa do campo — a resposta admite a presuncao com clareza e oferece a ponte, mas ha risco de retrabalho se a resposta for outra. (d) Custo: 133 mil tokens e 568 s, o dobro da baseline em tokens.\n\nCRITICA AS ASERCOES.\n- TRIVIAIS (passam nas duas execucoes, nao discriminam): #1 (a baseline tambem distingue, via tabela de familias de revisao com a linha 'Revisao bibliometrica — quando a pergunta e sobre o *campo*, nao sobre os *achados*'); #2 (as duas explicitam objeto/janela/bases; nenhuma das duas pergunta idiomas de fato — a asercao e satisfeita pelo mecanismo fraco de 'suposicoes a corrigir'); #5 (as duas entregam strings por base, e as da baseline sao ate mais extensas, com bloco NOT); #6 (as duas se recusam a inventar, e a baseline diz isso de forma explicita).\n- DISCRIMINANTES DE VERDADE: apenas #3 e #4 — e sao as duas asercoes que testam o uso do motor/config, ou seja, a grade so discrimina no eixo 'usou a ferramenta', nao no eixo 'a revisao ficou melhor'.\n- #3 e verificavel de forma superficial: bastaria criar a arvore de pastas vazia para passar. Deveria exigir que os docs tenham conteudo especifico do objeto (ex.: codigos de exclusao proprios do tema, nao genericos).\n- SEM ASERCAO (lacunas importantes): teste de recall com conjunto-semente e limiar numerico definido antes da busca; casos de fronteira decididos previamente; correcao da sintaxe das strings por base (uma string sintaticamente invalida passaria em #5); registro da execucao das buscas (PRISMA-S); tratamento da SciELO como base principal com a limitacao de referencias citadas declarada e medida — todos observados na execucao com skill e ausentes ou mais fracos na baseline."
+}
