@@ -130,7 +130,9 @@ def lei_de_lotka(corpus):
         "tabela": tabela,
         "ks": round(ks, 4),
         "ks_critico_5%": round(critico, 4),
-        "adere": bool(ks <= critico),
+        # expoente não positivo descreve uma distribuição crescente: não é a Lei de Lotka,
+        # por melhor que o teste KS pareça
+        "adere": bool(ks <= critico and alpha > 0),
     }
 
 

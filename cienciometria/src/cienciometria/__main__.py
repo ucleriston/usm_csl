@@ -11,8 +11,8 @@ import json
 import os
 import sys
 
-from . import (__version__, coleta, comparacao, indicadores, parsers, proposicoes, redes,
-               relatorio, triagem)
+from . import (__version__, artigo, coleta, comparacao, estado, fichamento, indicadores,
+               parsers, proposicoes, redes, relatorio, triagem)
 from .corpus_io import (
     carregar_corpus, registrar_execucao, salvar_arestas, salvar_corpus, salvar_nos, salvar_tabela,
 )
@@ -83,6 +83,152 @@ TIPOS_API = {
     "crossref": {"artigo": "journal-article", "revisao": "journal-article",
                  "capitulo": "book-chapter", "anais": "proceedings-article"},
 }
+
+
+def cmd_estado(args):
+    """Onde a pesquisa está e qual é o próximo passo."""
+    revisao = _revisao(args)
+    dados = estado.resumo(revisao)
+    print(estado.formatar(dados))
+    if args.json:
+        print()
+        print(json.dumps(dados, ensure_ascii=False, indent=2))
+    return 0
+
+
+def cmd_fichar(args):
+    """Cria fichas de leitura, ou sugere quais artigos fichar."""
+    revisao = _revisao(args)
+    corpus = carregar_corpus(revisao.corpus) if os.path.exists(revisao.corpus) else []
+    if not corpus:
+        print("Corpus vazio: construa o corpus antes de decidir o que ler.")
+        return 1
+
+    if args.sugerir:
+        resultados = _ler_parcial(revisao.dir_saidas)
+        sugestoes = fichamento.sugerir_leitura(corpus, resultados, args.quantidade)
+        destino = os.path.join(revisao.dir_processado, "leitura-sugerida.csv")
+        salvar_tabela(destino, sugestoes)
+        print("Sugestão de leitura (%d artigos) → %s\n" % (len(sugestoes), os.path.relpath(destino)))
+        for i, s in enumerate(sugestoes, 1):
+            print("%2d. [%s] %s (%s cit.)" % (i, s["ano"], (s["titulo"] or "")[:72], s["citacoes"]))
+            print("    %s | %s" % (s["motivo"], s["id"]))
+        print("\nA escolha final é sua: estes são candidatos por critério declarado, não veredicto.")
+        print("Para criar as fichas: cienciometria fichar --revisao %s --id <id> [--id <id> ...]"
+              % revisao.slug)
+        print("Ou todas as sugeridas de uma vez: cienciometria fichar --revisao %s --sugeridas"
+              % revisao.slug)
+        return 0
+
+    alvos = list(args.id or [])
+    if args.sugeridas:
+        caminho = os.path.join(revisao.dir_processado, "leitura-sugerida.csv")
+        if not os.path.exists(caminho):
+            raise SystemExit("Rode antes: cienciometria fichar --revisao %s --sugerir" % revisao.slug)
+        import csv as _csv
+        with open(caminho, encoding="utf-8-sig", newline="") as fh:
+            alvos += [linha["id"] for linha in _csv.DictReader(fh)]
+    if not alvos:
+        raise SystemExit("Informe --id <id do registro>, --sugeridas, ou use --sugerir para ver "
+                         "quais artigos valem a leitura.")
+
+    indice = {r["id"]: r for r in corpus}
+    criadas, existentes, ausentes = [], [], []
+    for alvo in alvos:
+        registro = indice.get(alvo)
+        if not registro:
+            ausentes.append(alvo)
+            continue
+        caminho, nova = fichamento.criar_ficha(revisao, registro)
+        (criadas if nova else existentes).append(os.path.basename(caminho))
+    print("%d ficha(s) criada(s) em %s" % (len(criadas), os.path.relpath(fichamento.dir_fichas(revisao))))
+    for nome in criadas:
+        print("  " + nome)
+    if existentes:
+        print("%d já existiam e foram preservadas." % len(existentes))
+    if ausentes:
+        print("Não encontrados no corpus: %s" % ", ".join(ausentes))
+    print("\nTítulo, referência e palavras-chave vêm do corpus. O resto exige a leitura do texto "
+          "integral — resumo não basta para dizer qual lacuna os autores declararam.")
+    registrar_execucao(revisao.dir_saidas, "fichar", "criadas=%d" % len(criadas))
+    return 0
+
+
+def cmd_fichamentos(args):
+    """Consolida as fichas e confronta as lacunas declaradas com o corpus."""
+    revisao = _revisao(args)
+    fichas = fichamento.listar_fichas(revisao)
+    if not fichas:
+        print("Nenhuma ficha em %s." % os.path.relpath(fichamento.dir_fichas(revisao)))
+        print("Comece por: cienciometria fichar --revisao %s --sugerir" % revisao.slug)
+        return 1
+    corpus = carregar_corpus(revisao.corpus) if os.path.exists(revisao.corpus) else []
+    saida = args.saida or revisao.dir_saidas
+
+    tabela = [dict({"ficha": f["arquivo"], "completa": "sim" if f["completa"] else "não",
+                    "faltando": "; ".join(f["faltando"])},
+                   **{k: " ".join(v.split())[:300] for k, v in f["campos"].items()})
+              for f in fichas]
+    salvar_tabela(os.path.join(saida, "fichamentos.csv"), tabela)
+
+    lacunas = fichamento.matriz_de_lacunas(revisao, corpus)
+    salvar_tabela(os.path.join(saida, "matriz-de-lacunas.csv"), lacunas)
+
+    completas = [f for f in fichas if f["completa"]]
+    print("%d ficha(s); %d completa(s)." % (len(fichas), len(completas)))
+    for f in fichas:
+        if not f["completa"]:
+            print("  incompleta: %s — falta %s" % (f["arquivo"], "; ".join(f["faltando"])))
+    print("\n%d lacuna(s) declarada(s) pelos autores → %s"
+          % (len(lacunas), os.path.relpath(os.path.join(saida, "matriz-de-lacunas.csv"))))
+    for linha in lacunas[:8]:
+        print("  [%s] %s" % (linha["ano"], linha["lacuna_declarada"][:96]))
+        if linha["ocorrencias_no_corpus"]:
+            print("        no corpus: %s" % linha["ocorrencias_no_corpus"])
+    if lacunas:
+        print("\nLacuna cujo termo já aparece em boa parte do corpus foi preenchida depois daquela "
+              "publicação. Confira antes de usá-la como justificativa.")
+    registrar_execucao(revisao.dir_saidas, "fichamentos",
+                       "fichas=%d completas=%d lacunas=%d" % (len(fichas), len(completas), len(lacunas)))
+    return 0
+
+
+def cmd_artigo(args):
+    """Monta o rascunho do artigo com os números da análise."""
+    revisao = _revisao(args)
+    saida = args.saida or revisao.dir_saidas
+    resultados = _ler_parcial(saida)
+    if not resultados:
+        print("Análise não encontrada: rode `cienciometria analise --revisao %s` antes." % revisao.slug)
+        return 1
+    if not resultados.get("proposicoes"):
+        resultados["proposicoes"] = proposicoes.avaliar(revisao.config.get("proposicoes"), resultados)
+
+    prisma_json = os.path.join(saida, "prisma.json")
+    prisma = None
+    if os.path.exists(prisma_json):
+        with open(prisma_json, encoding="utf-8") as fh:
+            prisma = json.load(fh)
+
+    corpus = carregar_corpus(revisao.corpus) if os.path.exists(revisao.corpus) else []
+    fichas = fichamento.listar_fichas(revisao)
+    lacunas = fichamento.matriz_de_lacunas(revisao, corpus) if fichas else []
+
+    texto = artigo.montar(revisao, resultados, prisma=prisma, lacunas=lacunas, fichas=fichas)
+    caminho = artigo.salvar(os.path.join(saida, "artigo.md"), texto)
+    pendencias = artigo.pendencias(texto)
+
+    print("Rascunho → %s" % os.path.relpath(caminho))
+    print("  %d trecho(s) marcado(s) [ESCREVER] e %d [SEM DADO]."
+          % (pendencias["escrever"], pendencias["sem_dado"]))
+    if not fichas:
+        print("\nATENÇÃO: nenhum fichamento. A introdução e a discussão dependem da leitura dos "
+              "artigos-núcleo — é de lá que sai a lacuna que justifica a pesquisa.")
+    if pendencias["sem_dado"]:
+        print("Cada [SEM DADO] aponta uma etapa que não foi executada. Reexecute-a em vez de "
+              "preencher o valor à mão.")
+    registrar_execucao(revisao.dir_saidas, "artigo", json.dumps(pendencias))
+    return 0
 
 
 def cmd_coletar(args):
@@ -517,6 +663,10 @@ def principal(argv=None):
     lst.set_defaults(funcao=cmd_listar)
 
     ajuda = {
+        "estado": "mostra em que etapa a pesquisa está e qual é o próximo passo",
+        "fichar": "cria fichas de leitura (ou sugere quais artigos fichar)",
+        "fichamentos": "consolida as fichas e confronta as lacunas com o corpus",
+        "artigo": "monta o rascunho do artigo com os números da análise",
         "coletar": "baixa registros de fontes abertas (OpenAlex, Crossref)",
         "comparar": "mede o que mudou entre duas exportações de busca",
         "importar": "lê as exportações e monta o corpus",
@@ -530,6 +680,10 @@ def principal(argv=None):
         "analise": "importar → dedup → indicadores → redes → prisma → relatorio",
     }
     funcoes = {
+        "estado": cmd_estado,
+        "fichar": cmd_fichar,
+        "fichamentos": cmd_fichamentos,
+        "artigo": cmd_artigo,
         "coletar": cmd_coletar,
         "comparar": cmd_comparar,
         "importar": cmd_importar, "dedup": cmd_dedup, "triagem": cmd_triagem, "kappa": cmd_kappa,
@@ -547,6 +701,15 @@ def principal(argv=None):
         for limiar in ("min-termo", "min-autor", "min-cocitacao", "min-acoplamento"):
             sp.add_argument("--" + limiar, type=int, default=None,
                             help="sobrepõe o limiar declarado na revisão")
+        if nome == "estado":
+            sp.add_argument("--json", action="store_true", help="também imprime o estado em JSON")
+        if nome == "fichar":
+            sp.add_argument("--id", action="append", help="id do registro no corpus (repetível)")
+            sp.add_argument("--sugerir", action="store_true",
+                            help="propõe quais artigos fichar, com o critério de cada escolha")
+            sp.add_argument("--sugeridas", action="store_true",
+                            help="cria fichas para toda a lista sugerida")
+            sp.add_argument("--quantidade", type=int, default=fichamento.MINIMO_SUGERIDO)
         if nome == "comparar":
             sp.add_argument("--antes", default=None, help="exportação da busca anterior")
             sp.add_argument("--depois", default=None, help="exportação da busca alterada")

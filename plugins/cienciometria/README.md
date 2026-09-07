@@ -11,24 +11,45 @@ Só Python 3.9+.
 /plugin install cienciometria@usm-csl
 ```
 
+## As oito etapas do projeto
+
+O plugin conduz a pesquisa inteira, e **mantém o estado no disco** — a pesquisa continua de onde
+parou, mesmo semanas depois, em outra conversa:
+
+```
+E1 Escopo e proposições → E2 Protocolo → E3 Busca → E4 Corpus →
+E5 Triagem → E6 Análise → E7 Fichamento → E8 Artigo
+```
+
+```bash
+cienciometria estado --revisao <slug>    # em que etapa está e o que falta
+```
+
 ## O que ele ativa
 
 **Skills** (disparam sozinhas quando o assunto aparece):
 
-| Skill | Cobre |
-|---|---|
-| `revisao-cienciometrica` | O fluxo inteiro: recorte, protocolo, busca, corpus, triagem, análise, interpretação |
-| `estrategia-de-busca` | Strings por base, sinonímia, truncamento, teste de recall, exportação |
-| `triagem-e-prisma` | Critérios, códigos de exclusão, triagem dupla cega, kappa, fluxo PRISMA |
-| `interpretar-resultados` | O que cada indicador sustenta, rótulos de agrupamento, mapa temático, redação dos resultados |
+| Skill | Etapa | Cobre |
+|---|---|---|
+| `pesquisa-cienciometrica` | todas | **Skill de entrada.** Sabe onde a pesquisa está, qual etapa vem e quem a executa |
+| `escopo-da-pesquisa` | E1 | A conversa de delimitação: objeto, janela, perguntas, proposições refutáveis |
+| `estrategia-de-busca` | E3 | Strings por base, proximidade, sinonímia, recall, coleta em fonte aberta |
+| `revisao-cienciometrica` | E4–E6 | Corpus, deduplicação, indicadores, redes |
+| `triagem-e-prisma` | E2, E5 | Critérios, códigos de exclusão, triagem dupla cega, kappa, fluxo PRISMA |
+| `interpretar-resultados` | E6 | O que cada indicador sustenta, rótulos, mapa temático |
+| `fichamento` | E7 | Fichas comparáveis dos artigos-núcleo e a matriz de lacunas |
+| `relatorio-cienciometrico` | E8 | O artigo montado dos dados, adaptado ao modelo do periódico |
 
 **Comandos:**
 
 | Comando | Faz |
 |---|---|
+| `/estado-da-pesquisa <slug>` | Mostra em que etapa está e conduz o próximo passo |
 | `/nova-revisao <tema>` | Conduz a delimitação e cria a revisão configurada |
 | `/analisar-corpus <slug>` | Roda o pipeline e resume os achados |
 | `/interpretar-mapa <slug>` | Lê as saídas e escreve a seção de resultados |
+| `/fichar <slug>` | Escolhe os artigos-núcleo, cria as fichas e consolida as lacunas |
+| `/escrever-artigo <slug>` | Gera o rascunho com os números no lugar e conduz a redação |
 
 ## Como as revisões ficam organizadas
 
@@ -43,7 +64,9 @@ seu-projeto/
     ├── dados/
     │   ├── bruto/       exportações das bases (Scopus, WoS, SciELO, Dimensions, Lens, RIS, BibTeX)
     │   └── processado/  corpus normalizado, decisões, estatísticas
-    └── saidas/     relatorio.md, tabelas CSV, redes .net/.gml, prisma.md, execucao.log
+    ├── fichamentos/ uma ficha por artigo-núcleo lido
+    └── saidas/     relatorio.md, artigo.md, matriz-de-lacunas.csv, tabelas CSV,
+                    redes .net/.gml, prisma.md, execucao.log
 ```
 
 Para trabalhar noutra pasta, defina `CIENCIOMETRIA_DIR=/caminho/do/projeto`.
@@ -73,6 +96,10 @@ densidade e grau ponderado.
 
 **Relato** — fluxo PRISMA com contagens reais, kappa de Cohen, verificação automática das
 proposições declaradas e log de auditoria de cada execução.
+
+**Fichamento e redação** — seleção dos artigos-núcleo por critério declarado, fichas em campos
+comparáveis, matriz que confronta cada lacuna declarada pelos autores com a frequência dos seus
+termos no corpus, e o rascunho do artigo com todos os números já no lugar.
 
 Saídas em Markdown, JSON, CSV e redes em Pajek (`.net`) e GML — abrem direto no VOSviewer e no
 Gephi, para quem quiser refinar os mapas visualmente.

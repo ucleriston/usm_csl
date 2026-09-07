@@ -1,23 +1,27 @@
 ---
 name: revisao-cienciometrica
 description: >-
-  Conduz revisões cienciométricas e bibliométricas de ponta a ponta — recorte, protocolo PRISMA,
-  strings de busca, coleta em fontes abertas, deduplicação, triagem com kappa, indicadores (Lotka,
-  Bradford, Price, h-index), redes de co-citação, coautoria e co-palavras, mapa temático e relatório
-  reprodutível — com motor de análise embarcado, sem R nem VOSviewer. Use SEMPRE que aparecer
-  revisão bibliométrica, cienciometria, análise bibliométrica, mapeamento da literatura ou do campo
-  científico, estado da arte sistemático, revisão de escopo, bibliometrix, VOSviewer, CiteSpace,
-  co-citação, acoplamento bibliográfico, co-palavras ou mapa temático. Use TAMBÉM em pedidos como
-  "quero mapear o que já se publicou sobre X", "preciso do estado da arte da minha tese", "quem são
-  os autores centrais desse campo", "exportei da Scopus e não sei o que fazer", "tenho um .bib/.ris
-  para analisar" ou "quais as lacunas da literatura sobre Y" — mesmo sem a palavra bibliometria.
+  Executa a revisão cienciométrica propriamente dita: monta o corpus a partir das exportações das
+  bases ou da coleta em fontes abertas, deduplica, calcula os indicadores (Lotka, Bradford, Price,
+  h-index, colaboração) e constrói as redes de co-citação, acoplamento, coautoria e co-palavras com
+  mapa temático, gerando o relatório reprodutível. Use quando o usuário já tiver o recorte definido
+  e disser "exportei da Scopus e não sei o que fazer", "tenho um .bib/.ris/.csv para analisar",
+  "roda a análise bibliométrica", "monta o corpus", "quais são os autores e periódicos centrais
+  desse conjunto" ou pedir análise de co-citação, acoplamento bibliográfico, co-palavras ou mapa
+  temático. Para conduzir o projeto inteiro — do "quero pesquisar isso" até o artigo, passando por
+  escopo, protocolo, fichamento e redação —, a skill de entrada é `pesquisa-cienciometrica`, e esta
+  aqui é a etapa de corpus e análise dentro dela.
 ---
 
-# Revisão cienciométrica
+# Revisão cienciométrica — corpus e análise
 
-Esta skill conduz a revisão inteira: da pergunta ao relatório. O trabalho pesado (parsers,
-deduplicação, indicadores, redes) é feito pelo motor embarcado no plugin — você orquestra,
-decide com o usuário e interpreta.
+Esta skill executa as etapas E4 a E6 do projeto: construir o corpus, deduplicar, analisar e
+interpretar. O trabalho pesado é do motor embarcado no plugin — você orquestra, decide com o
+usuário e interpreta.
+
+> Se o usuário está começando o projeto, retomando-o depois de um tempo ou perguntando o que fazer
+> em seguida, a skill de entrada é **`pesquisa-cienciometrica`**: ela mantém o estado no disco e
+> sabe qual etapa vem agora. Rode `cienciometria estado --revisao <slug>` em caso de dúvida.
 
 ## O que a revisão entrega — e o que ela não entrega
 
@@ -193,11 +197,15 @@ ou pedir a um colega que faça só a amostra. Registre a escolha como limitaçã
 Saídas em `revisoes/<slug>/saidas/`: `relatorio.md`, `resultados.json`, tabelas CSV, redes em
 `.net` (Pajek) e `.gml` para VOSviewer ou Gephi, `prisma.md` e o log de auditoria.
 
-### 8. Interpretar e escrever
+### 8. Interpretar, fichar e escrever
 
 O relatório entrega números e agrupamentos; ele não entrega leitura. Use a skill
 **interpretar-resultados** para rotular agrupamentos, ler o mapa temático e redigir a seção de
 resultados sem extrapolar o que os indicadores sustentam.
+
+Antes do texto final vem o **fichamento** dos artigos-núcleo (skill `fichamento`): a análise mostra
+a forma do campo, mas a lacuna que justifica a pesquisa sai da leitura. Depois dela, a redação, com
+a skill `relatorio-cienciometrico`.
 
 Quando o usuário for de fora da academia — gestão pública, terceiro setor, empresa —, pergunte que
 decisão está em jogo. O mapa ganha outro uso quando é cruzado com dado do próprio domínio: onde a

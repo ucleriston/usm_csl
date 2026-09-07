@@ -80,6 +80,10 @@ e refazer a rodada — não negociar registro a registro.
 
 ## 7 Analisar
 
+Em qualquer momento, `cienciometria estado --revisao <slug>` diz em que etapa a pesquisa está, o que
+falta e qual é o próximo passo — o estado vem dos artefatos no disco, não da memória de ninguém.
+
+
 ```bash
 make analise REVISAO=<slug>
 ```
@@ -87,7 +91,22 @@ make analise REVISAO=<slug>
 Roda importação, deduplicação, indicadores, redes, PRISMA e relatório. As saídas ficam em
 `revisoes/<slug>/saidas/`.
 
-## 8 Interpretar
+## 8 Fichar os artigos-núcleo
+
+A análise mostra a forma do campo; ela não diz o que os trabalhos afirmam nem o que os próprios
+autores apontam como não resolvido. A lacuna que justifica uma pesquisa nova sai da leitura.
+
+```bash
+cienciometria fichar --revisao <slug> --sugerir      # quais artigos ler, e por quê
+cienciometria fichar --revisao <slug> --sugeridas    # cria as fichas
+cienciometria fichamentos --revisao <slug>           # consolida e confronta com o corpus
+```
+
+A matriz de lacunas faz o trabalho que ninguém faz à mão: quando um autor escreve "faltam estudos
+sobre X", o motor conta em quantos registros do corpus os termos de X aparecem. Lacuna cujo termo já
+está em 40% do corpus foi preenchida depois daquela publicação.
+
+## 9 Interpretar
 
 O relatório entrega números e agrupamentos; ele não entrega leitura. Antes de escrever o artigo:
 
@@ -96,7 +115,17 @@ O relatório entrega números e agrupamentos; ele não entrega leitura. Antes de
 - confira a cobertura declarada de cada indicador que dependa de campo incompleto;
 - relate as proposições refutadas como refutadas.
 
-## 9 Publicar
+## 10 Escrever
+
+```bash
+cienciometria artigo --revisao <slug>
+```
+
+Gera `saidas/artigo.md` com a estrutura do artigo cienciométrico e todos os números vindos de
+`saidas/resultados.json`. `[ESCREVER: ...]` marca o que depende do autor; `[SEM DADO: ...]` marca
+etapa não executada — que se reexecuta, nunca se preenche de memória.
+
+## 11 Publicar
 
 Versione código, protocolo, strings e a lista de identificadores do corpus. As exportações brutas
 de bases proprietárias ficam fora do repositório — ver
