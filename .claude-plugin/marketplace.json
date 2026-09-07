@@ -6,16 +6,24 @@
   },
   "metadata": {
     "description": "Ferramentas de pesquisa acadêmica",
-    "version": "1.0.0"
+    "version": "1.1.0"
   },
   "plugins": [
     {
       "name": "cienciometria",
       "source": "./plugins/cienciometria",
-      "description": "Conduz revisões cienciométricas de ponta a ponta — protocolo PRISMA, strings de busca, deduplicação, triagem com kappa, indicadores, redes de co-citação e co-palavras, mapa temático e relatório reprodutível. Motor de análise embarcado, sem dependências externas.",
-      "version": "1.0.0",
-      "author": {"name": "Cleriston Menezes"},
-      "keywords": ["cienciometria", "bibliometria", "PRISMA", "revisão de literatura", "pesquisa acadêmica"],
+      "description": "Conduz a pesquisa cienciométrica inteira, do escopo ao artigo: protocolo PRISMA, strings de busca, coleta em fontes abertas, deduplicação, triagem com kappa, indicadores, redes, mapa temático, fichamento dos artigos-núcleo e rascunho do relatório final. Mantém o estado no disco: a pesquisa continua de onde parou. Motor embarcado, sem dependências externas.",
+      "version": "1.1.0",
+      "author": {
+        "name": "Cleriston Menezes"
+      },
+      "keywords": [
+        "cienciometria",
+        "bibliometria",
+        "PRISMA",
+        "revisão de literatura",
+        "pesquisa acadêmica"
+      ],
       "category": "research"
     }
   ]

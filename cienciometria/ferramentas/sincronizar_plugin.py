@@ -25,6 +25,7 @@ COPIAS = [
     ("modelos/revisao-modelo", "modelos/revisao-modelo"),
     ("modelos/ficha-de-extracao.md", "modelos/ficha-de-extracao.md"),
     ("modelos/registro-de-decisoes.csv", "modelos/registro-de-decisoes.csv"),
+    ("testes/gerar_exemplo.py", "exemplo/gerar-dados-sinteticos.py"),
 ]
 
 IGNORAR = shutil.ignore_patterns("__pycache__", "*.pyc", ".DS_Store")

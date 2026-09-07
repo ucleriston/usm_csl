@@ -1,13 +1,25 @@
 {
   "name": "cienciometria",
-  "version": "1.0.0",
-  "description": "Conduz revisões cienciométricas (bibliométricas) de ponta a ponta: delimitação do recorte, protocolo PRISMA, strings de busca por base, deduplicação, triagem dupla com kappa, indicadores (Lotka, Bradford, Price, h-index), redes de co-citação, coautoria e co-palavras, mapa temático e relatório reprodutível. Traz o motor de análise embarcado — não depende de R, VOSviewer nem de bibliotecas externas.",
+  "version": "1.1.0",
+  "description": "Conduz a pesquisa cienciométrica de ponta a ponta em oito etapas — escopo e proposições, protocolo PRISMA, busca, corpus, triagem com kappa, análise (Lotka, Bradford, Price, co-citação, coautoria, co-palavras, mapa temático), fichamento dos artigos-núcleo com matriz de lacunas, e rascunho do artigo com os números no lugar. O estado da pesquisa mora no disco, então ela continua de onde parou. Traz o motor de análise embarcado — não depende de R, VOSviewer nem de bibliotecas externas.",
   "author": {
     "name": "Cleriston Menezes",
     "email": "ucleriston.menezes@gmail.com"
   },
   "keywords": [
-    "cienciometria", "bibliometria", "revisão de literatura", "PRISMA", "estado da arte",
-    "co-citação", "mapa temático", "Scopus", "Web of Science", "SciELO", "pesquisa acadêmica"
+    "cienciometria",
+    "bibliometria",
+    "revisão de literatura",
+    "PRISMA",
+    "estado da arte",
+    "co-citação",
+    "mapa temático",
+    "Scopus",
+    "Web of Science",
+    "SciELO",
+    "pesquisa acadêmica",
+    "fichamento",
+    "estado da arte",
+    "OpenAlex"
   ]
 }

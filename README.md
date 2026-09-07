@@ -16,9 +16,11 @@ Repositório de pesquisa acadêmica.
 /plugin install cienciometria@usm-csl
 ```
 
-Ativa quatro skills — condução da revisão, estratégia de busca, triagem e PRISMA, interpretação dos
-resultados — e três comandos: `/nova-revisao`, `/analisar-corpus` e `/interpretar-mapa`.
-Detalhes em [`plugins/cienciometria/README.md`](plugins/cienciometria/README.md).
+Ativa oito skills — a condução do projeto inteiro (`pesquisa-cienciometrica`), escopo, estratégia de
+busca, corpus e análise, triagem e PRISMA, interpretação, fichamento e relatório final — e seis
+comandos: `/estado-da-pesquisa`, `/nova-revisao`, `/analisar-corpus`, `/interpretar-mapa`,
+`/fichar` e `/escrever-artigo`. Detalhes em
+[`plugins/cienciometria/README.md`](plugins/cienciometria/README.md).
 
 ## Motor
 
