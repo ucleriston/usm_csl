@@ -55,6 +55,8 @@ A pergunta central articula três objetos que a literatura trata separadamente: 
 
 > **Nota sobre "coparticipación".** O regime argentino é o análogo internacional mais próximo do problema: coeficientes de repartição congelados sobre base histórica pré-1988, com efeitos distributivos prolongados. Não é vocabulário acessório — é âncora comparada da S3.
 
+> **Alerta terminológico — "fiscal capacity".** Na literatura anglófona de federalismo fiscal, *fiscal capacity* designa em regra a **base econômica tributável** de uma jurisdição (potencial de arrecadação), e não os recursos institucionais que este projeto chama de capacidade estatal. São conceitos distintos e a homonímia é exatamente a confusão que o projeto pretende evitar ao recusar a arrecadação como medida de capacidade. O termo permanece nas strings, porque retirá-lo custaria recall relevante, mas a triagem precisa separar os dois sentidos — critério de exclusão específico no protocolo. O equivalente institucional a buscar é *administrative capacity*, *bureaucratic capacity* e *administrative throughput*.
+
 ---
 
 ## 3. Strings
@@ -306,6 +308,22 @@ AND (IBS OR "imposto sobre bens e serviços" OR "Lei Complementar 227" OR "LC 22
 
 As strings devem ser **testadas contra um conjunto de controle** — trabalhos já identificados no estado da arte e que a busca *tem obrigação* de recuperar. Se a string não os recupera na base onde eles estão indexados, ela está mal formulada; se recupera todos e mais nada útil, está estreita demais.
 
+### 5.1 Pré-calibração executada (2026-09-08)
+
+Três consultas exploratórias em índice acadêmico semântico (Elicit, corpus amplo), **antes** das bases primárias. Não substituem a execução de S1–S5 — servem para testar premissas das strings. Resultados:
+
+**(a) Premissa da S3 confirmada.** Existe literatura sobre repartição assentada em base histórica protegida. Achados diretos: Sethia e Chaudhuri (2026), *The grand federal bargain for Goods and Services Tax (GST) in India* (Applied Economics), que analisa a proteção de receita por *benchmark* estadual na transição e defende justamente a substituição da proteção uniforme por trajetória decrescente com referência específica por ente — desenho comparável ao dos arts. 114 a 117; Cuevas (2003, FMI) e Porto (2016, BID) sobre o redesenho da coparticipación argentina. O bloco C4 da S3 está bem calibrado.
+
+**(b) Recall da S1 confirmado.** Marenco, Strohschoen e Joner (2017) foi recuperado, como o conjunto de controle exige. Apareceram ainda dois trabalhos de 2026 **ausentes do estado da arte atual e diretamente pertinentes**: Reis, Faria e Betarelli Junior (2026), *Administrative Modernization and Municipal Tax Capacity: Evidence from Northeast Brazil* (Public Finance Review), que estima por diferenças-em-diferenças em múltiplos períodos o efeito causal do PNAFM e do PMAT sobre a receita própria de municípios nordestinos entre 1994 e 2023 — evidência quantitativa sobre exatamente os programas que o projeto examina em 5.2, e em recorte regional próximo ao da Bahia; e Pivello (2026), *A Administração Tributária nos municípios do CODEVAR* (RDDA/USP), que compara estruturas fazendárias municipais a partir de portais de transparência, Tesouro estadual e tribunal de contas — desenho documental análogo ao previsto para os doze casos.
+
+**(c) Alerta sobre o bloco C1.** A consulta sobre viés de capacidade em bases históricas de equalização retornou, quase integralmente, literatura de *fiscal equalisation* no sentido de potencial tributário (Blöchliger et al., 2007; Martínez-Vázquez e Searle, 2007; Borge et al., 2026), não de capacidade administrativa. Daí o alerta terminológico da seção 2.3. A exceção útil é Sudhipongpracha e Wongpredee (2015), *Disequalizing Equalization Grant*, que mostra transferência equalizadora beneficiando as jurisdições de maior capacidade — efeito regressivo de fórmula, próximo à H4.
+
+**(d) Sobre a lacuna.** Nenhuma das consultas recuperou trabalho que examine **capacidade administrativa desigual como fonte de viés na base histórica de uma regra de repartição**. É indício favorável à formulação de 4.5, não prova: um índice semântico não substitui Scopus e WoS, e ausência em uma sondagem não é ausência na literatura. O achado a registrar é que a literatura de equalização trata desigualdade de base econômica, e a de capacidades trata desempenho corrente — a junção das duas no tempo permanece o espaço do projeto.
+
+**Consequências para as strings.** Nenhuma alteração de operadores. Duas alterações de procedimento: (i) incluir critério de exclusão para o sentido econômico de *fiscal capacity*, com registro do descarte; (ii) incorporar Sethia e Chaudhuri (2026), Reis et al. (2026), Pivello (2026) e Sudhipongpracha e Wongpredee (2015) ao conjunto de controle, como recuperação obrigatória das bases primárias — se S1 e S3 não os recuperarem no Scopus e na WoS, o problema é da string, não da literatura.
+
+### 5.2 Conjunto de controle
+
 | Obra | Deve aparecer em | Base esperada |
 |---|---|---|
 | Marenco; Strohschoen; Joner (2017), *Capacidade estatal, burocracia e tributação nos municípios brasileiros* | S1 | SciELO, Portal CAPES |
@@ -317,6 +335,10 @@ As strings devem ser **testadas contra um conjunto de controle** — trabalhos j
 | Fratesi; Livert; Polverari; Zerbinati (2026), *administrative throughput* | S1 | Scopus, WoS |
 | Koop; Lodge (2017), *What is regulation?* | S5 | Scopus, WoS |
 | Cingolani (2013), *The state of state capacity* | S1 | **Google Scholar / RePEc** — *working paper* UNU-MERIT, provavelmente ausente de Scopus e WoS |
+| Sethia; Chaudhuri (2026), *The grand federal bargain for GST in India* | S3 | Scopus, WoS |
+| Reis; Faria; Betarelli Junior (2026), *Administrative Modernization and Municipal Tax Capacity* | S1, S4 | Scopus, WoS |
+| Pivello (2026), *A Administração Tributária nos municípios do CODEVAR* | S1, S5 | SciELO/USP, Portal CAPES |
+| Sudhipongpracha; Wongpredee (2015), *Disequalizing Equalization Grant* | S2 | Scopus |
 
 O caso Cingolani é o teste da política de fontes: se a revisão se limitar a bases indexadas, perde o survey conceitual que fundamenta OE2. É argumento para incluir literatura cinzenta no protocolo.
 
